@@ -1,0 +1,165 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+body{
+      font-family: Arial, sans-serif;
+      
+    }
+
+.top-header {
+    
+    background-color: #e53935;
+    color: white;
+    display: flex;
+    justify-content: space-between; /* left side vs right side */
+    align-items: center;
+    padding: 8px 100px;
+    font-size: 15px;
+    flex-wrap: wrap; /* mobile friendly */
+    
+}
+
+.top-header .left{
+    display: flex;
+    gap: 20px; /* space between time and email */
+    align-items: center;
+    margin-left: 100px;
+}
+
+.top-header .right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 100px;
+}
+
+.top-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.top-header a:hover {
+    text-decoration: underline;
+    color:black;
+}
+
+header {
+  display: flex;
+  justify-content: space-between; /* Logo left, menu right */
+  align-items: center;
+  padding: 5px 205px;
+  background-color: white;
+  
+}
+
+.header-left-logo img {
+  width: auto;
+  max-height: 81px; /* Adjust size of logo */ 
+  margin-top: -2px;
+}
+
+.header-right nav {
+  display: flex;
+  gap: 30px; /* space between menu items */
+  margin-top: -10px;
+  
+}
+
+.header-right nav a {
+  color: rgba(8, 20, 133, 0.986);
+  text-decoration: none;
+  font-size: 21px;
+  font-weight: 510;
+  transition: color 0.3s;
+}
+
+.header-right nav a:hover {
+  /* text-decoration: underline; */
+  color: #f15b05;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.login-btn {
+  border: 2px solid #dc4c2c;
+  color: #dc4c2c;
+  font-size: 16px;
+  padding: 10px 25px;
+  margin-top: -8px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-btn:hover {
+  background: #dc4c2c;
+  color: white;
+}
+
+.register-btn {
+  border: 2px solid #007bff;
+  color: #007bff;
+  font-size: 16px;
+  padding: 10px 25px;
+  margin-top: -8px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Adjust height as needed */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  margin-top: -10px;
+}
+
+.banner {
+  position: relative;
+  text-align: center;
+  color: white
+
+}
+
+.banner h1 {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  nav-down: auto;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  padding: 20px;
+  /*background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  /* border-radius: 10px; */
+}
+
+.banner p {
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  font-size: 34px;
+  padding: 10px;
+  /*background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */ 
+  /* border-radius: 10px; */
+  max-width: 80%; /* Limit width for better readability */
+}
+
+
