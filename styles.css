@@ -144,10 +144,11 @@ header {
 .banner {
   position: relative;
   text-align: center;
-  color: blue;
+  color: whitesmoke;
 }
 
 .banner h1 {
+  font-style: italic;
   position: absolute;
   top: 40%;
   left: 28%;
@@ -155,9 +156,9 @@ header {
   transform: translate(-50%, -50%);
   font-size: 35px;
   padding: 20px;
-  /*background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  /* background-color: rgba(255, 255, 255, 0.7); Semi-transparent background */
   /* border-radius: 10px; */
-   max-width: 80%;
+  max-width: 80%;
 }
 
 .banner p {
@@ -184,6 +185,7 @@ header {
   max-width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 50px auto;
+  
 }
 
 .register-container label span {
@@ -194,7 +196,8 @@ header {
 .register-container h2 {
   margin-bottom: 20px;
   text-align: center;
-  color: #333;
+  /* color: #333; */
+  color: #007bff;
 }
 
 
@@ -268,6 +271,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
   margin: 91px auto;
   
+  
 }             
 
 .login-container h2 {
@@ -275,6 +279,9 @@ footer {
   font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
+  color: #007bff;
+  margin-top: -2px;
+
 }
 
 .user-type {
@@ -369,6 +376,11 @@ footer {
   font-size: 17.5px;
   cursor: pointer;
   transition: 0.3s;
+}
+
+.register-link {
+  margin-top: 20px;
+  
 }
 
 .primary-btn:hover {
