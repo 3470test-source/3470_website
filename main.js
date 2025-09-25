@@ -1,24 +1,52 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const bodyClass = document.body.className;
 
-  // Toggle profile dropdown
-  document.getElementById("profileBtn").addEventListener("click", function () {
-    const menu = document.getElementById("profileMenu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  });
+  // 🔐 Login Page Script
+  if (bodyClass.includes("login-page")) {
+    const loginBtn = document.querySelector("button");
+    if (loginBtn) {
+      loginBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const error = document.getElementById("error");
 
-  // Toggle sidebar (optional)
-  document.getElementById("menuToggle").addEventListener("click", function () {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.style.display = sidebar.style.display === "none" ? "block" : "none";
-  });
-
-  // Close dropdown when clicking outside
-  window.addEventListener("click", function (e) {
-    const dropdown = document.getElementById("profileMenu");
-    if (!document.getElementById("profileBtn").contains(e.target)) {
-      dropdown.style.display = "none";
+        if (username === "admin" && password === "1234") {
+          window.location.href = "dashboard.html";
+        } else {
+          error.style.display = "block";
+        }
+      });
     }
-  });
+  }
 
+  // 📊 Dashboard Page Script
+  if (bodyClass.includes("dashboard-page")) {
+    const profileBtn = document.getElementById("profileBtn");
+    const menu = document.getElementById("profileMenu");
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
 
+    // Toggle profile dropdown
+    if (profileBtn) {
+      profileBtn.addEventListener("click", function () {
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      });
+    }
 
+    // Toggle sidebar
+    if (menuToggle) {
+      menuToggle.addEventListener("click", function () {
+        sidebar.style.display = sidebar.style.display === "none" ? "block" : "none";
+      });
+    }
+
+    // Close dropdown when clicking outside
+    window.addEventListener("click", function (e) {
+      if (profileBtn && !profileBtn.contains(e.target) && !menu.contains(e.target)) {
+        menu.style.display = "none";
+      }
+    });
+  }
+});
 
