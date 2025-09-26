@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   const bodyClass = document.body.className;
 
+
+
+
   // 🔐 Login Page Script
-  if (bodyClass.includes("login-page")) {
-    const loginBtn = document.querySelector("button");
+ if (bodyClass.includes("login-page")) {
+    const loginBtn = document.querySelector(".login-btn.primary-btn"); // select login button
     if (loginBtn) {
       loginBtn.addEventListener("click", function (event) {
         event.preventDefault();
@@ -12,13 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const error = document.getElementById("error");
 
         if (username === "admin" && password === "1234") {
-          window.location.href = "dashboard.html";
+          window.location.href = "dashboard.html"; // ✅ redirect works now
         } else {
           error.style.display = "block";
         }
       });
     }
   }
+
+
+
+
 
   // 📊 Dashboard Page Script
   if (bodyClass.includes("dashboard-page")) {
@@ -50,3 +57,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+
+
+  // 👁️ Password Icon - show / hide password
+  const toggleIcons = document.querySelectorAll(".toggle-password");
+
+  toggleIcons.forEach(icon => {
+    icon.addEventListener("click", function () {
+      const input = this.parentElement.querySelector("input"); // find input in same wrapper
+      const type = input.getAttribute("type") === "password" ? "text" : "password";
+      input.setAttribute("type", type);
+
+    // toggle icon
+    this.classList.toggle("fa-eye");
+    this.classList.toggle("fa-eye-slash");
+  });
+  });
+  

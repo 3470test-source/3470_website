@@ -8,7 +8,7 @@ body{
       font-family: Arial, sans-serif;
     }
 
-   /* Top Header Styles  */
+         /* Top Header Styles  */
 
 .top-header {
     background-color: #e53935;
@@ -47,7 +47,7 @@ body{
 }
 
 
-          /* Main Header Styles */
+           /* Main Header Styles */
 
 header {
   display: flex;
@@ -200,7 +200,6 @@ header {
   color: #007bff;
 }
 
-
 .form-group {
   margin-bottom: 15px;
 }
@@ -243,6 +242,31 @@ p a {
   text-decoration: none;
 }
 
+  /* Register password icon */
+.password-icon{
+  position: relative;
+ 
+}
+
+.password-icon input {
+  padding-right: 40px;  /* space for eye icon */
+  box-sizing: border-box;
+}
+
+.password-icon .toggle-password {
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  cursor: pointer;
+  
+}
+
+
+
+
           /* Footer Styles  */
 
 footer {
@@ -258,6 +282,9 @@ footer {
   font-size: 15px;
 }
 
+
+
+
              /* Login Page Styles */
 
 .login-container {
@@ -270,7 +297,6 @@ footer {
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
   margin: 91px auto;
-  
   
 }             
 
@@ -326,6 +352,7 @@ footer {
   padding: 10px;
   border-radius: 6px;
   margin-bottom: 15px;
+
 }
 
 .input-group i {
@@ -338,7 +365,25 @@ footer {
   outline: none;
   flex: 1;
   font-size: 15px;
+  padding-right: 43px
+  
 }
+
+  /* password-icon */
+.input-group .toggle-password {
+  color: #888;
+  font-size: 12px;
+}
+
+          /* login pages -- Invalid credentials   */
+ #error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: center;   /* center align */
+  display: none;        /* hidden by default */
+} 
 
 .remember-me {
   display: flex;

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Pages</title>
+
+      <!-- Css - Styles -->
     <link rel="stylesheet" href="styles.css">
      
     <style>
@@ -11,6 +13,10 @@
         background-color: #f0f2f5;
     }
     </style>
+
+     <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
 </head>
 <body>
 
@@ -32,37 +38,48 @@
                 <a href="register.html" class="register-btn">Register</a>
             </div>  
     </header>
-    
-    <!-- Register Form -->
 
+    
+   
+    <!-- Register Form -->
 <div class="register-container">
     <h2>Create an Account</h2>
+
+    <!-- FirstName -->
     <form action="#" method="post">
       <div class="form-group">
         <label for="FirstName">First Name<span>*</span></label>
         <input type="text" id="FirstName" name="FirstName" required />
       </div>
 
+      <!-- LastName -->
       <div class="form-group">
         <label for="LastName">Last Name<span>*</span></label>
         <input type="text" id="LastName" name="LastName" required />
       </div>
 
+       <!-- Email -->
       <div class="form-group">
         <label for="email">Email<span>*</span></label>
         <input type="email" id="email" name="email" required />
       </div>
 
+      <!-- Password -->
       <div class="form-group">
         <label for="password">Password<span>*</span></label>
+        <div class="password-icon">
         <input type="password" id="password" name="password" required />
+        <i class="fas fa-eye toggle-password" id="togglePassword" style="cursor:pointer;"></i>
       </div>
+    </div>
 
+      <!-- Comfirm Password -->
       <div class="form-group">
         <label for="confirm">Confirm Password<span>*</span></label>
         <input type="password" id="confirm" name="confirm" required />
       </div>
 
+       <!-- register-btn -->
       <button type="submit">Register</button>
     </form>
     <p>Already have an account? <a href="login.html">Login here</a></p>
@@ -74,6 +91,9 @@
     <p>&copy; 2025  3470 Medical Coding Training Institute | All rights reserved.</p>
   </div>
 </footer>
+
+<!-- Javascript -->
+<script src="main.js" defer></script>
 
 </body>
 </html>
