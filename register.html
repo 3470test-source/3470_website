@@ -47,23 +47,23 @@
 <div class="register-container">
     <h2>Create an Account</h2>
 
-    <!-- FirstName -->
+    <!-- Full Name -->
     <form id="registerForm" action="#" method="post">
       <div class="form-group">
-        <label for="FirstName">First Name<span>*</span></label>
-        <input type="text" id="FirstName" name="FirstName" required />
+        <label for="FullName">Full Name<span>*</span></label>
+        <input type="text" id="FullName" name="FullName" required />
       </div>
 
-      <!-- LastName -->
-      <div class="form-group">
-        <label for="LastName">Last Name<span>*</span></label>
-        <input type="text" id="LastName" name="LastName" required />
-      </div>
-
-       <!-- Email -->
+      <!-- Email -->
       <div class="form-group">
         <label for="email">Email<span>*</span></label>
         <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone No<span>*</span></label>
+        <input type="tel" id="phone" name="phone" required  maxlength="10"/>
+        <!-- <small>Enter 10-digit mobile number</small> -->
       </div>
 
       <!-- Password -->
@@ -100,6 +100,16 @@
 <!-- Javascript -->
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="main.js" defer></script>
+
+
+          <!-- Phone No -->
+<script>    
+      const phoneInput = document.getElementById("phone");
+      phoneInput.addEventListener("input", function() {
+     // Remove any non-digit characters
+     this.value = this.value.replace(/\D/g, '');
+   });
+</script>
 
 </body>
 </html>

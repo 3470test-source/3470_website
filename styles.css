@@ -517,15 +517,30 @@ footer {
   display: none;
   position: absolute;
   top: 50px;
-  right: 0;
+  right: -10px;
   background: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   flex-direction: column;
   min-width: 182px;
   z-index: 100;
-  overflow: hidden;
-  border: 1px solid #ccc;
+  border: 1px solid #34495e;
+  padding: 10px 2px;
+ 
+}
+
+.dropdown-menu ::after{
+  content: "";
+  position: absolute;
+  top: -6px;   /* small gap above box */
+  right: 20px; /* adjust horizontally */
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-left: 1px solid #34495e;
+  border-top: 1px solid #34495e;
+  transform: rotate(45deg);
+  z-index: -1; /* keeps arrow under text */
 }
 
 .dropdown-menu a {
@@ -541,7 +556,7 @@ footer {
 }
 
 .dropdown-menu a i {
-  color: #444;
+  color: #007bff;
 }
 
 .dropdown-menu a:hover {
@@ -562,6 +577,7 @@ footer {
   min-height: calc(100vh - 60px);
   transition: transform 0.3s ease;
   flex-shrink: 0;
+ 
 }
 
 /* .sidebar h2 {
