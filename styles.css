@@ -277,20 +277,64 @@ p a {
   font-size: 15px;
 }
 
+
+
+
 /* Footer Styles  */
 
 footer {
-  background-color: #0752c2;
+  background-color: #00061E;
   color: white;
   text-align: center;
-  padding: 20px 10px;
   margin-top: 60px;
+  /* padding: 15px 30px; */
+  padding: 15px 0;
+
 }
 
 .footer-content p {
   margin: 0;
   font-size: 15px;
+  
 }
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* helps stack on mobile */
+  max-width: 1200px;  /* keeps content inside a centered box */
+  margin: 0 auto;     /* centers that box */
+  padding: 0 40px;    /* space from left + right */
+  
+}
+
+/* Social Media Icons  */
+
+.social-icons a {
+  transition: color 0.3s;
+  text-decoration: none; /* removes underline */
+  color: #fff; /* default icon color */
+  margin: 0 10px;
+  font-size: 10px;
+
+}
+
+.social-icons a i {
+  color: white; /* fallback color */
+  transition: transform 0.3s, color 0.3s; /* smooth hover effect */
+}
+
+.social-icons a.instagram i { color: #d40a4e; } /* or gradient */
+.social-icons a.facebook i  { color: #1877F2; }
+.social-icons a.youtube i   { color: #FF0000; }
+.social-icons a.twitter i   { color: #1DA1F2; }
+.social-icons a.linkedin i  { color: #027bf3; }
+.social-icons a.Whatsapp i  { color: #09f35f; }
+
+
+
+
 
 /* Login Page Styles */
 
@@ -670,3 +714,107 @@ header h1 {
   text-decoration: none;
   color: #3498db;
 }
+
+
+   /* Contact_Us */
+
+.contact-section{
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  
+}   
+
+.contact-section h1 {
+  text-align: center;
+  margin-bottom: 30px;
+
+  /* color: #333; */
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+
+   /* Form styles */
+.contact-form {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  order: 2;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+ /* Address styles */
+.contact-info {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+.address-box{
+  margin-bottom: 20px;
+  padding-left: 10px;
+
+  background-color: #fff;        /* White background */
+  border: 1px solid #ccc;        /* Light gray border */
+  border-radius: 8px;            /* Rounded corners */
+  padding: 15px 30px;            /* Inner spacing */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+  max-width: 500px;              /* Optional width */
+  margin: 20px auto;             /* Center horizontally */
+  font-family: Arial, sans-serif;
+  
+}
+
+.address-box h4 {
+  margin-bottom: 15px;
+  color: #068d53;
+  font-size: 18px;
+
+}
+
+.address-box p {
+  margin: 15px 0;
+  font-size: 14px;
+  
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.address-box h4 i {
+  color: #068d53;  /* blue icon */
+  margin-right: 10px;
+  margin-left: -10px;
+
+}
+
+    /* Google Map */
+ 
+.map-container {
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+
