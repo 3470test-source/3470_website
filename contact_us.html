@@ -14,26 +14,27 @@
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
+      
     }
 
     input, select, textarea {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 2px;
     }
 
-     button {
-      background: #007bff;
+    .contact-form button {
+      background: #02814a;
       color: #fff;
       border: none;
       padding: 12px 20px;
-      border-radius: 5px;
+      border-radius: 2px;
       cursor: pointer;
     }
 
-    button:hover {
-      background: #0056b3;
+    .contact-form button:hover {
+      background: #036418;
     }
 
     </style>
@@ -47,31 +48,69 @@
 </head>
 <body>
 
-      <!-- header -->
+    <!-- header -->
     <header>
-        <div class="header-left-logo">
-            <img src="https://3470healthcare.com/wp-content/uploads/2024/06/Logo3470-health3.jpg" alt="3470 Medical Coding Training Institute">
-        </div>
-        <div class="header-right">
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#courses">Courses</a>
-                <a href="contact_us.html">Contact Us</a>
-            </nav>
-        </div>    
-            <div class="buttons">
-                <a href="login.html" class="login-btn">Login</a>
-                <a href="register.html" class="register-btn">Register</a>
-            </div>  
+      <div class="header-left-logo">
+        <img
+          src="picture/Logo3470-health3 (2).jpg"
+          alt="3470 Medical Coding Training Institute"
+        />
+      </div>
+
+
+      <div class="header-right">
+        <nav>
+           <ul class="menu">
+             <li><a href="index.html">Home</a></li>
+             <li><a href="#about">About Us</a></li>
+
+             <!-- Dropdown -->
+              <li class="menu-item">
+                <a href="#courses">Courses
+                 <span class="indicator">
+                  <i class="fa fa-angle-down"></i>
+                 </span>
+                </a>
+
+                <ul class="dropdown">
+                  <li><a href="#">Medical Coding</a></li>
+                  <li><a href="#">CPC Certification</a></li>
+                </ul>
+              </li>
+
+              <li><a href="contact_us.html">Contact Us</a></li>
+           </ul> 
+  
+        </nav>
+      </div>
+
+
+      <div class="buttons">
+        <a href="login.html" class="login-btn">Login</a>
+        <a href="register.html" class="register-btn">Register</a>
+      </div>
     </header>
 
-    <section class="contact-section">
-        <h1>Contact Us</h1>
         
+           
+      <div class="contact-text">
+        <h1>Contact Us</h1>
+         <p>We are here to answer your questions. <br>Reach out for training, enquiry, or support.</p>
+         <img
+            class="contact-banner"
+            src="picture/240_F_530960431_c8fPd3HansYvrSJ4fJxZqp9OhjQmYoll.jpg"
+            alt="banner-contact"
+          />
+      </div>
+    
+
+              <!-- Contact Us - From  -->
+        <section class="contact-section">
          <div class="contact-container">
+
            <form action="#" method="post" class="contact-form">
             <h2>Get In Touch With Us</h2>
+            
              <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -146,18 +185,44 @@
          </div>
     </section>
 
+           <!-- Google Map -->
     <div class="map-container">
        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15554.2688420465!2d80.22781031190785!3d12.93551450407136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d86fdcc5271%3A0xea64c5633194de79!2s3470%20HEALTHCARE!5e0!3m2!1sen!2sin!4v1651142899007!5m2!1sen!2sin"
-              width="100%" 
-              height="350"
-              style="border:0;"
               allowfullscreen=""
               loading="lazy"
-              frameborder="0"
               referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </div>
       
+
+    <!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2025  3470 Medical Coding Training Institute | All rights reserved.</p>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons" style="margin-top: 10px;">
+      <a href="https://www.instagram.com/3470healthcaretraininginstitue/" target="_blank" class="instagram">
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      <a href="https://www.facebook.com/people/3470-Healthcare/61576254508977/" target="_blank" class="facebook">
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      <a href="https://www.youtube.com/@HEALTHCARE-nv6if" target="_blank" class="youtube">
+        <i class="fab fa-youtube fa-2x"></i>
+      </a>
+      <a href="https://www.twitter.com/" target="_blank" class="twitter">
+        <i class="fab fa-twitter fa-2x"></i>
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank" class="linkedin">
+        <i class="fab fa-linkedin fa-2x"></i>
+      </a>
+      <a href="https://wa.me/919280236474" target="_blank" class="Whatsapp">
+        <i class="fab fa-whatsapp fa-2x"></i>
+      </a>
+    </div>
+  </div>
+</footer>
 
 
 </body>
