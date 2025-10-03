@@ -39,33 +39,42 @@
         />
       </div>
 
-
       <div class="header-right">
         <nav>
-           <ul class="menu">
-             <li><a href="index.html">Home</a></li>
-             <li><a href="#about">About Us</a></li>
+          <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About Us</a></li>
 
-             <!-- Dropdown -->
-              <li class="menu-item">
-                <a href="#courses">Courses
-                 <span class="indicator">
+            <!-- Dropdown -->
+            <li class="menu-item">
+              <a href="#courses"
+                >Courses
+                <span class="indicator">
                   <i class="fa fa-angle-down"></i>
-                 </span>
-                </a>
+                </span>
+              </a>
 
-                <ul class="dropdown">
-                  <li><a href="#">Medical Coding</a></li>
-                  <li><a href="#">CPC Certification</a></li>
-                </ul>
-              </li>
+              <ul class="dropdown">
+                <li><a href="#">Medical Coding</a></li>
+                <li><a href="#">Basic Medical Coding Training</a></li>
+                <li><a href="#">Advanced Medical Coding Training</a></li>
+                <li><a href="#">Certified Professional Coder</a></li>
+                <li><a href="#">Evaluation & Management</a></li>
+                <li>
+                  <a href="#">Inpatient Coding Diagnosis Related Groups</a>
+                </li>
+                <li><a href="#">Emergency Department</a></li>
+                <li><a href="#">Certified Coding Specialist</a></li>
+                <li><a href="#">Certified Professional Medical Auditor</a></li>
+                <li><a href="#">Certified Risk Adjustment Coder</a></li>
+                <li><a href="#">Interactive Voice Response</a></li>
+              </ul>
+            </li>
 
-              <li><a href="contact_us.html">Contact Us</a></li>
-           </ul> 
-  
+            <li><a href="contact_us.html">Contact Us</a></li>
+          </ul>
         </nav>
       </div>
-
 
       <div class="buttons">
         <a href="login.html" class="login-btn">Login</a>
@@ -87,5 +96,172 @@
         alt="banner"
       />
     </div>
+
+    <!-- List Banner Section with Icons -->
+    <section class="list-banner">
+      <div class="banner-item">
+        <i class="fas fa-laptop-code banner-icon"></i>
+        <h3>E-learning</h3>
+        <p>Learn on your schedule</p>
+      </div>
+
+      <div class="banner-item">
+        <i class="fas fa-briefcase banner-icon"></i>
+        <h3>Recruitment</h3>
+        <p>Job placement assistance</p>
+      </div>
+
+      <div class="banner-item">
+        <i class="fas fa-headset banner-icon"></i>
+        <h3>Lifetime Support</h3>
+        <p>For coding updates</p>
+      </div>
+
+      <div class="banner-item">
+        <i class="fas fa-certificate banner-icon"></i>
+        <h3>AAPC Certification</h3>
+        <p>Guidance</p>
+      </div>
+    </section>
+
+    <!-- Our Placement Partners -->
+    <section class="placement-partners">
+      <h2>Our Placement Partners</h2>
+      <div class="partner-slider">
+        <div class="slide">
+          <img src="https://vcodemy.com/uploads/system/5.png" />
+        </div>
+        <div class="slide">
+          <img src="https://vcodemy.com/uploads/system/4.png" />
+        </div>
+        <div class="slide">
+          <img src="https://vcodemy.com/uploads/system/1.png" />
+        </div>
+        <div class="slide">
+          <img src="https://vcodemy.com/uploads/system/2.png" />
+        </div>
+        <div class="slide">
+          <img src="https://vcodemy.com/uploads/system/3.png" />
+        </div>
+        <div class="slide">
+          <img src="https://vcodemy.com/uploads/system/cognizant.png" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <p>
+          &copy; 2025 3470 Medical Coding Training Institute | All rights
+          reserved.
+        </p>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons" style="margin-top: 10px">
+          <a
+            href="https://www.instagram.com/3470healthcaretraininginstitue/"
+            target="_blank"
+            class="instagram"
+          >
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/people/3470-Healthcare/61576254508977/"
+            target="_blank"
+            class="facebook"
+          >
+            <i class="fab fa-facebook fa-2x"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@HEALTHCARE-nv6if"
+            target="_blank"
+            class="youtube"
+          >
+            <i class="fab fa-youtube fa-2x"></i>
+          </a>
+          <a href="https://www.twitter.com/" target="_blank" class="twitter">
+            <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" class="linkedin">
+            <i class="fab fa-linkedin fa-2x"></i>
+          </a>
+          <a href="https://wa.me/919280236474" target="_blank" class="Whatsapp">
+            <i class="fab fa-whatsapp fa-2x"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ✅ Popup Enquiry Form  -->
+
+    <div class="popup-overlay" id="popupForm">
+      <div class="popup-box">
+        <!-- <span class="close-btn" onclick="closePopup()">×</span> -->
+        <h2>Enquiry Form</h2>
+        
+        <form  id="enquiryForm" action="#" method="POST">
+          <input type="text" name="name" placeholder="Enter Name" required />
+          <input type="email" name="email" placeholder="Enter Email" required />
+          <input type="tel" name="phone" placeholder="Enter Phone" required />
+
+          <select name="location" required>
+            <option value="">-- Select Location --</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Bangalore">Trichy</option>
+          </select>
+
+          <textarea name="message" placeholder="Enter Message"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+
+
+    <!-- Javascript -->
+    <script src="main.js" defer></script>
+
+
+
+
+    
+  <script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("popupForm");
+    const form = document.getElementById("enquiryForm");
+
+    // Show popup after 5 seconds if not submitted before
+    if (!localStorage.getItem("formSubmitted")) {
+      setTimeout(() => {
+        popup.style.display = "flex";
+        document.body.classList.add("no-scroll");
+      }, 5000);
+    }
+
+    // Close popup
+    window.closePopup = function() {
+      popup.style.display = "none";
+      document.body.classList.remove("no-scroll");
+    }
+
+    // Form submission
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); // Stop default submit (if you use AJAX)
+
+      // Mark as submitted in localStorage
+      localStorage.setItem("formSubmitted", "true");
+
+      // Hide popup
+      closePopup();
+
+      // Optionally, send form data via AJAX or normal submit here
+      alert("Thank you! Your enquiry has been submitted.");
+    });
+  });
+</script>
+
+
+
   </body>
 </html>
