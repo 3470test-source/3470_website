@@ -1,3 +1,7 @@
+       /* ==============================
+            Home Pages Form Styles
+          ============================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -147,9 +151,6 @@ nav ul.menu li .dropdown li a {
   
 }
 
-/* .header-right nav a:hover {
-  color: #f15b05;
-} */
 
 .buttons {
   display: flex;
@@ -201,6 +202,7 @@ nav ul.menu li .dropdown li a {
   max-height: 500px; /* Adjust height as needed */
   object-fit: cover; /* Ensures the image covers the area without distortion */
   margin-top: -10px;
+
 }
 
 .banner {
@@ -210,7 +212,7 @@ nav ul.menu li .dropdown li a {
 }
 
 .banner h1 {
-  font-style: italic;
+  /* font-style: italic; */
   position: absolute;
   top: 40%;
   left: 28%;
@@ -221,6 +223,11 @@ nav ul.menu li .dropdown li a {
   /* background-color: rgba(255, 255, 255, 0.7); Semi-transparent background */
   /* border-radius: 10px; */
   max-width: 80%;
+
+
+  text-align: justify; /* optional: makes the paragraph clean and aligned */
+  word-wrap: break-word; /* ensures long words don’t overflow */
+
 }
 
 .banner p {
@@ -331,9 +338,11 @@ nav ul.menu li .dropdown li a {
 
 
 
+       /* ==============================
+            Register Page Form Styles
+          ============================== */
 
 /* Register Page Styles */
-
 .register-container {
   background-color: #ffffff;
   padding: 30px;
@@ -501,6 +510,10 @@ footer {
 
 
 
+     /*   =============================
+             Login Page from Styles
+          ============================== */
+
 /* Login Page Styles */
 
 .login-container {
@@ -641,9 +654,14 @@ footer {
 .primary-btn:hover {
   background-color: #008ecc;
 }
+        
+          
 
-/* Dashboard Page Styles */
+       /* =============================
+             Dashboard Page from Styles
+          ============================== */
 
+    
 /* Dashboard header */
 
 .header-top {
@@ -881,6 +899,12 @@ header h1 {
 }
 
 
+
+       /* =============================
+             Contact_Us Page from Styles
+          ============================== */
+
+
    /* Contact_Us */
 
 .contact-banner {
@@ -924,7 +948,11 @@ header h1 {
   /*background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
   /* border-radius: 10px; */
   max-width: 80%; /* Limit width for better readability */
-  color: orange
+  color: orange;
+
+
+  text-align: justify; /* optional: makes the paragraph clean and aligned */
+  word-wrap: break-word; /* ensures long words don’t overflow */
 
 }
 
@@ -1015,7 +1043,7 @@ header h1 {
   margin: 20px 0;
   font-size: 16px;
   color: #0556a7;
-  
+
 }
 
 .contact-info p {
@@ -1052,18 +1080,9 @@ header h1 {
 
 
 
-
-
-
-
-
-
-
-
-
-/* ==============================
-   Popup Enquiry Form Styles
-   ============================== */
+/* =======================================
+     home page  Popup Enquiry Form Styles
+   ======================================= */
 
 /* Dark overlay */
 .popup-overlay {
@@ -1109,6 +1128,9 @@ header h1 {
   font-size: 14px;
   outline: none;
   color: black;
+  
+  transition: border-color 0.3s, box-shadow 0.3s;
+
 }
 
 /* Submit button */
@@ -1173,6 +1195,14 @@ body.no-scroll {
 .popup-box textarea::placeholder,
 .popup-box select::placeholder {
   color: black; 
+}
+
+/* When user clicks (focuses) on the field */
+.popup-box input:focus,
+.popup-box select:focus,
+.popup-box textarea:focus {
+  border-color: #4CAF50;          /* Green border color */
+  box-shadow: 0 0 5px #4CAF50;    /* Soft glow effect */
 }
 
 

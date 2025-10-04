@@ -152,9 +152,9 @@ if (registerForm) {
 
 
 
-          // Our Placement Partners
-const slider = document.querySelector(".partner-slider");
-      const maxMove = 200; // maximum pixels to move left/right
+      // Our Placement Partners
+      const slider = document.querySelector(".partner-slider");
+      const maxMove = 150; // maximum pixels to move left/right
       let position = 0; // start at 0 (centered)
       let direction = 1; // 1 = move right, -1 = move left
       const speed = 2; // pixels per frame
@@ -173,3 +173,39 @@ const slider = document.querySelector(".partner-slider");
         requestAnimationFrame(animateSlider);
       }
       animateSlider();
+
+
+
+
+
+    //  Enquiry Form - Home Page
+    window.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("popupForm");
+    const form = document.getElementById("enquiryForm");
+
+    // Show popup after 5 seconds if not already shown in this session
+    if (!sessionStorage.getItem("formShown")) {
+      setTimeout(() => {
+        popup.style.display = "flex";
+        document.body.classList.add("no-scroll");
+        sessionStorage.setItem("formShown", "true"); // Mark as shown for this session
+      }, 4000);
+    }
+
+    // Close popup
+    window.closePopup = function() {
+      popup.style.display = "none";
+      document.body.classList.remove("no-scroll");
+    }
+
+    // Form submission
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent normal submit
+
+      // Hide popup
+      closePopup();
+
+      // You can send form data here via AJAX
+      alert("Thank you!  Your enquiry has been submitted.");
+    });0
+  });

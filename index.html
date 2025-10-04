@@ -88,8 +88,6 @@
         3470 Medical Coding Training Institute with <br />
         Placement Support & Certification
       </h1>
-      <!-- <p>Medical Coding Training includes ✓ Medical Coding Terminology ✓ CPC ✓ BMCT ✓  ✓ HCPCS <br>
-            ✓ Resumes ✓ Mock interviews ✓ daily class videos ✓ certificat of completion</p> -->
       <img
         class="banner-img"
         src="picture/240_F_476051263_QYGqAg9ZY3Bhtd0Ti28WawmdCuvBAY1K.jpg"
@@ -193,22 +191,54 @@
       </div>
     </footer>
 
-    <!-- ✅ Popup Enquiry Form  -->
 
+    <!-- ✅ Popup Enquiry Form  -->
     <div class="popup-overlay" id="popupForm">
       <div class="popup-box">
-        <!-- <span class="close-btn" onclick="closePopup()">×</span> -->
+        <span class="close-btn" onclick="closePopup()">×</span>
         <h2>Enquiry Form</h2>
-        
-        <form  id="enquiryForm" action="#" method="POST">
+
+        <form id="enquiryForm" action="#" method="POST">
           <input type="text" name="name" placeholder="Enter Name" required />
           <input type="email" name="email" placeholder="Enter Email" required />
           <input type="tel" name="phone" placeholder="Enter Phone" required />
 
+          <select name="course" required>
+            <option value="">-- Select Course --</option>
+            <option value="Basic Medical Coding Training">
+              Basic Medical Coding Training
+            </option>
+            <option value="Advanced Medical Coding Training">
+              Advanced Medical Coding Training
+            </option>
+            <option value="Certified Professional Coder">
+              Certified Professional Coder
+            </option>
+            <option value="Evaluation & Management">
+              Evaluation & Management
+            </option>
+            <option value="Inpatient Coding Diagnosis Related Groups">
+              Inpatient Coding Diagnosis Related Groups
+            </option>
+            <option value="Emergency Department">Emergency Department</option>
+            <option value="Certified Coding Specialist">
+              Certified Coding Specialist
+            </option>
+            <option value="Certified Professional Medical Auditor">
+              Certified Professional Medical Auditor
+            </option>
+            <option value="Certified Risk Adjustment Coder">
+              Certified Risk Adjustment Coder
+            </option>
+            <option value="Interactive Voice Response">
+              Interactive Voice Response
+            </option>
+          </select>
+
           <select name="location" required>
             <option value="">-- Select Location --</option>
             <option value="Chennai">Chennai</option>
-            <option value="Bangalore">Trichy</option>
+            <option value="Trichy">Trichy</option>
           </select>
 
           <textarea name="message" placeholder="Enter Message"></textarea>
@@ -217,51 +247,7 @@
       </div>
     </div>
 
-
-
     <!-- Javascript -->
     <script src="main.js" defer></script>
-
-
-
-
-    
-  <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const popup = document.getElementById("popupForm");
-    const form = document.getElementById("enquiryForm");
-
-    // Show popup after 5 seconds if not submitted before
-    if (!localStorage.getItem("formSubmitted")) {
-      setTimeout(() => {
-        popup.style.display = "flex";
-        document.body.classList.add("no-scroll");
-      }, 5000);
-    }
-
-    // Close popup
-    window.closePopup = function() {
-      popup.style.display = "none";
-      document.body.classList.remove("no-scroll");
-    }
-
-    // Form submission
-    form.addEventListener("submit", function(e) {
-      e.preventDefault(); // Stop default submit (if you use AJAX)
-
-      // Mark as submitted in localStorage
-      localStorage.setItem("formSubmitted", "true");
-
-      // Hide popup
-      closePopup();
-
-      // Optionally, send form data via AJAX or normal submit here
-      alert("Thank you! Your enquiry has been submitted.");
-    });
-  });
-</script>
-
-
-
   </body>
 </html>
