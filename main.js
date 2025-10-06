@@ -152,27 +152,27 @@ if (registerForm) {
 
 
 
-      // Our Placement Partners
-      const slider = document.querySelector(".partner-slider");
-      const maxMove = 150; // maximum pixels to move left/right
-      let position = 0; // start at 0 (centered)
-      let direction = 1; // 1 = move right, -1 = move left
-      const speed = 2; // pixels per frame
+      // // Our Placement Partners
+      // const slider = document.querySelector(".partner-slider");
+      // const maxMove = 150; // maximum pixels to move left/right
+      // let position = 0; // start at 0 (centered)
+      // let direction = 1; // 1 = move right, -1 = move left
+      // const speed = 2; // pixels per frame
 
-      // center the slider initially
-      slider.style.transform = `translateX(${position}px)`;
+      // // center the slider initially
+      // slider.style.transform = `translateX(${position}px)`;
 
-      function animateSlider() {
-        position += direction * speed;
+      // function animateSlider() {
+      //   position += direction * speed;
 
-        // reverse direction at edges
-        if (position >= maxMove) direction = -1;
-        if (position <= -maxMove) direction = 1;
+      //   // reverse direction at edges
+      //   if (position >= maxMove) direction = -1;
+      //   if (position <= -maxMove) direction = 1;
 
-        slider.style.transform = `translateX(${position}px)`;
-        requestAnimationFrame(animateSlider);
-      }
-      animateSlider();
+      //   slider.style.transform = `translateX(${position}px)`;
+      //   requestAnimationFrame(animateSlider);
+      // }
+      // animateSlider();
 
 
 

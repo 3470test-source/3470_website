@@ -10,6 +10,7 @@
 
 body {
   font-family: Arial, sans-serif;
+
 }
 
 /* Top Header Styles  */
@@ -113,13 +114,13 @@ nav ul.menu li .dropdown {
   border: 1.5px solid #555;
   border-radius: 9px;
 
-  overflow: hidden; /* keeps hover background inside */
+  overflow: hidden; /* keeps hover background inside */ 
  
 }
 
 nav ul.menu li .dropdown li {
   width: 100%;
-
+  min-width: 300px;
 }
 
 
@@ -209,6 +210,7 @@ nav ul.menu li .dropdown li a {
   position: relative;
   text-align: center;
   color: whitesmoke;
+
 }
 
 .banner h1 {
@@ -302,16 +304,19 @@ nav ul.menu li .dropdown li a {
 .placement-partners {
   text-align: center;
   padding: 25px 20px;
-  background-color: #f3f3f3;
+  background-color: #fff;;
   padding: 36px 40px;
   color: #e44e52;
+  overflow-x: hidden;
   
 }
 
 .partner-slider {
-  padding: 36px 40px;
+  /* padding: -10px -50px; */
+
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  width: calc(200%); /* double width for seamless loop */
+  animation: scroll 25s linear infinite;
   
 }
 
@@ -320,21 +325,130 @@ nav ul.menu li .dropdown li a {
 } */
 
 .slide {
-  min-width: 200px;
+  /* min-width: 200px;
   margin: 0 20px;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+
+  
+  flex: 0 0 auto;
+  margin: 0 50px;
 
 }
 
 .slide img {
   width: 100%;
   max-width: 150px; 
-  height: auto
+  height: auto;
 
 }
+
+      /* Our Placement-Partners */
+/* Animation for smooth horizontal loop */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+.slide img:hover {
+  transform: scale(1.1);
+}
+
+.placement-partners h2 {
+  font-size: 29px;
+  font-weight: 600;
+  margin-bottom: 45px;
+}
+
+
+            /* Career Support Services */
+
+.career-support {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fff;
+
+}            
+
+.career-support h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: rgb(226, 149, 7);
+  position: relative;
+
+  margin-top: -20px;
+  
+}
+
+.career-support h2::after {
+  content: "";
+  width: 220px;
+  height: 3px;
+  background: #3d2a01;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: 0 auto; 
+
+}
+
+.service-card {
+  background: #ddd;
+  border-left: 4px solid #068d53;
+  border-radius: 15px;
+  padding: 35px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(219, 4, 4, 0.1);
+}
+
+.service-card h3 {
+  font-size: 19px;
+  color: #047a22;
+  margin-bottom: 20px;
+}
+
+.service-card p {
+  color: #040a44;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: justify; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1115,6 +1229,7 @@ header h1 {
   margin-bottom: 15px;
   font-size: 22px;
   color: #068d53;
+
 }
 
 /* Inputs & textarea */
@@ -1204,5 +1319,6 @@ body.no-scroll {
   border-color: #4CAF50;          /* Green border color */
   box-shadow: 0 0 5px #4CAF50;    /* Soft glow effect */
 }
+
 
 
