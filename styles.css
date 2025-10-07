@@ -1909,7 +1909,10 @@ section h2::after {
 
 
 
-
+/* section:hover {
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+} */
 
 
 
