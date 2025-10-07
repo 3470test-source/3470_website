@@ -1322,3 +1322,611 @@ body.no-scroll {
 
 
 
+/* ====================================
+       Course overview
+   ====================================   */
+
+.course {
+  background-image: url("picture/pngtree-simple-summer-summer-training-image_4721.jpg"); /* ← your image path */
+  background-size: cover;        /* Makes image cover the whole area */
+  background-position: center;   /* Centers the image */
+  background-repeat: no-repeat;  /* Prevents tiling */
+  padding: 80px 0;               /* Adds space for the text */
+  
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+  
+}
+
+
+
+.course h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-family: "Source Serif 4", Sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+
+  margin-top: -50px;
+  gap: 100px;
+
+}
+
+.course p {
+  text-align: justify;
+  color: #e2f105; /* or #333 if on light background */
+  font-size: 18px;
+  max-width: 700px;
+  margin: 20px auto 0;
+  line-height: 1.6;
+  margin-bottom: -50px;
+}
+
+
+
+
+
+
+
+        /* Medical Coding */
+
+.medical-coding-section {
+  display: flex;
+  /* align-items:center; */
+  gap: 45px; 
+  /* padding: 40px 100px; */
+  background-color: rgb(224, 215, 215); 
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+  
+}
+
+.image-container img {
+  width: 400px; /* adjust as needed */
+  height: auto;
+  
+}
+
+.text-container h2 {
+  font-size: 25px;
+  color: #004aad; /* dark blue heading */
+  margin-bottom: 20px;
+}
+
+.text-container p {
+  font-size: 17px;
+  color: #333; /* dark text for readability */
+  line-height: 1.6;
+  text-align: justify;
+
+}
+
+
+
+     /* BMCT Coding */
+
+.bmct-section {
+  display: flex;
+  /* align-items: center; */
+  gap: 45px; /* space between text and image */
+  /* padding: 40px 100px; */
+  background-color: rgb(224, 215, 215); 
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+/* .bmct-section .text-container {
+  flex: 1;
+}
+
+.bmct-section .image-container {
+  flex: 1;
+} */
+
+.bmct-section img {
+  width: 400px;
+  /* max-width: 400px; */
+   height: auto;
+ 
+}
+
+.bmct-section h2 {
+  font-size: 25px;
+  color: #004aad; /* dark blue heading */
+  margin-bottom: 20px;
+
+}
+
+.bmct-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}     
+
+
+
+   /* AMCT Coding */
+
+
+.Amct-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 45px;               
+  /* padding: 40px 100px; */
+  background-color: white; /* light green background */
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+/* .text-container {
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+} */
+
+.Amct-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+ 
+}
+
+.Amct-section h2 {
+  font-size: 25px;
+  color: #004aad; /* dark blue heading */
+  margin-bottom: 20px;
+
+}
+
+.Amct-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}     
+
+
+
+     /* CPC Coding */
+
+.CPC-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 45px;               
+  /* padding: 40px 100px; */
+  background-color: white; 
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+/* .text-container {
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+} */
+
+.CPC-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+}
+
+.CPC-section h2 {
+  font-size: 25px;
+  color: #004aad; 
+  margin-bottom: 20px;
+}
+
+.CPC-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+    
+
+       /* EM Coding */
+
+ 
+.EM-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 50px;               
+  /* padding: 40px 100px; */
+  background-color: white; 
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+
+/* .text-container {
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+} */
+
+.EM-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+}
+
+.EM-section h2 {
+  font-size: 25px;
+  color: #004aad; 
+  margin-bottom: 20px;
+}
+
+.EM-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+      /* ipdrg Coding */
+
+.ipdrg-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 45px;               
+  /* padding: 40px 100px; */
+  background-color: white; 
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+/* .text-container {
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+} */
+
+.ipdrg-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+  
+}
+
+.ipdrg-section h2 {
+  font-size: 25px;
+  color: #004aad; 
+  margin-bottom: 20px;
+}
+
+.ipdrg-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+
+        /* ed Coding */
+
+.ed-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 45px;               
+  /* padding: 40px 100px; */
+  background-color: white; 
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+/* .text-container {
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+} */
+
+.ed-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+}
+
+.ed-section h2 {
+  font-size: 25px;
+  color: #004aad; 
+  margin-bottom: 20px;
+}
+
+.ed-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+
+
+          /* ccs Coding */
+
+.ccs-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 45px;               
+  /* padding: 40px 100px; */
+  background-color: white; 
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+/* .text-container {
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+} */
+
+.ccs-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+}
+
+.ccs-section h2 {
+  font-size: 25px;
+  color: #004aad; 
+  margin-bottom: 20px;
+}
+
+.ccs-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+
+           /* ccs Coding */
+
+.cpma-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 45px;               
+  /* padding: 40px 100px; */
+  background-color: white; 
+  
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+/* .text-container {
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+} */
+
+.cpma-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+}
+
+.cpma-section h2 {
+  font-size: 25px;
+  color: #004aad; 
+  margin-bottom: 20px;
+}
+
+.cpma-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+
+ 
+        /* crc Coding */
+
+.crc-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 45px;               
+  /* padding: 40px 100px; */
+  background-color: white; 
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+/* .text-container {
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+} */
+
+.crc-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+}
+
+.crc-section h2 {
+  font-size: 25px;
+  color: #004aad; 
+  margin-bottom: 20px;
+}
+
+.crc-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+
+}
+
+
+      /* ivr Coding */
+
+.ivr-section {
+  display: flex;           
+  /* align-items: center;      */
+  gap: 45px;               
+  /* padding: 40px 100px; */
+  background-color: white; 
+  /* border: 1px solid #b90b0b; */
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: -30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+
+}
+
+
+.ivr-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+}
+
+.ivr-section h2 {
+  font-size: 25px;
+  color: #004aad; 
+  margin-bottom: 20px;
+}
+
+.ivr-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+ 
+
+
+section h2::after {
+  content: "";
+  width: 120px;
+  height: 3px;
+  background: #004aad;
+  display: block;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Title color styling */
+
+.title-main {
+  color: #004aad;      /* blue for IVR */
+  font-weight: bold;
+}
+
+.title-sub {
+  color: #008000;      /* green for Interactive Voice Response */
+  font-weight: bold;
+}
