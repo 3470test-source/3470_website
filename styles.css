@@ -16,7 +16,7 @@ body {
 /* Top Header Styles  */
 
 .top-header {
-  background-color: #e53935;
+  background-color: #068d53;
   color: white;
   display: flex;
   justify-content: space-between; /* left side vs right side */
@@ -47,7 +47,7 @@ body {
 
 .top-header a:hover {
   text-decoration: underline;
-  color: black;
+  color: rgb(8, 48, 228);
 }
 
 /* Main Header Styles */
@@ -195,55 +195,67 @@ nav ul.menu li .dropdown li a {
   color: white;
 }
 
-/* Banner Styles */
 
-.banner-img {
-  width: 100%;
-  height: auto;
-  max-height: 500px; /* Adjust height as needed */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
-  margin-top: -10px;
 
-}
+
+           /* Banner Styles */
 
 .banner {
+  background: url('picture/icon-medical-coding-institute.jpg') center/cover no-repeat;
+  height: 610px;
   position: relative;
-  text-align: center;
+  display: flex;
+  align-items: center;       /* vertical center */
+  justify-content: center;   /* horizontal center */
   color: whitesmoke;
-
+  text-align: center;
+  margin-top: -10px;
+  
 }
 
+
 .banner h1 {
-  /* font-style: italic; */
   position: absolute;
-  top: 40%;
-  left: 28%;
-  nav-down: auto;
+  top: 50%;
+  right: -22%;
   transform: translate(-50%, -50%);
   font-size: 35px;
   padding: 20px;
-  /* background-color: rgba(255, 255, 255, 0.7); Semi-transparent background */
-  /* border-radius: 10px; */
-  max-width: 80%;
-
-
   text-align: justify; /* optional: makes the paragraph clean and aligned */
   word-wrap: break-word; /* ensures long words don’t overflow */
+  line-height: 1.5;
+  color: wheat;
 
-}
-
-.banner p {
-  position: absolute;
-  top: 55%;
-  left: 30%;
-  transform: translate(-50%, -50%);
-  font-size: 17px;
-  padding: 10px;
-  /*background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  /* font-style: italic; */
+  /* background-color: rgba(255, 255, 255, 0.7); Semi-transparent background */
   /* border-radius: 10px; */
-  max-width: 80%; /* Limit width for better readability */
+
 }
+
+    /* Explore Courses */
  
+.explore-courses {
+  background-color: #068d53;
+  color: white;
+  
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 510;
+  transition: 0.3s;
+  font-size: 18px;
+  padding: 15px;
+  line-height: 1;
+
+  margin-top: 22%;
+  margin-left: 30%;
+  
+}
+
+.explore-courses:hover {
+  background-color: #055733;
+}
+
+
 
    /* home pages */
 /* Banner Section Styles */
@@ -1327,7 +1339,7 @@ body.no-scroll {
    ====================================   */
 
 .course {
-  background-image: url("picture/pngtree-simple-summer-summer-training-image_4721.jpg"); /* ← your image path */
+  background-image: url("picture/course-overview.jpg"); /* ← your image path */
   background-size: cover;        /* Makes image cover the whole area */
   background-position: center;   /* Centers the image */
   background-repeat: no-repeat;  /* Prevents tiling */
@@ -1387,7 +1399,8 @@ body.no-scroll {
   background: none;
   border: none;
   padding: 20px 0;
-  
+
+
 }
 
 .image-container img {
@@ -1431,13 +1444,6 @@ body.no-scroll {
 
 }
 
-/* .bmct-section .text-container {
-  flex: 1;
-}
-
-.bmct-section .image-container {
-  flex: 1;
-} */
 
 .bmct-section img {
   width: 400px;
@@ -1461,9 +1467,7 @@ body.no-scroll {
 }     
 
 
-
    /* AMCT Coding */
-
 
 .Amct-section {
   display: flex;           
@@ -1480,15 +1484,8 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
-}
 
-/* .text-container {
-  flex: 1;
 }
-
-.image-container {
-  flex: 1;
-} */
 
 .Amct-section img {
   width: 400px;
@@ -1530,15 +1527,9 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
+
 }
 
-/* .text-container {
-  flex: 1;
-}
-
-.image-container {
-  flex: 1;
-} */
 
 .CPC-section img {
   width: 400px;
@@ -1580,16 +1571,9 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
+
 }
 
-
-/* .text-container {
-  flex: 1;
-}
-
-.image-container {
-  flex: 1;
-} */
 
 .EM-section img {
   width: 400px;
@@ -1628,15 +1612,10 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
+  
+
 }
 
-/* .text-container {
-  flex: 1;
-}
-
-.image-container {
-  flex: 1;
-} */
 
 .ipdrg-section img {
   width: 400px;
@@ -1677,15 +1656,10 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
+  
+
 }
 
-/* .text-container {
-  flex: 1;
-}
-
-.image-container {
-  flex: 1;
-} */
 
 .ed-section img {
   width: 400px;
@@ -1726,15 +1700,8 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
-}
 
-/* .text-container {
-  flex: 1;
 }
-
-.image-container {
-  flex: 1;
-} */
 
 .ccs-section img {
   width: 400px;
@@ -1774,15 +1741,9 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
+
 }
 
-/* .text-container {
-  flex: 1;
-}
-
-.image-container {
-  flex: 1;
-} */
 
 .cpma-section img {
   width: 400px;
@@ -1823,15 +1784,9 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
-}
+ 
 
-/* .text-container {
-  flex: 1;
 }
-
-.image-container {
-  flex: 1;
-} */
 
 .crc-section img {
   width: 400px;
@@ -1872,6 +1827,7 @@ body.no-scroll {
   border: none;
   padding: 20px 0;
 
+ 
 }
 
 
@@ -1906,22 +1862,6 @@ section h2::after {
   border-radius: 2px;
 }
 
-
-
-
-/* section:hover {
-  background-color: #f9f9f9;
-  transition: background-color 0.3s ease;
-} */
-
-
-
-
-
-
-
-
-
   /* Title color styling */
 
 .title-main {
@@ -1933,3 +1873,256 @@ section h2::after {
   color: #008000;      /* green for Interactive Voice Response */
   font-weight: bold;
 }
+
+
+   /* course Days */
+
+.title-days {
+ color: #004aad;      /* blue for IVR */
+ font-weight: bold;
+
+}
+
+   /* course duration */
+
+.text-container .course-duration {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #006400;
+
+}
+
+.text-container .course-duration p {
+  margin: 5px 0;
+  color: #006400;
+  
+}
+
+
+
+
+
+
+
+
+
+     /* About US */
+
+/* Banner Section */
+.about-banner {
+  background: url('picture/images.jpeg') center/cover no-repeat;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+
+  margin-top: -10px;
+
+}
+
+.about-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(41, 1, 1, 0.5);
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-content h1 {
+  font-size: 45px;
+  margin-bottom: 30px;
+  /* text-transform: uppercase; */
+  text-align: justify;
+}
+
+
+.banner-content p {
+  font-size: 25px;
+  max-width: 600px;
+  margin: 0 auto;
+
+  text-align: justify;
+  line-height: 1.4;
+
+}
+
+
+
+/* About Section */
+.about-section {
+  padding: 80px 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.about-section .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 37px;
+  color: #004aad;
+  margin-top: -20px;
+
+}
+
+.about-text span {
+  color: #087267;
+}
+
+.about-text p {
+  margin: 25px 0;
+  color: #555;
+  font-size: 18px;
+  text-align: justify;
+  line-height: 1.5;
+  margin-bottom: -5px;
+  
+}
+
+.about-image {
+  flex: 1;
+  text-align: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 1px;
+ 
+}
+
+
+   /* Mission & Vision */
+
+.mission-vision {
+  background: #e4e5e6;
+  padding: 50px 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.mission-vision .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+
+.card {
+  flex: 1;
+  background: white;
+  /* border-radius: 15px; */
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  border: 2px;
+  
+}
+
+.card h3 {
+  color: #087267;
+  margin-bottom: 15px;
+  font-size: 32px;
+  
+}
+
+.card p {
+  margin: 25px 0;
+  color: #555;
+  font-size: 18px;
+  text-align: justify;
+  line-height: 1.5;
+  margin-bottom: -5px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* Why Choose Us */
+
+.why-choose-us {
+  text-align: center;
+  padding: 55px 10%;
+}
+
+.why-choose-us h2 {
+  font-size: 35px;
+  color: #004aad;
+  margin-bottom: 55px;
+   
+}
+
+.why-choose-us span {
+  color: #009688;
+}
+
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+
+}
+
+.feature-box {
+  flex: 1 1 300px;
+  background: white;
+  border-radius: 10px;
+  
+  border: 1px solid #ccc;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+
+.feature-box h4 {
+  margin-bottom: 10px;
+  color: #087267;
+  margin-bottom: 15px;
+  font-size: 25px;
+
+}  
+
+.feature-box p {
+  margin: 25px 0;
+  color: #555;
+  font-size: 18px;
+  text-align: justify;
+  line-height: 1.5;
+  margin-bottom: -5px;
+
+}
+
+.feature-box:hover {
+  transform: translateY(-8px);
+}
+
+   
