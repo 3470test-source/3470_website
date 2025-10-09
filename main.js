@@ -37,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+// -----------------------------------------------------------------------------------
+
+
     // 📊 Dashboard Page Script
 document.addEventListener("DOMContentLoaded", function () {
   const bodyClass = document.body.className;
@@ -78,6 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+// ---------------------------------------------------------------------
+
+
     // 👁️ Password Icon - show / hide password
 const toggleIcons = document.querySelectorAll(".toggle-password");
 
@@ -95,7 +101,7 @@ toggleIcons.forEach((icon) => {
 });
 
 
-
+// -----------------------------------------------------------------------------
 
 
      //register popup alerts
@@ -148,7 +154,7 @@ if (registerForm) {
 }
 
 
-
+// ----------------------------------------------------------------------------------
 
 
 
@@ -175,6 +181,8 @@ if (registerForm) {
       // animateSlider();
 
 
+
+// ---------------------------------------------------------------------------
 
 
 
@@ -209,3 +217,41 @@ if (registerForm) {
       alert("Thank you!  Your enquiry has been submitted.");
     });0
   });
+
+
+
+// ------------------------------------------------------------------
+
+
+
+              //  About page
+          // OUR MILESTONES AND ACHIEVEMENTS    
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll('.number');
+
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const suffix = counter.getAttribute('data-suffix') || '';
+    let count = 0;
+    const speed = 70; // lower = faster
+    const increment = target / speed;
+
+    const updateCount = () => {
+      count += increment;
+      if(count < target) {
+        counter.innerText = Math.ceil(count) + suffix;
+        requestAnimationFrame(updateCount); // smoother animation
+      } else {
+        counter.innerText = target + suffix;
+      }
+    };
+
+    updateCount();
+  });
+});
+
+
+
+
+// ----------------------------------------------------------------------

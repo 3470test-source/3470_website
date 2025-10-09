@@ -216,14 +216,33 @@ nav ul.menu li .dropdown li a {
 
 .banner h1 {
   position: absolute;
-  top: 50%;
-  right: -22%;
+  top: 30%;
+  right: -6%;
   transform: translate(-50%, -50%);
-  font-size: 35px;
+  font-size: 40px;
   padding: 20px;
   text-align: justify; /* optional: makes the paragraph clean and aligned */
   word-wrap: break-word; /* ensures long words don’t overflow */
   line-height: 1.5;
+  color: wheat;
+
+  /* font-style: italic; */
+  /* background-color: rgba(255, 255, 255, 0.7); Semi-transparent background */
+  /* border-radius: 10px; */
+
+}
+
+
+.banner p {
+  position: absolute;
+  top: 45%;
+  right: -7%;
+  transform: translate(-50%, -50%);
+  font-size: 29px;
+  padding: 20px;
+  text-align: justify; /* optional: makes the paragraph clean and aligned */
+  word-wrap: break-word; /* ensures long words don’t overflow */
+  line-height: 1.3;
   color: wheat;
 
   /* font-style: italic; */
@@ -246,14 +265,31 @@ nav ul.menu li .dropdown li a {
   padding: 15px;
   line-height: 1;
 
-  margin-top: 22%;
+  margin-top: 15%;
   margin-left: 30%;
   
+}
+
+  /* Banner title */
+
+.banner-title {
+   color: #092e5e;
+   font-weight: bold;
+
+}
+
+.banner-sub {
+   color: #053805;
+   font-weight: bold;
+
 }
 
 .explore-courses:hover {
   background-color: #055733;
 }
+
+
+
 
 
 
@@ -321,6 +357,11 @@ nav ul.menu li .dropdown li a {
   color: #e44e52;
   overflow-x: hidden;
   
+}
+
+   /* remove the line  */
+.placement-partners h2::after{
+  display: none;
 }
 
 .partner-slider {
@@ -446,10 +487,6 @@ nav ul.menu li .dropdown li a {
   line-height: 1.6;
   text-align: justify; 
 }
-
-
-
-
 
 
 
@@ -1902,10 +1939,6 @@ section h2::after {
 
 
 
-
-
-
-
      /* About US */
 
 /* Banner Section */
@@ -2052,23 +2085,12 @@ section h2::after {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
    /* Why Choose Us */
 
 .why-choose-us {
   text-align: center;
   padding: 55px 10%;
+  background-color: #c0c9d6;
 }
 
 .why-choose-us h2 {
@@ -2079,7 +2101,7 @@ section h2::after {
 }
 
 .why-choose-us span {
-  color: #009688;
+  color: #087267;
 }
 
 
@@ -2098,7 +2120,7 @@ section h2::after {
   
   border: 1px solid #ccc;
   padding: 40px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(2, 255, 57, 0.1);
   transition: transform 0.3s;
 }
 
@@ -2107,14 +2129,14 @@ section h2::after {
   margin-bottom: 10px;
   color: #087267;
   margin-bottom: 15px;
-  font-size: 25px;
+  font-size: 23px;
 
 }  
 
 .feature-box p {
   margin: 25px 0;
   color: #555;
-  font-size: 18px;
+  font-size: 17px;
   text-align: justify;
   line-height: 1.5;
   margin-bottom: -5px;
@@ -2125,4 +2147,238 @@ section h2::after {
   transform: translateY(-8px);
 }
 
+
+  /* text underline  */
+
+.why-choose-us h2::after {
+  content: "";
+  width: 120px;
+  height: 3px;
+  background: #004aad;
+  display: block;
+  margin-top: 8px;
+  border-radius: 2px;
+  margin-left: 29.8%;
+  
+}
+     
+    /* About icon   */
+ 
+.feature-icon {
+  font-size: 30px;
+  color: #ff5722;
+  margin-bottom: 15px;
+  margin-top: -15px;
+  display: block;
    
+}
+
+
+
+
+
+
+            /* About Page */
+
+   /* OUR MILESTONES AND ACHIEVEMENTS */
+
+.milestones {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(120deg, #4a854e, #0b4730);
+}
+
+.milestones h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.milestones h2{
+  color: #004aad;
+
+}
+
+.milestones h2 span {
+  color: #ff0055;
+}
+
+.milestones-card {
+  display: inline-block;
+  width: 400px;
+  text-align: center;
+}
+
+.milestones-card i {
+  font-size: 60px;
+  color: white;
+  margin-bottom: 25px;
+}
+
+.milestones-card .number {
+  font-size: 35px;
+  margin-bottom: 15px;
+  color: white;
+  margin-right: -19.5px;
+
+}
+
+
+.milestones-card .label {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: -15px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.faq-section {
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .faq-section h2 {
+    text-align: center;
+    color: #d80027;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-size: 30px;
+  }
+
+
+  .faq-item {
+    background: #fff;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    border: 1px solid #dddddd;
+    overflow: hidden;
+  }
+  
+  
+  .faq-question {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #177734;
+
+  }
+
+  .faq-question:hover {
+    background: #f0f0f0;
+  }
+
+
+
+
+
+  .faq-answer {
+    padding: 0 20px 15px 20px;
+
+    display: none;
+
+    font-weight: normal;
+    line-height: 1.5;
+
+    text-align: justify;
+
+
+  }
+  
+  .faq-answer p {
+
+
+    text-align: justify;
+     
+    margin-top: 10px;
+    font-size: 15px;
+
+
+  }
+
+
+
+
+  .faq-answer li {
+
+
+   font-size: 15px;
+
+  }
+
+
+
+
+
+
+
+  .steps {
+  counter-reset: step-counter; /* initialize counter */
+  list-style: none; /* remove default numbers */
+  padding-left: 0;
+}
+
+.steps li {
+  counter-increment: step-counter; /* increase counter for each li */
+  margin-bottom: 10px;
+  font-size: 16px;
+  position: relative;
+  padding-left: 80px; /* space for "Step X" */
+}
+
+.steps li::before {
+  content: "Step " counter(step-counter) ": "; /* custom label */
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: #007bff; /* nice blue color */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .faq-question span {
+    font-size: 20px;
+  }
+
+  .faq-item.active .faq-answer {
+    display: block;
+  }
+
+  .faq-item.active .faq-question span {
+    transform: rotate(45deg);
+  }
