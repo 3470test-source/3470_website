@@ -227,7 +227,8 @@ if (registerForm) {
               //  About page
           // OUR MILESTONES AND ACHIEVEMENTS    
 
-  document.addEventListener("DOMContentLoaded", () => {
+
+document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll('.number');
 
   counters.forEach(counter => {
@@ -239,11 +240,13 @@ if (registerForm) {
 
     const updateCount = () => {
       count += increment;
-      if(count < target) {
-        counter.innerText = Math.ceil(count) + suffix;
-        requestAnimationFrame(updateCount); // smoother animation
+
+      if (count < target) {
+        // Format number with commas using toLocaleString()
+        counter.innerText = Math.ceil(count).toLocaleString() + suffix;
+        requestAnimationFrame(updateCount);
       } else {
-        counter.innerText = target + suffix;
+        counter.innerText = target.toLocaleString() + suffix;
       }
     };
 
@@ -254,4 +257,30 @@ if (registerForm) {
 
 
 
+
+
 // ----------------------------------------------------------------------
+
+
+                // About Page -- FAQS
+
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach((item) => {
+    const question = item.querySelector(".faq-question");
+
+    question.addEventListener("click", () => {
+      // Close all other FAQ items
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item) {
+          otherItem.classList.remove("active");
+        }
+      });
+
+      // Toggle the clicked item
+      item.classList.toggle("active");
+    });
+  });
+
+
+  // ------------------------------------------------------------------------
