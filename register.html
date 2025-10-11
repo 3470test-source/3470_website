@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Pages</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      3470 HealthCare & Medical Coding Training Institute | Register
+    </title>
 
-      <!-- Css - Styles -->
-    <link rel="stylesheet" href="styles.css">
-     
+    <!-- Css - Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
     <style>
-    body {
+      body {
         background-color: #f0f2f5;
-    }
+      }
     </style>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
 
-     <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-</head>
-<body>
-
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <!-- header -->
     <header>
       <div class="header-left-logo">
@@ -31,43 +37,72 @@
         />
       </div>
 
-
       <div class="header-right">
         <nav>
-           <ul class="menu">
-             <li><a href="home.html">Home</a></li>
-             <li><a href="about.html">About Us</a></li>
+          <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
 
-             <!-- Dropdown -->
-              <li class="menu-item">
-                <a href="#courses">Courses
-                 <span class="indicator">
+            <!-- Dropdown -->
+            <li class="menu-item">
+              <a href="#courses"
+                >Courses
+                <span class="indicator">
                   <i class="fa fa-angle-down"></i>
-                 </span>
-                </a>
+                </span>
+              </a>
 
               <ul class="dropdown">
                 <li><a href="course.html#medical">Medical Coding</a></li>
-                <li><a href="course.html#bmct">BMCT - Basic Medical Coding Training</a></li>
-                <li><a href="course.html#amct">AMCT - Advanced Medical Coding Training</a></li>
-                <li><a href="course.html#cpc">CPC - Certified Professional Coder</a></li>
-                <li><a href="course.html#em">E&M - Evaluation & Management</a></li>
                 <li>
-                  <a href="course.html#ipdrg">IPDRG - Inpatient Coding Diagnosis Related Groups</a>
+                  <a href="course.html#bmct"
+                    >BMCT - Basic Medical Coding Training</a
+                  >
+                </li>
+                <li>
+                  <a href="course.html#amct"
+                    >AMCT - Advanced Medical Coding Training</a
+                  >
+                </li>
+                <li>
+                  <a href="course.html#cpc"
+                    >CPC - Certified Professional Coder</a
+                  >
+                </li>
+                <li>
+                  <a href="course.html#em">E&M - Evaluation & Management</a>
+                </li>
+                <li>
+                  <a href="course.html#ipdrg"
+                    >IPDRG - Inpatient Coding Diagnosis Related Groups</a
+                  >
                 </li>
                 <li><a href="course.html#ed">ED - Emergency Department</a></li>
-                <li><a href="course.html#ccs">CCS - Certified Coding Specialist</a></li>
-                <li><a href="course.html#cpma">CPMA - Certified Professional Medical Auditor</a></li>
-                <li><a href="course.html#crc">CRC - Certified Risk Adjustment Coder</a></li>
-                <li><a href="course.html#ivr">IVR - Interactive Voice Response</a></li>
+                <li>
+                  <a href="course.html#ccs"
+                    >CCS - Certified Coding Specialist</a
+                  >
+                </li>
+                <li>
+                  <a href="course.html#cpma"
+                    >CPMA - Certified Professional Medical Auditor</a
+                  >
+                </li>
+                <li>
+                  <a href="course.html#crc"
+                    >CRC - Certified Risk Adjustment Coder</a
+                  >
+                </li>
+                <li>
+                  <a href="course.html#ivr">IVR - Interactive Voice Response</a>
+                </li>
               </ul>
             </li>
 
-              <li><a href="contact_us.html">Contact Us</a></li>
-           </ul> 
+            <li><a href="contact_us.html">Contact Us</a></li>
+          </ul>
         </nav>
       </div>
-
 
       <div class="buttons">
         <a href="login.html" class="login-btn">Login</a>
@@ -75,97 +110,117 @@
       </div>
     </header>
 
-    
-   
     <!-- Register Form -->
-<div class="register-container">
-    <h2>Create an Account</h2>
+    <div class="register-container">
+      <h2>Create an Account</h2>
 
-    <!-- Full Name -->
-    <form id="registerForm" action="#" method="post">
-      <div class="form-group">
-        <label for="FullName">Full Name<span>*</span></label>
-        <input type="text" id="FullName" name="FullName" required />
-      </div>
+      <!-- Full Name -->
+      <form id="registerForm" action="#" method="post">
+        <div class="form-group">
+          <label for="FullName">Full Name<span>*</span></label>
+          <input type="text" id="FullName" name="FullName" required />
+        </div>
 
-      <!-- Email -->
-      <div class="form-group">
-        <label for="email">Email<span>*</span></label>
-        <input type="email" id="email" name="email" required />
-      </div>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email<span>*</span></label>
+          <input type="email" id="email" name="email" required />
+        </div>
 
-      <div class="form-group">
-        <label for="phone">Phone No<span>*</span></label>
-        <input type="tel" id="phone" name="phone" required  maxlength="10"/>
-        <!-- <small>Enter 10-digit mobile number</small> -->
-      </div>
+        <div class="form-group">
+          <label for="phone">Phone No<span>*</span></label>
+          <input type="tel" id="phone" name="phone" required maxlength="10" />
+          <!-- <small>Enter 10-digit mobile number</small> -->
+        </div>
 
-      <!-- Password -->
-      <div class="form-group">
-        <label for="password">Password<span>*</span></label>
-        <div class="password-icon">
-        <input type="password" id="password" name="password" required />
-        <i class="fas fa-eye toggle-password" id="togglePassword" style="cursor:pointer;"></i>
-      </div>
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password<span>*</span></label>
+          <div class="password-icon">
+            <input type="password" id="password" name="password" required />
+            <i
+              class="fas fa-eye toggle-password"
+              id="togglePassword"
+              style="cursor: pointer"
+            ></i>
+          </div>
+        </div>
+
+        <!-- Comfirm Password -->
+        <div class="form-group">
+          <label for="confirm">Confirm Password<span>*</span></label>
+          <div class="password-icon">
+            <input type="password" id="confirm" name="confirm" required />
+            <i
+              class="fas fa-eye toggle-password"
+              id="togglePassword"
+              style="cursor: pointer"
+            ></i>
+          </div>
+        </div>
+
+        <!-- register-btn -->
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
     </div>
 
-      <!-- Comfirm Password -->
-      <div class="form-group">
-        <label for="confirm">Confirm Password<span>*</span></label>
-        <div class="password-icon">
-        <input type="password" id="confirm" name="confirm" required />
-        <i class="fas fa-eye toggle-password" id="togglePassword" style="cursor:pointer;"></i>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <p>
+          &copy; 2025 3470 Medical Coding Training Institute | All rights
+          reserved.
+        </p>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons" style="margin-top: 10px">
+          <a
+            href="https://www.instagram.com/3470healthcaretraininginstitue/"
+            target="_blank"
+            class="instagram"
+          >
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/people/3470-Healthcare/61576254508977/"
+            target="_blank"
+            class="facebook"
+          >
+            <i class="fab fa-facebook fa-2x"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@HEALTHCARE-nv6if"
+            target="_blank"
+            class="youtube"
+          >
+            <i class="fab fa-youtube fa-2x"></i>
+          </a>
+          <a href="https://www.twitter.com/" target="_blank" class="twitter">
+            <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" class="linkedin">
+            <i class="fab fa-linkedin fa-2x"></i>
+          </a>
+          <a href="https://wa.me/919280236474" target="_blank" class="Whatsapp">
+            <i class="fab fa-whatsapp fa-2x"></i>
+          </a>
+        </div>
       </div>
-    </div>
+    </footer>
 
-       <!-- register-btn -->
-      <button type="submit">Register</button>
-    </form>
-    <p>Already have an account? <a href="login.html">Login here</a></p>
-</div>
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="main.js" defer></script>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-content">
-    <p>&copy; 2025  3470 Medical Coding Training Institute | All rights reserved.</p>
-
-    <!-- Social Media Icons -->
-    <div class="social-icons" style="margin-top: 10px;">
-      <a href="https://www.instagram.com/3470healthcaretraininginstitue/" target="_blank" class="instagram">
-        <i class="fab fa-instagram fa-2x"></i>
-      </a>
-      <a href="https://www.facebook.com/people/3470-Healthcare/61576254508977/" target="_blank" class="facebook">
-        <i class="fab fa-facebook fa-2x"></i>
-      </a>
-      <a href="https://www.youtube.com/@HEALTHCARE-nv6if" target="_blank" class="youtube">
-        <i class="fab fa-youtube fa-2x"></i>
-      </a>
-      <a href="https://www.twitter.com/" target="_blank" class="twitter">
-        <i class="fab fa-twitter fa-2x"></i>
-      </a>
-      <a href="https://www.linkedin.com/" target="_blank" class="linkedin">
-        <i class="fab fa-linkedin fa-2x"></i>
-      </a>
-      <a href="https://wa.me/919280236474" target="_blank" class="Whatsapp">
-        <i class="fab fa-whatsapp fa-2x"></i>
-      </a>
-    </div>
-  </div>
-</footer>
-
-<!-- Javascript -->
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="main.js" defer></script>
-
-
-          <!-- Phone No -->
-<script>    
+    <!-- Phone No -->
+    <script>
       const phoneInput = document.getElementById("phone");
-      phoneInput.addEventListener("input", function() {
-     // Remove any non-digit characters
-     this.value = this.value.replace(/\D/g, '');
-   });
-</script>
+      phoneInput.addEventListener("input", function () {
+        // Remove any non-digit characters
+        this.value = this.value.replace(/\D/g, "");
+      });
+    </script>
 
-</body>
+  </body>
 </html>

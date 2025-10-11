@@ -1,4 +1,4 @@
-/* ==============================
+       /* ==============================
             Home Pages Form Styles
           ============================== */
 
@@ -457,9 +457,94 @@ nav ul.menu li .dropdown li a {
   text-align: justify;
 }
 
-/* ==============================
+
+
+
+
+       /* Home Page - International Certifications */
+
+.international-certifications {
+  padding: 60px 20px;
+  background-color: white;
+  text-align: center;
+  margin-top: -50px;
+
+}
+
+.international-certifications h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #0696af;
+  
+}
+
+.international-certifications h2::after {
+  display: none;
+}
+
+.international-certifications p {
+  font-size: 1.1rem;      /* Text size */
+  color: #333;          /* Text color */
+  line-height: 1.6;     /* Space between lines */
+  margin-bottom: 10px;  /* Space below paragraph */
+  text-align: center;
+  margin-top: 10px;
+
+}
+
+.certifications-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.cert-card {
+  background: white; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(4, 8, 240, 0.301);
+  width: 280px;
+  transition: transform 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-10px);
+}
+
+.cert-card img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+}
+   /* img */
+.cert-card .ICD{
+  width: 93px
+}
+
+.cert-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  white-space: nowrap;   /* Prevents text wrapping */
+}
+
+.cert-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+
+
+
+/* -------------------------------------------------------------------------------------- */
+
+
+
+
+        /* ==============================
             Register Page Form Styles
-          ============================== */
+           ============================== */
 
 /* Register Page Styles */
 .register-container {
@@ -582,7 +667,6 @@ p a {
   margin-top: 10px;
   
 }
-
 
 .footer-container {
   display: grid;
@@ -751,7 +835,7 @@ footer {
   color: #09f35f;
 }
 
-/*   =============================
+     /*   =============================
              Login Page from Styles
           ============================== */
 
@@ -896,7 +980,61 @@ footer {
   background-color: #008ecc;
 }
 
-/* =============================
+
+
+
+        /* Login pages animated  */
+
+
+/* Add this to your styles.css */
+
+.login-container {
+  opacity: 0;             /* start hidden */
+  transform: translateY(-50px); /* start slightly above */
+  transition: all 0.8s ease-out;
+}
+
+/* Add an active class to trigger animation */
+.login-container.active {
+  opacity: 1;
+  transform: translateY(0); /* move to original position */
+}
+
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.login-container.active {
+  animation: bounceIn 0.8s ease forwards;
+}
+
+.input-group input {
+  transition: 0.3s ease;
+}
+
+.input-group input:focus {
+  transform: scale(1.05);
+  border-color: #036868;
+}
+
+
+
+/* ---------------------------------------------------------------- */
+
+
+
+       /* =============================
              Dashboard Page from Styles
           ============================== */
 
@@ -1134,7 +1272,14 @@ header h1 {
   color: #3498db;
 }
 
-/* =============================
+
+
+/* ----------------------------------------------------------------- */
+
+
+
+
+       /* =============================
              Contact_Us Page from Styles
           ============================== */
 
@@ -1425,9 +1570,16 @@ body.no-scroll {
   box-shadow: 0 0 5px #4caf50; /* Soft glow effect */
 }
 
-/* ====================================
-       Course overview
-   ====================================   */
+
+/* ----------------------------------------------------------------------------------- */
+
+
+
+
+
+            /* ====================================
+                       Course overview
+               ====================================   */
 
 .course {
   background-image: url("picture/course-overview.jpg"); /* ← your image path */
@@ -1915,9 +2067,13 @@ section h2::after {
 }
 
 
+/* --------------------------------------------------------------------------------- */
+
+                 /* ===================================
+                             About US from style
+                    ====================================== */
 
 
-/* About US */
 
 /* Banner Section */
 .about-banner {
@@ -2297,46 +2453,13 @@ section h2::after {
 
 
 
+ /* ---------------------------------------------------------------- */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* Terms and Conditions  */
+                
+        /* ======================================
+                  Terms and Conditions  
+           ======================================  */
 
 .terms-header {
   /* background-color: #005fa3; */
@@ -2380,81 +2503,110 @@ section h2::after {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 📃 Main Container */
 .terms-container {
   max-width: 1000px;
   margin: 50px auto;
-  background-color: white;
+  background-color: rgb(221, 211, 211);
   padding: 40px 50px;
-  /* border-radius: 12px; */
-  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
+  /* border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
+
+  background: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }
-
-
-
-
-
-
-
-
-
 
 /* Section Headings */
 .terms-container h2 {
   text-align: center;
-  color: #003366;
-  margin-bottom: 20px;
-  font-size: 28px;
+  /* color: #998b11; */
+  margin-bottom: 35px;
+  font-size: 38px;
+
+  background: linear-gradient(to bottom, #0b5d72 30%, #998b11 50%);
+      -webkit-background-clip: text; 
+      background-clip: text;
+      color: transparent;             
+      -webkit-text-fill-color: transparent;
+
 }
 
+.terms-container h2::after {
+  content: "";
+  width: 250px;
+  height: 3px;
+  background: #0d8844;
+  display: block;
+  margin: 5px auto 0;
+  border-radius: 2px;
+}
+
+/* .terms-container h3::after {
+  content: "";
+  width: 80px;
+  height: 3px;
+  background: #0454e9;
+  display: block;
+  margin: 5px auto 0;
+  border-radius: 2px;
+  
+  margin-left: 1px;
+
+} */
+
 .terms-container h3 {
-  color: #005fa3;
-  margin-top: 30px;
+  color: #05882c;
+  margin-top: 35px;
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 24px;
+
 }
 
 .terms-container p {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   text-align: justify;
+  font-size: 17px;
+  line-height: 1.5;
+
+  text-indent: 30px;
+
 }
 
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  /* margin-bottom: 10px; */
+  line-height: 2;
+  
+}
 
+.icon {
+  font-size: 15px;
+  margin-right: 10px;
+  text-align: center;
 
+  width: 20px;          
+}
 
+.contact-item strong {
+  color: #000;
+  margin-right: 5px;
+  
+}
 
+.term-address {
+  font-size: 17px;
+  line-height: 1.8;
+  
+}
 
-
-
-
-
-
-
-
-
-
+.term-address strong {
+  color: #000;
+  margin-right: 5px;
+ 
+}
 
 
 
@@ -2479,3 +2631,32 @@ section h2::after {
 
  
        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
