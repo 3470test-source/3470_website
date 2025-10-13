@@ -88,7 +88,7 @@ nav ul.menu li a {
 }
 
 nav ul.menu li a:hover {
-  background: #0a5af8;
+  background: #068d53;
   color: white;
   border-radius: 9px;
 }
@@ -326,12 +326,15 @@ nav ul.menu li .dropdown li a {
   box-shadow: 0 4px 12px rgba(179, 4, 4, 0.2);
 }
 
+
+
+
 /* Home Pages */
 /* Our Placement Partners */
 .placement-partners {
   text-align: center;
   padding: 25px 20px;
-  background-color: #fff;
+  background-color: white;
   padding: 36px 40px;
   color: #e44e52;
   overflow-x: hidden;
@@ -348,6 +351,15 @@ nav ul.menu li .dropdown li a {
   display: flex;
   width: calc(200%); /* double width for seamless loop */
   animation: scroll 25s linear infinite;
+
+  gap: 10px;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  
+  margin-top: -20px;
+
+
 }
 
 /* .partner-slider:hover {
@@ -372,6 +384,8 @@ nav ul.menu li .dropdown li a {
   height: auto;
 }
 
+
+
 /* Our Placement-Partners */
 /* Animation for smooth horizontal loop */
 @keyframes scroll {
@@ -393,12 +407,19 @@ nav ul.menu li .dropdown li a {
   margin-bottom: 45px;
 }
 
+
+
+
+
+
 /* Career Support Services */
 
 .career-support {
   text-align: center;
   padding: 50px 20px;
   background-color: #fff;
+  margin-top: -20px;
+
 }
 
 .career-support h2 {
@@ -415,7 +436,7 @@ nav ul.menu li .dropdown li a {
   content: "";
   width: 220px;
   height: 3px;
-  background: #3d2a01;
+  background: #0f86b6;
   display: block;
   margin: 10px auto 0;
   border-radius: 2px;
@@ -555,7 +576,29 @@ nav ul.menu li .dropdown li a {
   max-width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 50px auto;
+
+
+  animation: slideUp 1.2s ease-in-out;
+  transition: all 0.4s ease;
 }
+
+@keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .register-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+
+
 
 .register-container label span {
   color: red;
@@ -609,6 +652,21 @@ p a {
   color: #007bff;
   text-decoration: none;
 }
+
+
+/* Input icon animation */
+  .password-icon i {
+    position: absolute;
+    right: 12px;
+    top: 13px;
+    color: #999;
+    transition: color 0.3s ease;
+  }
+
+  .password-icon i:hover {
+    color: #1e90ff;
+  }
+
 
 /* Register password icon */
 .password-icon {
@@ -923,7 +981,15 @@ footer {
 .input-group .toggle-password {
   color: #888;
   font-size: 12px;
+  position: relative;
+ 
 }
+
+.input-group .toggle-password:hover {
+  color: #1e90ff;
+}
+
+
 
 /* login pages -- Invalid credentials   */
 #error {
@@ -2022,6 +2088,47 @@ body.no-scroll {
   line-height: 1.6;
   text-align: justify;
 }
+
+
+
+/* Surgery Coding */
+
+.surgery-section {
+  display: flex;
+  /* align-items: center;      */
+  gap: 45px;
+  /* padding: 40px 100px; */
+  background-color: white;
+
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 30px;
+
+  background: none;
+  border: none;
+  padding: 20px 0;
+}
+
+.surgery-section img {
+  width: 400px;
+  /* max-width: 400px; */
+  height: auto;
+}
+
+.surgery-section h2 {
+  font-size: 25px;
+  color: #004aad;
+  margin-bottom: 20px;
+}
+
+.surgery-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
 
 section h2::after {
   content: "";
