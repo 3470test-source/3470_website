@@ -12,7 +12,8 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Top Header Styles  */
+
+        /* Top Header Styles  */
 
 .top-header {
   background-color: #068d53;
@@ -49,7 +50,9 @@ body {
   color: rgb(8, 48, 228);
 }
 
-/* Main Header Styles */
+
+
+      /* Main Header Styles */
 
 header {
   display: flex;
@@ -183,7 +186,9 @@ nav ul.menu li .dropdown li a {
   color: white;
 }
 
-/* Banner Styles */
+
+
+        /* Banner Styles */
 
 .banner {
   background: url("picture/icon-medical-coding-institute.jpg") center/cover
@@ -279,13 +284,137 @@ nav ul.menu li .dropdown li a {
   background-color: #055733;
 }
 
-/* home pages */
-/* Banner Section Styles */
+
+
+
+
+
+                         /* Home page - Our Founder */
+
+.founder-section {
+  background-color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.founder-title {
+  font-size: 37px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.founder-title span {
+  color: #e6004c;
+}
+
+.founder-section .founder-title::after{
+  margin-left: 43.3%;
+}
+
+.founder-name {
+  font-size: 24px;
+  color: #09685e;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+
+.founder-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 50px;
+  /* align-items: flex-start; */
+  text-align: left;
+
+}
+
+.founder-image {
+  flex: 1 1 500px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.founder-image img {
+  width: 500px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: -40px;
+
+}
+
+.founder-content {
+  max-width: 650px;
+}
+
+.founder-content .designation {
+  font-style: italic;
+  color: #525050;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+  margin-top: -1px;
+  
+}
+
+.founder-content p {
+  line-height: 1.5;
+  color: #555;
+  text-align: justify;
+  font-size: 19px;
+
+}
+
+
+/* ✅ Responsive for mobile: image centered above text */
+@media (max-width: 768px) {
+  .founder-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .founder-image img {
+    width: 250px;
+    height: 300px;
+  }
+
+  .founder-content p {
+    text-align: center;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ------------------------------- */
+
+
+
+         /* home pages */
+       /* Banner Section Styles */
 .list-banner {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: #f5f5f5;
+  background-color: #c4bcbc;
   padding: 20px 20px;
   text-align: center;
   gap: 20px;
@@ -329,8 +458,8 @@ nav ul.menu li .dropdown li a {
 
 
 
-/* Home Pages */
-/* Our Placement Partners */
+          /* Home Pages */
+       /* Our Placement Partners */
 .placement-partners {
   text-align: center;
   padding: 25px 20px;
@@ -386,8 +515,9 @@ nav ul.menu li .dropdown li a {
 
 
 
-/* Our Placement-Partners */
-/* Animation for smooth horizontal loop */
+
+         /* Our Placement-Partners */
+      /* Animation for smooth horizontal loop */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -410,9 +540,7 @@ nav ul.menu li .dropdown li a {
 
 
 
-
-
-/* Career Support Services */
+        /* Career Support Services */
 
 .career-support {
   text-align: center;
@@ -558,6 +686,182 @@ nav ul.menu li .dropdown li a {
 
 
 
+
+                    /*  =====================================================
+                              youtube video - 3470 medical coding  home Page 
+                         ====================================================   */
+
+
+/* Section styling */
+.courses-video {
+  background-color: #f4f8fb; /* light background */
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 3px solid #0077cc;
+}
+
+.courses-video h3 {
+  color: #b429a9;              /* healthcare blue tone */
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.courses-video .subtitle-video {
+  color: #125a3e;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-style: italic;
+  margin-left: 38%;
+  
+}
+
+
+/* Flex container for two-column layout */
+.courses-video .content-video {
+  display: flex;             /* side-by-side layout */
+  justify-content: space-between;
+  gap: 50px;                 /* space between text and video */
+  max-width: 1200px;         /* optional max width */
+  margin: auto;              /* center container */
+  flex-wrap: wrap;           /* wrap on smaller screens */
+}
+
+/* Left side text styling */
+.text-video {
+  flex: 1;                   /* take half or available space */
+  min-width: 300px;          /* prevent shrinking too much */
+}
+
+.text-video p {
+  color: #444;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 23px;
+  text-align: justify;
+
+}
+
+/* Right side video styling */
+.video-grid {
+  flex: 1;
+ 
+}
+
+       /* "+"  Icon  */
+.courses-video .add{
+  font-size: 0.8em;          /* make it smaller */
+  position: relative;
+  top: -0.6em;               /* move it up */
+  margin-left: -4px;          /* small space */
+  font-weight: bold;
+
+  color: #008000;
+
+}
+
+.video-grid iframe {
+  width: 100%;              /* responsive width */
+  max-width: 500px;         /* keep original size on desktop */
+  height: 330px;
+  border-radius: 5px;
+  border: 2px solid #06634c;
+  
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .courses-video .content-video {
+    flex-direction: column;   /* stack text above video */
+    gap: 30px;
+  }
+
+  .video-grid iframe {
+    height: auto;             /* adjust height automatically */
+  }
+}
+
+
+
+
+
+
+ 
+                /* Home pages - OUR ACHIEVERS  */
+
+
+.achievers-section {
+  text-align: center;
+  padding: 40px 20px;
+  /* background-color: wheat; */
+
+  background: linear-gradient(120deg, #8b8a50, #5ab109);
+  margin-bottom: -10px;
+  
+}
+
+.achievers-section h2 {
+  font-size: 30px;
+}
+
+.achievers-section h2 span {
+  color: #e6004c;
+}
+
+.achievers-section h2::after {
+  display: none;
+}
+
+.achievers-section p.subtitle {
+  color: #2c2121;
+  margin-bottom: 35px;
+  font-size: 18px;
+
+}
+
+.carousel-container {
+  width: 1200px; /* adjust to your design */
+  margin: 20px auto;
+  overflow: hidden;
+
+}
+
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 60px;
+ 
+}
+
+.carousel-slide img {
+  width: 360px; /* same as container */
+  height: 250px;
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.dots {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  display: inline-block;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.active-dot {
+  background-color: #333;
+}
+
+
 /* -------------------------------------------------------------------------------------- */
 
 
@@ -688,7 +992,7 @@ p a {
   cursor: pointer;
 }
 
-/* Register popup message */
+                 /* Register popup message */
 
 .swal-title {
   font-size: 22px; /* change title size */
@@ -714,6 +1018,7 @@ p a {
 }
 
 
+/* ------------------------------------------------------------------------------------- */
 
 
 /* <!-- First Footer (Detailed Info) --> */
@@ -893,9 +1198,17 @@ footer {
   color: #09f35f;
 }
 
-     /*   =============================
-             Login Page from Styles
-          ============================== */
+
+
+
+/* ------------------------------------------------------------------------------------ */
+
+
+
+         /*   =============================
+                 Login Page from Styles
+              ============================== */
+
 
 /* Login Page Styles */
 
@@ -1417,6 +1730,10 @@ header h1 {
   font-weight: bold;
 }
 
+.contact-form h2::after {
+  display: none;
+}
+
 .contact-form label {
   display: block; /* ensures label stays above input */
   margin-bottom: 6px;
@@ -1437,8 +1754,10 @@ header h1 {
 .form-group {
   margin-bottom: 15px;
 }
-/* Contact pages */
-/* Address styles */
+
+
+    /* Contact pages */
+   /* Address styles */
 .contact-info {
   flex: 1 1 300px;
   display: flex;
@@ -1507,6 +1826,13 @@ header h1 {
   height: 100%;
   border: none;
 }
+
+
+
+/* ----------------------------------------------------------------------------- */
+
+
+
 
 /* =======================================
      home page  Popup Enquiry Form Styles
@@ -1601,6 +1927,8 @@ body.no-scroll {
   }
 }
 
+
+
 /* Style for dropdown (select box) */
 .popup-box select {
   width: 100%;
@@ -1634,7 +1962,10 @@ body.no-scroll {
 .popup-box textarea:focus {
   border-color: #4caf50; /* Green border color */
   box-shadow: 0 0 5px #4caf50; /* Soft glow effect */
+
 }
+
+
 
 
 /* ----------------------------------------------------------------------------------- */
@@ -2419,9 +2750,9 @@ section h2::after {
 
 
 
-/* About Page */
+             /* About Page */
 
-/* OUR MILESTONES AND ACHIEVEMENTS */
+        /* OUR MILESTONES AND ACHIEVEMENTS */
 
 .milestones {
   text-align: center;
@@ -2477,8 +2808,8 @@ section h2::after {
 
 
 
-    /*     About Pages
-              FAQS             */
+             /*     About Pages
+                      FAQS             */
 
 .faq-section {
   max-width: 700px;
@@ -2716,6 +3047,24 @@ section h2::after {
 }
 
 
+/* Responsive Design (for mobiles) */
+@media (max-width: 768px) {
+  .video-grid iframe {
+    width: 90%;
+    height: auto;
+  }
+
+  .courses h3 {
+    font-size: 24px;
+  }
+
+  .courses .subtitle {
+    font-size: 16px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------- */
 
 
 
@@ -2733,6 +3082,12 @@ section h2::after {
 
 
 
+
+
+
+
+
+                      
 
 
 
@@ -2767,3 +3122,12 @@ section h2::after {
 
 
 
+
+
+
+
+
+
+
+
+    

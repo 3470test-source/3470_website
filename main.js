@@ -283,3 +283,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ------------------------------------------------------------------------
+
+
+          //  Home Page - OUR ACHIEVERS 
+
+
+const slideContainer = document.querySelector('.carousel-slide');
+const slides = document.querySelectorAll('.carousel-slide img');
+const dots = document.querySelectorAll('.dot');
+
+const gap = 60; // gap between images
+const imageWidth = 360; // width of each image
+const slideWidth = imageWidth + gap; // total width including gap
+
+// Clone first and last images for smooth infinite effect
+const firstClone = slides[0].cloneNode(true);
+const lastClone = slides[slides.length - 1].cloneNode(true);
+
+slideContainer.appendChild(firstClone);
+slideContainer.insertBefore(lastClone, slides[0]);
+
+let index = 1; // start at first original image
+slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+
+// Update dots
+function updateDots() {
+  let dotIndex = index - 1;
+  if(dotIndex < 0) dotIndex = slides.length - 1;
+  if(dotIndex >= slides.length) dotIndex = 0;
+  dots.forEach(dot => dot.classList.remove('active-dot'));
+  dots[dotIndex].classList.add('active-dot');
+}
+
+// Move to next slide
+function nextSlide() {
+  index++;
+  slideContainer.style.transition = 'transform 0.5s ease-in-out';
+  slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+  updateDots();
+}
+
+// Move to previous slide
+function prevSlide() {
+  index--;
+  slideContainer.style.transition = 'transform 0.5s ease-in-out';
+  slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+  updateDots();
+}
+
+// Looping effect
+slideContainer.addEventListener('transitionend', () => {
+  if(index === 0) {
+    slideContainer.style.transition = 'none';
+    index = slides.length;
+    slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+  }
+  if(index === slides.length + 1) {
+    slideContainer.style.transition = 'none';
+    index = 1;
+    slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+  }
+});
+
+// Dot click event
+dots.forEach((dot, dotIndex) => {
+  dot.addEventListener('click', () => {
+    index = dotIndex + 1;
+    slideContainer.style.transition = 'transform 0.5s ease-in-out';
+    slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+    updateDots();
+  });
+});
+
+// Auto slide every 3 seconds
+setInterval(nextSlide, 3000);
+
+
+// -------------------------------------------------------------------
