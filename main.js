@@ -112,12 +112,12 @@ if (registerForm) {
     e.preventDefault(); // Prevent default page refresh
 
     const password = document.getElementById("password"); // make sure you get the password input
-    const confirmPassword = document.getElementById("confirm").value;
+    // const confirmPassword = document.getElementById("confirm").value;
 
-    if (password.value !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+    // if (password.value !== confirmPassword) {
+    //   alert("Passwords do not match!");
+    //   return;
+    // }
 
     // Show success popup using SweetAlert2
     Swal.fire({

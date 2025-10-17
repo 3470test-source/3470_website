@@ -814,23 +814,40 @@ nav ul.menu li .dropdown li a {
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       z-index: 2;
+
+      animation: slideUp 1.2s ease-in-out;
+      transition: all 0.4s ease;
+
     }
 
 
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-    /* ----- Left Side (Logo + Text) ----- */
+
+    
+       /* ----- Left Side (Logo + Text) ----- */
     .left-register {
-      background: linear-gradient(135deg, #5b4bff, #693eff);
-      color: #fff;
-      flex: 1;
-      padding: 60px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      position: relative;
+     background: linear-gradient(135deg, #758d94, #037231);
+     color: #fff;
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;  /* Center everything vertically */
+     text-align: center;
+     position: relative;
+     padding: 60px 40px;
+  
     }
-
 
     .left-register a {
       color: white;
@@ -839,31 +856,58 @@ nav ul.menu li .dropdown li a {
       position: absolute;
       top: 15px;
       left: 20px;
+
     }
 
+     .home-link {
+       display: inline-block;
+       margin-bottom: 20px;
+       text-decoration: none;
+       color: #000;
+       font-weight: bold;
+       z-index: 10; /* ensures it’s above other elements */
+     }
 
+       .home-link:hover {
+          color: #052e6d;
+         
+       }
+
+    
     /* Company Logo */
-    .logo {
-      width: 80px;
-      height: 80px;
+
+    .register-logo {
+      width: 190px;
+      height: auto;
       object-fit: contain;
-      border-radius: 50%;
-      margin: 0 auto 25px;
+      border-radius: 8px;
+      margin: 0  50px;
       background: #fff;
-      padding: 8px;
+      padding: -5px;
+      margin-top: -100px;
+      display: block;
+      mix-blend-mode: multiply;
+      background: transparent; 
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+
     }
 
     .left-register h2 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
+      font-size: 2.7rem;
+       margin-top: 5px;
+      margin-bottom: 20px;
+
     }
+
 
     .left-register p {
       font-size: 1rem;
-      margin-bottom: 25px;
+      margin-top: -10px;
+      
     }
 
-    .left-register a button {
+
+    .left-register button {
       padding: 10px 25px;
       border: 2px solid #fff;
       background: transparent;
@@ -872,24 +916,25 @@ nav ul.menu li .dropdown li a {
       font-size: 1rem;
       cursor: pointer;
       transition: 0.3s;
-     
-      margin-top: 350%;  
+      margin-top: 332px;       
+      align-self: center;     
+      margin-left: 138px;
 
-     
-       
-    }
-
-    .left-register a button:hover {
-      background: #fff;
-      color: #693eff;
     }
 
 
+    .left-register button:hover {
+      background: #ffffff;
+      color: #089c4b;
+    }
+
+    
     /* ----- Right Side (Form) ----- */
     .right-register {
       flex: 1;
       padding: 50px;
       position: relative;
+      width: 100%;
     }
 
 
@@ -904,8 +949,9 @@ nav ul.menu li .dropdown li a {
 
     .right-register h3 {
       text-align: center;
-      color: #5b4bff;
+      color: #0d7e4f;
       margin-bottom: 25px;
+      font-size: 23px;
     }
 
 
@@ -923,12 +969,38 @@ nav ul.menu li .dropdown li a {
 
     }
 
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input {
+      padding-right: 35px;
+    }
+
+    .password-wrapper .toggle-password {
+      position: absolute;
+      top: 35%;
+      right: 10px;
+      transform: translateY(-50%);
+      color: #888;
+      cursor: pointer;
+      font-size: 14px;
+      transition: color 0.3s;
+}
+
+   .password-wrapper .toggle-password:hover {
+    color: #0d7e4f;
+
+}
+
+
     .register-terms input {
       margin-right: 8px;
     }
 
     .signup-btn {
-      background: #693eff;
+      background: #0d7e4f;
       color: #fff;
       border: none;
       padding: 12px;
@@ -939,7 +1011,7 @@ nav ul.menu li .dropdown li a {
     }
 
     .signup-btn:hover {
-      background: #5737e3;
+      background: #034b2d;
     }
 
     @media (max-width: 850px) {
@@ -950,57 +1022,30 @@ nav ul.menu li .dropdown li a {
     }
 
 
+    /* Register popup message */
 
+.swal-title {
+  font-size: 22px; /* change title size */
+  font-weight: bold;
+  color: #2c3e50; /* custom title color */
+}
 
+.swal-text {
+  font-size: 16px; /* change text size */
+  color: #555; /* custom text color */
+}
 
+.swal-btn {
+  font-size: 14px; /* smaller/larger button text */
+  border-radius: 8px;
+  background-color: #28a745 !important; /* green button */
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.swal-small-icon {
+  color: #28a745;
+  transform: scale(0.7); /* smaller size */
+  font-size: 15px;
+}
 
 
 
@@ -1270,11 +1315,15 @@ footer {
   border-radius: 30px;
   position: relative;
 
+  width: 100%;
+
 }
 
 .input-group i {
   margin-right: 10px;
   color: white;
+
+  
 }
 
 .input-group input {
@@ -1282,15 +1331,11 @@ footer {
   border: none !important;;
   outline: none;
   color: #fff;
-
   flex: 1;
   font-size: 15px;
   padding-right: 40px;
-
   box-shadow: none !important;;
-
-
- 
+  
 }
 
 
@@ -1329,9 +1374,7 @@ footer {
   font-size: 14px;
   margin-bottom: 20px;
   align-items: center;
-
   margin-left: 3%;
-
   margin-right: 3%;
   
 }

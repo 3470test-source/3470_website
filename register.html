@@ -10,6 +10,17 @@
     <!-- Css - Styles -->
     <link rel="stylesheet" href="styles.css" />
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <style>
 
          * {
@@ -25,10 +36,38 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(135deg, #068545, #03521d);
-
       /* background: linear-gradient(120deg, #4b6cb7, #182848); */
       overflow: hidden;
+
+      animation: fadeIn 1.2s ease-in;
     }
+
+     @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Header animation */
+      header {
+        animation: slideDown 1s ease;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
 
     /* Animated Background */
     body::before, body::after {
@@ -62,90 +101,47 @@
       margin-bottom: 5px;
       color: #333;
       font-weight: 500;
+       
     }
 
     
     input[type="text"],
     input[type="email"],
+    input[type="mobile"],
     input[type="password"] {
+      width: 100%;
       padding: 10px;
       margin-bottom: 20px;
       border: 1.5px solid #ccc;
       border-radius: 5px;
       outline: none;
       transition: 0.3s;
+    
     }
 
     input:focus {
-      border-color: #693eff;
-      box-shadow: 0 0 5px rgba(105, 62, 255, 0.5);
+      border-color: #0d7e4f;
+      box-shadow: 0 0 5px rgba(2, 190, 81, 0.5);
     }
 
-
-
-      /* body {
-        background-color: #f0f2f5;
-        animation: fadeIn 1.2s ease-in;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      } */
-
-      /* Header animation */
-      /* header {
-        animation: slideDown 1s ease;
-      }
-
-      @keyframes slideDown {
-        from {
-          transform: translateY(-100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      } */
     </style>
 
-
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
-    />
-
-    <!-- Font Awesome for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    
   </head>
   <body>
-
-
 
     <div class="register-container">
     <!-- LEFT SIDE -->
     <div class="left-register">
-      <a href="#">&lt; Home Page</a>
+      <a href="home.html" class="home-link" >&lt; Home Page</a>
 
       <!-- Company Logo -->
-      <img src="picture/Logo3470-health3 (2).jpg" alt="Company Logo" class="logo" />
+      <img class="register-logo" src="picture/Logo3470-health3-removebg-preview.png" alt="Company Logo"  />
 
       <h2>Get Started</h2>
       <p>Already have an account?</p>
-      <a href="#"><button>Log in</button></a>
+      <a href="login.html"><button>Log in</button></a>
     </div>
-
 
 
     <!-- RIGHT SIDE -->
@@ -153,7 +149,7 @@
       <span class="help">Need help?</span>
       <h3>Create an Account</h3>
 
-      <form class="register-form">
+      <form id="registerForm" class="register-form" action="#" method="post" >
 
         <label>Name</label>
         <input type="text" placeholder="Enter your full name" required>
@@ -161,8 +157,14 @@
         <label>Email</label>
         <input type="email" placeholder="Enter your email" required>
 
+        <label>Mobile No</label>
+        <input type="mobile"  id="mobile" name="mobile" placeholder="Enter your mobile no" required maxlength="10">
+
         <label>Password</label>
-        <input type="password" placeholder="Enter your password" required>
+        <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <i class="fas fa-eye toggle-password" id="togglePassword" style="cursor: pointer;"></i>
+        </div>
 
         <div class="register-terms">
           <input type="checkbox" required>
@@ -171,56 +173,10 @@
 
         <button class="signup-btn">Register</button>
       </form>
-      
+
     </div>
+
   </div>
-
-
-    
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -230,7 +186,7 @@
 
     <!-- Phone No -->
     <script>
-      const phoneInput = document.getElementById("phone");
+      const phoneInput = document.getElementById("mobile");
       phoneInput.addEventListener("input", function () {
         // Remove any non-digit characters
         this.value = this.value.replace(/\D/g, "");
