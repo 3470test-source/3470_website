@@ -2831,6 +2831,8 @@ section h2::after {
   max-width: 700px;
   margin: auto;
   margin-bottom: 50px;
+  margin-top: -5px;
+  
 }
 
 .faq-section h2 {
@@ -2901,6 +2903,140 @@ section h2::after {
 .faq-item.active .faq-question span {
   transform: rotate(45deg);
 }
+
+
+/* ===== Call to Action Section ===== */
+.cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: white;
+  padding: 40px 20px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 40px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.cta-section h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  margin-top: -15px;
+  
+}
+
+.cta-section h2::after {
+  display: none;
+}
+
+.cta-section p {
+  font-size: 19px;
+  margin-bottom: 25px;
+}
+
+
+.call-btn {
+  display: inline-block;
+  background-color: #f39c12;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.call-btn i {
+  margin-right: 10px;
+}
+
+.call-btn:hover {
+  background-color: #d97706;
+  transform: scale(1.05);
+}
+
+
+
+
+              /* Eligibility Criteria for Medical Coding Courses */
+
+
+.eligibility-section {
+  max-width: 1600px;
+  margin: 50px auto;
+  padding: 30px;
+  color: white;
+  position: relative;
+  background: url("picture/v.jpg") no-repeat center center/cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  margin-top: -3px;
+
+}
+
+/* Optional: add a transparent dark overlay for text readability */
+.eligibility-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* dark overlay */
+ 
+}
+
+.eligibility-section h2,
+.eligibility-section ul {
+  position: relative; /* ensure text appears above overlay */
+  z-index: 1;
+}
+
+.eligibility-section h2 {
+  text-align: justify;
+  color: #6fee07; /* Dark blue heading */
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 600;
+  margin-left: 100px;
+}
+
+.eligibility-section h2::after {
+    display: none;
+}
+
+/* Remove default list styling */
+.eligibility-section ul {
+  list-style: none;
+  padding-left: 100px;
+  margin: 0;
+}
+
+/* List item styles */
+.eligibility-section li {
+  font-size: 17px;
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  line-height: 1.6;
+}
+
+/* Style for the thumbs-up icon */
+.eligibility-section li i {
+  color: #07ac75; /* Blue icon color */
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* Optional: hover effect */
+.eligibility-section li:hover i {
+  color: #f39c12; /* Gold color on hover */
+  transform: scale(1.1);
+  transition: 0.2s ease;
+}
+
+
+
 
 /* ---------------------------------------------------------------- */
 
@@ -3061,7 +3197,9 @@ section h2::after {
 
 /* ------------------------------------------------------------------------------------- */
 
-/* Courses / course-list  */
+              /* ============================
+                     Courses / course-list  
+                 ============================ */
 
 .course-hc {
   max-width: 800px;
@@ -3101,6 +3239,31 @@ section h2::after {
   font-weight: 600;
 }
 
+.course-batches {
+  margin-top: 1rem;
+}
+
+.batch-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.batch-list li {
+  margin-bottom: 0.9rem;
+  
+}
+
+.course-badge {
+  display: inline-block;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin: 2px;
+  font-size: 0.9rem;
+}
+
 .course-hc {
   animation: fadeIn 2s ease;
 }
@@ -3116,4 +3279,25 @@ section h2::after {
   }
 }
 
+
+
 /* ------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
