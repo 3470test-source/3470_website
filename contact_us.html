@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3470 HealthCare & Medical Coding Training Institute | contact us</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      3470 HealthCare & Medical Coding Training Institute | contact us
+    </title>
 
     <style>
-        body {
+      body {
         background-color: #c0c9d6;
       }
 
       label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-      
-    }
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 2px;
-    }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+      }
 
-    .contact-form button {
-      background: #02814a;
-      color: #fff;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 2px;
-      cursor: pointer;
-    }
+      .contact-form button {
+        background: #02814a;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 2px;
+        cursor: pointer;
+      }
 
-    .contact-form button:hover {
-      background: #036418;
-    }
-
+      .contact-form button:hover {
+        background: #036418;
+      }
     </style>
 
-     <!-- css - styles -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- css - styles -->
+    <link rel="stylesheet" href="styles.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-
-</head>
-<body>
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <!-- header -->
     <header>
       <div class="header-left-logo">
@@ -57,20 +59,20 @@
         />
       </div>
 
-
       <div class="header-right">
         <nav>
-           <ul class="menu">
-             <li><a href="home.html">Home</a></li>
-             <li><a href="about.html">About Us</a></li>
+          <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
 
-             <!-- Dropdown -->
-              <li class="menu-item">
-                <a href="#courses">Courses
-                 <span class="indicator">
+            <!-- Dropdown -->
+            <li class="menu-item">
+              <a href="#courses"
+                >Courses
+                <span class="indicator">
                   <i class="fa fa-angle-down"></i>
-                 </span>
-                </a>
+                </span>
+              </a>
 
               <ul class="dropdown">
                 <li>
@@ -106,9 +108,13 @@
                     >CCS - Certified Coding Specialist</a
                   >
                 </li>
-                <li><a href="courses/course-ed.html">ED - Emergency Department</a></li>
                 <li>
-                  <a href="courses/course-e&m.html">E&M - Evaluation & Management</a>
+                  <a href="courses/course-ed.html">ED - Emergency Department</a>
+                </li>
+                <li>
+                  <a href="courses/course-e&m.html"
+                    >E&M - Evaluation & Management</a
+                  >
                 </li>
                 <li>
                   <a href="courses/course-ipdrg.html"
@@ -116,17 +122,21 @@
                   >
                 </li>
                 <li>
-                  <a href="courses/course-ivr.html">IVR - Interactive Voice Response</a>
+                  <a href="courses/course-ivr.html"
+                    >IVR - Interactive Voice Response</a
+                  >
                 </li>
-                <li><a href="courses/course-surgery.html">Surgery - Training</a></li>
+                <li>
+                  <a href="courses/course-surgery.html">Surgery - Training</a>
+                </li>
               </ul>
             </li>
 
-              <li><a href="contact_us.html">Contact Us</a></li>
-           </ul> 
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact_us.html">Contact Us</a></li>
+          </ul>
         </nav>
       </div>
-
 
       <div class="buttons">
         <a href="login.html" class="login-btn">Login</a>
@@ -134,109 +144,189 @@
       </div>
     </header>
 
-        
-           
-      <div class="contact-text">
-        <h1>Contact Us</h1>
-         <p>We are here to answer your questions. <br>Reach out for training, enquiry, or support.</p>
-         <img
-            class="contact-banner"
-            src="picture/contacts.jpg"
-            alt="banner-contact"
-          />
+    <div class="contact-text">
+      <h1>Contact Us</h1>
+      <p>
+        We are here to answer your questions. <br />Reach out for training,
+        enquiry, or support.
+      </p>
+      <img
+        class="contact-banner"
+        src="picture/contacts.jpg"
+        alt="banner-contact"
+      />
+    </div>
+
+    <!-- Contact Us - From  -->
+    <section class="contact-section" id="contact-form">
+      <div class="contact-container">
+        <form action="#" method="post" class="contact-form">
+          <h2>Get In Touch With Us</h2>
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Your Phone"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="requirement">-- Select Course --</label>
+            <select name="requirement" id="requirement">
+              <option selected>Your Requirement</option>
+              <option value="Medical Coding Training">
+                Medical Coding - Training
+              </option>
+              <option value="Basic Medical Coding Training">
+                BMCT - Basic Medical Coding Training
+              </option>
+              <option value="Advanced Medical Coding Training">
+                AMCT - Advanced Medical Coding Training
+              </option>
+              <option value="Certified Professional Coder">
+                CPC - Certified Professional Coder
+              </option>
+              <option value="Certified Professional Medical Auditor">
+                CPMA - Certified Professional Medical Auditor
+              </option>
+              <option value="Certified Risk Adjustment Coder">
+                CRC - Certified Risk Adjustment Coder
+              </option>
+              <option value="Certified Coding Specialist">
+                CCS - Certified Coding Specialist
+              </option>
+              <option value="Emergency Department">
+                ED - Emergency Department
+              </option>
+              <option value="Evaluation & Management">
+                E&M - Evaluation & Management
+              </option>
+              <option value="Inpatient Coding Diagnosis Related Groups">
+                IPDRG - Inpatient Coding Diagnosis Related Groups
+              </option>
+              <option value="Interactive Voice Response">
+                IVR - Interactive Voice Response
+              </option>
+              <option value="Surgery - Training">Surgery - Training</option>
+            </select>
+          </div>
+          
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
+
+        <!-- Contact Info / Address -->
+        <div class="contact-info">
+          <!-- Central Division -->
+          <a
+            href="https://maps.app.goo.gl/oE7Pas8tHQBkbMK58"
+            target="_blank"
+            style="color: #000; text-decoration: none"
+          >
+            <div class="address-box">
+              <h4>
+                <i class="fas fa-map-marker-alt"></i>Central Division - Chennai:
+              </h4>
+              <p>
+                3/373, Second floor, M C N TOWER,<br />
+                OMR road, Near to flyover,<br />
+                Mettukuppam, Chennai 600 097.
+              </p>
+              <p>
+                <i
+                  class="fas fa-phone"
+                  style="color: #e20c0c; margin-right: 8px"
+                ></i>
+                +91 9976614395 / +91 9003722232 <br />
+                <i
+                  class="fas fa-envelope"
+                  style="color: #28a745; margin-right: 8px"
+                ></i>
+                info@3470healthcare.com
+              </p>
+            </div>
+          </a>
+
+          <!-- Sub Division - Trichy -->
+          <a
+            href="https://maps.app.goo.gl/tXgAfy56ZafN1iwy5"
+            target="_blank"
+            style="color: #000; text-decoration: none"
+          >
+            <div class="address-box">
+              <h4>
+                <i class="fas fa-map-marker-alt"></i>Sub Division - Trichy:
+              </h4>
+              <p>
+                Plot No: 107, First Floor, Sakthi Nagar,<br />
+                NH Main Road, Opposite to Anna university,<br />
+                Tiruchirapalli Tamilnadu - 622515.
+              </p>
+              <p>
+                <i
+                  class="fas fa-phone"
+                  style="color: #e20c0c; margin-right: 8px"
+                ></i>
+                +91 9280236472 / +91 8778346428 <br />
+                <i
+                  class="fas fa-envelope"
+                  style="color: #28a745; margin-right: 8px"
+                ></i>
+                info@3470healthcare.com
+              </p>
+            </div>
+          </a>
+        </div>
       </div>
-    
-
-              <!-- Contact Us - From  -->
-        <section class="contact-section">
-         <div class="contact-container">
-
-           <form action="#" method="post" class="contact-form">
-            <h2>Get In Touch With Us</h2>
-            
-             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-             </div>
-
-             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-             </div>
-
-             <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
-             </div>
-
-             <div class="form-group">
-                <label for="requirement">Your Requirement</label>
-                <select name="requirement" id="requirement">
-                  <option selected>Your Requirement</option>
-                  <option value="training">Training</option>
-                  <option value="enquiry">Enquiry</option>
-                  <option value="others">Others</option>
-                </select>
-             </div>
-
-             <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-             </div>
-
-             <button type="submit">Send Message</button>
-           </form>
-           
-           <!-- Contact Info / Address -->
-           <div class="contact-info">
-
-            <!-- Central Division --> 
-            <a href="https://maps.app.goo.gl/oE7Pas8tHQBkbMK58" target="_blank" 
-               style="color:#000; text-decoration:none;">
-             <div class="address-box">
-                <h4><i class="fas fa-map-marker-alt"></i>Central Division - Chennai:</h4>
-                <p>
-                    3/373, Second floor, M C N TOWER,<br>
-                    OMR road, Near to flyover,<br>
-                    Mettukuppam, Chennai 600 097.
-                </p>
-                <p>
-                   <i class="fas fa-phone" style="color:#e20c0c; margin-right:8px;"></i> +91 9976614395 / +91 9003722232 <br>
-                   <i class="fas fa-envelope" style="color:#28a745; margin-right:8px;"></i> info@3470healthcare.com 
-                </p>
-             </div>
-            </a>
-
-            <!-- Sub Division - Trichy -->  
-             <a href="https://maps.app.goo.gl/tXgAfy56ZafN1iwy5" target="_blank" 
-                style="color:#000; text-decoration:none;">  
-              <div class="address-box">
-                <h4><i class="fas fa-map-marker-alt"></i>Sub Division - Trichy:</h4>
-                <p>
-                    Plot No: 107, First Floor, Sakthi Nagar,<br>
-                    NH Main Road, Opposite to Anna university,<br>
-                    Tiruchirapalli Tamilnadu - 622515.
-                </p>
-                <p>
-                   <i class="fas fa-phone" style="color:#e20c0c; margin-right:8px;"></i> +91 9280236472 / +91 8778346428 <br>
-                   <i class="fas fa-envelope" style="color:#28a745; margin-right:8px;"></i> info@3470healthcare.com 
-                </p>  
-             </div>
-            </a> 
-
-           </div>
-         </div>
     </section>
 
-           <!-- Google Map -->
+    <!-- Google Map -->
     <div class="map-container">
-       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15554.2688420465!2d80.22781031190785!3d12.93551450407136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d86fdcc5271%3A0xea64c5633194de79!2s3470%20HEALTHCARE!5e0!3m2!1sen!2sin!4v1651142899007!5m2!1sen!2sin"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15554.2688420465!2d80.22781031190785!3d12.93551450407136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d86fdcc5271%3A0xea64c5633194de79!2s3470%20HEALTHCARE!5e0!3m2!1sen!2sin!4v1651142899007!5m2!1sen!2sin"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
       </iframe>
     </div>
-      
 
     <!-- First Footer (Detailed Info) -->
     <footer class="footer-main">
@@ -269,7 +359,10 @@
               <i class="fa fa-angle-double-right"></i
               ><a href="contact_us.html">Contact Us</a>
             </li>
-            <li><i class="fa fa-angle-double-right"></i><a href="about.html#FAQ">FAQ</a></li>
+            <li>
+              <i class="fa fa-angle-double-right"></i
+              ><a href="about.html#FAQ">FAQ</a>
+            </li>
           </ul>
         </div>
 
@@ -313,39 +406,103 @@
           </p>
         </div>
 
+        <!-- AAPC CERTIFICATIONS -->
+        <div class="footer-col">
+          <h3>AAPC</h3>
+          <ul>
+            <li>CPC</li>
+            <li>CIC</li>
+            <li>CPMA</li>
+            <li>COC</li>
+            <li>CRC</li>
+            <li>CPB</li>
+            <li>CEDC</li>
+            <li>CEMC</li>
+            <li>CDEO</li>
+            <li>CDEI</li>
+            <li>CPPM</li>
+          </ul>
+        </div>
+
+        <!-- SPECIALITIES -->
+        <div class="footer-col">
+          <h3>SPECIALITIES</h3>
+          <ul>
+            <li>Surgery</li>
+            <li>ED</li>
+            <li>EM</li>
+            <li>Radiology</li>
+            <li>Anesthesia</li>
+            <li>IP DRG</li>
+            <li>HCC</li>
+            <li>IVR</li>
+          </ul>
+        </div>
+
+        <!-- AHIMA CERTIFICATIONS -->
+        <div class="footer-col">
+          <h3>AHIMA</h3>
+          <ul>
+            <li>CCS</li>
+            <li>CCS-P</li>
+            <li>RHIA</li>
+            <li>RHIT</li>
+          </ul>
+        </div>
+
+        <!-- HIMAA CERTIFICATIONS -->
+        <div class="footer-col">
+          <h3>HIMAA</h3>
+          <ul>
+            <li>CCC</li>
+            <li>HIM</li>
+          </ul>
+        </div>
       </div>
     </footer>
 
-
     <!--  Second Footer -->
-<footer>
-  <div class="footer-content">
-    <p>&copy; 2025  3470 Medical Coding Training Institute | All rights reserved.</p>
+    <footer>
+      <div class="footer-content">
+        <p>
+          &copy; 2025 3470 Medical Coding Training Institute | All rights
+          reserved.
+        </p>
 
-    <!-- Social Media Icons -->
-    <div class="social-icons" style="margin-top: 10px;">
-      <a href="https://www.instagram.com/3470healthcaretraininginstitue/" target="_blank" class="instagram">
-        <i class="fab fa-instagram fa-2x"></i>
-      </a>
-      <a href="https://www.facebook.com/people/3470-Healthcare/61576254508977/" target="_blank" class="facebook">
-        <i class="fab fa-facebook fa-2x"></i>
-      </a>
-      <a href="https://www.youtube.com/@HEALTHCARE-nv6if" target="_blank" class="youtube">
-        <i class="fab fa-youtube fa-2x"></i>
-      </a>
-      <a href="https://www.twitter.com/" target="_blank" class="twitter">
-        <i class="fab fa-twitter fa-2x"></i>
-      </a>
-      <a href="https://www.linkedin.com/" target="_blank" class="linkedin">
-        <i class="fab fa-linkedin fa-2x"></i>
-      </a>
-      <a href="https://wa.me/919280236474" target="_blank" class="Whatsapp">
-        <i class="fab fa-whatsapp fa-2x"></i>
-      </a>
-    </div>
-  </div>
-</footer>
-
-
-</body>
+        <!-- Social Media Icons -->
+        <div class="social-icons" style="margin-top: 10px">
+          <a
+            href="https://www.instagram.com/3470healthcaretraininginstitue/"
+            target="_blank"
+            class="instagram"
+          >
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/people/3470-Healthcare/61576254508977/"
+            target="_blank"
+            class="facebook"
+          >
+            <i class="fab fa-facebook fa-2x"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@HEALTHCARE-nv6if"
+            target="_blank"
+            class="youtube"
+          >
+            <i class="fab fa-youtube fa-2x"></i>
+          </a>
+          <a href="https://www.twitter.com/" target="_blank" class="twitter">
+            <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" class="linkedin">
+            <i class="fab fa-linkedin fa-2x"></i>
+          </a>
+          <a href="https://wa.me/919280236474" target="_blank" class="Whatsapp">
+            <i class="fab fa-whatsapp fa-2x"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
