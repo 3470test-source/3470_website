@@ -3306,7 +3306,9 @@ section h2::after {
 /* ------------------------------------------------------------------------------------- */
 
 
-
+              /* ============================
+                     Careers Page Style  
+                 ============================ */
 
 
 .header-careers {
@@ -3315,6 +3317,7 @@ section h2::after {
   text-align: center;
   padding: 3rem 25rem;
   margin-top: -12px;
+  background: url("picture/careers.png") center/cover no-repeat;
 
 }
 
@@ -3332,6 +3335,45 @@ section h2::after {
 }
 
 
+
+.careers h2::after {
+  content: "";
+  width: 150px;
+  height: 3px;
+  display: block;
+  margin: 4px auto 0;
+  border-radius: 2px;
+  margin-left: 356px;
+
+
+  background: linear-gradient(90deg, transparent, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9, transparent);
+  background-size: 200%;
+  animation: moveLine 3s linear infinite;
+
+  /* background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
+  background-size: 300%; 
+  animation: colorFlow 4s linear infinite; */
+   
+}
+
+/* @keyframes colorFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+} */
+
+@keyframes moveLine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /*   + icon    */
 .header-careers .add {
   font-size: 0.7em; /* make it smaller */
@@ -3340,6 +3382,81 @@ section h2::after {
   margin-left: -4px; /* small space */
   font-weight: bold;
 }
+
+.employer-brand {
+  background: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+.employer-brand h2 {
+  color: #0454e9;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+
+.employer-brand h2::after {
+  content: "";
+  width: 175px;
+  height: 3px;
+  display: block;
+  margin: 4px auto 0;
+  border-radius: 2px;
+  margin-left: 44%;
+
+  background: linear-gradient(90deg, transparent, #06eb9e, #00c6ff, #920e50, #ff8c00, #452188, transparent);
+  background-size: 200%;
+  animation: moveLine 4s linear infinite;
+
+}
+
+.employer-brand p {
+  font-size: 17.3px;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 15px 25%;
+}
+
+/*   + icon    */
+.employer-brand .add {
+  font-size: 0.7em; /* make it smaller */
+  position: relative;
+  top: -0.6em; /* move it up */
+  margin-left: -2px; /* small space */
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+.job-search {
+  text-align: center;
+  margin: 30px 0;
+}
+.job-search input {
+  padding: 10px 20px;
+  width: 60%;
+  border: 2px solid #0454e9;
+  border-radius: 25px;
+  outline: none;
+}
+
+.job-search input:focus {
+  border-color: #1b7a1b;
+}
+
+
+
+
 
 
 
@@ -3412,6 +3529,33 @@ section h2::after {
   margin-bottom: 1.5rem;
   color: #0056a3;
 }
+
+
+.application-form h2::after {
+  content: "";
+  width: 195px;
+  height: 3px;
+  display: block;
+  margin: 4px auto 0;
+  border-radius: 2px;
+  margin-left: 218px;
+
+  background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
+  background-size: 300%; 
+  animation: colorFlow 3s linear infinite;
+  
+}
+
+
+@keyframes colorFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
 
 .application-form form {
   display: flex;
