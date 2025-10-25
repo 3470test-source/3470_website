@@ -3432,12 +3432,6 @@ section h2::after {
   font-weight: bold;
 }
 
-
-
-
-
-
-
 .job-search {
   text-align: center;
   margin: 30px 0;
@@ -3453,20 +3447,6 @@ section h2::after {
 .job-search input:focus {
   border-color: #1b7a1b;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Careers Section */
@@ -3599,6 +3579,141 @@ section h2::after {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+.testimonials h2::after {
+  content: "";
+  width: 197px;
+  height: 3px;
+  display: block;
+  margin: 4px auto 0;
+  border-radius: 2px;
+  margin-left: 43.5%;
+
+  background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
+  background-size: 300%; 
+  animation: colorFlow 3s linear infinite;
+  
+}
+
+.testimonials h2 {
+  margin-bottom: 30px;
+
+}
+
+.meet-team h2 {
+  margin-bottom: 30px;
+
+}
+
+.meet-team h2::after {
+  content: "";
+  width: 197px;
+  height: 3px;
+  display: block;
+  margin: 4px auto 0;
+  border-radius: 2px;
+  margin-left: 43.5%;
+
+  background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
+  background-size: 300%; 
+  animation: colorFlow 3s linear infinite;
+  
+}
+
+.benefits h2 {
+  margin-bottom: 20px;
+
+}
+.benefits h2::after {
+  content: "";
+  width: 198px;
+  height: 3px;
+  display: block;
+  margin: 4px auto 0;
+  border-radius: 2px;
+  margin-left: 43.7%;
+
+  background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
+  background-size: 300%; 
+  animation: colorFlow 3s linear infinite;
+  
+}
+
+
+.testimonials, .meet-team, .benefits {
+  background: #f9f9fb;
+  padding: 40px 20px;
+  text-align: center;
+
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.testimonial {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+  text-align: justify;
+}
+
+.testimonial p {
+  margin-bottom: 12px;
+  
+}
+
+.testimonial h4 {
+  text-align: center;
+  
+}
+
+
+
+
+.meet-team .team-members {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.member img {
+  width: 150px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.benefits ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1em;
+}
+
+.benefits li {
+  margin: 8px 0;
+  text-align: justify;
+  align-items: center;
+  margin-left: 42%;
+
+}
 
 
 
