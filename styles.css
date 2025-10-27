@@ -1878,7 +1878,163 @@ header h1 {
   border: none;
 }
 
+
+      /* World Wide Branches Section - Contacts Page  */
+
+.branches-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 35px 10%;
+  flex-wrap: wrap;
+  background-color: #fff;
+  margin-bottom: -10px;
+
+}
+
+.branches-text {
+  max-width: 400px;
+  text-align: left;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.5s ease forwards 0.3s;
+
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.branches-text h2 {
+  color: #007c88;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+
+.branches-text h2::after {
+  width: 130px;
+  height: 3px;
+  display: block;
+  border-radius: 2px;
+  margin-left: 1%;
+  background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
+  background-size: 300%;
+  animation: colorFlow 3s linear infinite;
+
+}
+
+
+.branches-text p {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+
+/* 🌎 Map Container */
+.world-map-container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background: url('picture/World-map.jpg') no-repeat center;
+  background-size: contain;
+
+}
+
+/* 📍 Red Location Pins */
+.pin {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  cursor: pointer;
+
+  /* animation: pulse 2s infinite ease-in-out; */
+   
+  animation: dropPin 1s forwards;
+  animation-delay: var(--delay, 0s);
+
+}
+
+
+@keyframes dropPin {
+  0% { transform: translateY(-50px) rotate(-45deg) scale(0); opacity: 0; }
+  100% { transform: translateY(0) rotate(-45deg) scale(1); opacity: 1; }
+}
+
+/* @keyframes pulse {
+  0% { transform: scale(1) rotate(-45deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(-45deg); opacity: 0.7; }
+  100% { transform: scale(1) rotate(-45deg); opacity: 1; }
+} */
+
+
+/* 🌟 Hover Tooltip for Pins */
+.pin:hover::before {
+  content: attr(title);
+  position: absolute;
+  top: -35px;
+  left: -20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: tooltipFade 0.4s forwards;
+}
+
+@keyframes tooltipFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pin::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  border-radius: 50%;
+}
+
+
+/* 🌐 Approximate positions (adjust for your map image) */
+.india { top: 40%; left: 68%; }
+.dubai { top: 60%; left: 48%; }
+.singapore { top: 20%; left: 75%; }
+.london { top: 38%; left: 48%; }
+.usa { top: 48%; left: 20%; }
+.germany { top: 47%; left: 51%; }
+.france { top: 40%; left: 55%; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .branches-section {
+    flex-direction: column;
+  }
+
+  .map-container {
+    margin-top: 30px;
+    width: 350px;
+    height: 250px;
+  }
+}
+
+
 /* ----------------------------------------------------------------------------- */
+
 
 /* =======================================
      home page  Popup Enquiry Form Styles
@@ -2024,6 +2180,9 @@ body.no-scroll {
   margin-bottom: 50px;
   position: relative;
   overflow: hidden;
+
+  margin-top: -10px;
+
 }
 
 .course h1 {
@@ -2536,7 +2695,7 @@ section h2::after {
 
 /* --------------------------------------------------------------------------------- */
 
-                 /* ===================================
+                 /* ======================================
                              About US from style
                     ====================================== */
 
@@ -3332,8 +3491,8 @@ section h2::after {
   font-size: 1.2rem;
   letter-spacing: 1px;
   margin-left: 6px;
+  
 }
-
 
 
 .careers h2::after {
@@ -3396,7 +3555,6 @@ section h2::after {
   font-size: 30px;
   margin-bottom: 25px;
 }
-
 
 .employer-brand h2::after {
   content: "";
@@ -3578,19 +3736,6 @@ section h2::after {
   font-weight: bold;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .testimonials h2::after {
   content: "";
   width: 197px;
@@ -3606,19 +3751,27 @@ section h2::after {
   
 }
 
+
 .testimonials h2 {
   margin-bottom: 30px;
+  color: #0056a3;
 
 }
 
 .meet-team h2 {
   margin-bottom: 30px;
+  color: #0056a3;
 
 }
 
+.benefits h2 {
+  color: #0056a3;
+}
+
+
 .meet-team h2::after {
   content: "";
-  width: 197px;
+  width: 198px;
   height: 3px;
   display: block;
   margin: 4px auto 0;
@@ -3650,19 +3803,18 @@ section h2::after {
   
 }
 
-
 .testimonials, .meet-team, .benefits {
   background: #f9f9fb;
   padding: 40px 20px;
   text-align: center;
-
+ 
 }
 
 .testimonial-cards {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 25px;
 }
 
 .testimonial {
@@ -3671,7 +3823,6 @@ section h2::after {
   padding: 20px;
   width: 280px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-
   text-align: justify;
 }
 
@@ -3684,9 +3835,6 @@ section h2::after {
   text-align: center;
   
 }
-
-
-
 
 .meet-team .team-members {
   display: flex;
@@ -3716,13 +3864,68 @@ section h2::after {
 }
 
 
+              /* ===================================
+                    CV Download Section  - Careers
+                 ===================================  */
 
 
 
-
-
-
-
-
-
+.careers-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
  
+}
+
+
+.cv-container {
+  text-align: center;
+  background: #fff;
+  padding: 20px 60px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(3, 121, 29, 0.432);
+  max-width: 500px;
+}
+
+.cv-icon img {
+  width: 150px;
+  height: 150px;
+  border-radius: 60%;
+  padding: 20px;
+  margin-top: -20px;
+}
+
+.cv-container h2 {
+  margin-top: -15px;
+  color: #333;
+  
+}
+
+.careers-section h2::after {
+  display: none;
+  
+}
+
+.cv-container p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.cv-container p a {
+  color: #0d8832;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cv-container p a:hover {
+  text-decoration: underline;
+}
+
+
+      /* ----------------------------------------------------------------------------------------- */
+
+
+
+         
