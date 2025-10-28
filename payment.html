@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshop Payment</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .payment-box {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      p {
+        color: #666;
+        margin-bottom: 25px;
+      }
+
+      .pay-btn {
+        background-color: #2a7df0;
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .pay-btn:hover {
+        background-color: #195fca;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="payment-box">
+      <h2>Register for Workshop</h2>
+      <p>Click below to make your payment securely.</p>
+
+      <!-- Your visible custom button -->
+      <button class="pay-btn" id="payNowBtn">Pay Now</button>
+    </div>
+
+    <!-- Hidden Razorpay form (kept offscreen, but loaded) -->
+    <form id="hiddenRazorForm" style="display: none;">
+      <script
+        src="https://checkout.razorpay.com/v1/payment-button.js"
+        data-payment_button_id="pl_RYsFYpTBKlKV1u"
+      ></script>
+    </form>
+
+    <script>
+      // When the user clicks "Pay Now", trigger Razorpay's internal button
+      document.getElementById("payNowBtn").addEventListener("click", function () {
+        const razorBtn = document.querySelector("#hiddenRazorForm .razorpay-payment-button");
+        if (razorBtn) {
+          razorBtn.click(); // open Razorpay payment page
+        } else {
+          alert("Razorpay payment form not loaded. Please refresh and try again.");
+        }
+      });
+    </script>
+
+    
+  </body>
+</html>

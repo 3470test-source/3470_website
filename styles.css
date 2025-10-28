@@ -1930,7 +1930,6 @@ header h1 {
 
 }
 
-
 .branches-text p {
   color: #333;
   font-size: 1.5rem;
@@ -1945,6 +1944,38 @@ header h1 {
   background: url('picture/World-map.jpg') no-repeat center;
   background-size: contain;
 
+  overflow: hidden;
+  transition: all 0.6s ease;
+  border-radius: 5px;
+  
+}
+
+
+/* ✨ Glow and shine on hover */
+.world-map-container:hover {
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.6);
+  filter: brightness(1.1);
+}
+
+.world-map-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-25deg);
+}
+
+.world-map-container:hover::after {
+  animation: shine 1.2s forwards;
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
 }
 
 /* 📍 Red Location Pins */
