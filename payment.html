@@ -56,30 +56,28 @@
       <h2>Register for Workshop</h2>
       <p>Click below to make your payment securely.</p>
 
-      <!-- Your visible custom button -->
+      <!-- Razorpay Payment Form (hidden) -->
+      <form id="hiddenRazorForm" style="display: none;">
+        <script
+          src="https://checkout.razorpay.com/v1/payment-button.js"
+          data-payment_button_id="pl_RYsFYpTBKlKV1u"
+        ></script>
+      </form>
+
+      <!-- Your visible button below -->
       <button class="pay-btn" id="payNowBtn">Pay Now</button>
     </div>
 
-    <!-- Hidden Razorpay form (kept offscreen, but loaded) -->
-    <form id="hiddenRazorForm" style="display: none;">
-      <script
-        src="https://checkout.razorpay.com/v1/payment-button.js"
-        data-payment_button_id="pl_RYsFYpTBKlKV1u"
-      ></script>
-    </form>
-
     <script>
-      // When the user clicks "Pay Now", trigger Razorpay's internal button
+      // When the visible button is clicked, trigger Razorpay payment
       document.getElementById("payNowBtn").addEventListener("click", function () {
         const razorBtn = document.querySelector("#hiddenRazorForm .razorpay-payment-button");
         if (razorBtn) {
-          razorBtn.click(); // open Razorpay payment page
+          razorBtn.click(); // opens Razorpay payment page
         } else {
-          alert("Razorpay payment form not loaded. Please refresh and try again.");
+          alert("Razorpay payment form not loaded yet. Please refresh and try again.");
         }
       });
     </script>
-
-    
   </body>
 </html>
