@@ -3955,8 +3955,58 @@ section h2::after {
 }
 
 
-      /* ----------------------------------------------------------------------------------------- */
+    /* ----------------------------------------------------------------------------------------- */
 
 
+              /* ============================
+                   Scroll to Top Button  
+                 ============================  */
 
-         
+     /* Scroll to Top Button Styles */
+    
+#scrollToTopBtn {
+  display: none; 
+  position: fixed;
+  bottom: 68px;
+  right: 1px;
+  z-index: 99;
+  background-color: #038824;
+  color: white;
+  border: none;
+  padding: 7px 16px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(50px);
+  transition: all 0.4s ease;
+
+}
+
+
+/* When visible */
+#scrollToTopBtn{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  animation: bounce 1.5s infinite;
+}
+
+/* Bouncing animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+#scrollToTopBtn:hover {
+  background-color: #8a056d;
+ 
+}
+
+
+/* --------------------------------------------------------------------------------- */
+
+              

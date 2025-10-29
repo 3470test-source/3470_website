@@ -3,81 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Workshop Payment</title>
-
+    <title>Emergency Department Workshop - Payment</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background: #f7f7f7;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
-
-      .payment-box {
-        background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-family: "Poppins", sans-serif;
         text-align: center;
+        background: #f8f8f8;
+        padding: 40px;
+      }
+      .workshop-card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 420px;
+        margin: auto;
+      }
+      .workshop-card img {
+        width: 100%;
+        border-radius: 12px;
       }
 
       h2 {
-        margin-bottom: 10px;
-        color: #333;
+        color: #222;
+        margin: 20px 0 10px;
       }
 
       p {
-        color: #666;
-        margin-bottom: 25px;
+        color: #444;
+        font-size: 15px;
+        margin: 6px 0;
       }
 
-      .pay-btn {
-        background-color: #2a7df0;
-        color: white;
-        border: none;
-        padding: 12px 28px;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-
-      .pay-btn:hover {
-        background-color: #195fca;
+      /* Center Razorpay button */
+      form {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
       }
     </style>
   </head>
-
   <body>
-    <div class="payment-box">
-      <h2>Register for Workshop</h2>
-      <p>Click below to make your payment securely.</p>
+    <div class="workshop-card">
+      <img src="your-workshop-image.jpg" alt="Workshop Banner" />
 
-      <!-- Razorpay Payment Form (hidden) -->
-      <form id="hiddenRazorForm" style="display: none;">
+       <h2>Emergency Department Workshop</h2>
+       <p><b>Date:</b> 10th November 2025</p>
+       <p><b>Time:</b> 10:00 AM – 1:00 PM</p>
+       <p><b>Fee:</b> ₹3000</p>
+       <p><b>Mode:</b> Offline & Online (Chennai)</p>
+
+      <form>
         <script
           src="https://checkout.razorpay.com/v1/payment-button.js"
           data-payment_button_id="pl_RYsFYpTBKlKV1u"
+          async=""
         ></script>
       </form>
-
-      <!-- Your visible button below -->
-      <button class="pay-btn" id="payNowBtn">Pay Now</button>
     </div>
 
-    <script>
-      // When the visible button is clicked, trigger Razorpay payment
-      document.getElementById("payNowBtn").addEventListener("click", function () {
-        const razorBtn = document.querySelector("#hiddenRazorForm .razorpay-payment-button");
-        if (razorBtn) {
-          razorBtn.click(); // opens Razorpay payment page
-        } else {
-          alert("Razorpay payment form not loaded yet. Please refresh and try again.");
-        }
-      });
-    </script>
+
+
   </body>
 </html>
