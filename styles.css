@@ -646,7 +646,7 @@ nav ul.menu li .dropdown li a {
 
 /* Section styling */
 .courses-video {
-  background-color: #f4f8fb; /* light background */
+  background-color: #d1d8dd; /* light background */
   padding: 40px 20px;
   text-align: center;
   border-top: 3px solid #0077cc;
@@ -742,6 +742,7 @@ nav ul.menu li .dropdown li a {
 
 .achievers-section h2 {
   font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .achievers-section h2 span {
@@ -795,6 +796,90 @@ nav ul.menu li .dropdown li a {
 .active-dot {
   background-color: #333;
 }
+
+
+
+      /* Our Facilities  - Home pages */
+  
+.facilities-section {
+  background: linear-gradient(135deg, #bdecec 0%, #91d8d8 100%);
+  text-align: center;
+  padding: 80px 30px;
+  border-radius: 150px 0 0 150px;
+  font-family: "Poppins", sans-serif;
+  color: #004c4c;
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+
+.facilities-section h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #007c7c;
+  margin-bottom: 20px;
+  margin-top: -25px;
+}
+
+.facilities-section h2::after {
+  display: none;
+}
+
+.academy-intro {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.academy-intro .add {
+  font-size: 0.7em; /* make it smaller */
+  position: relative;
+  top: -0.6em; /* move it up */
+  margin-left: -2px; /* small space */
+  font-weight: bold;
+  color: #f70909;
+
+}
+
+.our-fact {
+  color: #05399b;
+}
+
+.facilities-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.facility-item {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.068);
+  padding: 30px 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.facility-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(5, 88, 12, 0.527);
+}
+
+.facility-item i {
+  font-size: 40px;
+  color: #00a8a8;
+  margin-bottom: 15px;
+}
+
+.facility-item h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+}
+
+
 
 /* -------------------------------------------------------------------------------------- */
 
@@ -2835,7 +2920,46 @@ section h2::after {
   border-radius: 1px;
 }
 
-/* Mission & Vision */
+
+
+      /* training-section  */
+
+.training-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #099750;
+  border-radius: 150px 0 0 150px; 
+  color: white;
+  padding: 60px 30px;
+  text-align: center;
+  margin-bottom: 3px;
+
+}
+
+.training-item {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.training-item i {
+  font-size: 70px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.training-item h3 {
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+
+}
+
+
+    /* Mission & Vision */
 
 .mission-vision {
   background: #e4e5e6;
@@ -3228,11 +3352,96 @@ section h2::after {
 
 
 
+       /* Our Core Values -  About Page */
+
+.core-values {
+  background-color: #cdecee;
+  text-align: center;
+  padding: 80px 30px;
+  border-radius: 180px 0 0 180px;
+  color: #004c4c;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 50px;
+  
+}
+
+.core-values h2 {
+  font-size: 39px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #007c7c;
+  margin-top: -40px;
+}
+
+.core-values h2::after {
+  display: none;
+}
+
+.company-name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #097934;
+  margin-bottom: 40px;
+}
+
+.company-name .add {
+  font-size: 0.7em; /* make it smaller */
+  position: relative;
+  top: -0.6em; /* move it up */
+  margin-left: -3px; /* small space */
+  font-weight: bold;
+}
+
+.values-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.value-item {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 30px 20px;
+  max-width: 250px;
+  flex: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(2, 47, 143, 0.63);
+}
+
+.value-item i {
+  font-size: 45px;
+  color: #00a8a8;
+  margin-bottom: 15px;
+}
+
+.value-item h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.value-item p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify; 
+
+}
+
+
+
+
 /* ---------------------------------------------------------------- */
 
          /* ======================================
                   Terms and Conditions  
-           ======================================  */
+            ======================================  */
 
 .terms-header {
   /* background-color: #005fa3; */
@@ -4009,4 +4218,12 @@ section h2::after {
 
 /* --------------------------------------------------------------------------------- */
 
+
+
+
+
+
+  
+
+  
               
