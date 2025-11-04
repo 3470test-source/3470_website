@@ -85,6 +85,8 @@ nav ul.menu li a {
   color: rgba(8, 20, 133, 0.986);
   padding: 10px 15px;
   display: block;
+  font-size: 18.5px;
+  
 }
 
 nav ul.menu li a:hover {
@@ -3578,21 +3580,7 @@ section h2::after {
   margin-right: 5px;
 }
 
-/* Responsive Design (for mobiles) */
-@media (max-width: 768px) {
-  .video-grid iframe {
-    width: 90%;
-    height: auto;
-  }
 
-  .courses h3 {
-    font-size: 24px;
-  }
-
-  .courses .subtitle {
-    font-size: 16px;
-  }
-}
 
 /* ------------------------------------------------------------------------------------- */
 
