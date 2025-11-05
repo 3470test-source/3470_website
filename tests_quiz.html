@@ -4,9 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      3470 HealthCare & Medical Coding Training Institute | Dashboard
+      3470 HealthCare & Medical Coding Training Institute | Dashboard - Tests
+      Quiz
     </title>
-    
+
+    <style>
+
+      body {
+        background: linear-gradient(120deg, #87aca3, #9cdbd2);
+      }
+
+    </style>
+
     <!-- Css - Styles -->
     <link rel="stylesheet" href="styles.css" />
 
@@ -16,6 +25,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
+
   <body class="dashboard-page">
     <!-- top-header -->
     <header class="header-top-dash">
@@ -61,54 +71,44 @@
         </ul>
       </aside>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <h1>Welcome, Student!</h1>
-        <p>Your progress in the Medical Coding Training Program</p>
 
-        <!-- Progress Cards -->
-        <section class="cards">
-          <div class="card">
-            <h3>Completed Modules</h3>
-            <p>5 / 10</p>
-          </div>
+      <main class="tests-quiz-content">
+        <h1>Quiz - Module 1</h1>
+        <form id="quizForm">
+          <p>1. What does ICD stand for?</p>
+          <label
+            ><input type="radio" name="q1" value="A" /> International Code for
+            Diseases</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="B" /> International
+            Classification of Diseases</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="C" /> Internal Code
+            Diagnosis</label
+          ><br /><br />
 
-          <div class="card">
-            <h3>Quiz Score (Avg)</h3>
-            <p>82%</p>
-          </div>
-
-          <div class="card">
-            <h3>Certification Status</h3>
-            <p>In Progress</p>
-          </div>
-        </section>
-
-        <!-- Modules List -->
-        <!-- <section class="modules">
-        <h2>Training Modules</h2>
-        <ul>
-          <li>✅ Introduction to Medical Coding</li>
-          <li>✅ ICD-10 Coding Basics</li>
-          <li>✅ CPT Coding System</li>
-          <li>🕒 HCPCS Level II Codes</li>
-          <li>🕒 Billing and Reimbursement</li>
-        </ul>
-      </section> -->
-
-        <!-- Resources -->
-        <!-- <section class="resources">
-        <h2>Helpful Resources</h2>
-        <ul>
-          <li><a href="#">ICD-10 Code Lookup</a></li>
-          <li><a href="#">CPT Code Manual (PDF)</a></li>
-          <li><a href="#">Sample Claims</a></li>
-        </ul>
-      </section> -->
+          <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
       </main>
+
     </div>
 
     <!-- Javascript -->
     <script src="main.js" defer></script>
+
+
+        <!-- Tests-Quiz - Dashboard -->
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        let score = 0;
+        if (document.querySelector('input[name="q1"]:checked')?.value === "B") score++;
+            document.getElementById("result").innerText = "Your Score: " + (score * 100) + "%";
+        });
+    </script>
+
   </body>
 </html>
