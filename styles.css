@@ -1410,7 +1410,6 @@ footer {
   margin-right: 10px;
   color: white;
 
-  
 }
 
 .input-group input {
@@ -1422,7 +1421,7 @@ footer {
   font-size: 15px;
   padding-right: 40px;
   box-shadow: none !important;;
-  
+
 }
 
 
@@ -1702,6 +1701,7 @@ footer {
 .dashboard {
   display: flex;
   
+  
 }
 
 .sidebar {
@@ -1775,22 +1775,13 @@ footer {
 } */
 
 
-
-
-
-
-
-
-
-
-
-
-
   /* Dashboard Main Content */
 .main-content {
   flex-grow: 1;
   padding: 25px;
   background: #f4f4f4;
+  
+  /* background: linear-gradient(120deg, #87aca3, #9cdbd2); */
 }
 
 header h1 {
@@ -4266,30 +4257,32 @@ section h2::after {
    
 
 
-
-
-
-
          /* Dashboard -- Topic Page  */
 
 
-/* Main content */
+  /* Main content */
 .Topic-content {
-  margin-left: 240px;
+  margin-left: 200px;
   padding: 40px;
-  flex: 1;
+  
 }
 
 .Topic-content h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #005fa3;
+  font-size: 32px;
+  margin-bottom: 35px;
+  color: #04552f;
+  text-align: center;
+
 }
 
-/* Topic list */
+   /* Topic list */
 .topic-list {
   list-style: none;
   padding: 0;
+
+  display: grid;     
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;  
 }
 
 .topic-list li {
@@ -4310,12 +4303,31 @@ section h2::after {
   color: #333;
   text-decoration: none;
   font-weight: 500;
+  display: inline-flex; 
+  font-size: 18px;
+
 }
 
 .topic-list a:hover {
   color: #005fa3;
 }
 
+.module-label {
+  color: #005fa3;       
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.topic-title {
+  color: #333;          
+  font-weight: 500;
+   letter-spacing: 0.8px;
+}
+
+.topic-list a:hover .topic-title,
+.topic-list a:hover .module-label {
+  color: #057a2c;
+}
 
 
 
@@ -4328,21 +4340,22 @@ section h2::after {
 
 /* Main content area */
 .materials-content {
-  margin-left: 240px; /* space for sidebar */
+  margin-left: 200px; /* space for sidebar */
   padding: 40px;
 }
 
 .materials-content h1 {
-  font-size: 28px;
-  color: #005fa3;
-  margin-bottom: 30px;
+  font-size: 32px;
+  color: #04552f;
+  margin-bottom: 35px;
+  text-align: center;
 }
 
 /* Materials container */
 .materials {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
+  gap: 30px;
 }
 
 /* Individual material card */
@@ -4370,7 +4383,7 @@ section h2::after {
 .materials-item a {
   display: inline-block;
   text-decoration: none;
-  background: #005fa3;
+  background: #306e9b;
   color: #fff;
   padding: 10px 16px;
   border-radius: 6px;
