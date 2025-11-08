@@ -362,4 +362,34 @@ setInterval(nextSlide, 3000);
 // -------------------------------------------------------------------
 
 
+
+                        //  Our Motto  -- Home Page
+   
+      const tabs = document.querySelectorAll(".motto-tab-btn");
+      const contents = document.querySelectorAll(".motto-tab-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((btn) => btn.classList.remove("active"));
+          tab.classList.add("active");
+
+          contents.forEach((content) => content.classList.remove("active"));
+          document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+      });
+
+
+ 
+//  --------------------------------------------------------------------------------------------------------     
+
+
+
+    
+
+
+
+
+   
+
+
               
