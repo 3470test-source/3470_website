@@ -572,7 +572,133 @@ nav ul.menu li .dropdown li a {
   text-align: justify;
 }
 
-/* Home Page - International Certifications */
+
+
+        /* Our Motto  */
+
+.motto-section {
+  text-align: center;
+  padding: 50px 200px;
+  margin-bottom: -40px;
+
+}
+
+.motto-section h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #0b7694;
+
+}
+
+.motto-section h2::after {
+  display: none;
+
+}
+
+.motto-tabs {
+  display: flex;
+  justify-content: center;
+  background-color: #e6e5eb;
+  border-radius: 40px;
+  padding: 10px;
+  gap: 100px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+
+}
+
+.motto-tab-btn {
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #333;
+  position: relative;
+}
+
+.motto-tab-btn.active {
+  color: #00bfa6;
+}
+
+.motto-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 3px;
+  background-color: #00bfa6;
+  bottom: 0;
+  left: 30%;
+  border-radius: 3px;
+}
+
+.motto-tab-content {
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.motto-tab-content.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+}
+
+.motto-card {
+  text-align: left;
+  gap: 10px;
+  display: flex;
+  align-items: stretch;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  min-height: 290px;
+
+}
+
+.motto-card img {
+  width: 410px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px 0 0 25px;
+  display: block;
+
+}
+
+.motto-text {
+  flex: 1;
+  padding: 50px;
+  background-color: #c2bce0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.motto-text h3 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.motto-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: justify;
+}
+
+
+                    /* Home Page - International Certifications */
 
 .international-certifications {
   padding: 60px 20px;
@@ -1701,7 +1827,6 @@ footer {
 .dashboard {
   display: flex;
   
-  
 }
 
 .sidebar {
@@ -1784,13 +1909,13 @@ footer {
   /* background: linear-gradient(120deg, #87aca3, #9cdbd2); */
 }
 
-header h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
+.main-content h1 {
+  font-size: 35px;
+  margin-bottom: 15px;
 }
 
 .main-content p {
-  font-size: 16px;
+  font-size: 18px;
   color: #555;
   margin-bottom: 30px;
 }
@@ -4640,126 +4765,7 @@ section h2::after {
 
 
 
-.motto-section {
-  text-align: center;
-  padding: 50px 200px;
-  margin-bottom: -40px;
 
-}
-
-.motto-section h2 {
-  font-size: 2.3rem;
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: #0b7694;
-
-}
-
-.motto-section h2::after {
-  display: none;
-
-}
-
-.motto-tabs {
-  display: flex;
-  justify-content: center;
-  background-color: #e6e5eb;
-  border-radius: 40px;
-  padding: 10px;
-  gap: 100px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-
-}
-
-.motto-tab-btn {
-  border: none;
-  background: none;
-  font-weight: 600;
-  font-size: 1.4rem;
-  padding: 10px 20px;
-  cursor: pointer;
-  color: #333;
-  position: relative;
-}
-
-.motto-tab-btn.active {
-  color: #00bfa6;
-}
-
-.motto-tab-btn.active::after {
-  content: "";
-  position: absolute;
-  width: 40%;
-  height: 3px;
-  background-color: #00bfa6;
-  bottom: 0;
-  left: 30%;
-  border-radius: 3px;
-}
-
-.motto-tab-content {
-  display: none;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.motto-tab-content.active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  border-radius: 15px;
-  max-width: 1200px;
-  margin: 0 auto;
-
-}
-
-.motto-card {
-  text-align: left;
-  gap: 10px;
-  display: flex;
-  align-items: stretch;
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-  min-height: 290px;
-
-}
-
-.motto-card img {
-  width: 410px;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 25px 0 0 25px;
-  display: block;
-
-}
-
-.motto-text {
-  flex: 1;
-  padding: 50px;
-  background-color: #c2bce0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-}
-
-.motto-text h3 {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: #000;
-  margin-bottom: 30px;
-}
-
-.motto-text p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #333;
-  text-align: justify;
-}
 
 
 
