@@ -235,8 +235,8 @@
         <input type="email" id="email" name="email" required />
 
         <label for="role">Applying For</label>
-        <select id="role" name="role">
-          <option selected>Your Requirement</option>
+        <select id="role" name="role" required>
+          <option value="" selected disabled>Your Requirement</option>
           <option value="Medical Coding Specialist">
             Medical Coding Specialist
           </option>
@@ -249,79 +249,168 @@
         </select>
 
         <label for="resume">Upload Resume</label>
-        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" />
+        <input
+          type="file"
+          id="resume"
+          name="resume"
+          accept=".pdf,.doc,.docx"
+          required
+        />
 
         <button type="submit">Submit Application</button>
       </form>
 
       <!-- Thank You Message (hidden initially) -->
       <p id="thankYouMessage" class="thank-you" style="display: none">
-        Thank you! Your application has been submitted successfully. Our HR team
-        will contact you soon.
+        Your application has been submitted — we’ll get in touch with you
+        shortly!
       </p>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-      <h2>What Our Employees Say</h2>
-      <div class="testimonial-cards">
-        <div class="testimonial">
-          <p>
-            “3470+ Healthcare gave me the platform to grow both professionally
-            and personally.”
-          </p>
-          <h4>— Priya, Medical Coder</h4>
-        </div>
-        <div class="testimonial">
-          <p>
-            “Supportive colleagues, great leadership, and endless learning
-            opportunities!”
-          </p>
-          <h4>— Aravind, QA Specialist</h4>
-        </div>
-        <div class="testimonial">
-          <p>
-            “I’m proud to be part of a team that truly impacts healthcare
-            positively.”
-          </p>
-          <h4>— Meena, HR Executive</h4>
-        </div>
-      </div>
-    </section>
+   
+<!-- Testimonials -->
+<section class="testimonials">
+  <h2>What Our Employees Say</h2>
+  <div class="testimonial-cards">
+    <div class="testimonial">
+      <p>
+        “Working at <strong>3470+ Healthcare</strong> has been a truly rewarding
+        experience. The leadership team encourages innovation, and I’ve grown
+        both professionally and personally.”
+      </p>
+      <h4>— Priya <span>• Medical Coder</span></h4>
+    </div>
 
-    <!-- Meet the Team -->
-    <section class="meet-team">
-      <h2>Meet Our Team</h2>
-      <div class="team-members">
-        <div class="member">
-          <img src="images/team1.jpg" alt="CEO" />
-          <h4>Dr. S. Rajesh</h4>
-          <p>Founder & CEO</p>
-        </div>
-        <div class="member">
-          <img src="images/team2.jpg" alt="Trainer" />
-          <h4>Ms. Kaviya</h4>
-          <p>Senior Coding Trainer</p>
-        </div>
-        <div class="member">
-          <img src="images/team3.jpg" alt="HR" />
-          <h4>Mr. Dinesh</h4>
-          <p>HR Manager</p>
-        </div>
-      </div>
-    </section>
+    <div class="testimonial">
+      <p>
+        “The work culture here is incredibly supportive. Every day brings new
+        learning opportunities and collaboration with talented colleagues.”
+      </p>
+      <h4>— Aravind <span>• QA Specialist</span></h4>
+    </div>
+
+    <div class="testimonial">
+      <p>
+        “I’m proud to be part of a company that values its employees and truly
+        makes an impact in the healthcare industry.”
+      </p>
+      <h4>— Meena <span>• HR Executive</span></h4>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Meet the Team -->
+<section class="meet-team">
+  <h2>Meet Our Leadership Team</h2>
+  <p class="team-intro">
+    Our leadership team is made up of passionate professionals who bring years
+    of experience in healthcare, training, and management. Together, they drive
+    our mission to deliver excellence in everything we do.
+  </p>
+
+  <div class="team-members">
+    <div class="member">
+      <img src="images/team1.jpg" alt="Founder and CEO" />
+      <h4>Dr. S. Rajesh</h4>
+      <p>Founder & CEO</p>
+      <p class="bio">
+        With over 15 years of experience in healthcare management, Dr. Rajesh
+        leads with vision and commitment to quality and innovation.
+      </p>
+    </div>
+
+    <div class="member">
+      <img src="images/team2.jpg" alt="Senior Trainer" />
+      <h4>Ms. Kaviya</h4>
+      <p>Senior Coding Trainer</p>
+      <p class="bio">
+        A dedicated educator who has trained hundreds of medical coders with a
+        focus on accuracy, standards, and compliance.
+      </p>
+    </div>
+
+    <div class="member">
+      <img src="images/team3.jpg" alt="HR Manager" />
+      <h4>Mr. Dinesh</h4>
+      <p>HR Manager</p>
+      <p class="bio">
+        Known for his people-first approach, Dinesh ensures a healthy,
+        collaborative, and growth-driven work culture across the organization.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Company Benefits -->
     <section class="benefits">
       <h2>Company Benefits</h2>
       <ul>
-        <li>🌟 Performance-Based Incentives</li>
-        <li>🎓 Continuous Learning Opportunities</li>
-        <li>🏖️ Paid Leave & Flexible Work Options</li>
-        <li>🤝 Supportive & Inclusive Work Culture</li>
-        <li>💼 Career Growth & Certification Sponsorships</li>
+        <li>
+          <i class="fa-solid fa-trophy icon-gold"></i>
+          <strong>Performance-Based Incentives:</strong> Get rewarded for your
+          achievements and contributions to company success.
+        </li>
+        <li>
+          <i class="fa-solid fa-graduation-cap icon-blue"></i>
+          <strong>Continuous Learning Opportunities:</strong> Access training
+          sessions, workshops, and certification support to grow your skills.
+        </li>
+        <li>
+          <i class="fa-solid fa-umbrella-beach icon-orange"></i>
+          <strong>Paid Leave & Flexible Work Options:</strong> Maintain a
+          healthy work-life balance with flexible schedules and annual paid
+          leave.
+        </li>
+        <li>
+          <i class="fa-solid fa-handshake icon-green"></i>
+          <strong>Supportive & Inclusive Work Culture:</strong> Collaborate in
+          an environment that values teamwork, respect, and diversity.
+        </li>
+        <li>
+          <i class="fa-solid fa-briefcase icon-purple"></i>
+          <strong>Career Growth & Certification Sponsorships:</strong> Build
+          your career with internal promotions and company-sponsored
+          professional programs.
+        </li>
       </ul>
     </section>
+
 
     <!-- CV - Submission Section -->
     <section class="careers-section">
@@ -337,7 +426,6 @@
       </div>
     </section>
 
-    
     <!-- First Footer (Detailed Info) -->
     <footer class="footer-main">
       <div class="footer-container">
@@ -519,7 +607,6 @@
       </div>
     </footer>
 
-
     <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
@@ -564,9 +651,6 @@
         });
     </script>
 
-
-
-
     <!-- Scroll to Top Button Styles  -->
     <script>
       const scrollToTopBtn = document.getElementById("scrollToTopBtn");
@@ -592,6 +676,29 @@
       });
     </script>
 
+    <!-- Form submit popup message -->
+    <script>
+      document
+        .getElementById("careerForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
 
+          // Reset the form after submission
+          this.reset();
+
+          // Show thank-you message
+          const thankYouMessage = document.getElementById("thankYouMessage");
+          thankYouMessage.style.display = "block";
+          thankYouMessage.style.opacity = "1";
+
+          // Hide after 5 seconds (5000ms)
+          setTimeout(() => {
+            thankYouMessage.style.opacity = "0";
+            setTimeout(() => {
+              thankYouMessage.style.display = "none";
+            }, 500); // wait for fade-out animation
+          }, 5000);
+        });
+    </script>
   </body>
 </html>
