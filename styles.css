@@ -3122,6 +3122,62 @@ section h2::after {
   font-size: 70px;
   margin-bottom: 20px;
   display: block;
+
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* 1️⃣ Icon 1 – Floating Up/Down */
+.training-item:nth-child(1) i {
+  animation-name: float;
+}
+
+/* 2️⃣ Icon 2 – Slow Rotation */
+.training-item:nth-child(2) i {
+  animation-name: slowRotate;
+  animation-timing-function: linear;
+}
+
+/* 3️⃣ Icon 3 – Pulse/Breath Effect */
+.training-item:nth-child(3) i {
+  animation-name: pulseGlow;
+}
+
+/* 4️⃣ Icon 4 – Wiggle (Small Shake) */
+.training-item:nth-child(4) i {
+  animation-name: shakeX;
+}
+
+
+         /* KEYFRAMES */
+
+/* Float animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+/* Rotate animation */
+@keyframes slowRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse Glow */
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes shakeX {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
 }
 
 .training-item h3 {
@@ -3261,7 +3317,7 @@ section h2::after {
   display: block;
 }
 
-/* About Page */
+           /* About Page */
 
 /* OUR MILESTONES AND ACHIEVEMENTS */
 
@@ -3393,7 +3449,8 @@ section h2::after {
 }
 
 
-/* ===== Call to Action Section ===== */
+    /* ===== Call to Action Section ===== */
+
 .cta-section {
   text-align: center;
   background: linear-gradient(135deg, #1e3a8a, #3b82f6);
@@ -3404,7 +3461,6 @@ section h2::after {
   margin: 40px auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-
 
 .cta-section h2 {
   font-size: 32px;
@@ -3444,7 +3500,6 @@ section h2::after {
   background-color: #d97706;
   transform: scale(1.05);
 }
-
 
 
 
