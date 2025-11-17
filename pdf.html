@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+
+/* Fullscreen Modal */
+.modal {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  z-index:9999;
+}
+
+/* Modal Content */
+.modal-content {
+  position:relative;
+  margin:2% auto;
+  background:#fff;
+  padding:0;
+  width:95%;
+  height:95%;
+  overflow:hidden;
+  border-radius:8px;
+}
+
+/* Close Button */
+.close {
+  position:absolute;
+  top:10px;
+  right:20px;
+  font-size:30px;
+  cursor:pointer;
+  z-index:10;
+}
+
+
+
+</style>
+
+</head>
+<body>
+
+
+
+  
+
+<button onclick="openPDF()" class="pdf-btn">
+  📄 View PDF
+</button>
+
+<script>
+function openPDF() {
+  // Owner permission check
+  let permission = confirm("🔐 Owner approval required.\n\nDo you want to allow viewing this PDF?");
+  
+  if(permission) {
+    // Allowed → Open PDF
+    window.open("pdf_file/MS-SQL Installation.pdf#toolbar=0&navpanes=0&scrollbar=0", "_blank");
+  } else {
+    // Not allowed → Show alert
+    alert("❌ Permission denied by owner.");
+  }
+}
+</script>
+
+
+
+
+    <!-- <button onclick="openPDF()" class="pdf-btn">📄 View PDF</button>
+
+    <div id="pdfModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePDF()">&times;</span> -->
+
+    <!-- Watermark -->
+    <!-- <div class="watermark">CONFIDENTIAL • VIEW ONLY</div> -->
+
+    <!-- PDF Viewer -->
+    <!-- <iframe id="pdfFrame"
+      src="pdf_file/MS-SQL Installation.pdf#toolbar=0&navpanes=0&scrollbar=0"
+      style="width:100%; height:90vh; border:none;">
+    </iframe>
+  </div>
+</div> -->
+
+
+<!-- <script>
+function openPDF() {
+  document.getElementById('pdfModal').style.display = "block";
+}
+
+function closePDF() {
+  document.getElementById('pdfModal').style.display = "none";
+}
+
+/* Disable Right Click */
+document.addEventListener('contextmenu', event => {
+  if (document.getElementById("pdfModal").style.display === "block") {
+    event.preventDefault();
+  }
+});
+
+/* Block Print (Ctrl+P), Save (Ctrl+S), Screenshot (PrtSc cannot be blocked fully) */
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && (e.key === 's' || e.key === 'p')) {
+    e.preventDefault();
+  }
+});
+</script> -->
+
+    
+</body>
+</html>
