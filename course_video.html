@@ -90,19 +90,57 @@
      <h1>Course Videos</h1>
 
     <div class="dash-video-container">
-
+      
+   <!-- 
       <div class="video-item">
         <h2>0 SERIES - ANESTHESIA</h2>
-        <iframe src="https://www.youtube.com/embed/RRZuZYAZXzw" allowfullscreen></iframe>
-      </div>
+        <iframe src="https://www.youtube.com/embed/hRBX6D9kIsQ" allowfullscreen></iframe>
+      </div> -->
 
- <!-- 
+
+
+
+ 
       <div class="video-item">
-  <h2>0 SERIES - ANESTHESIA</h2>
+      <h2>0 SERIES - ANESTHESIA</h2>
 
-  <a href="https://youtu.be/H1jFcZaJ6AM" target="_blank" class="video-link">
-  </a>
-</div> -->
+  <!-- <iframe 
+    width="560" 
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/hRBX6D9kIsQ?controls=0&rel=0&modestbranding=1"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe> -->
+
+<!-- <iframe width="560" height="315"
+    src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?modestbranding=1&rel=0"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe> -->
+
+
+
+<iframe
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"
+    title="YouTube video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+></iframe>
+
+
+
+ <!-- <iframe width="560" height="315"
+    src="https://www.youtube.com/embed/hRBX6D9kIsQ"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe> -->
+</div>
 
 
       <div class="video-item">
@@ -212,11 +250,17 @@
 
     </div>
   </main>
-
 </div>
 
     <!-- Javascript -->
     <script src="main.js" defer></script>
+
+
+    <script>
+// Disable right-click on iframe
+const iframe = document.querySelector("iframe");
+iframe.addEventListener("contextmenu", e => e.preventDefault());
+</script>
 
 
   </body>

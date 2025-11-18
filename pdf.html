@@ -50,9 +50,59 @@
 
 
 
+  <div id="loginContainer">
+    <h2>Enter Password to Watch Video</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button id="submitBtn">Submit</button>
+    <p id="errorMsg" style="color:red;"></p>
+</div>
+
+<div id="videoContainer" style="display:none;">
+    <video id="secureVideo" width="640" controls>
+        <source src="" type="video/mp4">
+    </video>
+</div>
+
+<script>
+  const submitBtn = document.getElementById("submitBtn");
+const passwordInput = document.getElementById("passwordInput");
+const errorMsg = document.getElementById("errorMsg");
+const videoContainer = document.getElementById("videoContainer");
+const video = document.getElementById("secureVideo");
+
+submitBtn.onclick = async () => {
+    const password = passwordInput.value;
+
+    // Call backend to validate password and get video URL
+    const response = await fetch("/getVideoLink", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+        // Show video
+        video.src = data.videoUrl;
+        videoContainer.style.display = "block";
+        document.getElementById("loginContainer").style.display = "none";
+    } else {
+        errorMsg.textContent = "Invalid password!";
+    }
+};
+
+// Disable right-click & download
+video.addEventListener("contextmenu", e => e.preventDefault());
+video.setAttribute("controlsList", "nodownload");
+video.setAttribute("disablePictureInPicture", true);
+
+</script>
+
+
   
 
-<button onclick="openPDF()" class="pdf-btn">
+<!-- <button onclick="openPDF()" class="pdf-btn">
   📄 View PDF
 </button>
 
@@ -70,7 +120,7 @@ function openPDF() {
   }
 }
 </script>
-
+ -->
 
 
 
