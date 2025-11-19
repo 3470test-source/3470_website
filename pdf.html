@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -97,7 +97,7 @@ video.addEventListener("contextmenu", e => e.preventDefault());
 video.setAttribute("controlsList", "nodownload");
 video.setAttribute("disablePictureInPicture", true);
 
-</script>
+</script> -->
 
 
   
@@ -167,5 +167,62 @@ document.addEventListener('keydown', function(e) {
 </script> -->
 
     
+<!-- </body>
+</html> -->
+
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Drive-hosted video player</title>
+
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+  <style>
+    body { font-family: Arial, sans-serif; background:#f3f7f6; padding:30px; }
+    .video-item { max-width:900px; margin:0 auto; background:#fff; padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    h2 { text-align:center; margin-top:0; color:#0b5575; }
+    .player-wrap { position:relative; padding-top:56.25%; } /* 16:9 */
+    video { position:absolute; top:0; left:0; width:100%; height:100%; border-radius:6px; background:#000; }
+    .note { font-size:13px; color:#555; margin-top:10px; text-align:center; }
+  </style>
+</head>
+<body>
+
+  <div class="video-item">
+    <h2>0 SERIES - ANESTHESIA</h2>
+
+    <div class="player-wrap">
+      <video id="player" playsinline controls
+             poster="https://img.youtube.com/vi/l9hyhiHcGq0/maxresdefault.jpg">
+        <!-- Your Google Drive direct-download link goes here -->
+        <source src="https://drive.google.com/uc?export=download&id=1oPgJs7eif__cSgfJOD69v9b6EPMZ_opJ" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <p class="note">Right-click is disabled on the player; heavy downloads may be blocked by Drive for large traffic.</p>
+  </div>
+
+  <!-- Plyr JS -->
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+  <script>
+    // Initialize Plyr
+    const player = new Plyr('#player', {
+      controls: ['play-large','play','progress','current-time','mute','volume','captions','settings','fullscreen'],
+      settings: ['quality','speed']
+    });
+
+    // Disable right-click on the video element
+    document.querySelector('#player').addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // Optional: disable dragging the video
+    document.querySelector('#player').addEventListener('dragstart', e => e.preventDefault());
+  </script>
+
 </body>
 </html>

@@ -9,13 +9,10 @@
     </title>
 
     <style>
-
       body {
         background: linear-gradient(120deg, #87aca3, #9cdbd2);
       }
-
     </style>
-
 
     <!-- Css - Styles -->
     <link rel="stylesheet" href="styles.css" />
@@ -50,10 +47,13 @@
           </button>
 
           <div class="dropdown-menu" id="profileMenu">
-            <a href="tests_quiz.html"><i class="fas fa-cog"></i>Account Settings</a>
+            <a href="tests_quiz.html"
+              ><i class="fas fa-cog"></i>Account Settings</a
+            >
             <a href="#"><i class="fas fa-user"></i>Profile</a>
             <a href="login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
           </div>
+          
         </div>
       </div>
     </header>
@@ -62,205 +62,283 @@
     <div class="dashboard">
       <aside class="sidebar" id="sidebar">
         <ul>
-          <li><a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
-          <li><a href="topics.html"><i class="fa-solid fa-layer-group"></i> Topics</a></li>
-          <li><a href="course_materials.html"><i class="fa-solid fa-folder-open"></i> Course Materials</a></li>
-          <li><a href="course_video.html"><i class="fa-solid fa-video"></i> Course Videos</a></li>
-          <li><a href="tests_quiz.html"><i class="fa-solid fa-pen-to-square"></i> Tests</a></li>
-          <li><a href="test_score.html"><i class="fa-solid fa-chart-line"></i> Score %</a></li>
-          <li><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+          <li>
+            <a href="dashboard.html"
+              ><i class="fa-solid fa-chart-pie"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="topics.html"
+              ><i class="fa-solid fa-layer-group"></i> Topics</a
+            >
+          </li>
+          <li>
+            <a href="course_materials.html"
+              ><i class="fa-solid fa-folder-open"></i> Course Materials</a
+            >
+          </li>
+          <li>
+            <a href="course_video.html"
+              ><i class="fa-solid fa-video"></i> Course Videos</a
+            >
+          </li>
+          <li>
+            <a href="tests_quiz.html"
+              ><i class="fa-solid fa-pen-to-square"></i> Tests</a
+            >
+          </li>
+          <li>
+            <a href="test_score.html"
+              ><i class="fa-solid fa-chart-line"></i> Score %</a
+            >
+          </li>
+          <li>
+            <a href="login.html"
+              ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+            >
+          </li>
         </ul>
       </aside>
 
-
-      <!-- <main class="video-content">
+      <main class="dash-video-content">
         <h1>Course Videos</h1>
-        <div class="video-container">
-          <video controls width="400">
-            <source src="https://youtu.be/IQDuRIFKD1o" type="video/mp4" />
-          </video>
-          <video controls width="400">
-            <source src="assets/videos/module2.mp4" type="video/mp4" />
-          </video>
+
+        <div class="dash-video-container">
+          <div class="video-item">
+            <h2>0 SERIES - ANESTHESIA</h2>
+
+
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"
+              title="YouTube video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+
+
+
+          <div class="video-item">
+  <h2>1 SERIES PART 1</h2>
+  <video
+    src="pdf_file/screen_capture.mp4"
+    controls
+    controlsList="nodownload"
+    oncontextmenu="return false;"
+    style="width:100%; height:auto;"
+  ></video>
+</div>
+
+
+          <!-- <div class="video-item">
+            <h2>1 SERIES PART 1</h2>
+            <iframe
+              src="pdf_file/screen_capture.mp4"
+              allowfullscreen
+            ></iframe>
+          </div> -->
+
+
+          <div class="video-item">
+            <h2>1 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/RgceVDWJxjs"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>2 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/Hfm5AHZ2XSM"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>2 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/-_9c9HURDM4"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>3 SERIES FULL</h2>
+            <iframe
+              src="https://www.youtube.com/embed/HASrOB8meng"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>4 SERIES FULL</h2>
+            <iframe
+              src="https://www.youtube.com/embed/otCS4TH0Eh0"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>5 SERIES</h2>
+            <iframe
+              src="https://www.youtube.com/embed/Zw2SGnKJvjo"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>6 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/lw9ALNE7igQ"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>6 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/UNC-HHa8OfE"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>7 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/SJUyD79A3go"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>7 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/FP0ukFBXZE4"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>8 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/psF4iGrI9AI"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>8 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/XdsB-4cCrS8"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>9 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/EkKOHM27JRE"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>9 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/MAmuYpOKN74"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>9 SERIES PART 3</h2>
+            <iframe
+              src="https://www.youtube.com/embed/CfLe9EuEEUE"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>99 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/9ityErKQaUo"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>99 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/uSQICq1GXz8"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>COMPLIANCE</h2>
+            <iframe
+              src="https://www.youtube.com/embed/fXtT1pDZ5LI"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>ICD 10 PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/hbhHkg5oRLY"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>ICD 10 PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/cDmT9ZLXz7Q"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
-      </main> -->
-
-
-    <main class="dash-video-content">
-     <h1>Course Videos</h1>
-
-    <div class="dash-video-container">
-      
-   <!-- 
-      <div class="video-item">
-        <h2>0 SERIES - ANESTHESIA</h2>
-        <iframe src="https://www.youtube.com/embed/hRBX6D9kIsQ" allowfullscreen></iframe>
-      </div> -->
-
-
-
-
- 
-      <div class="video-item">
-      <h2>0 SERIES - ANESTHESIA</h2>
-
-  <!-- <iframe 
-    width="560" 
-    height="315"
-    src="https://www.youtube-nocookie.com/embed/hRBX6D9kIsQ?controls=0&rel=0&modestbranding=1"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe> -->
-
-<!-- <iframe width="560" height="315"
-    src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?modestbranding=1&rel=0"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-</iframe> -->
-
-
-
-<iframe
-    width="560"
-    height="315"
-    src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"
-    title="YouTube video"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-></iframe>
-
-
-
- <!-- <iframe width="560" height="315"
-    src="https://www.youtube.com/embed/hRBX6D9kIsQ"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-</iframe> -->
-</div>
-
-
-      <div class="video-item">
-        <h2>1 SERIES PART 1</h2>
-        <iframe src="https://www.youtube.com/embed/T57OcWFvvEk" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>1 SERIES PART 2</h2>
-        <iframe src="https://www.youtube.com/embed/RgceVDWJxjs" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>2 SERIES PART 1</h2>
-        <iframe src="https://www.youtube.com/embed/Hfm5AHZ2XSM" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>2 SERIES PART 2</h2>
-        <iframe src="https://www.youtube.com/embed/-_9c9HURDM4" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>3 SERIES FULL</h2>
-        <iframe src="https://www.youtube.com/embed/HASrOB8meng" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>4 SERIES FULL</h2>
-        <iframe src="https://www.youtube.com/embed/otCS4TH0Eh0" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>5 SERIES</h2>
-        <iframe src="https://www.youtube.com/embed/Zw2SGnKJvjo" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>6 SERIES PART 1</h2>
-        <iframe src="https://www.youtube.com/embed/lw9ALNE7igQ" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>6 SERIES PART 2</h2>
-        <iframe src="https://www.youtube.com/embed/UNC-HHa8OfE" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>7 SERIES PART 1</h2>
-        <iframe src="https://www.youtube.com/embed/SJUyD79A3go" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>7 SERIES PART 2</h2>
-        <iframe src="https://www.youtube.com/embed/FP0ukFBXZE4" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>8 SERIES PART 1</h2>
-        <iframe src="https://www.youtube.com/embed/psF4iGrI9AI" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>8 SERIES PART 2</h2>
-        <iframe src="https://www.youtube.com/embed/XdsB-4cCrS8" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>9 SERIES PART 1</h2>
-        <iframe src="https://www.youtube.com/embed/EkKOHM27JRE" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>9 SERIES PART 2</h2>
-        <iframe src="https://www.youtube.com/embed/MAmuYpOKN74" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>9 SERIES PART 3</h2>
-        <iframe src="https://www.youtube.com/embed/CfLe9EuEEUE" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>99 SERIES PART 1</h2>
-        <iframe src="https://www.youtube.com/embed/9ityErKQaUo" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>99 SERIES PART 2</h2>
-        <iframe src="https://www.youtube.com/embed/uSQICq1GXz8" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>COMPLIANCE</h2>
-        <iframe src="https://www.youtube.com/embed/fXtT1pDZ5LI" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>ICD 10 PART 1</h2>
-        <iframe src="https://www.youtube.com/embed/hbhHkg5oRLY" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-item">
-        <h2>ICD 10 PART 2</h2>
-        <iframe src="https://www.youtube.com/embed/cDmT9ZLXz7Q" allowfullscreen></iframe>
-      </div>
-
+      </main>
     </div>
-  </main>
-</div>
 
     <!-- Javascript -->
     <script src="main.js" defer></script>
 
+    <!-- <script>
+      // Disable right-click on iframe
+      const iframe = document.querySelector("iframe");
+      iframe.addEventListener("contextmenu", (e) => e.preventDefault());
+    </script> -->
 
-    <script>
-// Disable right-click on iframe
-const iframe = document.querySelector("iframe");
-iframe.addEventListener("contextmenu", e => e.preventDefault());
+
+
+<script>
+  document.getElementById("video-container").addEventListener("click", function () {
+    this.innerHTML = `
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?autoplay=1&rel=0&modestbranding=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    `;
+  });
 </script>
+
+
+
+
+
+
+
+
 
 
   </body>

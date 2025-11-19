@@ -1550,12 +1550,10 @@ footer {
 
 }
 
-
 .input-group input::placeholder {
   color: white;
   
 }
-
 
 /* password-icon */
 .input-group .toggle-password {
