@@ -1,10 +1,81 @@
-const express = require("express");
-const app = express();
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YouTube Private Video Handler</title>
+    <link rel="stylesheet" href="style.css" />
 
-app.get("/", (req, res) => {
-  res.send("Backend working!");
-});
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
+      input {
+        padding: 10px;
+        width: 250px;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>YouTube Private Video Handler</h1>
+
+    <input id="videoId" placeholder="Enter YouTube Video ID" />
+    <button onclick="checkVideo()">Check Video</button>
+
+    <div id="result"></div>
+
+
+    <script src="script.js"></script>
+
+    <script>
+      function checkVideo() {
+        const videoId = document.getElementById("videoId").value;
+
+        fetch(`http://localhost:5000/check-video/${videoId}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === "PRIVATE") {
+              document.getElementById("result").innerHTML = `
+          <p style="color:red">Video is PRIVATE</p>
+          <button onclick="requestPermission('${videoId}')">
+            Request Permission
+          </button>
+        `;
+            } else if (data.status === "PUBLIC") {
+              document.getElementById("result").innerHTML = `
+          <p style="color:green">Video is PUBLIC</p>
+          <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/${videoId}" 
+            allowfullscreen></iframe>
+        `;
+            } else {
+              document.getElementById("result").innerHTML = "Video not found.";
+            }
+          });
+      }
+
+      function requestPermission(videoId) {
+        const userEmail = prompt("Enter your email for owner approval:");
+
+        fetch("http://localhost:5000/alert-owner", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userEmail, videoId }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            alert("Owner has been alerted. Please wait for permission.");
+          });
+      }
+    </script>
+
+    
+  </body>
+</html>
