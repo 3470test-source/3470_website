@@ -53,7 +53,6 @@
             <a href="#"><i class="fas fa-user"></i>Profile</a>
             <a href="login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
           </div>
-          
         </div>
       </div>
     </header>
@@ -103,10 +102,27 @@
       <main class="dash-video-content">
         <h1>Course Videos</h1>
 
+        <!-- Permission Request Form -->
+        <div id="accessRequest" class="request-box">
+          <h2>Unlock Video Access</h2>
+
+          <form id="course-requestForm">
+            <label>Email:</label>
+            <input type="email" name="email" required />
+
+            <label>Mobile:</label>
+            <input type="text" name="mobile" required />
+
+            <button type="submit">Request Access</button>
+          </form>
+
+          <p id="responseMsg"></p>
+        </div>
+
+        <!-- Course Videos - List -->
         <div class="dash-video-container">
           <div class="video-item">
             <h2>0 SERIES - ANESTHESIA</h2>
-
 
             <iframe
               width="560"
@@ -119,29 +135,16 @@
             ></iframe>
           </div>
 
-
-
-
-  <div class="video-item">
-  <h2>1 SERIES PART 1</h2>
-  <video
-    src="pdf_file/screen_capture.mp4"
-    controls
-    controlsList="nodownload"
-    oncontextmenu="return false;"
-    style="width:100%; height:auto;"
-  ></video>
-</div>
-
-
-          <!-- <div class="video-item">
+          <div class="video-item">
             <h2>1 SERIES PART 1</h2>
-            <iframe
+            <video
               src="pdf_file/screen_capture.mp4"
-              allowfullscreen
-            ></iframe>
-          </div> -->
-
+              controls
+              controlsList="nodownload"
+              oncontextmenu="return false;"
+              style="width: 100%; height: auto"
+            ></video>
+          </div>
 
           <div class="video-item">
             <h2>1 SERIES PART 2</h2>
@@ -150,7 +153,7 @@
               allowfullscreen
             ></iframe>
           </div>
-          
+
           <div class="video-item">
             <h2>2 SERIES PART 1</h2>
             <iframe
@@ -316,21 +319,55 @@
     </script> -->
 
 
+    <!-- <script>
+      document
+        .getElementById("video-container")
+        .addEventListener("click", function () {
+          this.innerHTML = (
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?autoplay=1&rel=0&modestbranding=1"
+              frameborder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          );
+        });
+    </script> -->
 
-<script>
-  document.getElementById("video-container").addEventListener("click", function () {
-    this.innerHTML = 
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?autoplay=1&rel=0&modestbranding=1"
-        frameborder="0"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-    ;
-  });
-  
-</script>
+
+
+    <script>
+      document
+        .getElementById("course-requestForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let formData = new FormData(this);
+
+          fetch("http://localhost:3000/send-request", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              if (data.trim() === "SUCCESS") {
+                document.getElementById("responseMsg").innerText =
+                  "Request sent ! You will get access once the owner approves.";
+              } else {
+                document.getElementById("responseMsg").innerText =
+                  "Something went wrong.";
+              }
+            })
+            .catch((error) => {
+              console.log("FETCH ERROR:", error);
+              document.getElementById("responseMsg").innerText =
+                "Server error! Try again later.";
+            });
+        });
+    </script>
+
+    
   </body>
 </html>

@@ -1,73 +1,60 @@
 const express = require("express");
-const axios = require("axios");
-const cors = require("cors");
+const multer = require("multer");
 const nodemailer = require("nodemailer");
+const cors = require("cors");
 
+
+const upload = multer();
 const app = express();
-app.use(cors());
+
+
+// Allow frontend 127.0.0.1 to call backend
+app.use(cors({
+  origin: "http://127.0.0.1:5500"
+}));
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(upload.none());
 
-// --- CONFIG ----
-const API_KEY = "YOUR_YOUTUBE_API_KEY"; // Add your API key here
-const OWNER_EMAIL = "owner@gmail.com";  // Owner of the private video
-const ALERT_SENDER_EMAIL = "your-email@gmail.com"; // Sender
-const ALERT_SENDER_PASSWORD = "your-email-password"; // App password
+// POST route
+app.post("/send-request", async (req, res) => {
+  const email = req.body.email;
+  const mobile = req.body.mobile;
 
-// --- CHECK IF VIDEO PRIVATE ----
-app.get("/check-video/:videoId", async (req, res) => {
-  const videoId = req.params.videoId;
+  console.log("Email:", email);
+  console.log("Mobile:", mobile);
+
+  // EMAIL CONFIG
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "3470test@gmail.com",      // <-- YOUR Gmail here
+      pass: "oprb rroy kumw nzns",          // <-- Your Google App Password
+    },
+  });
+
+  // EMAIL CONTENT
+  let mailOptions = {
+    from: "3470test@gmail.com",        // Sender email
+    to: "vignesh.g@3470healthcare.com",              // <-- OWNER email (receives requests)
+    subject: "New Course Video Access Request",
+    text: `A student requested access:\n\nEmail: ${email}\nMobile: ${mobile}`,
+  };
 
   try {
-    const url = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=status&key=${API_KEY}`;
+    await transporter.sendMail(mailOptions);
+    console.log("Mail sent!");
 
-    const response = await axios.get(url);
-
-    if (response.data.items.length === 0) {
-      return res.send({ status: "NOT_FOUND" });
-    }
-
-    const privacyStatus = response.data.items[0].status.privacyStatus;
-
-    return res.send({
-      status: privacyStatus.toUpperCase(),
-    });
-  } catch (error) {
-    return res.status(500).send({ error: "API Error" });
+    res.send("SUCCESS");
+  } catch (err) {
+    console.error("Email error:", err);
+    res.send("ERROR");
   }
 });
 
-// --- SEND PERMISSION ALERT TO OWNER ----
-app.post("/alert-owner", async (req, res) => {
-  const { userEmail, videoId } = req.body;
-
-  try {
-    let transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: ALERT_SENDER_EMAIL,
-        pass: ALERT_SENDER_PASSWORD,
-      },
-    });
-
-    let info = await transporter.sendMail({
-      from: ALERT_SENDER_EMAIL,
-      to: OWNER_EMAIL,
-      subject: "YouTube Video Access Request",
-      html: `
-        <h2>Permission Request</h2>
-        <p>User Email: <b>${userEmail}</b></p>
-        <p>Requested Video: <b>${videoId}</b></p>
-        <p>Please open YouTube Studio → Video → Permissions → Add their email.</p>
-      `,
-    });
-
-    return res.send({ success: true, message: "Owner alerted!" });
-  } catch (error) {
-    return res.status(500).send({ error: "Email send failed" });
-  }
+// Start server
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
 });
 
-// --- SERVER START ----
-app.listen(5000, () => {
-  console.log("Backend running at http://localhost:5000");
-});
