@@ -89,31 +89,160 @@
 
 
 
+// const express = require("express");
+// const multer = require("multer");
+// const nodemailer = require("nodemailer");
+// const cors = require("cors");
+
+// const upload = multer();
+// const app = express();
+
+// //Allow frontend 127.0.0.1 to call backend
+
+// app.use(
+//   cors({
+//     origin: "http://127.0.0.1:5500",
+//   })
+// );
+
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(upload.none());
+
+// // 🔹 Gmail Transporter
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "3470test@gmail.com", // your Gmail
+//     pass: "oprb rroy kumw nzns", // Gmail App password
+//   },
+// });
+
+// /*------------------------------------------------------------------
+//     1) USER SENDS REQUEST (email + mobile)
+// -------------------------------------------------------------------*/
+
+// app.post("/send-request", async (req, res) => {
+//   const email = req.body.email;
+//   const mobile = req.body.mobile;
+
+//   console.log("Request From:", email, mobile);
+
+//   const mailOptions = {
+//     from: "3470test@gmail.com",
+//     to: "vignesh.g@3470healthcare.com", // owner
+//     replyTo: email,
+//     subject: "New Course Video Access Request",
+//     text: `New access request:\n\nEmail: ${email}\nMobile: ${mobile}`,
+//   };
+
+//   try {
+//     await transporter.sendMail(mailOptions);
+//     console.log("Request Mail Sent");
+//     res.send("SUCCESS");
+//   } catch (err) {
+//     console.error("Email error:", err);
+//     res.send("ERROR");
+//   }
+// });
+
+// /*------------------------------------------------------------------
+//     2) OWNER GRANTS ACCESS → USER SHOULD BE NOTIFIED
+//     (Admin calls this endpoint)
+// -------------------------------------------------------------------*/
+
+// app.post("/grant-access", async (req, res) => {
+//   const email = req.body.email; // user email
+
+//   if (!email) return res.status(400).send("MISSING_EMAIL");
+
+//   console.log("Granting access to:", email);
+
+//   const mailOptions = {
+//     from: "3470test@gmail.com",
+//     to: email, // user gets email
+//     subject: "Your Course Video Access is Approved!",
+//     text: `Hi,\n\nYour access request has been APPROVED.\nYou can now access the course.\n\nThanks,\nCourse Team`,
+//     html: `
+//       <p>Hi,</p>
+//       <p>Your access request has been <strong style="color:green;">APPROVED</strong>.</p>
+//       <p>You can now watch the course videos.</p>
+//       <br/>
+//       <p>Regards,<br/>Course Team</p>
+//     `,
+//   };
+
+
+//   try {
+//     await transporter.sendMail(mailOptions);
+//     console.log("Approval Mail Sent to User");
+//     res.send("GRANTED_AND_NOTIFIED");
+//   } catch (err) {
+//     console.error("Approval email failed:", err);
+//     res.send("ERROR");
+//   }
+// });
+
+// /*------------------------------------------------------------------
+//     START SERVER
+// -------------------------------------------------------------------*/
+// app.listen(3000, () => {
+//   console.log("Server running on http://localhost:3000");
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const express = require("express");
-const multer = require("multer");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 
-const upload = multer();
 const app = express();
 
-// Allow frontend 127.0.0.1 to call backend
+// Allow frontend 127.0.0.1 and localhost
 app.use(
   cors({
-    origin: "http://127.0.0.1:5500",
+    origin: ["http://127.0.0.1:5500", "http://localhost:5500"],
   })
 );
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(upload.none());
 
-// 🔹 Gmail Transporter
+// Gmail Transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "3470test@gmail.com", // your Gmail
-    pass: "oprb rroy kumw nzns", // Gmail App password
+    user: "3470test@gmail.com",
+    pass: "oprbrroykumwnzns", // FIXED: App password NO spaces
   },
 });
 
@@ -121,14 +250,17 @@ const transporter = nodemailer.createTransport({
     1) USER SENDS REQUEST (email + mobile)
 -------------------------------------------------------------------*/
 app.post("/send-request", async (req, res) => {
-  const email = req.body.email;
-  const mobile = req.body.mobile;
+  const { email, mobile } = req.body;
+
+  if (!email || !email.includes("@")) {
+    return res.send("INVALID_EMAIL");
+  }
 
   console.log("Request From:", email, mobile);
 
   const mailOptions = {
     from: "3470test@gmail.com",
-    to: "vignesh.g@3470healthcare.com", // owner
+    to: "vignesh.g@3470healthcare.com",
     replyTo: email,
     subject: "New Course Video Access Request",
     text: `New access request:\n\nEmail: ${email}\nMobile: ${mobile}`,
@@ -146,20 +278,20 @@ app.post("/send-request", async (req, res) => {
 
 /*------------------------------------------------------------------
     2) OWNER GRANTS ACCESS → USER SHOULD BE NOTIFIED
-    (Admin calls this endpoint)
 -------------------------------------------------------------------*/
 app.post("/grant-access", async (req, res) => {
-  const email = req.body.email; // user email
+  const { email } = req.body;
 
-  if (!email) return res.status(400).send("MISSING_EMAIL");
+  if (!email || !email.includes("@")) {
+    return res.status(400).send("INVALID_EMAIL");
+  }
 
   console.log("Granting access to:", email);
 
   const mailOptions = {
     from: "3470test@gmail.com",
-    to: email, // user gets email
+    to: email,
     subject: "Your Course Video Access is Approved!",
-    text: `Hi,\n\nYour access request has been APPROVED.\nYou can now access the course.\n\nThanks,\nCourse Team`,
     html: `
       <p>Hi,</p>
       <p>Your access request has been <strong style="color:green;">APPROVED</strong>.</p>
@@ -171,7 +303,7 @@ app.post("/grant-access", async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log("Approval Mail Sent to User");
+    console.log("Approval Mail Sent");
     res.send("GRANTED_AND_NOTIFIED");
   } catch (err) {
     console.error("Approval email failed:", err);
@@ -185,3 +317,191 @@ app.post("/grant-access", async (req, res) => {
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const express = require("express");
+// const cors = require("cors");
+// const nodemailer = require("nodemailer");
+
+// const app = express();
+
+// // Allow frontend (127.0.0.1 + localhost)
+// app.use(
+//   cors({
+//     origin: ["http://127.0.0.1:5500", "http://localhost:5500"],
+//   })
+// );
+
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+
+// // Gmail Transporter
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "3470test@gmail.com",
+//     pass: "oprbrroykumwnzns", // Your Gmail App Password (NO SPACES)
+//   },
+// });
+
+// /*------------------------------------------------------------------
+//    1) USER SENDS REQUEST (email + mobile)
+// -------------------------------------------------------------------*/
+// app.post("/send-request", async (req, res) => {
+//   const email = req.body.email;
+//   const mobile = req.body.mobile;
+
+//   console.log("Received From Frontend:", req.body);
+
+//   if (!email || !email.includes("@")) {
+//     return res.send("INVALID_EMAIL");
+//   }
+
+//   /*-----------------------------------
+//       Mail to OWNER
+//   -----------------------------------*/
+//   const ownerMail = {
+//     from: "3470test@gmail.com",
+//     to: "vignesh.g@3470healthcare.com",
+//     subject: "New Course Video Access Request",
+//     text: `New access request:\n\nEmail: ${email}\nMobile: ${mobile}`,
+//   };
+
+//   /*-----------------------------------
+//       Auto Reply to USER
+//   -----------------------------------*/
+//   const userMail = {
+//     from: "3470test@gmail.com",
+//     to: email,
+//     subject: "We have received your request",
+//     html: `
+//         <p>Hi,</p>
+//         <p>Your request for course access has been received.</p>
+//         <p>You will get approval soon.</p>
+//         <br/>
+//         <p>Regards,<br/>Course Team</p>
+//     `,
+//   };
+
+//   try {
+//     await transporter.sendMail(ownerMail);
+//     await transporter.sendMail(userMail);
+
+//     console.log("User reply sent to:", email);
+
+//     res.send("SUCCESS");
+//   } catch (err) {
+//     console.log("Email error:", err);
+//     res.send("ERROR");
+//   }
+// });
+
+// /*------------------------------------------------------------------
+//    2) OWNER GRANTS ACCESS → USER GETS APPROVAL MAIL
+// -------------------------------------------------------------------*/
+// app.post("/grant-access", async (req, res) => {
+//   const email = req.body.email;
+
+//   if (!email || !email.includes("@")) {
+//     return res.status(400).send("INVALID_EMAIL");
+//   }
+
+//   console.log("Granting Access To:", email);
+
+//   const mailOptions = {
+//     from: "3470test@gmail.com",
+//     to: email,
+//     subject: "Your Course Access is Approved!",
+//     html: `
+//       <p>Hi,</p>
+//       <p>Your access request has been <strong style="color:green;">APPROVED</strong>.</p>
+//       <p>You may now watch the course videos.</p>
+//       <br/>
+//       <p>Regards,<br/>Course Team</p>
+//     `,
+//   };
+
+//   try {
+//     await transporter.sendMail(mailOptions);
+
+//     console.log("Approval Mail Sent To:", email);
+
+//     res.send("GRANTED_AND_NOTIFIED");
+//   } catch (err) {
+//     console.error("Approval Mail Error:", err);
+//     res.send("ERROR");
+//   }
+// });
+
+// /*------------------------------------------------------------------
+//    START SERVER
+// -------------------------------------------------------------------*/
+// app.listen(3000, () => {
+//   console.log("Server running at http://localhost:3000");
+// });
+
+
