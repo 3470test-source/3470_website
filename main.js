@@ -383,6 +383,57 @@ setInterval(nextSlide, 3000);
 //  --------------------------------------------------------------------------------------------------------     
 
 
+                    //  Admin Portal
+
+
+async function approveAccess() {
+  let email = document.getElementById("email").value;
+  let msg = document.getElementById("Admin-msg");
+
+  if (!email) {
+    msg.innerText = "Enter user email!";
+    msg.style.color = "red";
+
+    setTimeout(() => { msg.innerText = ""; }, 5000);
+    return;
+  }
+
+  let fd = new FormData();
+  fd.append("email", email);
+
+  let res = await fetch("http://localhost:3000/grant-access", {
+    method: "POST",
+    body: fd
+  });
+
+  let text = (await res.text()).trim();
+
+  if (text === "GRANTED_AND_NOTIFIED") {
+    msg.style.color = "green";
+    msg.innerText = "Access granted! User notified.";
+
+    // ✅ CLEAR INPUT BOX (RESET)
+    document.getElementById("email").value = "";
+
+  } else if (text === "MISSING_EMAIL") {
+    msg.style.color = "red";
+    msg.innerText = "Email missing!";
+  } else {
+    msg.style.color = "red";
+    msg.innerText = "Error sending email!";
+  }
+
+  // ⏳ Auto clear message after 5 seconds
+  setTimeout(() => {
+    msg.innerText = "";
+  }, 5000);
+}
+                    
+
+
+// -------------------------------------------------------------------------------------------------
+
+
 
     
 

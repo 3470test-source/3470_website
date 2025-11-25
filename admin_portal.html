@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Owner Access Portal</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 40px;
+        background: #fafafa;
+      }
+      
+      .box {
+        width: 350px;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ccc;
+      }
+
+      h2 {
+        text-align: center;
+        color: #1d75af;
+        font-size: 35px;
+      }
+
+      input {
+        width: 98%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #aaa;
+        font-size: 15px;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #15b33c;
+        box-shadow: 0 0 5px #04701655;
+      }
+      
+      button {
+        width: 99.5%;
+        margin-top: 18px;
+        padding: 12px;
+        background: green;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: darkgreen;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Admin Access Portal -->
+    <h2>Owner Access Panel</h2>
+
+    <input type="email" id="email" placeholder="Enter user email to approve" />
+    <button onclick="approveAccess()">APPROVE ACCESS</button>
+
+    <p id="Admin-msg"></p>
+
+    <!-- Javascript -->
+    <script src="main.js" defer></script>
+
+  </body>
+</html>
