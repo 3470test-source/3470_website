@@ -30,12 +30,12 @@ app.post("/send-request", upload.none(), async (req, res) => {
   const { username, email, mobile } = req.body;
 
   if (!username || !email || !mobile) {
-    return res.send("ERROR");
+    return res.status(400).send("ERROR — Missing required fields");
   }
 
   const adminMail = {
-    from: `"Course Access" <3470test@gmail.com>`,
-    to: "vignesh.g@3470healthcare.com",
+    from: `"3470 Healthcare | Course Access Request" <3470test@gmail.com>`,
+    to: "vignesh.g@3470healthcare.com, viratvicky1811@gmail.com",
 
     // WORKING REPLY-TO
     replyTo: email,
@@ -43,19 +43,39 @@ app.post("/send-request", upload.none(), async (req, res) => {
     // OPTIONAL CC (turn ON if you want)
     // cc: email,
 
-    subject: "New Course Video Access Request",
+    subject: `New Access Request - ${username}`,
     html: `
+      <div style="font-family:Arial;padding:15px;border:1px solid #e5e5e5;border-radius:8px;
+      background:#f9fbff;max-width:500px;">
+      
+      <h2 style='color:blue;'>New Course Video Access Request</h2>
+
+      <p>Dear Admin,</p>
+
+      <p>A new user has requested access to the course videos. Details are below:</p>
       <p><strong>Username:</strong> ${username}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Mobile:</strong> ${mobile}</p>
-      <br>
-      <p>You can directly reply to this email. The reply will go to the user.</p>
+
+      <hr style="margin:15px 0;">
+    
+      <p>Please review & provide access.</p>
+
+      <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
+        3470 Healthcare Training & Certification Program
+      </p>
+
+      <p style="margin-top:5px;font-size:14px;font-weight:600;">
+       Regards,<br>
+       Course Team
+      </p>
+      </div>
     `,
   };
 
   try {
     await transporter.sendMail(adminMail);
-    console.log("Admin mail sent");
+    console.log("Admin mail sent successfully");
     res.send("SUCCESS");
   } catch (err) {
     console.log("Mail Error:", err);
@@ -76,14 +96,26 @@ app.post("/grant-access", upload.none(), async (req, res) => {
     to: email,
     subject: "Your Course Video Access Has Been Approved ✅",
     html: `
-    <h2 style='color:green;'>Access Granted – You Can Now View the Course Videos</h2>
+    <div style="font-family:Arial;padding:20px;border:1px solid #e5e5e5;border-radius:8px;
+      background:#f9fbff;max-width:550px;">
 
-    <p>Dear student - ${email},</p>
-    <p>Your request has been reviewed and <b>approved</b>.</p>
-    <p>You can now watch all course videos anytime.</p>
+      <h2 style='color:green;'>Access Granted – You Can Now View the Course Videos</h2>
 
-    <br>
-    <p>Regards,<br/>Course Team</p>
+      <p>Dear student,</p>
+      <p>Your request has been reviewed and <b>approved</b>.</p>
+      <p>You can now watch all course videos anytime.</p>
+
+      <hr style="margin:15px 0;">
+
+      <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
+      3470 Healthcare Training & Certification Program
+      </p>
+
+      <p style="margin-top:5px;font-size:14px;font-weight:600;">
+      Regards,<br>
+      Course Team
+      </p>
+    </div>
     `,
   };  
 
