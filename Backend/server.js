@@ -1,4 +1,3 @@
-
 const express = require("express");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
@@ -8,6 +7,7 @@ const upload = multer();
 const app = express();
 
 // Allow frontend
+
 app.use(
   cors({
     origin: "http://127.0.0.1:5500",
@@ -24,7 +24,7 @@ const transporter = nodemailer.createTransport({
 });
 
 /*------------------------------------------------------------------
-   1) USER SENDS REQUEST → EMAIL GOES TO OWNER
+   1) USER SENDS REQUEST → EMAIL GOES TO OWNER  + SAVE TO EXCEL
 -------------------------------------------------------------------*/
 app.post("/send-request", upload.none(), async (req, res) => {
   const { username, email, mobile } = req.body;
@@ -33,9 +33,10 @@ app.post("/send-request", upload.none(), async (req, res) => {
     return res.status(400).send("ERROR — Missing required fields");
   }
 
+  // Send email to admin
   const adminMail = {
     from: `"3470 Healthcare | Course Access Request" <3470test@gmail.com>`,
-    to: "vignesh.g@3470healthcare.com, viratvicky1811@gmail.com",
+    to: "vignesh.g@3470healthcare.com",
 
     // WORKING REPLY-TO
     replyTo: email,
@@ -117,7 +118,7 @@ app.post("/grant-access", upload.none(), async (req, res) => {
       </p>
     </div>
     `,
-  };  
+  };
 
   try {
     await transporter.sendMail(userMail);
@@ -132,21 +133,7 @@ app.post("/grant-access", upload.none(), async (req, res) => {
 /*------------------------------------------------------------------
    START SERVER
 -------------------------------------------------------------------*/
+
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

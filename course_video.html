@@ -381,9 +381,8 @@
               }
 
               // Clear message after 5 seconds
-              setTimeout(() => {
-                msg.innerText = "";
-              }, 6000);
+              setTimeout(()=> { msg.innerHTML=""; }, 5000);
+              
             })
             .catch((error) => {
               console.log("FETCH ERROR:", error);
@@ -392,9 +391,8 @@
               msg.style.color = "red";
 
               // Clear message after 5 seconds
-              setTimeout(() => {
-                msg.innerText = "";
-              }, 6000);
+             setTimeout(()=> { msg.innerHTML=""; }, 5000);
+
             });
         });
     </script>
