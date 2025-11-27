@@ -3,6 +3,13 @@ const multer = require("multer");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 
+
+
+
+
+
+
+
 const upload = multer();
 const app = express();
 
@@ -14,6 +21,9 @@ app.use(
   })
 );
 
+
+
+
 // Gmail transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -22,6 +32,46 @@ const transporter = nodemailer.createTransport({
     pass: "oprbrroykumwnzns", // Gmail app password
   },
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*------------------------------------------------------------------
    1) USER SENDS REQUEST → EMAIL GOES TO OWNER  + SAVE TO EXCEL
@@ -32,6 +82,17 @@ app.post("/send-request", upload.none(), async (req, res) => {
   if (!username || !email || !mobile) {
     return res.status(400).send("ERROR — Missing required fields");
   }
+
+
+
+
+
+  
+
+
+
+
+
 
   // Send email to admin
   const adminMail = {
