@@ -1,38 +1,86 @@
      // 🔐 Login Page Script
+// document.addEventListener("DOMContentLoaded", function () {
+//   const loginForm = document.getElementById("loginForm");
+//   const loginErrorDiv = document.getElementById("error");
+
+//   const users = [
+//     { email: "vignesh@gmail.com", password: "123456" },
+//     { email: "student@test.com", password: "password" },
+//   ];
+
+//   if (loginForm) {
+//     // ✅ only run if login form exists
+//     loginForm.addEventListener("submit", function (e) {
+//       e.preventDefault(); // stop page reload
+
+//       const email = document.getElementById("email").value.trim();
+//       const password = document.getElementById("password").value;
+
+//       const user = users.find(
+//         (u) => u.email === email && u.password === password
+//       );
+
+//       if (user) {
+//         if (loginErrorDiv) loginErrorDiv.style.display = "none";
+//         alert("Login successful!");
+//         window.location.href = "dashboard.html"; // redirect
+//       } else {
+//         if (loginErrorDiv) {
+//           loginErrorDiv.style.display = "block";
+//           loginErrorDiv.textContent = "Invalid credentials!";
+//         }
+//       }
+//     });
+//   }
+// });
+
+
+                   // 🔐 Login Page Script
+
+
 document.addEventListener("DOMContentLoaded", function () {
-  const loginForm = document.getElementById("loginForm");
-  const loginErrorDiv = document.getElementById("error");
+  const userOptions = document.querySelectorAll(".user-option");
+  const userTypeInput = document.getElementById("userType");
+  const errorMsg = document.getElementById("error");
 
-  const users = [
-    { email: "vignesh@gmail.com", password: "123456" },
-    { email: "student@test.com", password: "password" },
-  ];
-
-  if (loginForm) {
-    // ✅ only run if login form exists
-    loginForm.addEventListener("submit", function (e) {
-      e.preventDefault(); // stop page reload
-
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-
-      const user = users.find(
-        (u) => u.email === email && u.password === password
-      );
-
-      if (user) {
-        if (loginErrorDiv) loginErrorDiv.style.display = "none";
-        alert("Login successful!");
-        window.location.href = "dashboard.html"; // redirect
-      } else {
-        if (loginErrorDiv) {
-          loginErrorDiv.style.display = "block";
-          loginErrorDiv.textContent = "Invalid credentials!";
-        }
-      }
+  // Switch Login Type (Admin / Student)
+  userOptions.forEach(button => {
+    button.addEventListener("click", function(){
+      userOptions.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
+      userTypeInput.value = this.getAttribute("data-role");
     });
-  }
-});
+  });
+
+  // Login Submit
+  document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let role = document.getElementById("userType").value; // admin / student
+
+    // DEMO LOGIN (You can replace with database later)
+    if(role == "admin"){
+      if(email === "admin@gmail.com" && password === "admin123"){
+        window.location.href = "admin_portal.html";
+      }else{
+        errorMsg.style.display="block";
+        errorMsg.innerText="Invalid credentials!";
+      }
+    }
+
+    if(role == "student"){
+      if(email === "student@gmail.com" && password === "student123"){
+        window.location.href = "dashboard.html";
+      }else{
+        errorMsg.style.display="block";
+        errorMsg.innerText="Invalid credentials!";
+      }
+    }
+
+  });
+  });
 
 
 
