@@ -1705,6 +1705,7 @@ footer {
   gap: 160px;
 }
 
+
 .menu-toggle-dash {
   font-size: 25px;
   /* background: none; */
@@ -4608,6 +4609,7 @@ section h2::after {
 
 }
 
+
    /* Topic list */
 .topic-list {
   list-style: none;
@@ -4684,6 +4686,13 @@ section h2::after {
   text-align: center;
 }
 
+.materials-content p {
+  font-size: 20px;  
+  color: #363b36;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
 /* Materials container */
 .materials {
   display: grid;
@@ -4728,6 +4737,24 @@ section h2::after {
 .materials-item a:hover {
   background: #0077c2;
 }
+
+
+.materials-item .pdf-btn {
+  display: inline-block;
+  background: #306e9b;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.materials-item .pdf-btn:hover {
+  background: #1f4d70;
+}
+
 
 
   
@@ -5018,6 +5045,7 @@ main.dash-video-content {
   width: 50%; /* Example: 50% complete */
   border-radius: 10px;
   transition: width 0.4s ease-in-out;
+  
 }
 
 /* Responsive */
@@ -5030,9 +5058,16 @@ main.dash-video-content {
 
 
 
+
 /* --------------------------------------------------------------- */
 
 
 
 
 
+.portal-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 auto;
+  color: #006400;
+}
