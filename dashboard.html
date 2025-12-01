@@ -6,7 +6,16 @@
     <title>
       3470 HealthCare & Medical Coding Training Institute | Dashboard
     </title>
-    
+
+    <style>
+      /* .sidebar ul { list-style: none; padding: 0; }
+
+.sidebar ul li { position: relative; } */
+
+
+
+    </style>
+
     <!-- Css - Styles -->
     <link rel="stylesheet" href="styles.css" />
 
@@ -31,11 +40,12 @@
         />
       </div>
 
-      <!-- Add title here -->
+     <!-- Add title here -->
      <h2 class="portal-title">Student Study Portal</h2>
 
       <div class="right-section-dash">
         <input type="text" placeholder="Search..." class="search-bar" />
+        
         <div class="profile-dropdown">
           <button id="profileBtn">
             <i class="fa-solid fa-user-gear"></i>
@@ -55,7 +65,22 @@
       <aside class="sidebar" id="sidebar">
         <ul>
           <li><a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
-          <li><a href="topics.html"><i class="fa-solid fa-layer-group"></i> Topics</a></li>
+
+
+          <!-- Dropdown Topic -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topics 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="topics.html">CPC_Topic</a></li>
+      </ul>
+    </li>
+
+
+
+
+
           <li><a href="course_materials.html"><i class="fa-solid fa-folder-open"></i> Course Materials</a></li>
           <li><a href="course_video.html"><i class="fa-solid fa-video"></i> Course Videos</a></li>
           <li><a href="tests_quiz.html"><i class="fa-solid fa-pen-to-square"></i> Tests</a></li>
@@ -115,7 +140,29 @@
       </main>
     </div>
 
+  
+
     <!-- Javascript -->
     <script src="main.js" defer></script>
+
+       <!-- Dashboard Topic Dropdown  -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const topicBtn = document.querySelector(".Topic-dropdown-btn");
+      const topicContent = document.querySelector(".Topic-dropdown-content");
+      const arrow = document.querySelector(".Topic-dropdown-arrow");
+
+    if(topicBtn){  // prevents null error
+     topicBtn.addEventListener("click", () => {
+      topicContent.classList.toggle("dash-topic-show");
+      arrow.classList.toggle("rotate");
+    });
+  }
+
+});
+
+    </script>
+
   </body>
 </html>

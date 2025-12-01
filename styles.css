@@ -1732,6 +1732,15 @@ footer {
   font-weight: bold;
 }
 
+ /* Student  Portal Title */
+.portal-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 auto;
+  color: #0a7c43;
+}
+
+
 /* Right Header Section */
 .right-section-dash {
   display: flex;
@@ -1832,8 +1841,9 @@ footer {
 .sidebar {
   width: 220px;
   /* background-color: #34495e; */
+  /* background: linear-gradient(135deg, #01500e, #024e2f); */
 
-  background: linear-gradient(135deg, #01500e, #024e2f);
+  background: linear-gradient(180deg,#084a2a,#05352a);
   color: white;
   padding: 20px;
   min-height: calc(100vh - 60px);
@@ -4665,6 +4675,32 @@ section h2::after {
 }
 
 
+     /* Dashboard Topic Dropdown  */
+
+.Topic-dropdown-content {
+  display: none;
+  margin-left: 25px;
+  margin-top: 5px;
+}
+
+.Topic-dropdown-content li a {
+  font-size: 14px;
+  color: #fff;
+}
+
+.Topic-dropdown-arrow {
+  transition: transform 0.3s;
+}
+
+.Topic-dropdown-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.Topic-dropdown-btn { cursor: pointer; }
+
+.dash-topic-show { display: block; }
+
+
 
 /* ------------------------------------------------------------ */
 
@@ -5045,7 +5081,7 @@ main.dash-video-content {
   width: 50%; /* Example: 50% complete */
   border-radius: 10px;
   transition: width 0.4s ease-in-out;
-  
+
 }
 
 /* Responsive */
@@ -5065,9 +5101,4 @@ main.dash-video-content {
 
 
 
-.portal-title {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 0 auto;
-  color: #006400;
-}
+
