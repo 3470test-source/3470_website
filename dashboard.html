@@ -7,15 +7,6 @@
       3470 HealthCare & Medical Coding Training Institute | Dashboard
     </title>
 
-    <style>
-      /* .sidebar ul { list-style: none; padding: 0; }
-
-.sidebar ul li { position: relative; } */
-
-
-
-    </style>
-
     <!-- Css - Styles -->
     <link rel="stylesheet" href="styles.css" />
 
@@ -73,16 +64,30 @@
                <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
             </a>
             <ul class="Topic-dropdown-content">
-          <li><a href="topics.html">CPC_Topic</a></li>
+          <li><a href="topics.html">CPC Topic</a></li>
       </ul>
     </li>
 
+          <!-- Dropdown Course Materials -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-folder-open"></i> Course Materials 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_materials.html">CPC Course</a></li>
+      </ul>
+    </li>
 
+    <!-- Dropdown Course Videos -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-video"></i> Course Videos 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_video.html">CPC videos</a></li>
+      </ul>
+    </li>
 
-
-
-          <li><a href="course_materials.html"><i class="fa-solid fa-folder-open"></i> Course Materials</a></li>
-          <li><a href="course_video.html"><i class="fa-solid fa-video"></i> Course Videos</a></li>
           <li><a href="tests_quiz.html"><i class="fa-solid fa-pen-to-square"></i> Tests</a></li>
           <li><a href="test_score.html"><i class="fa-solid fa-chart-line"></i> Score %</a></li>
           <li><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
@@ -141,28 +146,29 @@
     </div>
 
   
-
     <!-- Javascript -->
     <script src="main.js" defer></script>
 
-       <!-- Dashboard Topic Dropdown  -->
+    <!-- Dashboard  sidebar full - Dropdown  -->
     <script>
     document.addEventListener("DOMContentLoaded", () => {
 
-      const topicBtn = document.querySelector(".Topic-dropdown-btn");
-      const topicContent = document.querySelector(".Topic-dropdown-content");
-      const arrow = document.querySelector(".Topic-dropdown-arrow");
+      const dropdownButtons = document.querySelectorAll(".Topic-dropdown-btn");
 
-    if(topicBtn){  // prevents null error
-     topicBtn.addEventListener("click", () => {
-      topicContent.classList.toggle("dash-topic-show");
+      dropdownButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+      
+      const content = btn.nextElementSibling;  // the <ul>
+      const arrow = btn.querySelector(".Topic-dropdown-arrow");
+
+      content.classList.toggle("dash-topic-show");
       arrow.classList.toggle("rotate");
     });
-  }
+  });
 
 });
+</script>
 
-    </script>
 
   </body>
 </html>

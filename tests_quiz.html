@@ -64,9 +64,41 @@
       <aside class="sidebar" id="sidebar">
         <ul>
           <li><a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
-          <li><a href="topics.html"><i class="fa-solid fa-layer-group"></i> Topics</a></li>
-          <li><a href="course_materials.html"><i class="fa-solid fa-folder-open"></i> Course Materials</a></li>
-          <li><a href="course_video.html"><i class="fa-solid fa-video"></i> Course Videos</a></li>
+
+          
+          <!-- Dropdown Topic -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topics 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="topics.html">CPC Topic</a></li>
+      </ul>
+    </li>
+
+
+          <!-- Dropdown Course Materials -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-folder-open"></i> Course Materials 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_materials.html">CPC Course</a></li>
+      </ul>
+    </li>
+
+
+          <!-- Dropdown Course Videos -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-video"></i> Course Videos 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_video.html">CPC videos</a></li>
+      </ul>
+    </li>
+
+
           <li><a href="tests_quiz.html"><i class="fa-solid fa-pen-to-square"></i> Tests</a></li>
           <li><a href="test_score.html"><i class="fa-solid fa-chart-line"></i> Score %</a></li>
           <li><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
@@ -106,7 +138,7 @@
     <script src="main.js" defer></script>
 
 
-        <!-- Tests-Quiz - Dashboard -->
+    <!-- Tests-Quiz - Dashboard -->
     <script>
         document.getElementById("quizForm").addEventListener("submit", function(e){
         e.preventDefault();
@@ -115,6 +147,26 @@
             document.getElementById("result").innerText = "Your Score: " + (score * 100) + "%";
         });
     </script>
+
+    <!-- Dashboard  sidebar full - Dropdown  -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const dropdownButtons = document.querySelectorAll(".Topic-dropdown-btn");
+
+      dropdownButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+      
+      const content = btn.nextElementSibling;  // the <ul>
+      const arrow = btn.querySelector(".Topic-dropdown-arrow");
+
+      content.classList.toggle("dash-topic-show");
+      arrow.classList.toggle("rotate");
+    });
+  });
+
+});
+</script>
 
   </body>
 </html>

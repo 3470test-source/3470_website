@@ -10,7 +10,9 @@
 
 body {
   font-family: Arial, sans-serif;
+
 }
+
 
     /* Top Header Styles  */
 
@@ -50,7 +52,6 @@ body {
 }
 
 /* Main Header Styles */
-
 header {
   display: flex;
   justify-content: space-between;
@@ -1839,7 +1840,7 @@ footer {
 }
 
 .sidebar {
-  width: 220px;
+  width: 250px;
   /* background-color: #34495e; */
   /* background: linear-gradient(135deg, #01500e, #024e2f); */
 
@@ -1886,6 +1887,8 @@ footer {
   /* When hovered */
 .sidebar ul li a:hover {
   background-color: #026b38;
+  border-radius: 5px;
+
 }
 
 /* Active link (optional highlight) */
@@ -4598,8 +4601,6 @@ section h2::after {
 /* --------------------------------------------------------------------------------- */
 
 
-   
-
 
          /* Dashboard -- Topic Page  */
 
@@ -4684,8 +4685,8 @@ section h2::after {
 }
 
 .Topic-dropdown-content li a {
-  font-size: 14px;
-  color: #fff;
+  font-size: 14.5px !important; 
+  color: #fff !important;
 }
 
 .Topic-dropdown-arrow {
@@ -4700,6 +4701,36 @@ section h2::after {
 
 .dash-topic-show { display: block; }
 
+
+/* Add dot or arrow before each topic */
+.Topic-dropdown-content li a::before {
+  content: "» ";
+  color: #2dee07;
+}
+
+.dash-Topic-dropdown > a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px; /* space between icon & text */
+  position: relative;
+  padding-right: 25px; 
+  
+}
+
+.dash-Topic-dropdown > a i:first-child {
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Push arrow to the right */
+.Topic-dropdown-arrow {
+  position: absolute;
+  right: -10px;
+  transition: transform 0.3s;
+ 
+}
 
 
 /* ------------------------------------------------------------ */
@@ -4790,7 +4821,6 @@ section h2::after {
 .materials-item .pdf-btn:hover {
   background: #1f4d70;
 }
-
 
 
   
@@ -5100,5 +5130,49 @@ main.dash-video-content {
 
 
 
+
+
+
+/* Page Title */
+.course-title-3470 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+
+}
+
+/* Course List Container */
+.course-list-3470 {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    
+}
+
+/* Course Card */
+.course-card-3470 {
+    display: block;   
+    background-color: #068d53;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-decoration: none; 
+}
+
+/* Hover Style */
+.course-card-3470:hover {
+    background-color: #026b38;
+    transform: translateY(-5px);
+}
 
 
