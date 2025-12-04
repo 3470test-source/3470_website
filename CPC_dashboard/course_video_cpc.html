@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      3470 HealthCare & Medical Coding Training Institute | Dashboard - CPC-Course
+      Video
+    </title>
+
+    <style>
+      body {
+        background: linear-gradient(120deg, #87aca3, #9cdbd2);
+      }
+    </style>
+  
+    <!-- Css - Styles -->
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="dashboard-page">
+    <!-- top-header -->
+    <header class="header-top-dash">
+      <div class="left-section-dash">
+        <button type="submit" class="menu-toggle-dash" id="menuToggle">
+          ☰
+        </button>
+        <img
+          src="../picture/Logo3470-health3 (2).jpg"
+          alt="Logo"
+          class="logo-dash"
+        />
+      </div>
+
+      <!-- Add title here -->
+     <h2 class="portal-title">Student Study Portal</h2>
+
+      <div class="right-section-dash">
+        <input type="text" placeholder="Search..." class="search-bar" />
+        <div class="profile-dropdown">
+          <button id="profileBtn">
+            <i class="fa-solid fa-user-gear"></i>
+          </button>
+
+          <div class="dropdown-menu" id="profileMenu">
+            <a href="#"><i class="fas fa-cog"></i>Account Settings</a>
+            <a href="#"><i class="fas fa-user"></i>Profile</a>
+            <a href="../login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard">
+      <aside class="sidebar" id="sidebar">
+        <ul>
+          <li>
+            <a href="dashboard_cpc.html"
+              ><i class="fa-solid fa-chart-pie"></i> Dashboard</a
+            >
+          </li>
+
+
+          <!-- Dropdown Topic -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topics 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="topics_cpc.html">CPC Topic</a></li>
+      </ul>
+    </li>
+
+         
+          <!-- Dropdown Course Materials -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-folder-open"></i> Course Materials 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_materials_cpc.html">CPC Course</a></li>
+      </ul>
+    </li>
+
+
+          <!-- Dropdown Course Videos -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-video"></i> Course Videos 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_video_cpc.html">CPC videos</a></li>
+      </ul>
+    </li>
+
+
+
+          <li>
+            <a href="tests_quiz_cpc.html"
+              ><i class="fa-solid fa-pen-to-square"></i> Tests</a
+            >
+          </li>
+          <li>
+            <a href="test_score_cpc.html"
+              ><i class="fa-solid fa-chart-line"></i> Score %</a
+            >
+          </li>
+          <li>
+            <a href="../login.html"
+              ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <main class="dash-video-content">
+        <h1>CPC - Course Videos</h1>
+
+        <!-- Permission Request Form -->
+        <div id="accessRequest" class="request-box">
+          <h2>Unlock Video Access</h2>
+
+          <form id="course-requestForm">
+            <label>Username:</label>
+            <input type="text" name="username" required />
+
+            <label>Email:</label>
+            <input type="email" name="email" required />
+
+            <label>Mobile:</label>
+            <input type="text" name="mobile" required />
+
+            <button type="submit">Request Access</button>
+          </form>
+
+          <p id="responseMsg"></p>
+        </div>
+
+        <!-- Course Videos - List -->
+        <div class="dash-video-container">
+
+          <div class="video-item">
+            <h2>0 SERIES - ANESTHESIA</h2>
+            <iframe
+              src="https://www.youtube.com/embed/IQDuRIFKD1o"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <!-- <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"
+              title="YouTube video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe> -->
+
+          <!-- <div class="video-item">
+            <h2>1 SERIES PART 1</h2>
+            <video
+              src="pdf_file/screen_capture.mp4"
+              controls
+              controlsList="nodownload"
+              oncontextmenu="return false;"
+              style="width: 100%; height: auto"
+            ></video>
+          </div> -->
+
+          <div class="video-item">
+            <h2>1 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/T57OcWFvvEk"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>1 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/RgceVDWJxjs"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>2 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/Hfm5AHZ2XSM"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>2 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/-_9c9HURDM4"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>3 SERIES FULL</h2>
+            <iframe
+              src="https://www.youtube.com/embed/HASrOB8meng"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>4 SERIES FULL</h2>
+            <iframe
+              src="https://www.youtube.com/embed/otCS4TH0Eh0"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>5 SERIES</h2>
+            <iframe
+              src="https://www.youtube.com/embed/Zw2SGnKJvjo"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>6 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/lw9ALNE7igQ"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>6 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/UNC-HHa8OfE"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>7 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/SJUyD79A3go"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>7 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/FP0ukFBXZE4"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>8 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/psF4iGrI9AI"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>8 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/XdsB-4cCrS8"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>9 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/EkKOHM27JRE"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>9 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/MAmuYpOKN74"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>9 SERIES PART 3</h2>
+            <iframe
+              src="https://www.youtube.com/embed/CfLe9EuEEUE"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>99 SERIES PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/9ityErKQaUo"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>99 SERIES PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/uSQICq1GXz8"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>COMPLIANCE</h2>
+            <iframe
+              src="https://www.youtube.com/embed/fXtT1pDZ5LI"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>ICD 10 PART 1</h2>
+            <iframe
+              src="https://www.youtube.com/embed/hbhHkg5oRLY"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-item">
+            <h2>ICD 10 PART 2</h2>
+            <iframe
+              src="https://www.youtube.com/embed/cDmT9ZLXz7Q"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Javascript -->
+    <script src="../main.js" defer></script>
+
+    <!-- <script>
+      // Disable right-click on iframe
+      const iframe = document.querySelector("iframe");
+      iframe.addEventListener("contextmenu", (e) => e.preventDefault());
+    </script> -->
+
+    <!-- <script>
+      document
+        .getElementById("video-container")
+        .addEventListener("click", function () {
+          this.innerHTML = (
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube-nocookie.com/embed/l9hyhiHcGq0?autoplay=1&rel=0&modestbranding=1"
+              frameborder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          );
+        });
+    </script> -->
+
+
+    <!-- Form Submission Script -->
+    <script>
+      document
+        .getElementById("course-requestForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let formData = new FormData(this);
+          let msg = document.getElementById("responseMsg");
+          let form = this;
+
+          fetch("http://localhost:3000/send-request", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              if (data.trim() === "SUCCESS") {
+                msg.innerText =
+                  "Request sent! You will get access once the owner approves.";
+                msg.style.color = "rgb(12, 88, 133)";
+                form.reset(); // Clear form fields
+              } else {
+                msg.innerText = "Something went wrong.";
+                msg.style.color = "red";
+              }
+
+              // Clear message after 5 seconds
+              setTimeout(()=> { msg.innerHTML=""; }, 5000);
+               
+            })
+            .catch((error) => {
+              console.log("FETCH ERROR:", error);
+
+              msg.innerText = "Server error! Try again later.";
+              msg.style.color = "red";
+
+              // Clear message after 5 seconds
+             setTimeout(()=> { msg.innerHTML=""; }, 5000);
+
+            });
+        });
+    </script>
+
+    <!-- Dashboard  sidebar full - Dropdown  -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const dropdownButtons = document.querySelectorAll(".Topic-dropdown-btn");
+
+      dropdownButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+      
+      const content = btn.nextElementSibling;  // the <ul>
+      const arrow = btn.querySelector(".Topic-dropdown-arrow");
+
+      content.classList.toggle("dash-topic-show");
+      arrow.classList.toggle("rotate");
+    });
+  });
+
+});
+</script>
+
+  </body>
+</html>

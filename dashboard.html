@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      3470 HealthCare & Medical Coding Training Institute | Dashboard
-    </title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
 
-    <!-- Css - Styles -->
+    <style>
+        body {
+            /* background: linear-gradient(120deg, #87aca3, #9cdbd2); */
+            background-color: #9cdbd2;
+            
+        }
+    </style>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css" />
 
     <!-- Font Awesome CDN -->
@@ -15,9 +21,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-  </head>
-  
-  <body class="dashboard-page">
+
+</head>
+<body class="dashboard-page">
+
     <!-- top-header -->
     <header class="header-top-dash">
       <div class="left-section-dash">
@@ -51,124 +58,26 @@
       </div>
     </header>
 
-    <!-- Dashboard Sidebar -->
-    <div class="dashboard">
-      <aside class="sidebar" id="sidebar">
-        <ul>
-          <li><a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+    <!-- Page Title -->
+    <h2 class="course-title-3470">Medical Coding Training Programs</h2>
 
-
-          <!-- Dropdown Topic -->
-          <li class="dash-Topic-dropdown">
-            <a class="Topic-dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topics 
-               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
-            </a>
-            <ul class="Topic-dropdown-content">
-          <li><a href="topics.html">CPC Topic</a></li>
-      </ul>
-    </li>
-
-          <!-- Dropdown Course Materials -->
-          <li class="dash-Topic-dropdown">
-            <a class="Topic-dropdown-btn"><i class="fa-solid fa-folder-open"></i> Course Materials 
-               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
-            </a>
-            <ul class="Topic-dropdown-content">
-          <li><a href="course_materials.html">CPC Course</a></li>
-      </ul>
-    </li>
-
-    <!-- Dropdown Course Videos -->
-          <li class="dash-Topic-dropdown">
-            <a class="Topic-dropdown-btn"><i class="fa-solid fa-video"></i> Course Videos 
-               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
-            </a>
-            <ul class="Topic-dropdown-content">
-          <li><a href="course_video.html">CPC videos</a></li>
-      </ul>
-    </li>
-
-          <li><a href="tests_quiz.html"><i class="fa-solid fa-pen-to-square"></i> Tests</a></li>
-          <li><a href="test_score.html"><i class="fa-solid fa-chart-line"></i> Score %</a></li>
-          <li><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
-        </ul>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="main-content">
-        <h1>Welcome, Student!</h1>
-        <p>Your progress in the Medical Coding Training Program</p>
-
-        <!-- Progress Cards -->
-        <section class="cards">
-          <div class="card">
-            <h3>Completed Modules</h3>
-            <p>5 / 10</p>
-          </div>
-
-          <div class="card">
-            <h3>Quiz Score (Avg)</h3>
-            <p>82%</p>
-          </div>
-
-          <div class="card">
-            <h3>Certification Status</h3>
-            <p>In Progress</p>
-          </div>
-        </section>
-
-
-        <!-- Modules List -->
-        <!-- <section class="modules">
-        <h2>Training Modules</h2>
-        <ul>
-          <li>✅ Introduction to Medical Coding</li>
-          <li>✅ ICD-10 Coding Basics</li>
-          <li>✅ CPT Coding System</li>
-          <li>🕒 HCPCS Level II Codes</li>
-          <li>🕒 Billing and Reimbursement</li>
-        </ul>
-      </section> -->
-      
-
-        <!-- Resources -->
-        <!-- <section class="resources">
-        <h2>Helpful Resources</h2>
-        <ul>
-          <li><a href="#">ICD-10 Code Lookup</a></li>
-          <li><a href="#">CPT Code Manual (PDF)</a></li>
-          <li><a href="#">Sample Claims</a></li>
-        </ul>
-      </section> -->
-
-      
-      </main>
+    <!-- Courses List -->
+    <div class="course-list-3470">
+      <a href="BMCT_dashboard/dashboard_bmct.html" class="course-card-3470" data-course="BMCT">BMCT - Basic Medical Coding Training</a>
+      <a href="#" class="course-card-3470" data-course="AMCT">AMCT - Advanced Medical Coding Training</a>
+      <a href="CPC_dashboard/dashboard_cpc.html" class="course-card-3470" data-course="CPC">CPC - Certified Professional Coder</a>
+      <a href="#" class="course-card-3470" data-course="CPMA">CPMA - Certified Professional Medical Auditor</a>
+      <a href="#" class="course-card-3470" data-course="CRC">CRC - Certified Risk Adjustment Coder</a>
+      <a href="#" class="course-card-3470" data-course="CCS">CCS - Certified Coding Specialist</a>
+      <a href="#" class="course-card-3470" data-course="ED">ED - Emergency Dearptment</a>
+      <a href="#" class="course-card-3470" data-course="E&M">E&M - Evaluation & Management</a>
+      <a href="#" class="course-card-3470" data-course="IPDRG">IPDRG - Inpatient Coding Diagnosis Related Groups</a>
+      <a href="#" class="course-card-3470" data-course="IVR">IVR - Interactive Voice Response</a>
+      <a href="#" class="course-card-3470" data-course="Surgery">Surgery - Training</a>
     </div>
-
-  
+    
     <!-- Javascript -->
     <script src="main.js" defer></script>
 
-    <!-- Dashboard  sidebar full - Dropdown  -->
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-      const dropdownButtons = document.querySelectorAll(".Topic-dropdown-btn");
-
-      dropdownButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-      
-      const content = btn.nextElementSibling;  // the <ul>
-      const arrow = btn.querySelector(".Topic-dropdown-arrow");
-
-      content.classList.toggle("dash-topic-show");
-      arrow.classList.toggle("rotate");
-    });
-  });
-
-});
-</script>
-
-
-  </body>
+ </body>
 </html>

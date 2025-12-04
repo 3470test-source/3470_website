@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      3470 HealthCare & Medical Coding Training Institute | Dashboard - CPC-Tests
+      Quiz
+    </title>
+
+    <style>
+      
+      body {
+        background: linear-gradient(120deg, #87aca3, #9cdbd2);
+      }
+
+    </style>
+
+    <!-- Css - Styles -->
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="dashboard-page">
+    <!-- top-header -->
+    <header class="header-top-dash">
+      <div class="left-section-dash">
+        <button type="submit" class="menu-toggle-dash" id="menuToggle">
+          ☰
+        </button>
+        <img
+          src="../picture/Logo3470-health3 (2).jpg"
+          alt="Logo"
+          class="logo-dash"
+        />
+      </div>
+
+      <!-- Add title here -->
+      <h2 class="portal-title">Student Study Portal</h2>
+
+      <div class="right-section-dash">
+        <input type="text" placeholder="Search..." class="search-bar" />
+        <div class="profile-dropdown">
+          <button id="profileBtn">
+            <i class="fa-solid fa-user-gear"></i>
+          </button>
+
+          <div class="dropdown-menu" id="profileMenu">
+            <a href="#"><i class="fas fa-cog"></i>Account Settings</a>
+            <a href="#"><i class="fas fa-user"></i>Profile</a>
+            <a href="../login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard">
+      <aside class="sidebar" id="sidebar">
+        <ul>
+          <li><a href="dashboard_cpc.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+
+          <!-- Dropdown Topic -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topics 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="topics_cpc.html">CPC Topic</a></li>
+      </ul>
+    </li>
+
+
+     <!-- Dropdown Course Materials -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-folder-open"></i> Course Materials 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_materials_cpc.html">CPC Course</a></li>
+      </ul>
+    </li>
+
+     <!-- Dropdown Course Videos -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-video"></i> Course Videos 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_video_cpc.html">CPC videos</a></li>
+      </ul>
+    </li>
+
+
+          <li><a href="tests_quiz_cpc.html"><i class="fa-solid fa-pen-to-square"></i> Tests</a></li>
+          <li><a href="test_score_cpc.html"><i class="fa-solid fa-chart-line"></i> Score %</a></li>
+          <li><a href="../login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+      </aside>
+
+
+      <main class="test-quiz-content">
+        <h1>Progress Overview</h1>
+        <p>Modules Completed: 5 / 10</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 50%"></div>
+        </div>
+        <p>Quiz Average: 82%</p>
+        <p>Certification Status: In Progress</p>
+      </main>
+
+    </div>
+
+    <!-- Javascript -->
+    <script src="../main.js" defer></script>
+
+    <!-- Dashboard  sidebar full - Dropdown  -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const dropdownButtons = document.querySelectorAll(".Topic-dropdown-btn");
+
+      dropdownButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+      
+      const content = btn.nextElementSibling;  // the <ul>
+      const arrow = btn.querySelector(".Topic-dropdown-arrow");
+
+      content.classList.toggle("dash-topic-show");
+      arrow.classList.toggle("rotate");
+    });
+  });
+
+});
+</script>
+  
+  </body>
+</html>
