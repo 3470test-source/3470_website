@@ -2,14 +2,6 @@ const express = require("express");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-
-
-
-
-
-
-
-
 const upload = multer();
 const app = express();
 
@@ -22,8 +14,6 @@ app.use(
 );
 
 
-
-
 // Gmail transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -34,65 +24,15 @@ const transporter = nodemailer.createTransport({
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*------------------------------------------------------------------
    1) USER SENDS REQUEST → EMAIL GOES TO OWNER  + SAVE TO EXCEL
 -------------------------------------------------------------------*/
 app.post("/send-request", upload.none(), async (req, res) => {
-  const { username, email, mobile } = req.body;
+  const { username, email, course, mobile } = req.body;
 
-  if (!username || !email || !mobile) {
+  if (!username || !email || !course || !mobile) {
     return res.status(400).send("ERROR — Missing required fields");
   }
-
-
-
-
-
-  
-
-
-
-
-
 
   // Send email to admin
   const adminMail = {
@@ -117,6 +57,7 @@ app.post("/send-request", upload.none(), async (req, res) => {
       <p>A new user has requested access to the course videos. Details are below:</p>
       <p><strong>Username:</strong> ${username}</p>
       <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Course:</strong> ${course}</p>
       <p><strong>Mobile:</strong> ${mobile}</p>
 
       <hr style="margin:15px 0;">
@@ -198,3 +139,33 @@ app.post("/grant-access", upload.none(), async (req, res) => {
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

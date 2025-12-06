@@ -4889,7 +4889,7 @@ main.dash-video-content {
   background: #ffffffaa;
   padding: 25px;
   border-radius: 12px;
-  max-width: 430px;
+  max-width: 450px;
   margin: 20px auto;
   backdrop-filter: blur(4px);
   margin-bottom: 50px;
@@ -4919,6 +4919,23 @@ main.dash-video-content {
 
 
 .request-box input:focus {
+  outline: none;
+  border-color: #0099ff;
+  box-shadow: 0 0 5px #0099ff55;
+}
+
+.request-box select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #038824;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: white;
+  font-size: 16px;
+}
+
+.request-box select:focus {
   outline: none;
   border-color: #0099ff;
   box-shadow: 0 0 5px #0099ff55;
@@ -5127,12 +5144,8 @@ main.dash-video-content {
 
 /* --------------------------------------------------------------- */
 
-
-
-
-
-
-
+                /* Dashboard -- title */
+  
 /* Page Title */
 .course-title-3470 {
   text-align: center;
@@ -5162,7 +5175,6 @@ main.dash-video-content {
     width: 50%;
 }
 
-
 /* Course Card */
 .course-card-3470 {
   display: block;   
@@ -5185,3 +5197,4 @@ main.dash-video-content {
 }
 
 
+/* -------------------------------------------------------------------------------- */
