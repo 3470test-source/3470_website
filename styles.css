@@ -4895,7 +4895,6 @@ main.dash-video-content {
   margin-bottom: 50px;
 }
 
-
 .request-box label {
   display: block;
   font-weight: 600;
@@ -4907,7 +4906,6 @@ main.dash-video-content {
 
 }
 
-
 .request-box input {
   width: 100%;
   padding: 10px;
@@ -4916,7 +4914,6 @@ main.dash-video-content {
   border-radius: 8px;
   margin-bottom: 15px;
 }
-
 
 .request-box input:focus {
   outline: none;
@@ -5170,9 +5167,9 @@ main.dash-video-content {
 }
 
 .course-list-3470 a:last-child {
-    grid-column: span 2;   
-    justify-self: center;   
-    width: 50%;
+  grid-column: span 2;   
+  justify-self: center;   
+  width: 50%;
 }
 
 /* Course Card */
@@ -5198,3 +5195,11 @@ main.dash-video-content {
 
 
 /* -------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
