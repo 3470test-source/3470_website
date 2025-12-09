@@ -63,9 +63,35 @@
 
     <!-- Courses List -->
     <div class="course-list-3470">
-      <a href="BMCT_dashboard/dashboard_bmct.html" class="course-card-3470" data-course="BMCT">BMCT - Basic Medical Coding Training</a>
+
+
+
+      <a href="BMCT_dashboard/dashboard_bmct.html"
+         class="course-card-3470 locked"
+         data-course-id="bmct-01"
+         data-course="BMCT">
+        <span class="course-name">BMCT - Basic Medical Coding Training</span>
+        <span class="course-lock"><i class="fa-solid fa-lock"></i></span>
+      </a>
+
+
+      <!-- <a href="BMCT_dashboard/dashboard_bmct.html" class="course-card-3470" data-course="BMCT">BMCT - Basic Medical Coding Training</a> -->
+
+      
       <a href="#" class="course-card-3470" data-course="AMCT">AMCT - Advanced Medical Coding Training</a>
-      <a href="CPC_dashboard/dashboard_cpc.html" class="course-card-3470" data-course="CPC">CPC - Certified Professional Coder</a>
+
+      <a href="CPC_dashboard/dashboard_cpc.html"
+         class="course-card-3470 locked"
+         data-course-id="cpc-01"
+         data-course="CPC">
+        <span class="course-name">CPC - Certified Professional Coder</span>
+        <span class="course-lock"><i class="fa-solid fa-lock"></i></span>
+      </a>
+
+
+
+      <!-- <a href="CPC_dashboard/dashboard_cpc.html" class="course-card-3470" data-course="CPC">CPC - Certified Professional Coder</a> -->
+
       <a href="#" class="course-card-3470" data-course="CPMA">CPMA - Certified Professional Medical Auditor</a>
       <a href="#" class="course-card-3470" data-course="CRC">CRC - Certified Risk Adjustment Coder</a>
       <a href="#" class="course-card-3470" data-course="CCS">CCS - Certified Coding Specialist</a>
@@ -75,9 +101,156 @@
       <a href="#" class="course-card-3470" data-course="IVR">IVR - Interactive Voice Response</a>
       <a href="#" class="course-card-3470" data-course="Surgery">Surgery - Training</a>
     </div>
+
+
+   <!-- PASSWORD POPUP -->
+<div id="dash-password-popup" class="dash-popup">
+  <div class="dash-popup-box">
+    <h2>Enter Course Password</h2>
+    <input type="password" id="dash-course-password" placeholder="Enter password">
+    <p id="dash-password-error" class="dash-error"></p>
+
+    <div class="dash-popup-buttons">
+      <button id="dash-submit-password">Submit</button>
+      <button id="dash-close-popup">Cancel</button>
+    </div>
+  </div>
+</div>
+
     
     <!-- Javascript -->
     <script src="main.js" defer></script>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Passwords for courses (keys should match the course id you use in HTML)
+  const coursePasswords = {
+    "BMCT": "bmct123",
+    "AMCT": "amct999",
+    "CPC": "cpc2025",
+    "CPMA": "cpma456",
+    "CRC": "crc789",
+    "CCS": "ccs321",
+    "ED": "ed555",
+    "E&M": "em111",
+    "IPDRG": "ipdrg222",
+    "IVR": "ivr333",
+    "Surgery": "surg444"
+  };
+
+  // Popup elements (matching your HTML ids)
+  const modal = document.getElementById("dash-password-popup");
+  const passInput = document.getElementById("dash-course-password");
+  const errorEl = document.getElementById("dash-password-error");
+  const submitBtn = document.getElementById("dash-submit-password");
+  const closeBtn = document.getElementById("dash-close-popup");
+  let selectedCourseKey = null;
+  let selectedHref = null;
+
+  // Helper to normalize the course key: prefer data-course-id, fallback to data-course
+  function courseKeyFromCard(card) {
+    return card.getAttribute("data-course-id") || card.getAttribute("data-course") || null;
+  }
+
+  // Attach click to every course card (works with .course-card-3470 whether or not it has 'locked' class)
+  document.querySelectorAll(".course-card-3470.locked").forEach(card => {
+    card.addEventListener("click", function (e) {
+      // If href is empty or "#", we will still show popup — prevent navigation
+      e.preventDefault();
+
+      const key = courseKeyFromCard(this);
+      if (!key) {
+        // No course key found — log and abort
+        console.warn("Course card missing data-course-id / data-course:", this);
+        return;
+      }
+
+      selectedCourseKey = key.trim();
+      selectedHref = this.getAttribute("href") || "#"; // keep href for redirect
+
+      // clear previous state and show modal
+      passInput.value = "";
+      errorEl.style.display = "none";
+      errorEl.innerText = "";
+      modal.style.display = "flex";
+      passInput.focus();
+    });
+  });
+
+  // Submit password
+  submitBtn.addEventListener("click", function () {
+    if (!selectedCourseKey) {
+      errorEl.style.display = "block";
+      errorEl.innerText = "No course selected.";
+      return;
+    }
+
+    const entered = passInput.value || "";
+    const normalizedKey = selectedCourseKey; // e.g., "BMCT" or "bmct-01"
+
+    // Try direct lookup first (case-sensitive), then try uppercase key, then try fallback mapping
+    let correctPassword = coursePasswords[normalizedKey];
+
+    if (typeof correctPassword === "undefined") {
+      // try uppercase version (in case HTML used "bmct" instead of "BMCT")
+      correctPassword = coursePasswords[normalizedKey.toUpperCase()];
+    }
+
+    // If still undefined, try to match by removing suffixes (like "-01") e.g. "bmct-01" -> "BMCT"
+    if (typeof correctPassword === "undefined") {
+      const maybe = normalizedKey.split(/[-_]/)[0].toUpperCase();
+      correctPassword = coursePasswords[maybe];
+    }
+
+    // final check
+    if (typeof correctPassword === "undefined") {
+      errorEl.style.display = "block";
+      errorEl.innerText = "Password not configured for this course (check course IDs).";
+      return;
+    }
+
+    if (entered === correctPassword) {
+      // optional: close modal first
+      modal.style.display = "none";
+      // redirect to the href (if href is "#", won't navigate — you could open a page)
+      if (selectedHref && selectedHref !== "#") {
+        window.location.href = selectedHref;
+      } else {
+        // if no valid href, you can show a message or open a course page
+        alert("Password correct — but the course link is not set (href=\"#\").");
+      }
+    } else {
+      errorEl.style.display = "block";
+      errorEl.innerText = "Incorrect password !";
+    }
+  });
+
+  // Close popup
+  closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+    passInput.value = "";
+    errorEl.style.display = "none";
+    errorEl.innerText = "";
+    selectedCourseKey = null;
+    selectedHref = null;
+  });
+
+  // Optional: close modal when clicking outside the box
+  modal.addEventListener("click", function (ev) {
+    if (ev.target === modal) {
+      closeBtn.click();
+    }
+  });
+
+});
+
+</script>
+
+
 
  </body>
 </html>
