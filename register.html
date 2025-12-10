@@ -152,10 +152,10 @@
       <form id="registerForm" class="register-form" action="#" method="post" >
 
         <label>Name</label>
-        <input type="text" placeholder="Enter your full name" required>
+        <input type="text" id="name" placeholder="Enter your full name" required>
 
         <label>Email</label>
-        <input type="email" placeholder="Enter your email" required>
+        <input type="email" id="email" placeholder="Enter your email" required>
 
         <label>Mobile No</label>
         <input type="mobile"  id="mobile" name="mobile" placeholder="Enter your mobile no" required maxlength="10">
@@ -179,7 +179,6 @@
   </div>
 
 
-
     <!-- Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="main.js" defer></script>
@@ -192,6 +191,45 @@
         this.value = this.value.replace(/\D/g, "");
       });
     </script>
+
+
+
+
+
+<script>
+const form = document.getElementById("registerForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const data = {
+    name: document.getElementById("name").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    mobile: document.getElementById("mobile").value.trim(),
+    password: document.getElementById("password").value.trim()
+  };
+
+  // Basic mobile validation
+  if (!/^[6-9]\d{9}$/.test(data.mobile)) {
+    alert("Invalid mobile number. Must be 10 digits.");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+    alert(result.message);
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong!");
+  }
+});
+</script>
 
 
   </body>

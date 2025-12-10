@@ -151,32 +151,98 @@ toggleIcons.forEach((icon) => {
 // -----------------------------------------------------------------------------
 
 
-     //register popup alerts
-     // Handle form submission
+//      //register popup alerts
+//      // Handle form submission
+// const registerForm = document.getElementById("registerForm");
+// if (registerForm) {
+//   // ✅ only run if registerForm exists
+//   registerForm.addEventListener("submit", function (e) {
+//     e.preventDefault(); // Prevent default page refresh
+
+//     const password = document.getElementById("password"); // make sure you get the password input
+//     // const confirmPassword = document.getElementById("confirm").value;
+
+//     // if (password.value !== confirmPassword) {
+//     //   alert("Passwords do not match!");
+//     //   return;
+//     // }
+
+//     // Show success popup using SweetAlert2
+//     Swal.fire({
+//       title: "🎉 Registration Successful!",
+//       text: "Your account has been created successfully.",
+//       icon: "success", // success, error, warning, info, question
+//       confirmButtonText: "Go to Login",
+//       confirmButtonColor: "#3085d6", // Button color
+//       background: "#f0f2f5", // Popup background color
+//       color: "#333", // Text color
+//       width: 380, // Popup width
+//       padding: "-5em",
+
+//       customClass: {
+//         title: "swal-title",
+//         htmlContainer: "swal-text",
+//         confirmButton: "swal-btn",
+//         icon: "swal-small-icon",
+//       },
+//     }).then((result) => {
+//       if (result.isConfirmed) {
+//         // Redirect to login page
+//         window.location.href = "login.html";
+//       }
+//     });
+
+//     // Reset form
+//     registerForm.reset();
+//     password.setAttribute("type", "password");
+//     togglePassword.classList.add("fa-eye");
+//     togglePassword.classList.remove("fa-eye-slash");
+//   });
+// }
+
+
 const registerForm = document.getElementById("registerForm");
+
 if (registerForm) {
-  // ✅ only run if registerForm exists
   registerForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent default page refresh
+    e.preventDefault(); // stop form refresh
 
-    const password = document.getElementById("password"); // make sure you get the password input
-    // const confirmPassword = document.getElementById("confirm").value;
+    const passwordInput = document.getElementById("password");
+    const password = passwordInput.value;
 
-    // if (password.value !== confirmPassword) {
-    //   alert("Passwords do not match!");
-    //   return;
-    // }
+    // Strong password regex
+    const strongPass = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
 
-    // Show success popup using SweetAlert2
+    // ❌ If password format is wrong → STOP and show SWEETALERT error popup
+    if (!strongPass.test(password)) {
+      Swal.fire({
+        title: "Invalid Password!",
+        text: "Password must be at least 8 characters with uppercase, lowercase, special character & number.",
+        icon: "error",
+        confirmButtonColor: "#d33",
+        background: "#f8d7da",
+        color: "#721c24",
+        width: 380,
+
+        customClass: {
+          title: "swal-title",
+          htmlContainer: "swal-text",
+          confirmButton: "swal-btn",
+        },
+      });
+      return; // ❌ Stop here (no success popup)
+    }
+
+    // ✅ If password is correct → show success popup
     Swal.fire({
       title: "🎉 Registration Successful!",
       text: "Your account has been created successfully.",
-      icon: "success", // success, error, warning, info, question
+      icon: "success",
       confirmButtonText: "Go to Login",
-      confirmButtonColor: "#3085d6", // Button color
-      background: "#f0f2f5", // Popup background color
-      color: "#333", // Text color
-      width: 380, // Popup width
+      confirmButtonColor: "#3085d6",
+      background: "#f0f2f5",
+      color: "#333",
+      width: 380,
       padding: "-5em",
 
       customClass: {
@@ -187,18 +253,23 @@ if (registerForm) {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // Redirect to login page
         window.location.href = "login.html";
       }
     });
 
-    // Reset form
+    // Reset form after success
     registerForm.reset();
     password.setAttribute("type", "password");
     togglePassword.classList.add("fa-eye");
     togglePassword.classList.remove("fa-eye-slash");
+
   });
 }
+
+
+
+
+
 
 
 // ----------------------------------------------------------------------------------
