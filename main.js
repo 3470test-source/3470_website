@@ -210,6 +210,31 @@ if (registerForm) {
     const passwordInput = document.getElementById("password");
     const password = passwordInput.value;
 
+    const mobileInput = document.getElementById("mobile");
+    const mobile = mobileInput.value;
+
+    // Mobile number regex - Indian format
+    const mobileRegex = /^[6-9]\d{9}$/;
+
+    if (!mobileRegex.test(mobile)) {
+      Swal.fire({
+        title: "Invalid Mobile Number!",
+        text: "Please enter a valid 10-digit mobile number starting with 6–9.",
+        icon: "error",
+        confirmButtonColor: "#d33",
+        background: "#f8d7da",
+        color: "#721c24",
+        width: 380,
+        customClass: {
+        title: "swal-title",
+        htmlContainer: "swal-text",
+        confirmButton: "swal-btn",
+      },
+    });
+    return; // ❌ Stop further execution
+ }
+
+
     // Strong password regex
     const strongPass = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
 
@@ -232,6 +257,7 @@ if (registerForm) {
       });
       return; // ❌ Stop here (no success popup)
     }
+
 
     // ✅ If password is correct → show success popup
     Swal.fire({

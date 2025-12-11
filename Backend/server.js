@@ -43,14 +43,7 @@ app.post("/register", async (req, res) => {
       return res.status(400).json({ success: false, message: "All fields are required" });
   }
   
-
-// Mobile validation
-  if (!/^[6-9]\d{9}$/.test(mobile)) {
-    return res.status(400).json({ success: false, message: "Invalid mobile number" });
-  }
-
-
-   // Email validation
+  // Email validation
  const mailOptions = {
   from: "3470test@gmail.com",
   to: email,
@@ -94,6 +87,10 @@ app.post("/register", async (req, res) => {
     res.status(500).json({ success: false, message: "Registration completed, but we were unable to send the confirmation email." });
   }
 });
+
+
+
+
 
 
 
