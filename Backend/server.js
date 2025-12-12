@@ -31,67 +31,93 @@ const transporter = nodemailer.createTransport({
 });
 
 
-
-
 // --------------------
 // 1️⃣ Registration route
 // --------------------
 app.post("/register", async (req, res) => {
   const { name, email, mobile, password } = req.body;
 
+  // Basic validation
   if (!name || !email || !mobile || !password) {
-      return res.status(400).json({ success: false, message: "All fields are required" });
+    return res.status(400).json({
+      success: false,
+      message: "All fields are required"
+    });
   }
-  
-  // Email validation
- const mailOptions = {
-  from: "3470test@gmail.com",
-  to: email,
-  subject: "Welcome to 3470 HealthCare! Your Registration is Complete 🎉",
-  html: `
-    <div style="font-family: Arial, sans-serif; color:#333; line-height:1.5; max-width:600px; padding:20px; border:1px solid #d6ceceff; border-radius:10px;">
 
-      <h2 style="color:#068545;">Welcome, ${name}!</h2>
-      <p>Your account has been successfully created on <b>3470 HealthCare & Medical Coding Training Institute</b>.</p>
+  // Mobile validation (server-side)
+  const mobileRegex = /^[6-9]\d{9}$/;
+  if (!mobileRegex.test(mobile)) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid mobile number"
+    });
+  }
 
-      <h3 style="color:#03521d;">Your Login Details:</h3>
-      <p style="background:#f4f4f4; padding:10px; border-radius:5px;">
-        <b>Username:</b> ${email}<br>
-        <b>Password:</b> ${password}<br>
-      </p>
-
-      <p>Click below to <a href="http://yourwebsite.com/login" style="color:#fff; background:#068545; padding:10px 20px; text-decoration:none; border-radius:5px;">Login Now</a></p>
-
-      <p style="font-size:12px; color:#999; margin-top:20px;">If you did not register, please ignore this email.</p>
-
-      <hr style="margin:15px 0;">
-
-      <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
-      3470 Healthcare Training & Certification Program
-      </p>
-
-      <p style="margin-top:5px;font-size:14px;font-weight:600;">
-      Regards,<br>
-      Course Team
-      </p>
-    </div>
-  `
-};
+  // Strong password validation
+  const strongPass = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
+  if (!strongPass.test(password)) {
+    return res.status(400).json({
+      success: false,
+      message: "Weak password format"
+    });
+  }
 
   try {
+    // TODO: SAVE USER IN DATABASE HERE (example)
+    // await User.create({ name, email, mobile, password });
+
+    // ✔ Only after successful registration → send email
+    const mailOptions = {
+      from: "3470test@gmail.com",
+      to: email,
+      subject: "Welcome to 3470 HealthCare! Your Registration is Complete 🎉",
+      html: `
+        <div style="font-family: Arial, sans-serif; color:#333; line-height:1.5; max-width:600px; padding:20px; border:1px solid #d6ceceff; border-radius:10px;">
+
+        <h2 style="color:#068545;">Welcome, ${name}!</h2>
+        <p>Your account has been successfully created on <b>3470 HealthCare & Medical Coding Training Institute</b>.</p>
+
+        <h3 style="color:#03521d;">Your Login Details:</h3>
+        <p style="background:#f4f4f4; padding:10px; border-radius:5px;">
+          <b>Username:</b> ${email}<br>
+          <b>Password:</b> ${password}<br>
+        </p>
+
+        <p>Click below to <a href="http://127.0.0.1:5500/login.html" style="color:#fff; background:#068545; padding:10px 20px; text-decoration:none; border-radius:5px;">Login Now</a></p>
+
+        <p style="font-size:12px; color:#999; margin-top:20px;">If you did not register, please ignore this email.</p>
+
+        <hr style="margin:15px 0;">
+
+        <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
+         3470 Healthcare Training & Certification Program
+        </p>
+
+        <p style="margin-top:5px;font-size:14px;font-weight:600;">
+         Regards,<br>
+         Course Team
+        </p>
+       </div>
+      `
+    };
+
     await transporter.sendMail(mailOptions);
-    console.log("Email sent to", email);
-    res.json({ success: true, message: "Your registration is successful! Please check your email for further details." });
+
+    return res.json({
+      success: true,
+      message: "Your account has been created successfully. A confirmation email has been sent."
+    });
+
   } catch (error) {
-    console.error("Email Error:", error.message);
-    res.status(500).json({ success: false, message: "Registration completed, but we were unable to send the confirmation email." });
+    console.error("Error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Registration completed, but email failed to send."
+    });
   }
 });
-
-
-
-
-
 
 
 /*------------------------------------------------------------------

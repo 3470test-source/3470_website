@@ -1,94 +1,143 @@
-     // 🔐 Login Page Script
-// document.addEventListener("DOMContentLoaded", function () {
-//   const loginForm = document.getElementById("loginForm");
-//   const loginErrorDiv = document.getElementById("error");
-
-//   const users = [
-//     { email: "vignesh@gmail.com", password: "123456" },
-//     { email: "student@test.com", password: "password" },
-//   ];
-
-//   if (loginForm) {
-//     // ✅ only run if login form exists
-//     loginForm.addEventListener("submit", function (e) {
-//       e.preventDefault(); // stop page reload
-
-//       const email = document.getElementById("email").value.trim();
-//       const password = document.getElementById("password").value;
-
-//       const user = users.find(
-//         (u) => u.email === email && u.password === password
-//       );
-
-//       if (user) {
-//         if (loginErrorDiv) loginErrorDiv.style.display = "none";
-//         alert("Login successful!");
-//         window.location.href = "dashboard.html"; // redirect
-//       } else {
-//         if (loginErrorDiv) {
-//           loginErrorDiv.style.display = "block";
-//           loginErrorDiv.textContent = "Invalid credentials!";
-//         }
-//       }
-//     });
-//   }
-// });
-
 
                    // 🔐 Login Page Script
 
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const userOptions = document.querySelectorAll(".user-option");
+//   const userTypeInput = document.getElementById("userType");
+//   const errorMsg = document.getElementById("error");
+
+//   // Switch Login Type (Admin / Student)
+//   userOptions.forEach(button => {
+//     button.addEventListener("click", function(){
+//       userOptions.forEach(btn => btn.classList.remove("active"));
+//       this.classList.add("active");
+//       userTypeInput.value = this.getAttribute("data-role");
+//     });
+//   });
+
+//   // Login Submit
+//   document.getElementById("loginForm").addEventListener("submit", function(e){
+//     e.preventDefault();
+
+//     let email = document.getElementById("email").value;
+//     let password = document.getElementById("password").value;
+//     let role = document.getElementById("userType").value; // admin / student
+
+//     // DEMO LOGIN (You can replace with database later)
+//     if(role == "admin"){
+//       if(email === "admin@gmail.com" && password === "admin123"){
+//         window.location.href = "admin_portal.html";
+//       }else{
+//         errorMsg.style.display="block";
+//         errorMsg.innerText="Invalid credentials!";
+//       }
+//     }
+
+//     if(role == "student"){
+//       if(email === "student@gmail.com" && password === "student123"){
+//         window.location.href = "dashboard.html";
+//       }else{
+//         errorMsg.style.display="block";
+//         errorMsg.innerText="Invalid credentials!";
+//       }
+//     }
+
+//    });
+//   });
+
+
+
+
+
+
+// ============ Login Script ===========
+
+const loginForm = document.getElementById("loginForm");
+
+if(loginForm){
+  const errorMsg = document.getElementById("error");
+
+  // Switch role (click, not change)
+  const userOptions = document.querySelectorAll(".user-option");
+  const userTypeInput = document.getElementById("userType");
+
+  userOptions.forEach(button => {
+    button.addEventListener("click", function(){
+      userOptions.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
+      userTypeInput.value = this.dataset.role;
+      errorMsg.textContent = "";
+    });
+  });
+
+  loginForm.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+    const role = userTypeInput.value;
+
+    errorMsg.style.display = "none";
+
+    // Admin login
+    if(role === "admin"){
+      if(email === "admin@gmail.com" && password === "admin123"){
+        window.location.href = "admin_portal.html";
+      } else {
+        errorMsg.style.display = "block";
+        errorMsg.innerText = "Admin Invalid credentials!";
+      }
+      return;
+    }
+
+    // Student login
+    if(role === "student"){
+      const students = JSON.parse(localStorage.getItem("students") || "[]");
+      const student = students.find(s => s.email === email && s.password === password);
+
+      if(student){
+        window.location.href = "dashboard.html";
+      } else {
+        errorMsg.style.display = "block";
+        errorMsg.innerText = "Student Invalid credentials!";
+      }
+    }
+  });
+}
+
+
+
+// =========  Admin / Student Toggle Buttons ===========
 
 document.addEventListener("DOMContentLoaded", function () {
   const userOptions = document.querySelectorAll(".user-option");
   const userTypeInput = document.getElementById("userType");
   const errorMsg = document.getElementById("error");
 
-  // Switch Login Type (Admin / Student)
   userOptions.forEach(button => {
-    button.addEventListener("click", function(){
+    button.addEventListener("click", function () {
+      // Remove active class from all buttons
       userOptions.forEach(btn => btn.classList.remove("active"));
+      
+      // Add active class to clicked button
       this.classList.add("active");
-      userTypeInput.value = this.getAttribute("data-role");
+
+      // Update hidden input value
+      userTypeInput.value = this.dataset.role;
+
+      // Clear any previous error
+      errorMsg.textContent = "";
     });
   });
-
-  // Login Submit
-  document.getElementById("loginForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    let role = document.getElementById("userType").value; // admin / student
-
-    // DEMO LOGIN (You can replace with database later)
-    if(role == "admin"){
-      if(email === "admin@gmail.com" && password === "admin123"){
-        window.location.href = "admin_portal.html";
-      }else{
-        errorMsg.style.display="block";
-        errorMsg.innerText="Invalid credentials!";
-      }
-    }
-
-    if(role == "student"){
-      if(email === "student@gmail.com" && password === "student123"){
-        window.location.href = "dashboard.html";
-      }else{
-        errorMsg.style.display="block";
-        errorMsg.innerText="Invalid credentials!";
-      }
-    }
-
-  });
-  });
-
-
+});
 
 
 // -----------------------------------------------------------------------------------
 
 
-    // 📊 Dashboard Page Script
+  // ========= 📊 Dashboard Page Script =================
+
 document.addEventListener("DOMContentLoaded", function () {
   const bodyClass = document.body.className;
   if (bodyClass.includes("dashboard-page")) {
@@ -127,11 +176,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
 // ---------------------------------------------------------------------
 
 
-    // 👁️ Password Icon - show / hide password
+// =============== 👁️ Password Icon - show / hide password =================
+
 const toggleIcons = document.querySelectorAll(".toggle-password");
 
 toggleIcons.forEach((icon) => {
@@ -153,30 +202,76 @@ toggleIcons.forEach((icon) => {
 
 //      //register popup alerts
 //      // Handle form submission
+
+
 // const registerForm = document.getElementById("registerForm");
+
 // if (registerForm) {
-//   // ✅ only run if registerForm exists
 //   registerForm.addEventListener("submit", function (e) {
-//     e.preventDefault(); // Prevent default page refresh
+//     e.preventDefault(); // stop form refresh
 
-//     const password = document.getElementById("password"); // make sure you get the password input
-//     // const confirmPassword = document.getElementById("confirm").value;
+//     const passwordInput = document.getElementById("password");
+//     const password = passwordInput.value;
 
-//     // if (password.value !== confirmPassword) {
-//     //   alert("Passwords do not match!");
-//     //   return;
-//     // }
+//     const mobileInput = document.getElementById("mobile");
+//     const mobile = mobileInput.value;
 
-//     // Show success popup using SweetAlert2
+//     // Mobile number regex - Indian format
+//     const mobileRegex = /^[6-9]\d{9}$/;
+
+//     if (!mobileRegex.test(mobile)) {
+//       Swal.fire({
+//         title: "Invalid Mobile Number!",
+//         text: "Please enter a valid 10-digit mobile number starting with 6–9.",
+//         icon: "error",
+//         confirmButtonColor: "#d33",
+//         background: "#f8d7da",
+//         color: "#721c24",
+//         width: 380,
+//         customClass: {
+//         title: "swal-title",
+//         htmlContainer: "swal-text",
+//         confirmButton: "swal-btn",
+//       },
+//     });
+//     return; // ❌ Stop further execution
+//  }
+
+
+//     // Strong password regex
+//     const strongPass = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
+
+//     // ❌ If password format is wrong → STOP and show SWEETALERT error popup
+//     if (!strongPass.test(password)) {
+//       Swal.fire({
+//         title: "Invalid Password!",
+//         text: "Password must be at least 8 characters with uppercase, lowercase, special character & number.",
+//         icon: "error",
+//         confirmButtonColor: "#d33",
+//         background: "#f8d7da",
+//         color: "#721c24",
+//         width: 380,
+
+//         customClass: {
+//           title: "swal-title",
+//           htmlContainer: "swal-text",
+//           confirmButton: "swal-btn",
+//         },
+//       });
+//       return; // ❌ Stop here (no success popup)
+//     }
+
+
+//     // ✅ If password is correct → show success popup
 //     Swal.fire({
 //       title: "🎉 Registration Successful!",
 //       text: "Your account has been created successfully.",
-//       icon: "success", // success, error, warning, info, question
+//       icon: "success",
 //       confirmButtonText: "Go to Login",
-//       confirmButtonColor: "#3085d6", // Button color
-//       background: "#f0f2f5", // Popup background color
-//       color: "#333", // Text color
-//       width: 380, // Popup width
+//       confirmButtonColor: "#3085d6",
+//       background: "#f0f2f5",
+//       color: "#333",
+//       width: 380,
 //       padding: "-5em",
 
 //       customClass: {
@@ -187,115 +282,121 @@ toggleIcons.forEach((icon) => {
 //       },
 //     }).then((result) => {
 //       if (result.isConfirmed) {
-//         // Redirect to login page
 //         window.location.href = "login.html";
 //       }
 //     });
 
-//     // Reset form
+//     // Reset form after success
 //     registerForm.reset();
 //     password.setAttribute("type", "password");
 //     togglePassword.classList.add("fa-eye");
 //     togglePassword.classList.remove("fa-eye-slash");
+
 //   });
 // }
 
 
+
+                  // ===== Register Script =====
+
 const registerForm = document.getElementById("registerForm");
 
-if (registerForm) {
-  registerForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // stop form refresh
+if(registerForm){
+  registerForm.addEventListener("submit", async function(e){ // Make async
+    e.preventDefault();
 
-    const passwordInput = document.getElementById("password");
-    const password = passwordInput.value;
+    const name = document.getElementById("registerName").value.trim();
+    const email = document.getElementById("registerEmail").value.trim();
+    const mobile = document.getElementById("registerMobile").value.trim();
+    const password = document.getElementById("registerPassword").value.trim();
 
-    const mobileInput = document.getElementById("mobile");
-    const mobile = mobileInput.value;
-
-    // Mobile number regex - Indian format
+    // Mobile validation
     const mobileRegex = /^[6-9]\d{9}$/;
-
-    if (!mobileRegex.test(mobile)) {
+    if(!mobileRegex.test(mobile)){
       Swal.fire({
         title: "Invalid Mobile Number!",
-        text: "Please enter a valid 10-digit mobile number starting with 6–9.",
+        text: "Enter a valid 10-digit mobile number starting with 6-9.",
         icon: "error",
         confirmButtonColor: "#d33",
         background: "#f8d7da",
         color: "#721c24",
         width: 380,
-        customClass: {
+      customClass: {
         title: "swal-title",
         htmlContainer: "swal-text",
         confirmButton: "swal-btn",
       },
-    });
-    return; // ❌ Stop further execution
- }
+     });
+      return;
+    }
 
-
-    // Strong password regex
+    // Password validation
     const strongPass = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
-
-    // ❌ If password format is wrong → STOP and show SWEETALERT error popup
-    if (!strongPass.test(password)) {
+    if(!strongPass.test(password)){
       Swal.fire({
         title: "Invalid Password!",
-        text: "Password must be at least 8 characters with uppercase, lowercase, special character & number.",
+        text: "Password must have 8+ characters, uppercase, lowercase, number & special character.",
         icon: "error",
         confirmButtonColor: "#d33",
         background: "#f8d7da",
         color: "#721c24",
         width: 380,
-
         customClass: {
           title: "swal-title",
           htmlContainer: "swal-text",
           confirmButton: "swal-btn",
         },
       });
-      return; // ❌ Stop here (no success popup)
+      return;
     }
 
+    // SEND TO BACKEND ONLY IF VALID
+    try {
+      const res = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, mobile, password })
+      });
 
-    // ✅ If password is correct → show success popup
-    Swal.fire({
-      title: "🎉 Registration Successful!",
-      text: "Your account has been created successfully.",
-      icon: "success",
-      confirmButtonText: "Go to Login",
-      confirmButtonColor: "#3085d6",
-      background: "#f0f2f5",
-      color: "#333",
-      width: 380,
-      padding: "-5em",
+      const result = await res.json();
 
+      if (result.success) {
+        // Save to localStorage only on success
+        let students = JSON.parse(localStorage.getItem("students") || "[]");
+        students.push({name, email, mobile, password});
+        localStorage.setItem("students", JSON.stringify(students));
+
+       Swal.fire({
+        title: "🎉 Registration Successful!",
+        text: result.message,
+        icon: "success",
+        confirmButtonText: "Go to Login",
+        confirmButtonColor: "#3085d6",
+        background: "#f0f2f5",
+        color: "#333",
+        width: 380,
+        padding: "-5em",
+ 
       customClass: {
         title: "swal-title",
         htmlContainer: "swal-text",
         confirmButton: "swal-btn",
         icon: "swal-small-icon",
       },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.href = "login.html";
+
+        }).then(() => {
+          window.location.href = "login.html";
+        });
+
+      } else {
+        Swal.fire("Error", result.message, "error");
       }
-    });
-
-    // Reset form after success
-    registerForm.reset();
-    password.setAttribute("type", "password");
-    togglePassword.classList.add("fa-eye");
-    togglePassword.classList.remove("fa-eye-slash");
-
+    } catch (err) {
+      console.error(err);
+      Swal.fire("Error", "Something went wrong!", "error");
+    }
   });
 }
-
-
-
-
-
 
 
 // ----------------------------------------------------------------------------------
@@ -330,7 +431,8 @@ if (registerForm) {
 
 
 
-    //  Enquiry Form - Home Page
+  //=============  Enquiry Form - Home Page ==================
+
     window.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById("popupForm");
     const form = document.getElementById("enquiryForm");
@@ -368,8 +470,8 @@ if (registerForm) {
 
 
 
-              //  About page
-          // OUR MILESTONES AND ACHIEVEMENTS    
+              // ========= About page ==========
+          // =============== OUR MILESTONES AND ACHIEVEMENTS =================    
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -406,7 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ----------------------------------------------------------------------
 
 
-                // About Page -- FAQS
+                // ========= About Page -- FAQS ==========
 
   const faqItems = document.querySelectorAll(".faq-item");
 
@@ -430,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------------------
 
 
-          //  Home Page - OUR ACHIEVERS 
+          // ========= Home Page - OUR ACHIEVERS ==========
 
 
 const slideContainer = document.querySelector('.carousel-slide');
@@ -508,7 +610,7 @@ setInterval(nextSlide, 3000);
 
 
 
-                        //  Our Motto  -- Home Page
+                        // ========= Our Motto  -- Home Page ==========
    
       const tabs = document.querySelectorAll(".motto-tab-btn");
       const contents = document.querySelectorAll(".motto-tab-content");
@@ -528,7 +630,7 @@ setInterval(nextSlide, 3000);
 //  --------------------------------------------------------------------------------------------------------     
 
 
-                    //  Admin Portal
+        // ========== Admin Portal -- Grant Access to Students ==========
 
 
 async function approveAccess() {
