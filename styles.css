@@ -5282,6 +5282,7 @@ main.dash-video-content {
 .dash-error {
   color: red;
   font-size: 14px;
+  
 }
 
 
@@ -5290,7 +5291,368 @@ main.dash-video-content {
 
 
 
+            /* =========== Forgot - Password ===============  */
+
+.forgot-password-container {
+  width: 900px;
+  display: flex;
+  background: #7bb392;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  overflow: hidden;
+
+   animation: pageFade 0.9s ease forwards;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+    /* RIGHT SIDE - Company Logo */
+.forgot-password-right {
+  flex: 1;
+  background: linear-gradient(to bottom, #068545, #e8f5e9);
+  /* background: linear-gradient(135deg, #068545, #03521d); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: slideRight 0.9s ease forwards;
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.forgot-password-logo-box {
+  text-align: center;
+  padding: 20px;
+}
+
+.forgot-password-logo-box img {
+  max-width: 60%;
+  margin-bottom: 5px;
+
+  animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.forgot-password-logo-box h3 {
+  color: #2e7d32;
+  margin: 10px 0 15px;
+  font-size: 20px;
+}
+
+.forgot-password-logo-box p {
+  color: #4f4f4f;
+  font-size: 15px;
+}
+
+
+  /* LEFT SIDE - Forgot Password */
+.forgot-password-left {
+  flex: 1;
+  padding: 50px;
+  text-align: center;
+
+   animation: slideLeft 0.9s ease forwards;
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.forgot-password-left h2 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 30px;
+
+}
+
+.forgot-password-left p {
+  color: #ffffff;
+  font-size: 17px;
+}
+
+.forgot-password-input-group {
+  margin: 20px 0;
+}
+
+.forgot-password-input-group input {
+  width: 90%;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+}
+
+.forgot-btn button {
+  width: 90%;
+  padding: 12px;
+  border-radius: 25px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.forgot-btn button:hover {
+  background: #1976d2;
+}
+
+.forgot-msg {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ffffff;
+
+  animation: fadeMsg 0.4s ease;
+}
+
+@keyframes fadeMsg {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.forgot-back {
+  display: block;
+  margin-top: 15px;
+  color: #003f2e;
+  text-decoration: none;
+  font-weight: bold;
+
+} 
+
+.forgot-back:hover {
+  /* background: #1976d2; */
+  text-decoration: underline;
+}
+
+
+ /* Responsive */
+@media (max-width: 768px) {
+  .forgot-password-container {
+    flex-direction: column;
+    }
+  }
 
 
 
+/* ----------------------------------------------------------------------------------------   */
 
+
+            /* ============= Reset - Password ================ */
+
+.reset-password-container {
+  display: flex;
+  width: 800px;
+  max-width: 90%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+
+  animation: resetFade 0.9s ease forwards;
+}
+
+@keyframes resetFade {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* RIGHT PANEL */
+.reset-password-right {
+  flex: 1;
+  color: #fff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(to bottom, #068545, #e8f5e9);
+
+  animation: resetSlideRight 0.9s ease forwards;
+}
+
+@keyframes resetSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reset-password-right img {
+  max-width: 60%;
+  margin-bottom: 5px;
+
+  animation: resetFloat 3s ease-in-out infinite;
+}
+
+@keyframes resetFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+
+.reset-password-right h3 {
+  color: #2e7d32;
+  margin: 10px 0 15px;
+  font-size: 20px;
+}
+
+.reset-password-right p {
+  color: #4f4f4f;
+  font-size: 15px;
+}
+
+
+/* LEFT PANEL */
+.reset-password-left {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(to Top, #068545, #e8f5e9);
+
+   animation: resetSlideLeft 0.9s ease forwards;
+}
+
+@keyframes resetSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reset-password-left h2 {
+  margin-bottom: 20px;
+  color: #333;  
+  font-size: 30px;
+}
+
+.reset-password-left p {
+  margin-bottom: 20px;
+  /* color: #666; */
+  color: #333232;
+  font-size: 15px;  
+}
+
+.reset-fill input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.reset-fill input:focus {
+  outline: none;
+  border-color: #085e29;
+}
+
+.reset-fill button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  /* background-color: #3c8c5a; */
+  background-color: #1984e9;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+      
+}
+
+.reset-fill button:hover {
+  background-color: #2b6e45;
+}
+
+#reset-msg {
+  margin-top: 15px;
+  font-size: 14px;
+  color: green;
+  text-align: center;
+}
+
+.reset-back {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  /* color: #003f2e; */
+
+  color: #061a52;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+
+}
+
+.reset-back:hover {
+  text-decoration: underline;
+}
+
+  @media(max-width:768px){
+    .reset-password-container{
+      flex-direction: column;
+    }
+    .reset-password-right{
+       padding: 30px;
+    }
+    .reset-password-left{
+      padding: 30px;
+    }
+  }
+
+
+/* --------------------------------------------------------------------------------- */

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTP Verify - Login Page</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+<style>
+
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: linear-gradient(135deg, #4f46e5, #6366f1); */
+  background: linear-gradient(135deg, #068545, #03521d);
+
+  animation: otpBgFade 0.8s ease;
+}
+
+@keyframes otpBgFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  background: #fff;
+  width: 360px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+
+  animation: otpCardIn 0.9s ease forwards;
+}
+
+@keyframes otpCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+
+  animation: otpTitle 0.8s ease forwards;
+}
+
+@keyframes otpTitle {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin-bottom: 15px;
+
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #4f46e5;
+
+  box-shadow: 0 0 0 4px rgba(6, 133, 69, 0.2);
+  transform: scale(1.03);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: #4338ca;
+
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(6, 133, 69, 0.45);
+}
+
+
+/* Ripple Effect */
+.container button::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 255, 255, 0.25);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: transform 0.6s ease;
+}
+
+.container button:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#msg {
+  margin-top: 12px;
+  color: red;
+  font-size: 14px;
+
+  animation: otpMsgFade 0.3s ease;
+}
+
+/* Shake on error */
+#msg:not(:empty) {
+  animation: otpShake 0.4s ease;
+}
+
+@keyframes otpMsgFade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes otpShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
+}
+
+</style>
+
+<html>
+<body>
+
+<div class="container">
+  <h2>Verify OTP</h2>
+
+<form id="otpForm">
+  <input type="text" id="otp" placeholder="Enter OTP" required />
+  <button>Verify</button>
+  <p id="msg"></p>
+</form>
+</div>
+
+
+<!-- Javascript -->
+<script src="main.js" defer></script>
+
+
+<!-- OTP - Verify -->
+<script>
+
+document.getElementById("otpForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const otp = document.getElementById("otp").value;
+  const email = new URLSearchParams(window.location.search).get("email");
+
+  fetch("http://localhost:3000/api/verify-otp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, otp })
+  })
+  .then(res => res.json())
+  .then(data => {
+    window.location.href = `reset.html?token=${data.token}`;
+  })
+  .catch(() => {
+    document.getElementById("msg").textContent = "Invalid OTP";
+  });
+});
+
+</script>
+
+</body>
+</html>
