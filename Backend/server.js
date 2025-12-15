@@ -241,7 +241,7 @@ app.post("/register", async (req, res) => {
 
         <p style="margin-top:5px;font-size:14px;font-weight:600;">
          Regards,<br>
-         Course Team
+         3470 HealthCare Pvt Ltd
         </p>
        </div>
       `
@@ -311,7 +311,7 @@ app.post("/send-request", upload.none(), async (req, res) => {
 
       <p style="margin-top:5px;font-size:14px;font-weight:600;">
        Regards,<br>
-       Course Team
+       3470 HealthCare Pvt Ltd
       </p>
       </div>
     `,
@@ -357,7 +357,7 @@ app.post("/grant-access", upload.none(), async (req, res) => {
 
       <p style="margin-top:5px;font-size:14px;font-weight:600;">
       Regards,<br>
-      Course Team
+      3470 HealthCare Pvt Ltd
       </p>
     </div>
     `,
