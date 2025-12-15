@@ -196,6 +196,7 @@ document.getElementById("otpForm").addEventListener("submit", function(e) {
 
   const otp = document.getElementById("otp").value;
   const email = new URLSearchParams(window.location.search).get("email");
+  const msg = document.getElementById("msg");
 
   fetch("http://localhost:3000/api/verify-otp", {
     method: "POST",
@@ -204,14 +205,19 @@ document.getElementById("otpForm").addEventListener("submit", function(e) {
   })
   .then(res => res.json())
   .then(data => {
-    window.location.href = `reset.html?token=${data.token}`;
+    if (data.success) {
+      window.location.href = `reset_password.html?token=${data.token}`;
+    } else {
+      msg.textContent = "Invalid or Expired OTP";
+    }
   })
   .catch(() => {
-    document.getElementById("msg").textContent = "Invalid OTP";
+    msg.textContent = "Verification failed";
   });
 });
 
 </script>
+
 
 </body>
 </html>

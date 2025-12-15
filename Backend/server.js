@@ -7,6 +7,12 @@ const upload = multer();
 const app = express();
 
 
+const bcrypt = require("bcrypt");
+
+const { v4: uuidv4 } = require("uuid");
+
+
+
 // Allow frontend
 
 app.use(
@@ -15,6 +21,16 @@ app.use(
   })
 );
 
+
+// Registered users (mock users table)
+const users = {
+  "3470test@gmail.com": {
+    password: "$2b$10$abcdefghijklmnopqrstuv" // dummy hash
+  }
+};
+
+const otpStore = {};
+const resetTokenStore = {};
 
 
 app.use(express.json())
@@ -29,6 +45,135 @@ const transporter = nodemailer.createTransport({
     pass: "oprbrroykumwnzns", // Gmail app password
   },
 });
+
+
+const sendOtp = (email, otp) => {
+  return transporter.sendMail({
+    from: '"3470 HealthCare" <3470test@gmail.com>',
+    to: email,
+    subject: "🔐 3470 HealthCare – Password Reset OTP",
+    html: `
+      <div style="font-family: Arial, Helvetica, sans-serif; background-color:#f4f6f8; padding:20px;">
+
+        <div style="max-width:500px; margin:auto; background:#ffffff; border-radius:8px; padding:30px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+
+          <h2 style="text-align:center; color:#068545; margin-bottom:10px;">
+            3470 HealthCare Training & Certification Program
+          </h2>
+
+          <p style="text-align:center; color:#777; font-size:15px; margin-bottom:25px;">
+            Account Security Verification
+          </p>
+
+          <p style="color:#555; font-size:14px;">Hello,</p>
+
+          <p style="color:#555; font-size:14px;">
+            We received a request to reset your password for your
+            <b>3470 HealthCare Pvt Ltd</b> account.
+          </p>
+
+          <div style="text-align:center; margin:25px 0;">
+            <span style="display:inline-block; font-size:24px; letter-spacing:4px; font-weight:bold; color:#ffffff; background-color:#068545; padding:12px 24px; border-radius:6px;">
+              ${otp}
+            </span>
+          </div>
+
+          <p style="color:#555; font-size:14px;">
+            This OTP is valid for <b>5 minutes</b>.
+          </p>
+
+          <p style="color:#999; font-size:12px;">
+            If you did not request this password reset, please ignore this email.
+          </p>
+
+          <hr style="margin:15px 0;">
+
+          <p style="color:#11682e; font-size:15px; font-weight:bold;">
+            3470 HealthCare Training & Certification Program
+          </p>
+
+          <p style="font-size:14px; font-weight:600;">
+            Regards,<br>
+            3470 HealthCare Pvt Ltd
+          </p>
+
+        </div>
+      </div>
+    `
+  });
+};
+
+
+/* ==========================
+   FORGOT PASSWORD
+========================== */
+app.post("/api/forgot-password", (req, res) => {
+  const { email } = req.body;
+
+  if (!users[email]) {
+    return res.json({ success: false, message: "Email not registered" });
+  }
+
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  const expiry = Date.now() + 5 * 60 * 1000;
+
+  otpStore[email] = { otp, expiry };
+
+  sendOtp(email, otp);
+  res.json({ success: true });
+});
+
+/* ==========================
+   VERIFY OTP
+========================== */
+app.post("/api/verify-otp", (req, res) => {
+  const { email, otp } = req.body;
+
+  const record = otpStore[email];
+
+  if (!record || record.otp !== otp) {
+    return res.json({ success: false, message: "Invalid OTP" });
+  }
+
+  if (Date.now() > record.expiry) {
+    return res.json({ success: false, message: "OTP expired" });
+  }
+
+  const token = uuidv4();
+  resetTokenStore[token] = {
+    email,
+    expiry: Date.now() + 10 * 60 * 1000
+  };
+
+  delete otpStore[email];
+
+  res.json({ success: true, token });
+});
+
+/* ==========================
+   RESET PASSWORD
+========================== */
+app.post("/api/reset-password", async (req, res) => {
+  const { token, password } = req.body;
+
+  const record = resetTokenStore[token];
+
+  if (!record) {
+    return res.json({ success: false, message: "Invalid token" });
+  }
+
+  if (Date.now() > record.expiry) {
+    return res.json({ success: false, message: "Token expired" });
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  users[record.email].password = hashedPassword;
+
+  delete resetTokenStore[token];
+
+  res.json({ success: true });
+});
+
 
 
 // --------------------
