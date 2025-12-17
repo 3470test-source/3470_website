@@ -602,7 +602,7 @@ dots.forEach((dot, dotIndex) => {
   });
 });
 
-// Auto slide every 3 seconds
+// Auto slide every 3 seconds 
 setInterval(nextSlide, 3000);
 
 
@@ -657,7 +657,7 @@ async function approveAccess() {
 
   if (text === "GRANTED_AND_NOTIFIED") {
     msg.style.color = "green";
-    msg.innerText = "Access granted! User notified.";
+    msg.innerText = "Access granted ! User notified.";
 
     // ✅ CLEAR INPUT BOX (RESET)
     document.getElementById("email").value = "";
@@ -685,7 +685,8 @@ async function approveAccess() {
 
 
 
-                  
+  
+
 
 
 

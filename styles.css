@@ -5677,3 +5677,65 @@ main.dash-video-content {
 
 
 /* --------------------------------------------------------------------------------- */
+
+
+              /* ============== Admin Access Portal ================  */
+
+
+
+   /* Course video Access  */
+
+.admin-box h2 {
+  text-align: center;
+  color: #1d75af;
+  font-size: 25px;
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+
+.admin-box input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px auto;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  font-size: 15px;      
+  display: block;           
+  box-sizing: border-box;  
+}
+
+.admin-box input:focus {
+  outline: none;
+  border-color: #15b33c;
+  box-shadow: 0 0 5px #04701655;
+}
+      
+button.admin-approve-btn {
+  width: 90%;
+  margin-top: 50px;
+  padding: 12px;
+  background: green;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px auto;  
+  display: block; 
+  box-sizing: border-box;    
+        
+}
+
+button.admin-approve-btn:hover {
+  background: darkgreen;
+}
+
+#Admin-msg {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}              
+
+
+/* -------------------------------------------------------------------------- */
