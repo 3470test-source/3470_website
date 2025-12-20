@@ -459,15 +459,12 @@ if(registerForm){
       // Hide popup
       closePopup();
 
-      // You can send form data here via AJAX
-      alert("Thank you!  Your enquiry has been submitted.");
+    // You can send form data here via AJAX
+      alert("Thank you !  Your enquiry has been submitted.");
     });0
   });
 
-
-
 // ------------------------------------------------------------------
-
 
 
               // ========= About page ==========
@@ -499,8 +496,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCount();
   });
 });
-
-
 
 
 
