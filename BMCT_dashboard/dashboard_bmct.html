@@ -17,7 +17,7 @@
     />
   </head>
   
-  <body class="dashboard-page">
+  <body class="dashboard-page no-right-click-3470">
     <!-- top-header -->
     <header class="header-top-dash">
       <div class="left-section-dash">
@@ -169,6 +169,29 @@
 });
 </script>
 
+<!-- ========= Disable Right-Click on All Page ========== -->
+<script>
+
+ (function() {
+    // Only apply if body has this class
+    if (document.body.classList.contains('no-right-click-3470')) {
+
+        // Disable right-click
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // Disable specific keyboard shortcuts (Ctrl+S, Ctrl+P, Ctrl+U)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                const forbiddenKeys = ['s', 'p', 'u']; // s=Save, p=Print, u=View Source
+                if (forbiddenKeys.includes(e.key.toLowerCase())) {
+                    e.preventDefault();
+                }
+            }
+        });
+    }
+})();
+
+</script>
 
   </body>
 </html>
