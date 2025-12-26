@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> 3470 HealthCare & Medical Coding Training Institute | Dashboard - Course Materials - Secure PDF Viewer</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #1e1e1e;
+    }
+    canvas {
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+
+<body class="no-right-click-3470">
+
+<!-- Load PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+  // REQUIRED: worker file path
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  // Get PDF from URL
+  const params = new URLSearchParams(window.location.search);
+  const pdfUrl = params.get("file");
+
+  if (!pdfUrl) {
+    alert("PDF not found");
+  }
+
+  // Load PDF
+  pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+
+      pdf.getPage(pageNum).then(page => {
+
+        const viewport = page.getViewport({ scale: 1.5 });
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        document.body.appendChild(canvas);
+
+        page.render({
+          canvasContext: context,
+          viewport: viewport
+        });
+
+      });
+    }
+
+  });
+
+  // Disable right click
+  document.addEventListener("contextmenu", e => e.preventDefault());
+
+  // Disable Ctrl shortcuts
+  document.addEventListener("keydown", e => {
+    if (e.ctrlKey && ['s', 'p', 'u'].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+  });
+</script>
+
+</body>
+</html>

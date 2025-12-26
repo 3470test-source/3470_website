@@ -220,7 +220,8 @@
   <!-- Javascript -->
   <script src="../main.js" defer></script>
 
-  <!-- PDF Viewer Script -->
+            <!-- PDF Viewer Script -->
+
   <!-- Same Tab open -->
   <!-- <script>
     function open_BMCT_PDF(path) {
@@ -228,10 +229,11 @@
    }
   </script> -->
 
+
   <!-- New Tab open -->
   <script>
-    function open_BMCT_PDF(path) {
-    window.open(path + "#toolbar=0&navpanes=0&scrollbar=0", "_blank"); 
+    function open_BMCT_PDF(pdfPath) {
+    window.open("../pdf-viewer.html?file=" + encodeURIComponent(pdfPath), "_blank");
    }
   </script>
 
@@ -279,6 +281,6 @@
 })();
 
 </script>
-  
+
   </body>
 </html>
