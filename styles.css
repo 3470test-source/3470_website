@@ -4966,89 +4966,64 @@ main.dash-video-content {
 /* --------------------------------------------------------------------------------------------- */
               
 
-             /* Dashboard -- Tests-Quiz Page  */
+             /* Dashboard -- Tests Assignment Page  */
 
 
-/* Main content area */
-.tests-quiz-content {
-  margin-left: 240px; /* space for sidebar */
+/* Main content */
+.cpc-test-assignments {
+  margin-left: 200px; /* space for sidebar */
   padding: 40px;
 }
 
-.tests-quiz-content h1 {
-  font-size: 28px;
-  color: #0d47a1;
-  margin-bottom: 25px;
+.cpc-test-assignments h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #004d40;
+  text-align: center;
+  /* color: #04552f; */
+  
 }
 
-/* Quiz form container */
-#quizForm {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  transition: transform 0.2s ease;
+.cpc-test-links-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
+  /* grid-template-columns: repeat(2, 250px);  */
+  gap: 30px;
 }
 
-#quizForm:hover {
-  transform: translateY(-2px);
+.cpc-test-assignment-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-#quizForm p {
-  font-size: 18px;
-  color: #333;
+.cpc-test-assignment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cpc-test-assignment-card h3 {
+  color: #055791;
+  font-size: 20px;
   margin-bottom: 15px;
 }
 
-/* Option styling */
-#quizForm label {
-  display: block;
-  font-size: 16px;
-  color: #444;
-  background: #f8f9fa;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-#quizForm input[type="radio"] {
-  margin-right: 10px;
-}
-
-#quizForm label:hover {
-  background: #e3f2fd;
-  transform: translateX(5px);
-}
-
-/* Submit button */
-#quizForm button {
-  background: #005fa3;
+.cpc-test-assignment-card a {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #004d40;
   color: #fff;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  border-radius: 5px;
+} 
+
+.cpc-test-assignment-card a:hover {
+  background: #00695c;
 }
 
-#quizForm button:hover {
-  background: #0077c2;
-  transform: scale(1.05);
-}
-
-/* Result text */
-#result {
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #0d47a1;
-}
-
+            
 /* Responsive */
 @media (max-width: 768px) {
   .main-content {
@@ -5060,7 +5035,6 @@ main.dash-video-content {
     width: 100%;
   }
 }
-
 
 
 /* ------------------------------------------------------------------------------ */
