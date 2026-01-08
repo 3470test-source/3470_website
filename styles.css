@@ -1058,36 +1058,51 @@ nav ul.menu li .dropdown li a {
      align-items: center;
      justify-content: center;  /* Center everything vertically */
      text-align: center;
-     position: relative;
+     /* position: relative; */
      padding: 60px 40px;
   
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
     }
 
     .left-register a {
       color: white;
       text-decoration: none;
       font-size: 0.9rem;
-      position: absolute;
+      /* position: absolute; */
       top: 15px;
-      left: 20px;
+      left: 50px;
+
+      margin-top: 20px;
 
     }
 
-     .home-link {
+     a.home-link {
        display: inline-block;
        margin-bottom: 20px;
        text-decoration: none;
        color: #000;
        font-weight: bold;
-       z-index: 10; /* ensures it’s above other elements */
+       z-index: 10; 
+       
+       
      }
 
-       .home-link:hover {
-          color: #052e6d;
-         
-       }
+     .home-link:hover {
+       color: #052e6d; 
+    }
 
-    
     /* Company Logo */
 
     .register-logo {
@@ -1122,7 +1137,7 @@ nav ul.menu li .dropdown li a {
 
 
     .left-register button {
-      padding: 10px 25px;
+      /* padding: 10px 25px;
       border: 2px solid #fff;
       background: transparent;
       color: #fff;
@@ -1132,7 +1147,16 @@ nav ul.menu li .dropdown li a {
       transition: 0.3s;
       margin-top: 332px;       
       align-self: center;     
-      margin-left: 138px;
+      margin-left: 138px; */
+
+      padding: 10px 28px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
 
     }
 
@@ -1228,12 +1252,12 @@ nav ul.menu li .dropdown li a {
       background: #034b2d;
     }
 
-    @media (max-width: 850px) {
+    /* @media (max-width: 850px) {
       .register-container {
         flex-direction: column;
         width: 90%;
       }
-    }
+    } */
 
 
     /* Register popup message */
@@ -1260,6 +1284,235 @@ nav ul.menu li .dropdown li a {
   transform: scale(0.7); /* smaller size */
   font-size: 15px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media (max-width: 768px) and (orientation: portrait) {
+
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  body {
+    height: auto;
+    padding: 20px;
+    overflow: auto;
+  }
+
+  .register-container {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .left-register {
+    padding: 40px 25px;
+  }
+
+  .register-logo {
+    width: 150px;
+    margin-top: 0;
+  }
+
+  .left-register h2 {
+    font-size: 2.2rem;
+  }
+
+  .left-register button {
+    margin-top: 20px;
+
+  }
+
+  .right-register {
+    padding: 35px 25px;
+  }
+}
+ */
+
+
+ @media (max-width: 768px) {
+
+  /* Disable animated background */
+  body::before,
+  body::after {
+    display: none !important;
+  }
+
+  body {
+    height: auto !important;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-y: auto !important;
+  }
+
+  .register-container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .left-register {
+    padding: 35px 20px;
+    text-align: center;
+  }
+
+  .register-logo {
+    width: 140px;
+    margin: 0 auto 15px;
+  }
+
+  .left-register h2 {
+    font-size: 2rem;
+  }
+
+  .left-register p {
+    font-size: 0.95rem;
+  }
+
+  .left-register button {
+    margin-top: 20px;
+    width: 80%;
+    max-width: 260px;
+  }
+
+  .right-register {
+    padding: 30px 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) and (orientation: landscape) {
+
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  .register-container {
+    width: 90%;
+  }
+
+  .left-register {
+    padding: 40px 30px;
+  }
+
+  .register-logo {
+    width: 160px;
+    margin-top: -20px;
+  }
+
+  .left-register button {
+    margin-top: 350px;  
+    margin-left: 155px;
+  }
+
+  .right-register {
+    padding: 40px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+
+  body {
+    padding: 15px;
+    height: auto;
+    overflow: auto;
+  }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  .register-container {
+    width: 100%;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+
+  .left-register {
+    padding: 70px 20px;
+  }
+
+  .register-logo {
+    width: 120px;
+    margin-top: 0;
+  }
+
+  .left-register h2 {
+    font-size: 1.9rem;
+  }
+
+  .left-register p {
+    font-size: 0.95rem;
+  }
+
+  .left-register button {
+   
+    font-size: 0.95rem;
+
+    margin-top: 215px;
+    margin-left: 126px;
+  }
+
+  .right-register {
+    padding: 25px 20px;
+  }
+
+  .right-register h3 {
+    font-size: 20px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  .signup-btn {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+
 
 
 
@@ -1679,6 +1932,169 @@ footer {
   transform: scale(1.05);
   border-color: #036868;
 }
+
+
+                     /* ===== Responsive Styles - Login Page ===== */ 
+
+                      /* ===== Tab -> iPad Portrait — 768 × 1024 ===== */
+
+@media (max-width: 768px) and (orientation: portrait) {
+
+  .login-container {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .login-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px;
+  }
+
+  .login-left img {
+    width: 140px;
+  }
+
+  .login-right {
+    padding: 40px 30px;
+  }
+
+  .login-right h2 {
+    font-size: 28px;
+  }
+
+  .user-option {
+    width: 100px;
+    font-size: 13px;
+  }
+
+  .input-group {
+    padding: 8px 14px;
+  }
+
+  .login-right .icon {
+    margin-right: 40.5%;
+  }
+}
+
+
+                            /* ===== Tab -> iPad Landscape — 1024 × 768 ===== */
+
+@media (max-width: 1024px) and (orientation: landscape) {
+
+  .login-container {
+    width: 85%;
+  }
+
+  .login-left img {
+    width: 160px;
+  }
+
+  .login-right {
+    padding: 50px 40px;
+  }
+
+  .login-right h2 {
+    font-size: 30px;
+  }
+
+  .login-right .icon {
+    margin-left: 40.5%;
+  }
+}
+
+
+                  /* ================================
+                        Mobile Responsive (≤480px)
+                        Covers: 320, 360, 375, 414
+                     ================================ */
+
+
+@media (max-width: 480px) {
+
+  body {
+    padding: 15px;
+    height: auto;
+  }
+
+  .login-container {
+    width: 100%;
+    flex-direction: column;
+    border-radius: 12px;
+  }
+
+  /* Logo section */
+  .login-left {
+    padding: 25px 15px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .login-left img {
+    width: 120px;
+  }
+
+  /* Form section */
+  .login-right {
+    padding: 30px 20px;
+  }
+
+  .login-right .icon {
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
+    margin-top: -20px;
+    margin-left: 46%;
+  }
+
+  .login-right h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  /* User type buttons */
+  .user-type {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .user-option {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  /* Inputs */
+  .input-group {
+    padding: 8px 12px;
+  }
+
+  .input-group input {
+    font-size: 14px;
+  }
+
+  /* Remember me */
+  .remember-me {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .remember-me a {
+    font-size: 13px;
+  }
+
+  /* Button */
+  .primary-btn {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  /* Register */
+  .register-link {
+    font-size: 14px;
+  }
+}
+
 
 /* ---------------------------------------------------------------- */
 

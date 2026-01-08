@@ -31,13 +31,16 @@
     }
            
     body {
-      height: 100vh;
+      /* height: 100vh; */
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       background: linear-gradient(135deg, #068545, #03521d);
       /* background: linear-gradient(120deg, #4b6cb7, #182848); */
-      overflow: hidden;
+     
+      min-height: 100vh;
+      /* overflow-x: hidden; */
 
       animation: fadeIn 1.2s ease-in;
     }
