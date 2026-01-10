@@ -22,23 +22,29 @@ body {
   display: flex;
   justify-content: space-between; /* left side vs right side */
   align-items: center;
-  padding: 8px 100px;
+  /* padding: 8px 100px; */
   font-size: 15px;
   flex-wrap: wrap; /* mobile friendly */
+
+  padding: 8px 5%;
 }
 
 .top-header .left {
   display: flex;
   gap: 20px; /* space between time and email */
   align-items: center;
-  margin-left: 100px;
+  /* margin-left: 100px; */
+
+   margin-left: 0;
 }
 
 .top-header .right {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-right: 100px;
+  /* margin-right: 100px; */
+
+   margin-right: 0;
 }
 
 .top-header a {
@@ -56,10 +62,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 205px;
+  /* padding: 5px 205px; */
   background-color: white;
   border-bottom: 1px solid #e3e8ee;
   flex-wrap: wrap;
+
+  padding: 10px 5%;
+
 }
 
 .header-left-logo img {
@@ -194,11 +203,12 @@ nav ul.menu li .dropdown li a {
   height: 610px;
   position: relative;
   display: flex;
-  align-items: center; /* vertical center */
-  justify-content: center; /* horizontal center */
+  align-items: center; 
+  justify-content: center; 
   color: whitesmoke;
   text-align: center;
   margin-top: -10px;
+
 }
 
 .banner h1 {
@@ -219,7 +229,6 @@ nav ul.menu li .dropdown li a {
 }
 
 /* " + " Icon  */
-
 .banner h1 .add {
   font-size: 0.7em; /* make it smaller */
   position: relative;
@@ -263,7 +272,7 @@ nav ul.menu li .dropdown li a {
   margin-left: 30%;
 }
 
-/* Banner title */
+ /* Banner title */ 
 
 .banner-title {
   color: #092e5e;
@@ -6140,7 +6149,6 @@ main.dash-video-content {
   text-decoration: underline;
 }
 
-
 .show-password {
   display: flex;
   align-items: center;
@@ -6162,23 +6170,8 @@ main.dash-video-content {
 }
 
 
-
-  /* @media(max-width:768px){
-    .reset-password-container{
-      flex-direction: column;
-    }
-    .reset-password-right{
-       padding: 30px;
-    }
-    .reset-password-left{
-      padding: 30px;
-    }
-  } */
-
-
-
-
-
+        /* ------------------ Responsive Styles - Reset Password ------------------- */
+               /* ------------   Tab --> 1024 x 768 ---------- */ 
 
 
   @media (max-width: 1024px) {
@@ -6195,11 +6188,14 @@ main.dash-video-content {
   .reset-password-left h2 {
     font-size: 26px;
   }
+
+  .show-password {
+    margin: 0 290px 15px 7px;
+    justify-content: flex-start;
+  }
 }
 
-
-
-
+                /* ------------   Tab --> 768 x 1024 ---------- */
 
 @media (max-width: 768px) {
 
@@ -6215,12 +6211,12 @@ main.dash-video-content {
 
   .reset-password-right {
     order: 1;
-    padding: 30px 20px;
+    padding: 25px 15px;
   }
 
   .reset-password-left {
     order: 2;
-    padding: 30px 20px;
+    padding: 25px 15px;
   }
 
   .reset-password-right img {
@@ -6238,26 +6234,168 @@ main.dash-video-content {
 
   /* IMPORTANT FIX */
   .show-password {
-    margin: 0 0 15px 0;
+    margin: 0 500px 15px 10px;
     justify-content: flex-start;
   }
 }
+ 
+                          /* ------- 320 x 568 (Small phones) ----------- */
 
+@media (max-width: 320px) and (max-height: 568px) {
 
+  body {
+    padding: 12px;
+    height: auto;
+  }
 
-@media (max-width: 375px) {
+  .reset-password-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .reset-password-right img {
+    max-width: 130px;
+  }
+
+  .reset-password-left,
+  .reset-password-right {
+    padding: 10px 15px;
+  }
 
   .reset-password-left h2 {
     font-size: 22px;
+    text-align: center;
+  }
+
+  .reset-password-left p {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .reset-fill input,
+  .reset-fill button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .show-password {
+    margin: 0 150px 12px 10px;
+  }
+}
+
+                       /* ---------------- 360 x 640 (Android phones) ----------- */
+
+@media (min-width: 321px) and (max-width: 360px) {
+
+  body {
+    padding: 15px;
+    height: auto;
+  }
+
+  .reset-password-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .reset-password-right img {
+    max-width: 130px;
+  }
+
+  .reset-password-left,
+  .reset-password-right {
+    padding: 18px 18px;
+  }
+
+  .reset-password-left h2 {
+    font-size: 23px;
+    text-align: center;
   }
 
   .reset-fill input,
   .reset-fill button {
     font-size: 14px;
-    padding: 10px;
+  }
+
+  .show-password {
+    margin: 0 150px 12px 10px;
   }
 }
 
+           /* --------------- 375 x 667 (iPhone 6/7/8) ------------- */
+
+@media (min-width: 361px) and (max-width: 375px) {
+
+  body {
+    padding: 18px;
+    height: auto;
+  }
+
+  .reset-password-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .reset-password-right img {
+    max-width: 130px;
+  }
+
+  .reset-password-left,
+  .reset-password-right {
+    padding: 23px 20px;
+  }
+
+  .reset-password-left h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .reset-fill input,
+  .reset-fill button {
+    font-size: 14px;
+  }
+
+  .show-password {
+    margin: 0 150px 12px 10px;
+  }
+}
+
+                     /* -------------------- 414 x 736 (Large phones) ---------------- */
+
+@media (min-width: 376px) and (max-width: 414px) {
+
+  body {
+    padding: 20px;
+    height: auto;
+  }
+
+  .reset-password-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .reset-password-right img {
+    max-width: 130px;
+  }
+
+  .reset-password-left,
+  .reset-password-right {
+    padding: 28px 22px;
+  }
+
+  .reset-password-left h2 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .reset-fill input,
+  .reset-fill button {
+    font-size: 15px;
+  }
+
+  .show-password {
+    margin: 0 170px 12px 10px;
+  }
+}
 
 
 /* --------------------------------------------------------------------------------- */
@@ -6323,4 +6461,151 @@ button.admin-approve-btn:hover {
 
 
 /* -------------------------------------------------------------------------- */
+
+
+                /* ============ Responsive Styles --> all page top & main header ============  */
+
+
+@media (min-width: 1280px) {
+  header {
+    padding: 10px 6%;
+  }
+
+  nav ul.menu li a {
+    font-size: 18.5px;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .top-header {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav ul.menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav ul.menu li a {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  /* Top header */
+  .top-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+
+  .top-header .left,
+  .top-header .right {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* Main header */
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+  }
+
+  .header-left-logo img {
+    max-height: 65px;
+  }
+
+  /* Menu */
+  nav ul.menu {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 5px;
+  }
+
+  nav ul.menu li a {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  /* Dropdown full width */
+  nav ul.menu li .dropdown {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+  }
+
+  /* Buttons */
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .login-btn,
+  .register-btn {
+    width: 90%;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 375px) {
+  nav ul.menu li a {
+    font-size: 14px;
+  }
+
+  .top-header {
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
