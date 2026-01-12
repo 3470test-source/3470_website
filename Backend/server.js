@@ -1,25 +1,49 @@
+require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require("uuid");
 const upload = multer();
 const app = express();
 
 
-const bcrypt = require("bcrypt");
 
-const { v4: uuidv4 } = require("uuid");
+     /*    ==========================
+              CORS (LOCAL + LIVE)
+           ==========================      */
 
+// app.use(cors({
+//   origin: [
+//     process.env.FRONTEND_LOCAL,
+//     process.env.FRONTEND_LIVE,
+//     process.env.FRONTEND_LIVE_NOWWW
+//   ],
+//   methods: ["GET", "POST"],
+//   credentials: true
+// }));
+
+app.use(cors({
+  origin: true,   // allow same-origin + proxied requests
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+
+
+
+app.use(express.json())
+app.use(bodyParser.json());
 
 
 // Allow frontend
 
-app.use(
-  cors({
-    origin: "http://127.0.0.1:5500",
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://127.0.0.1:5500", "https://www.3470healthcare.org"],
+//   })
+// );
 
 
 // Registered users (mock users table)
@@ -33,23 +57,30 @@ const otpStore = {};
 const resetTokenStore = {};
 
 
-app.use(express.json())
-app.use(bodyParser.json());
-
-
 // Gmail transporter
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "3470test@gmail.com",
+//     pass: "jpohddewgcbthxpn", // Gmail app password
+//   },
+// });
+
+// ==========================
+// NODEMAILER (GMAIL)
+// ==========================
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "3470test@gmail.com",
-    pass: "jpohddewgcbthxpn", // Gmail app password
-  },
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS
+  }
 });
 
 
 const sendOtp = (email, otp) => {
   return transporter.sendMail({
-    from: '"3470 HealthCare" <3470test@gmail.com>',
+    from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
     to: email,
     subject: "🔐 3470 HealthCare – Password Reset OTP",
     html: `
@@ -377,13 +408,14 @@ app.post("/grant-access", upload.none(), async (req, res) => {
    START SERVER
 -------------------------------------------------------------------*/
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// app.listen(3000, () => {
+//   console.log("Server running on http://localhost:3000");
+// });
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Backend running on port ${PORT}`);
 });
-
-
-
-
 
 
 
