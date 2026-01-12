@@ -8,6 +8,9 @@ const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const upload = multer();
 const app = express();
+const db = require("./db");
+const mysql = require("mysql2/promise");
+
 
 
 
@@ -15,21 +18,21 @@ const app = express();
               CORS (LOCAL + LIVE)
            ==========================      */
 
-// app.use(cors({
-//   origin: [
-//     process.env.FRONTEND_LOCAL,
-//     process.env.FRONTEND_LIVE,
-//     process.env.FRONTEND_LIVE_NOWWW
-//   ],
-//   methods: ["GET", "POST"],
-//   credentials: true
-// }));
-
 app.use(cors({
-  origin: true,   // allow same-origin + proxied requests
+  origin: [
+    process.env.FRONTEND_LOCAL,
+    process.env.FRONTEND_LIVE,
+    process.env.FRONTEND_LIVE_NOWWW
+  ],
   methods: ["GET", "POST"],
   credentials: true
 }));
+
+// app.use(cors({
+//   origin: true,   
+//   methods: ["GET", "POST"],
+//   credentials: true
+// }));
 
 
 
@@ -403,6 +406,35 @@ app.post("/grant-access", upload.none(), async (req, res) => {
     res.send("ERROR");
   }
 });
+
+
+
+          // Mysql connection pool
+
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,     // 👈 important
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
+
+// Test connection once at startup
+(async () => {
+  try {
+    const connection = await db.getConnection();
+    console.log("✅ MySQL Connected Successfully");
+    connection.release();
+  } catch (err) {
+    console.error("❌ MySQL Connection Failed:", err.message);
+  }
+})();
+
+module.exports = db;
+
 
 /*------------------------------------------------------------------
    START SERVER
