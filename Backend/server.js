@@ -6,72 +6,65 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
-const upload = multer();
-const app = express();
-const db = require("./db");
+// const db = require("./db");
 const mysql = require("mysql2/promise");
+const app = express();
+const upload = multer();
 
+/* ==========================
+   CORS (LOCAL + LIVE)
+========================== */
 
-
-
-     /*    ==========================
-              CORS (LOCAL + LIVE)
-           ==========================      */
+const allowedOrigins = [
+  "http://127.0.0.1:5500",
+  "http://localhost:5500",
+  "https://www.3470healthcare.org",
+  "https://3470healthcare.org"
+];
 
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_LOCAL,
-    process.env.FRONTEND_LIVE,
-    process.env.FRONTEND_LIVE_NOWWW
-  ],
-  methods: ["GET", "POST"],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
   credentials: true
 }));
 
-// app.use(cors({
-//   origin: true,   
-//   methods: ["GET", "POST"],
-//   credentials: true
-// }));
-
-
-
-app.use(express.json())
+app.use(express.json());
 app.use(bodyParser.json());
 
+/* ==========================
+   MYSQL CONNECTION POOL
+========================== */
 
-// Allow frontend
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10
+});
 
-// app.use(
-//   cors({
-//     origin: ["http://127.0.0.1:5500", "https://www.3470healthcare.org"],
-//   })
-// );
-
-
-// Registered users (mock users table)
-const users = {
-  "3470test@gmail.com": {
-    password: "$2b$10$abcdefghijklmnopqrstuv" // dummy hash
+// Test DB connection
+(async () => {
+  try {
+    const conn = await db.getConnection();
+    console.log("✅ MySQL Connected");
+    conn.release();
+  } catch (err) {
+    console.error("❌ MySQL Failed:", err.message);
   }
-};
+})();
 
-const otpStore = {};
-const resetTokenStore = {};
+/* ==========================
+   NODEMAILER (GMAIL)
+========================== */
 
-
-// Gmail transporter
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: "3470test@gmail.com",
-//     pass: "jpohddewgcbthxpn", // Gmail app password
-//   },
-// });
-
-// ==========================
-// NODEMAILER (GMAIL)
-// ==========================
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -80,6 +73,20 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+/* ==========================
+   OTP STORES (TEMP)
+========================== */
+
+const users = {
+  "3470test@gmail.com": { password: "dummy" }
+};
+
+const otpStore = {};
+const resetTokenStore = {};
+
+/* ==========================
+   SEND OTP
+========================== */
 
 const sendOtp = (email, otp) => {
   return transporter.sendMail({
@@ -137,10 +144,10 @@ const sendOtp = (email, otp) => {
   });
 };
 
-
 /* ==========================
    FORGOT PASSWORD
 ========================== */
+
 app.post("/api/forgot-password", (req, res) => {
   const { email } = req.body;
 
@@ -149,9 +156,7 @@ app.post("/api/forgot-password", (req, res) => {
   }
 
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
-  const expiry = Date.now() + 5 * 60 * 1000;
-
-  otpStore[email] = { otp, expiry };
+  otpStore[email] = { otp, expiry: Date.now() + 5 * 60 * 1000 };
 
   sendOtp(email, otp);
   res.json({ success: true });
@@ -160,18 +165,16 @@ app.post("/api/forgot-password", (req, res) => {
 /* ==========================
    VERIFY OTP
 ========================== */
+
 app.post("/api/verify-otp", (req, res) => {
   const { email, otp } = req.body;
-
   const record = otpStore[email];
 
-  if (!record || record.otp !== otp) {
+  if (!record || record.otp !== otp)
     return res.json({ success: false, message: "Invalid OTP" });
-  }
 
-  if (Date.now() > record.expiry) {
+  if (Date.now() > record.expiry)
     return res.json({ success: false, message: "OTP expired" });
-  }
 
   const token = uuidv4();
   resetTokenStore[token] = {
@@ -180,27 +183,24 @@ app.post("/api/verify-otp", (req, res) => {
   };
 
   delete otpStore[email];
-
   res.json({ success: true, token });
 });
 
 /* ==========================
    RESET PASSWORD
 ========================== */
+
 app.post("/api/reset-password", async (req, res) => {
   const { token, password } = req.body;
-
   const record = resetTokenStore[token];
 
-  if (!record) {
+  if (!record)
     return res.json({ success: false, message: "Invalid token" });
-  }
 
-  if (Date.now() > record.expiry) {
+  if (Date.now() > record.expiry)
     return res.json({ success: false, message: "Token expired" });
-  }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  users[record.email].password = await bcrypt.hash(password, 10);
   users[record.email].password = hashedPassword;
 
   delete resetTokenStore[token];
@@ -208,11 +208,10 @@ app.post("/api/reset-password", async (req, res) => {
   res.json({ success: true });
 });
 
+/* ==========================
+   REGISTER USER
+========================== */
 
-
-// --------------------
-// 1️⃣ Registration route
-// --------------------
 app.post("/register", async (req, res) => {
   const { name, email, mobile, password } = req.body;
 
@@ -299,9 +298,10 @@ app.post("/register", async (req, res) => {
 });
 
 
-/*------------------------------------------------------------------
-   1) USER SENDS REQUEST → EMAIL GOES TO OWNER  + SAVE TO EXCEL
--------------------------------------------------------------------*/
+/* ==========================
+   SEND REQUEST → ADMIN
+========================== */
+
 app.post("/send-request", upload.none(), async (req, res) => {
   const { username, email, course, mobile } = req.body;
 
@@ -361,9 +361,10 @@ app.post("/send-request", upload.none(), async (req, res) => {
   }
 });
 
-/*------------------------------------------------------------------
-   2) OWNER APPROVES ACCESS → USER GETS EMAIL
--------------------------------------------------------------------*/
+/* ==========================
+   GRANT ACCESS
+========================== */
+
 app.post("/grant-access", upload.none(), async (req, res) => {
   const { email } = req.body;
 
@@ -407,93 +408,11 @@ app.post("/grant-access", upload.none(), async (req, res) => {
   }
 });
 
-
-
-          // Mysql connection pool
-
-const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,     // 👈 important
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
-
-// Test connection once at startup
-(async () => {
-  try {
-    const connection = await db.getConnection();
-    console.log("✅ MySQL Connected Successfully");
-    connection.release();
-  } catch (err) {
-    console.error("❌ MySQL Connection Failed:", err.message);
-  }
-})();
-
-module.exports = db;
-
-
-/*------------------------------------------------------------------
+/* ==========================
    START SERVER
--------------------------------------------------------------------*/
-
-// app.listen(3000, () => {
-//   console.log("Server running on http://localhost:3000");
-// });
+========================== */
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Backend running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Backend running on port ${PORT}`);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
