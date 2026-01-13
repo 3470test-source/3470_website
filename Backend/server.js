@@ -6,10 +6,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
-// const db = require("./db");
+const db = require("./db");
 const mysql = require("mysql2/promise");
 const app = express();
 const upload = multer();
+
+const path = require("path");
 
 /* ==========================
    CORS (LOCAL + LIVE)
@@ -36,30 +38,34 @@ app.use(cors({
 app.use(express.json());
 app.use(bodyParser.json());
 
+
+// Serve frontend
+app.use(express.static(path.join(__dirname, "../public")));
+
 /* ==========================
    MYSQL CONNECTION POOL
 ========================== */
 
-const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10
-});
+// const db = mysql.createPool({
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASS,
+//   database: process.env.DB_NAME,
+//   waitForConnections: true,
+//   connectionLimit: 10
+// });
 
 // Test DB connection
-(async () => {
-  try {
-    const conn = await db.getConnection();
-    console.log("✅ MySQL Connected");
-    conn.release();
-  } catch (err) {
-    console.error("❌ MySQL Failed:", err.message);
-  }
-})();
+// (async () => {
+//   try {
+//     const conn = await db.getConnection();
+//     console.log("✅ MySQL Connected");
+//     conn.release();
+//   } catch (err) {
+//     console.error("❌ MySQL Failed:", err.message);
+//   }
+// })();
 
 /* ==========================
    NODEMAILER (GMAIL)
@@ -200,7 +206,10 @@ app.post("/api/reset-password", async (req, res) => {
   if (Date.now() > record.expiry)
     return res.json({ success: false, message: "Token expired" });
 
-  users[record.email].password = await bcrypt.hash(password, 10);
+  // users[record.email].password = await bcrypt.hash(password, 10);
+  // users[record.email].password = hashedPassword;
+
+  const hashedPassword = await bcrypt.hash(password, 10);
   users[record.email].password = hashedPassword;
 
   delete resetTokenStore[token];
