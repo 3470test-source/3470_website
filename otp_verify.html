@@ -192,7 +192,7 @@ button:hover {
 
 
 <!-- OTP - Verify -->
-<script>
+<!-- <script>
 
 document.getElementById("otpForm").addEventListener("submit", function(e) {
   e.preventDefault();
@@ -219,6 +219,30 @@ document.getElementById("otpForm").addEventListener("submit", function(e) {
   });
 });
 
+</script> -->
+
+<script>
+const email = new URLSearchParams(window.location.search).get("email");
+
+document.getElementById("otpForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const otp = document.getElementById("otp").value;
+
+  const res = await fetch("/api/verify-otp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, otp })
+  });
+
+  const data = await res.json();
+
+  if (data.success) {
+    window.location.href = `reset_password.html?token=${data.token}`;
+  } else {
+    document.getElementById("msg").textContent = data.message;
+  }
+});
 </script>
 
 
