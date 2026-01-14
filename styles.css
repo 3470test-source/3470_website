@@ -214,7 +214,7 @@ nav ul.menu li .dropdown li a {
 .banner h1 {
   position: absolute;
   top: 30%;
-  right: -5.3%;
+  right: -4.7%;
   transform: translate(-50%, -50%);
   font-size: 40px;
   padding: 20px;
@@ -867,7 +867,10 @@ nav ul.menu li .dropdown li a {
   }
 }
 
-/* Home pages - OUR ACHIEVERS  */
+
+/* -------------------------------------------------------------------------------------------------- */
+
+                 /* ============== Home pages - OUR ACHIEVERS ==================== */
 
 .achievers-section {
   text-align: center;
@@ -881,6 +884,7 @@ nav ul.menu li .dropdown li a {
 .achievers-section h2 {
   font-size: 30px;
   margin-bottom: 10px;
+  
 }
 
 .achievers-section h2 span {
@@ -898,7 +902,7 @@ nav ul.menu li .dropdown li a {
 }
 
 .carousel-container {
-  width: 1200px; /* adjust to your design */
+  width: 1200px; 
   margin: 20px auto;
   overflow: hidden;
 }
@@ -910,10 +914,11 @@ nav ul.menu li .dropdown li a {
 }
 
 .carousel-slide img {
-  width: 360px; /* same as container */
+  width: 360px; 
   height: 250px;
   flex-shrink: 0;
   border-radius: 10px;
+
 }
 
 .dots {
@@ -935,6 +940,276 @@ nav ul.menu li .dropdown li a {
   background-color: #333;
 }
 
+
+@media (max-width: 1280px) {
+  .carousel-slide {
+    gap: 40px;
+  }
+
+  .carousel-slide img {
+    width: 320px;
+    height: 230px;
+  }
+}
+
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .carousel-container {
+    max-width: 1350px;
+  }
+
+  .carousel-slide img {
+    width: 380px;
+    height: 260px;
+  }
+}
+
+@media (min-width: 1601px) {
+  .carousel-container {
+    max-width: 1500px;
+  }
+
+  .carousel-slide {
+    gap: 70px;
+  }
+
+  .carousel-slide img {
+    width: 420px;
+    height: 280px;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .carousel-container {
+    max-width: 90%;
+  }
+
+  .carousel-slide {
+    gap: 30px;
+  }
+
+  .carousel-slide img {
+    width: 280px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 767px) {
+  .achievers-section {
+    padding: 30px 15px;
+  }
+
+  .carousel-container {
+    max-width: 100%;
+  }
+
+  .carousel-slide {
+    gap: 20px;
+  }
+
+  .carousel-slide img {
+    width: 90%;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .dots {
+    margin-top: 15px;
+  }
+
+  .dot {
+    height: 10px;
+    width: 10px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------ */
+
+                            /* ==================== Home Pages - Certifications Offered ============================= */
+
+.certifications-cert-group {
+  max-width: 950px;
+  margin: auto;
+  /* background: #ffffff; */
+  padding: 30px;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+  margin-top: 15px;
+  margin-bottom: -20px;
+}
+
+.certifications-cert-group h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  /* color: #2c3e50; */
+  font-size: 30px;
+  font-weight: 700;
+  position: relative;
+  color: #138326;   
+}
+
+.certifications-cert-group h2::after {
+  content: "";
+  width: 220px;
+  height: 3px;
+  background: #0f86b6;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.cert-group {
+  margin-bottom: 28px;
+  
+}
+
+.cert-group h3 {
+  color: #1e6bb8;
+  margin-bottom: 20px;
+  font-size: 19.5px;
+  font-weight: 600;
+}
+
+.cert-group ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.cert-group li {
+  background-color: #eef4ff;
+  padding: 12px 14px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  cursor: default;
+  transition: background-color 0.3s ease;
+}
+
+.cert-group li:hover {
+  background-color: #d6e6ff;
+}
+
+
+              /* ============= home page - responsive Certifications Offered ============== */
+
+@media (min-width: 1601px) {
+  .certifications-cert-group {
+    max-width: 1300px;
+  }
+
+  .certifications-cert-group h2 {
+    font-size: 34px;
+  }
+
+  .cert-group h3 {
+    font-size: 20px;
+  }
+
+  .cert-group li {
+    font-size: 16px;
+    padding: 14px 18px;
+  }
+}
+
+
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .certifications-cert-group {
+    max-width: 1150px;
+  }
+
+  .certifications-cert-group h2 {
+    font-size: 32px;
+  }
+
+  .cert-group li {
+    font-size: 15.5px;
+  }
+}
+
+
+@media (min-width: 1281px) and (max-width: 1366px) {
+  .certifications-cert-group {
+    max-width: 1050px;
+  }
+}
+
+
+@media (max-width: 1280px) {
+  .certifications-cert-group {
+    max-width: 1000px;
+    padding: 26px;
+  }
+
+  .certifications-cert-group h2 {
+    font-size: 28px;
+  }
+
+  .cert-group h3 {
+    font-size: 18px;
+  }
+
+  .cert-group li {
+    font-size: 14.5px;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .certifications-cert-group {
+    max-width: 100%;
+    padding: 20px 15px;
+    margin-bottom: 0;
+  }
+
+  .certifications-cert-group h2 {
+    font-size: 24px;
+  }
+
+  .certifications-cert-group h2::after {
+    width: 160px;
+  }
+
+  .cert-group h3 {
+    font-size: 17px;
+    margin-bottom: 15px;
+  }
+
+  .cert-group ul {
+    gap: 10px;
+  }
+
+  .cert-group li {
+    font-size: 13.5px;
+    padding: 8px 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .certifications-cert-group {
+    max-width: 90%;
+    padding: 25px;
+  }
+
+  .certifications-cert-group h2 {
+    font-size: 26px;
+  }
+
+  .cert-group h3 {
+    font-size: 18px;
+  }
+
+  .cert-group li {
+    font-size: 14.5px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------------------------------- */
 
 
       /* Our Facilities  - Home pages */
@@ -1445,7 +1720,7 @@ nav ul.menu li .dropdown li a {
 
 /* ------------------------------------------------------------------------------------- */
 
-/* <!-- First Footer (Detailed Info) --> */
+                                /* <!-- First Footer (Detailed Info) --> */
 
 .footer-main {
   background: #164e7a;
@@ -1489,13 +1764,26 @@ nav ul.menu li .dropdown li a {
   text-align: justify;
 }
 
-.footer-address {
+.footer-address-chennai {
+  display: flex; /* Use flexbox for icon + text alignment */
+  align-items: flex-start; /* Align icon to top of text */
+  gap: 5px; /* Space between icon and text */
+  margin-bottom: 20px;
+}
+
+.footer-address-trichy {
   display: flex; /* Use flexbox for icon + text alignment */
   align-items: flex-start; /* Align icon to top of text */
   gap: 5px; /* Space between icon and text */
 }
 
-.footer-address i {
+.footer-address-chennai i {
+  font-size: 15px; /* Icon size */
+  margin-top: 3px; /* Adjust icon vertical alignment if needed */
+  margin-top: 6.2px;
+}
+
+.footer-address-trichy i {
   font-size: 15px; /* Icon size */
   margin-top: 3px; /* Adjust icon vertical alignment if needed */
   margin-top: 6.2px;
@@ -1541,7 +1829,105 @@ nav ul.menu li .dropdown li a {
   font-size: 12px;
 }
 
-/*  Second Footer Styles  */
+  
+                      /* ================= responsive First footer styles ========================== */
+
+@media (max-width: 1280px) {
+  .footer-main {
+    padding: 45px 60px;
+  }
+
+  .footer-container {
+    gap: 55px;
+  }
+
+  .footer-col h3 {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .footer-main {
+    padding: 55px 100px;
+  }
+
+  .footer-container {
+    max-width: 1400px;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1601px) {
+  .footer-main {
+    padding: 60px 140px;
+  }
+
+  .footer-container {
+    max-width: 1600px;
+    margin: auto;
+    gap: 80px;
+  }
+
+  .footer-col h3 {
+    font-size: 21px;
+  }
+
+  .footer-col p,
+  .footer-col ul li a {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer-main {
+    padding: 40px 40px;
+  }
+
+  .footer-container {
+    gap: 40px;
+  }
+
+  .footer-col h3 {
+    font-size: 18px;
+  }
+
+  .footer-col p,
+  .footer-col ul li a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-main {
+    padding: 30px 20px;
+    text-align: left;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-col h3 {
+    font-size: 17px;
+  }
+
+  .footer-col p,
+  .footer-col ul li a {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .footer-address-chennai,
+  .footer-address-trichy,
+  .footer-phone {
+    gap: 6px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+
+                         /* ===============  Second Footer Styles ===================  */
 
 footer {
   background-color: #00061e;
@@ -1567,7 +1953,7 @@ footer {
   padding: 0 40px; /* space from left + right */
 }
 
-/* Social Media Icons  */
+                /* Social Media Icons  */
 
 .social-icons a {
   transition: color 0.3s;
@@ -1600,6 +1986,77 @@ footer {
 .social-icons a.Whatsapp i {
   color: #09f35f;
 }
+                     
+           /* ================= responsive second footer styles ========================== */
+
+@media (max-width: 1280px) {
+  .footer-content {
+    max-width: 1100px;
+    padding: 0 30px;
+  }
+}
+
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .footer-content {
+    max-width: 1300px;
+  }
+
+  .footer-content p {
+    font-size: 15.5px;
+  }
+}
+
+@media (min-width: 1601px) {
+  .footer-content {
+    max-width: 1500px;
+  }
+
+  .footer-content p {
+    font-size: 16px;
+  }
+
+  .social-icons a i {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 0 15px;
+  }
+
+  .footer-content p {
+    font-size: 13px;
+  }
+
+  .social-icons a {
+    margin: 0 8px;
+  }
+
+  .social-icons a i {
+    font-size: 15px;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer-content {
+    padding: 0 25px;
+  }
+
+  .footer-content p {
+    font-size: 14px;
+  }
+
+  .social-icons a i {
+    font-size: 16px;
+  }
+}
+
 
 /* ------------------------------------------------------------------------------------ */
 
