@@ -641,7 +641,7 @@ async function approveAccess() {
   let fd = new FormData();
   fd.append("email", email);
 
-  let res = await fetch("http://localhost:3000/grant-access", {
+  let res = await fetch("/grant-access", {
     method: "POST",
     body: fd
   });
