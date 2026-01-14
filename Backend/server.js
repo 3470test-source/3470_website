@@ -79,6 +79,13 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+
+const FRONTEND_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.PROD_FRONTEND_URL
+    : process.env.LOCAL_FRONTEND_URL;
+
+
 /* ==========================
    OTP STORES (TEMP)
 ========================== */
@@ -271,7 +278,7 @@ app.post("/register", async (req, res) => {
           <b>Password:</b> ${password}<br>
         </p>
 
-        <p>Click below to <a href="http://127.0.0.1:5500/login.html" style="color:#fff; background:#068545; padding:10px 20px; text-decoration:none; border-radius:5px;">Login Now</a></p>
+        <p>Click below to <a href="${FRONTEND_URL}/login.html" style="color:#fff; background:#068545; padding:10px 20px; text-decoration:none; border-radius:5px;">Login Now</a></p>
 
         <p style="font-size:12px; color:#999; margin-top:20px;">If you did not register, please ignore this email.</p>
 
