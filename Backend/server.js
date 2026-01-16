@@ -32,8 +32,13 @@ app.use(cors({
       callback(new Error("CORS not allowed"));
     }
   },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
+// 🔥 VERY IMPORTANT (preflight support)
+app.options("*", cors());
 
 app.use(express.json());
 app.use(bodyParser.json());
