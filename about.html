@@ -780,27 +780,19 @@
 
     <!-- Scroll to Top Button Styles  -->
     <script>
-      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+      const btn = document.getElementById("scrollToTopBtn");
+        window.addEventListener("scroll", () => {
+         if (window.scrollY > 300) {
+         btn.classList.add("show");
+       } else {
+         btn.classList.remove("show");
+     }
+   });
 
-      // Show button when user scrolls down
-      window.onscroll = function () {
-        if (
-          document.body.scrollTop > 200 ||
-          document.documentElement.scrollTop > 200
-        ) {
-          scrollToTopBtn.style.display = "block";
-        } else {
-          scrollToTopBtn.style.display = "none";
-        }
-      };
+        btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+   });
 
-      // Scroll smoothly to top when clicked
-      scrollToTopBtn.addEventListener("click", function () {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
     </script>
 
     <!-- Javascript -->
