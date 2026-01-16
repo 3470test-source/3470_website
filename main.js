@@ -350,11 +350,11 @@ if(registerForm){
 
     // SEND TO BACKEND ONLY IF VALID
     try {
-      const res = await fetch("/register", {
+     const res = await fetch(`${API_BASE_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, mobile, password })
-      });
+     });
 
       const result = await res.json();
 
