@@ -867,11 +867,11 @@
         <h2>Enquiry Form</h2>
 
         <form id="enquiryForm" action="#" method="POST">
-          <input type="text" name="name" placeholder="Enter Name" required />
-          <input type="email" name="email" placeholder="Enter Email" required />
-          <input type="tel" name="phone" placeholder="Enter Phone" required />
+          <input type="text" id="name" name="name" placeholder="Enter Name" required />
+          <input type="email" id="email" name="email" placeholder="Enter Email" required />
+          <input type="tel" id="phone" name="phone" placeholder="Enter Phone" required />
 
-          <select name="course" required>
+          <select id="course" name="course" required>
             <option value="">-- Select Course --</option>
             <option value="Medical Coding Training">
               Medical Coding - Training
@@ -909,13 +909,13 @@
             <option value="Surgery Training">Surgery - Training</option>
           </select>
 
-          <select name="location" required>
+          <select id="location" name="location" required>
             <option value="">-- Select Location --</option>
             <option value="Chennai">Chennai</option>
             <option value="Trichy">Trichy</option>
           </select>
 
-          <textarea name="message" placeholder="Enter Message"></textarea>
+          <textarea id="message" name="message" placeholder="Enter Message"></textarea>
           <button type="submit">Submit</button>
         </form>
       </div>

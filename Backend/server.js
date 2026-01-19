@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const db = require("./db");
-const mysql = require("mysql2/promise");
+const mysql = require("mysql2");
 const app = express();
 const upload = multer();
 
@@ -38,7 +38,7 @@ app.use(cors({
 }));
 
 // 🔥 VERY IMPORTANT (preflight support)
-app.options("*", cors());
+// app.options("*", cors());
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -48,29 +48,35 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
 /* ==========================
-   MYSQL CONNECTION POOL
-========================== */
+       ENQUIRY FORM 
+   ========================== */
 
-// const db = mysql.createPool({
-//   host: process.env.DB_HOST,
-//   port: process.env.DB_PORT,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASS,
-//   database: process.env.DB_NAME,
-//   waitForConnections: true,
-//   connectionLimit: 10
-// });
+app.post("/api/enquiry", (req, res) => {
+  const { name, email, phone, course, location, message } = req.body;
 
-// Test DB connection
-// (async () => {
-//   try {
-//     const conn = await db.getConnection();
-//     console.log("✅ MySQL Connected");
-//     conn.release();
-//   } catch (err) {
-//     console.error("❌ MySQL Failed:", err.message);
-//   }
-// })();
+  if (!name || !email || !phone || !course || !location) {
+    return res.status(400).json({ message: "All fields required" });
+  }
+
+  const sql = `
+    INSERT INTO enquiries (name, email, phone, course, location, message)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `;
+
+  db.query(
+    sql,
+    [name, email, phone, course, location, message],
+    (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Database Error" });
+      }
+      res.json({ message: "Enquiry submitted successfully" });
+    }
+  );
+});
+
+
 
 /* ==========================
    NODEMAILER (GMAIL)

@@ -429,39 +429,73 @@ if(registerForm){
 // ---------------------------------------------------------------------------
 
 
+           // ===== Enquiry Form Submission - Home Page =====
 
-  //=============  Enquiry Form - Home Page ==================
+window.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popupForm");
+  const form = document.getElementById("enquiryForm");
 
-    window.addEventListener("DOMContentLoaded", () => {
-    const popup = document.getElementById("popupForm");
-    const form = document.getElementById("enquiryForm");
+  if (!form) return;
 
-    // Show popup after 5 seconds if not already shown in this session
-    if (!sessionStorage.getItem("formShown")) {
-      setTimeout(() => {
-        popup.style.display = "flex";
-        document.body.classList.add("no-scroll");
-        sessionStorage.setItem("formShown", "true"); // Mark as shown for this session
-      }, 4000);
-    }
+  // Show popup after 4 seconds (once per session)
+  if (!sessionStorage.getItem("formShown") && popup) {
+    setTimeout(() => {
+      popup.style.display = "flex";
+      document.body.classList.add("no-scroll");
+      sessionStorage.setItem("formShown", "true");
+    }, 4000);
+  }
 
-    // Close popup
-    window.closePopup = function() {
+  // Close popup function
+  window.closePopup = function() {
+    if (popup) {
       popup.style.display = "none";
       document.body.classList.remove("no-scroll");
     }
+  }
 
-    // Form submission
-    form.addEventListener("submit", function(e) {
-      e.preventDefault(); // prevent normal submit
+  // Form submission
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-      // Hide popup
+    const data = {
+      name: document.getElementById("name")?.value.trim(),
+      email: document.getElementById("email")?.value.trim(),
+      phone: document.getElementById("phone")?.value.trim(),
+      course: document.getElementById("course")?.value.trim(),
+      location: document.getElementById("location")?.value.trim(),
+      message: document.getElementById("message")?.value.trim()
+    };
+
+    // Optional: Basic validation
+    if (!data.name || !data.email || !data.phone) {
+      alert("Please fill all required fields!");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/enquiry`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      alert(result.message || "Enquiry submitted successfully!");
+      form.reset();
       closePopup();
 
-    // You can send form data here via AJAX
-      alert("Thank you !  Your enquiry has been submitted.");
-    });0
+    } catch (err) {
+      console.error("Enquiry submission error:", err);
+      alert("Error submitting enquiry. Please try again.");
+    }
   });
+});
+
+
+
+
 
 // ------------------------------------------------------------------
 
