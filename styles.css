@@ -3445,7 +3445,7 @@ footer {
              Contact_Us Page from Styles
           ============================== */
 
-/* Contact_Us */
+                 /* ---------------- Contact_Us - Banner ------------- */
 
 .contact-banner {
   width: 100%;
@@ -3491,6 +3491,78 @@ footer {
   text-align: justify; /* optional: makes the paragraph clean and aligned */
   word-wrap: break-word; /* ensures long words don’t overflow */
 }
+
+
+                /* -------------------- Responsive Styles for Contact Us Banner --------------------- */
+
+                      /* --------- MOBILE (max-width: 576px) ----------------- */
+
+@media (max-width: 576px) {
+
+  .contact-banner {
+    max-height: 160px;
+  }
+
+  .contact-text h1 {
+    top: 32%;
+    left: 30%;
+    font-size: 23px;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .contact-text p {
+    top: 65%;
+    left: 32.5%;
+    font-size: 10.5px;
+    padding: 6px;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+
+                      /* --------- TABLET (577px to 1024px) ----------------- */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .contact-banner {
+    max-height: 220px;
+  }
+
+  .contact-text h1 {
+    top: 38%;
+    left: 30%;
+    font-size: 36px;
+    max-width: 85%;
+  }
+
+  .contact-text p {
+    top: 65%;
+    left: 30%;
+    font-size: 18px;
+    max-width: 85%;
+  }
+}
+
+                      /* --------- Laptops (1025px to 1366px) ----------------- */
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+  .contact-text h1 {
+    font-size: 44px;
+  }
+
+  .contact-text p {
+    font-size: 20px;
+  }
+}
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
 
 .contact-section {
   max-width: 1200px;
@@ -3538,8 +3610,90 @@ footer {
   margin-bottom: 15px;
 }
 
-/* Contact pages */
-/* Address styles */
+
+
+
+
+
+
+@media (max-width: 576px) {
+
+  .contact-section {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .contact-container {
+    flex-direction: column;   /* stack form + info */
+    gap: 25px;
+  }
+
+  .contact-form {
+    order: 1;                 /* form first on mobile */
+    padding: 15px;
+  }
+
+  .contact-form h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+}
+
+
+
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .contact-section {
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  .contact-container {
+    gap: 30px;
+  }
+
+  .contact-form {
+    padding: 18px;
+  }
+
+  .contact-form h2 {
+    font-size: 22px;
+  }
+}
+
+
+
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+  .contact-section {
+    padding: 0 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+
+                                     /* --------------- Contact pages --------------*/
+                                      /* ------------- Address styles ------------ */
+
+
 .contact-info {
   flex: 1 1 300px;
   display: flex;
@@ -3590,8 +3744,103 @@ footer {
   margin-left: -10px;
 }
 
-/* Contact Pages */
-/* Google Map */
+
+
+
+
+
+
+
+
+
+@media (max-width: 576px) {
+
+  .contact-info {
+    gap: 15px;
+    margin-top: 10px;
+    padding: 0 10px;
+  }
+
+  .address-box {
+    padding: 15px;
+    max-width: 100%;
+    margin: 10px auto;
+  }
+
+  .address-box h4 {
+    font-size: 16px;
+  }
+
+  .address-box p,
+  .contact-info p {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+
+  .address-box h4 i {
+    margin-left: 0;
+  }
+}
+
+
+
+
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .contact-info {
+    padding: 0 20px;
+  }
+
+  .address-box {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .address-box h4 {
+    font-size: 17px;
+  }
+
+  .address-box p {
+    font-size: 15px;
+  }
+}
+
+
+
+
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+  .address-box {
+    max-width: 480px;
+  }
+}
+
+
+
+
+
+@media (hover: hover) {
+  .address-box:hover {
+    transform: translateY(-5px);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------- */
+
+                          /* ---------------------- Contact Pages - Google Map ------------------------------------ */
+
 .map-container {
   margin-top: 100px;
   border-radius: 3px;
@@ -3610,7 +3859,56 @@ footer {
 }
 
 
-      /* World Wide Branches Section - Contacts Page  */
+                                     /*------------- Responsive google Map Container ---------- */
+
+                                        /* --------- MOBILE (max-width: 576px) ----------------- */
+
+@media (max-width: 576px) {
+
+  .map-container {
+    margin: 20px 15px;
+    height: 280px;
+    max-width: 100%;
+  }
+}
+
+                                        /* --------- TABLET (577px to 1024px) ----------------- */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .map-container {
+    margin: 30px 40px;
+    height: 380px;
+    max-width: 100%;
+  }
+}
+
+                                        /* --------- LAPTOP (1025px to 1366px) ----------------- */
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+  .map-container {
+    margin: 40px auto;
+    height: 460px;
+    max-width: 90%;
+  }
+}
+
+                                        /* --------- DESKTOP (1367px and above) ----------------- */  
+
+@media (min-width: 1367px) {
+
+  .map-container {
+    height: 520px;
+    max-width: 85%;
+    margin: 10px auto 50px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+           /* --------------------------- World Wide Branches Section - Contacts Page -------------------------------  */
 
 .branches-section {
   display: flex;
@@ -3621,6 +3919,7 @@ footer {
   background-color: #fff;
   margin-bottom: -10px;
 
+   gap: 40px;
 }
 
 .branches-text {
@@ -3664,6 +3963,8 @@ footer {
 .branches-text p {
   color: #333;
   font-size: 1.5rem;
+
+  line-height: 1.5;
 }
 
 
@@ -3781,21 +4082,121 @@ footer {
 .germany { top: 47%; left: 51%; }
 .france { top: 40%; left: 55%; }
 
-/* Responsive */
-@media (max-width: 768px) {
+
+                        /* ----------------responsive Styles for World Wide Branches Section ---------------*/
+
+                                 /* ---------------- MOBILE (320px – 576px) -------------- */
+
+@media (max-width: 576px) {
+
   .branches-section {
     flex-direction: column;
+    padding: 25px 15px;
+    text-align: center;
   }
 
-  .map-container {
-    margin-top: 30px;
-    width: 350px;
-    height: 250px;
+  .branches-text {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .branches-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .branches-text h2::after {
+    margin: 8px auto 0;
+  }
+
+  .branches-text p {
+    font-size: 1rem;
+  }
+
+  .world-map-container {
+    width: 100%;
+    height: 240px;
+  }
+
+  .pin {
+    width: 14px;
+    height: 14px;
+  }
+
+  .pin::after {
+    width: 5px;
+    height: 5px;
+    top: 4.5px;
+    left: 4.5px;
   }
 }
 
 
-/* -------------------------------------------------------------------------------------------------------------- */
+                          /* --------------- Tablet (577px – 1024px) ---------------- */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .branches-section {
+    padding: 35px 5%;
+    gap: 30px;
+  }
+
+  .branches-text {
+    max-width: 360px;
+  }
+
+  .branches-text h2 {
+    font-size: 2.1rem;
+  }
+
+  .branches-text p {
+    font-size: 1.2rem;
+  }
+
+  .world-map-container {
+    width: 480px;
+    height: 320px;
+  }
+
+  .pin {
+    width: 18px;
+    height: 18px;
+  }
+
+  .pin::after {
+    width: 7px;
+    height: 7px;
+    top: 5.5px;
+    left: 5.5px;
+  }
+}
+
+
+                          /* --------------- Laptop (1025px – 1439px) ---------------- */ 
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .world-map-container {
+    width: 550px;
+    height: 360px;
+  }
+
+  .branches-text p {
+    font-size: 1.35rem;
+  }
+}
+
+                          /* --------------- Desktop (1440px and above) ---------------- */ 
+
+@media (min-width: 1440px) {
+
+  .world-map-container {
+    width: 650px;
+    height: 420px;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------- */
 
 
                           /*   =======================================
@@ -4555,7 +4956,7 @@ section h2::after {
   color: #006400;
 }
 
-/* --------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------------------------- */
 
                  /* ======================================
                              About US from style
@@ -4600,6 +5001,92 @@ section h2::after {
 
   text-align: justify;
   line-height: 1.4;
+}
+
+
+                                    /* ------------ About Us Banner Responsive Styles ------------------- */
+
+                                           /* --------- Mobile (320px – 576px) ------------ */
+
+@media (max-width: 576px) {
+
+  .about-banner {
+    height: 200px;
+    margin-top: 0;
+    padding: 0 15px;
+  }
+
+  .banner-content h1 {
+    font-size: 26px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .banner-content p {
+    font-size: 15px;
+    max-width: 100%;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+                                /* ----------------- Tablet (577px – 1024px) ----------------- */
+
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .about-banner {
+    height: 260px;
+    padding: 0 40px;
+  }
+
+  .banner-content h1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .banner-content p {
+    font-size: 18px;
+    max-width: 500px;
+    text-align: center;
+  }
+}
+
+
+                                /* ----------------- Small Desktop (1025px – 1439px) ----------------- */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .about-banner {
+    height: 280px;
+  }
+
+  .banner-content h1 {
+    font-size: 40px;
+  }
+
+  .banner-content p {
+    font-size: 22px;
+  }
+}
+
+
+                                /* ----------------- Large Desktop (1440px+) ----------------- */
+
+@media (min-width: 1440px) {
+
+  .about-banner {
+    height: 300px;
+  }
+
+  .banner-content h1 {
+    font-size: 45px;
+  }
+
+  .banner-content p {
+    font-size: 25px;
+  }
 }
 
 
@@ -4654,7 +5141,7 @@ section h2::after {
   color: #555;
   font-size: 18px;
   text-align: justify;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: -5px;
 }
 
@@ -4666,31 +5153,64 @@ section h2::after {
 .about-image img {
   width: 100%;
   max-width: 450px;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 
+                                    /*------------ About Us Section Responsive Styles ------------------- */
+
+/* =========================
+   MOBILE (320px – 576px)
+========================= */
+
+@media (max-width: 576px) {
+
+  .about-section {
+    padding: 40px 20px;
+  }
+
+  .about-section .container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .about-text h2 {
+    font-size: 26px;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .about-text h2::after {
+    display: none;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .about-image img {
+    max-width: 100%;
+  }
+}
 
 
+/* =========================
+   TABLET (577px – 1024px)
+========================= */
 
+@media (min-width: 577px) and (max-width: 1024px) {
 
-
-
-
-
-
-
-
-/* ===============================
-    Tablet (768px – 1024px)
-  ================================ */
-@media (max-width: 1024px) {
   .about-section {
     padding: 60px 6%;
   }
 
+  .about-section .container {
+    gap: 30px;
+  }
+
   .about-text h2 {
-    font-size: 32px;
+    font-size: 28px;
     margin-top: -10px;
   }
 
@@ -4703,57 +5223,77 @@ section h2::after {
   }
 }
 
-/* ===============================
-   Mobile (up to 768px)
-================================ */
-@media (max-width: 768px) {
+/* =========================
+   TABLET (768px – 1024px)              
+========================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
   .about-section {
-    padding: 40px 15px;
+    padding: 60px 6%;
   }
 
   .about-section .container {
-    flex-direction: column;
-    text-align: center;
+    gap: 30px;
   }
 
   .about-text h2 {
-    font-size: 26px;
-    margin-top: 0;
+    font-size: 22.5px;
+    margin-top: -10px;
   }
 
   .about-text p {
-    font-size: 14px;
-    line-height: 1.4;
-    text-align: justify;
-  }
-
-  .about-image {
-    margin-top: 20px;
+    font-size: 16px;
   }
 
   .about-image img {
-    max-width: 320px;
+    max-width: 380px;
+    margin-top: 50px;
+    height: 230px;
   }
 }
 
-/*===============================
-   Small Mobile (320px – 480px)
-  ================================ */
-@media (max-width: 480px) {
+/* =========================
+   SMALL DESKTOP (1025px – 1439px)
+========================= */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
   .about-section {
-    padding: 30px 12px;
+    padding: 70px 8%;
   }
 
   .about-text h2 {
-    font-size: 22px;
+    font-size: 35px;
   }
 
   .about-text p {
-    font-size: 13px;
+    font-size: 17px;
+  }
+}
+
+
+
+/* =========================
+   LARGE DESKTOP (1440px+)
+========================= */
+
+@media (min-width: 1440px) {
+
+  .about-section {
+    padding: 80px 10%;
+  }
+
+  .about-text h2 {
+    font-size: 37px;
+  }
+
+  .about-text p {
+    font-size: 18px;
   }
 
   .about-image img {
-    max-width: 280px;
+    max-width: 450px;
   }
 }
 
@@ -6332,8 +6872,7 @@ section h2::after {
 
 
 
-/* ------------------------------------------------------------------------------------- */
-
+/* ----------------------------------------------------------------------------------------------------------------------------------- */
 
               /* ============================
                      Careers Page Style  
@@ -6348,22 +6887,20 @@ section h2::after {
   margin-top: -12px;
   background: url("picture/careers.png") center/cover no-repeat;
 
+   /* padding: 3rem 25%; */
 }
 
 .header-careers h1 {
   font-size: 2.9rem;
   margin-bottom: 0.3rem;
   margin-top: -10px;
-
 }
 
 .header-careers p {
   font-size: 1.2rem;
   letter-spacing: 1px;
   margin-left: 6px;
-  
 }
-
 
 .careers h2::after {
   content: "";
@@ -6412,6 +6949,81 @@ section h2::after {
   font-weight: bold;
 }
 
+
+            /* ----------------- responsive styles for Careers Page Banner section ----------------------  */
+
+                          /* ------------ MOBILE (up to 576px) ------------------ */
+
+
+@media (max-width: 576px) {
+
+  .header-careers {
+    padding: 2.5rem 1.2rem;
+    margin-top: 0;
+  }
+
+  .header-careers h1 {
+    font-size: 1.9rem;
+    margin-top: 0;
+  }
+
+  .header-careers p {
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+
+  .careers h2::after {
+    width: 100px;
+  }
+}
+
+                          /* ------------ TABLET (577px – 1024px) ------------------ */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .header-careers {
+    padding: 3rem 5%;
+  }
+
+  .header-careers h1 {
+    font-size: 2.4rem;
+  }
+
+  .header-careers p {
+    font-size: 1.05rem;
+  }
+
+  .careers h2::after {
+    width: 130px;
+  }
+}
+
+                          /* ------------ SMALL DESKTOP (1025px – 1439px) ------------------ */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .header-careers {
+    padding: 3.5rem 22%;
+  }
+
+  .header-careers h1 {
+    font-size: 2.7rem;
+  }
+}
+
+                            /* ---------- LARGE DESKTOP (1440px+) -------------- */
+
+@media (min-width: 1440px) {
+
+  .header-careers {
+    padding: 4rem 25%;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+
+                          /* ------------------ Employer Brand Section ------------------ */  
+
 .employer-brand {
   background: #ffffff;
   text-align: center;
@@ -6433,22 +7045,23 @@ section h2::after {
   display: block;
   margin: 4px auto 0;
   border-radius: 2px;
-  margin-left: 44%;
+  /* margin-left: 44%; */
 
   background: linear-gradient(90deg, transparent, #06eb9e, #00c6ff, #920e50, #ff8c00, #452188, transparent);
   background-size: 200%;
   animation: moveLine 4s linear infinite;
-
 }
 
 .employer-brand p {
   font-size: 17.3px;
   color: #333;
   max-width: 800px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   line-height: 1.5;
   text-align: justify;
-  margin: 15px 25%;
+  /* margin: 15px 25%; */
+
+  margin: 15px auto;
 }
 
 /*   + icon    */
@@ -6460,13 +7073,83 @@ section h2::after {
   font-weight: bold;
 }
 
+              /* ------------------ Responsive Styles - Employer Brand Section ------------------ */
+
+                          /* ---------------- MOBILE (up to 576px) ------------------ */
+
+@media (max-width: 576px) {
+
+  .employer-brand {
+    padding: 25px 15px;
+  }
+
+  .employer-brand h2 {
+    font-size: 22px;
+  }
+
+  .employer-brand h2::after {
+    width: 120px;
+  }
+
+  .employer-brand p {
+    font-size: 14.5px;
+    text-align: left;
+    margin: 10px auto;
+  }
+}
+
+
+                          /* ---------------- TABLET (577px – 1024px) ------------------ */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .employer-brand {
+    padding: 35px 30px;
+  }
+
+  .employer-brand h2 {
+    font-size: 26px;
+  }
+
+  .employer-brand h2::after {
+    width: 145px;
+  }
+
+  .employer-brand p {
+    font-size: 16px;
+    max-width: 700px;
+  }
+}
+
+                          /* ---------------- SMALL DESKTOP (1025px – 1439px) ------------------ */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .employer-brand p {
+    max-width: 760px;
+  }
+}
+
+                          /* ---------------- LARGE DESKTOP (1440px+) ------------------ */
+
+@media (min-width: 1440px) {
+
+  .employer-brand p {
+    max-width: 820px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+
+                                   /* ------------------ Job Search Bar ------------------ */
+
 .job-search {
   text-align: center;
   margin: 30px 0;
 }
 .job-search input {
   padding: 10px 20px;
-  width: 60%;
+  width: 50%;
   border: 2px solid #007a39;
   border-radius: 25px;
   outline: none;
@@ -6476,8 +7159,8 @@ section h2::after {
   border-color: #0454e9;
 }
 
+                                         /* ------------------ Careers Section ------------------ */
 
-/* Careers Section */
 .careers {
   max-width: 900px;
   margin: 2rem auto;
@@ -6489,6 +7172,9 @@ section h2::after {
   margin-bottom: 1.5rem;
   color: #007a39;
 }
+
+                                /* --------------- Medical Coding Specialist ------------------ */
+
 
 .job-card {
   background: white;
@@ -6522,7 +7208,103 @@ section h2::after {
   background: #003e73;
 }
 
-/* Application Form */
+
+                         /* ---------------- Responsive Styles - Careers Page ---------------- */
+
+                          /* ------------------- MOBILE (320px – 576px) ------------------------ */ 
+
+
+@media (max-width: 576px) {
+
+  .job-search {
+    margin: 20px 0;
+    padding: 0 1rem;
+  }
+
+  .job-search input {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .careers {
+    padding: 0 1rem;
+  }
+
+  .careers h2 {
+    font-size: 1.5rem;
+  }
+
+  .careers h2::after {
+    display: none;
+  }
+
+  .job-card {
+    padding: 1.2rem;
+  }
+
+  .job-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .apply-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+                          /* ------------------- TABLET (577px – 1024px) ------------------------ */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .job-search input {
+    width: 80%;
+    max-width: 500px;
+  }
+
+  .careers {
+    max-width: 800px;
+  }
+
+  .careers h2 {
+    font-size: 1.7rem;
+  }
+
+  .careers h2::after {
+    display: none;
+  }
+
+  .job-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+                          /* ------------------- SMALL DESKTOP (1025px – 1439px) ------------------------ */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .job-search input {
+    width: 65%;
+  }
+}
+
+                          /* ------------------- LARGE DESKTOP (1440px+) ------------------------ */
+
+@media (min-width: 1440px) {
+
+  .job-search input {
+    width: 60%;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+
+                                /* ------------------- Careers page -- Application Form ----------------------- */
+
 .application-form {
   background: white;
   max-width: 700px;
@@ -6546,7 +7328,7 @@ section h2::after {
   display: block;
   margin: 4px auto 0;
   border-radius: 2px;
-  margin-left: 218px;
+  /* margin-left: 218px; */
 
   background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
   background-size: 300%; 
@@ -6622,7 +7404,86 @@ section h2::after {
 
 }
 
-/* ===== Testimonials ===== */
+
+              /* ---------------- Responsive Styles - Application Form Section ---------------- */
+
+                          /* ------------------- MOBILE (320px – 576px) ------------------------ */
+
+@media (max-width: 576px) {
+
+  .application-form {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .application-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .application-form h2::after {
+    /* width: 120px; */
+    display: none;
+  }
+
+  .application-form label {
+    font-size: 0.9rem;
+  }
+
+  .application-form input,
+  .application-form select {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .application-form button {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+  }
+}
+
+
+                          /* ------------------- TABLET (577px – 1024px) ------------------------ */
+
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .application-form {
+    max-width: 600px;
+    padding: 1.8rem;
+  }
+
+  .application-form h2 {
+    font-size: 1.7rem;
+  }
+
+  .application-form h2::after {
+    width: 150px;
+    /* display: none; */
+  }
+}
+
+                          /* ------------------- SMALL DESKTOP (1025px – 1439px) ------------------------ */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .application-form {
+    max-width: 650px;
+  }
+}
+
+                          /* ------------------- LARGE DESKTOP (1440px+) ------------------------ */
+
+@media (min-width: 1440px) {
+
+  .application-form {
+    max-width: 700px;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+
+                            /* ============================ Testimonials ================================= */
 
 .testimonials {
   text-align: center;
@@ -6646,14 +7507,13 @@ section h2::after {
   display: block;
   margin: 4px auto 0;
   border-radius: 2px;
-  margin-left: 43.5%;
+  /* margin-left: 43.5%; */
 
   background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
   background-size: 300%; 
   animation: colorFlow 3s linear infinite;
   
 }
-
 
 .testimonial-cards {
   display: flex;
@@ -6703,7 +7563,93 @@ section h2::after {
 }
 
 
-/* ===== Meet the Team ===== */
+
+              /* ---------------- Responsive Styles - Testimonials Section ---------------- */
+
+                          /* ------------------- MOBILE (320px – 576px) ------------------------ */   
+
+@media (max-width: 576px) {
+
+  .testimonials {
+    padding: 2rem 1rem;
+  }
+
+  .testimonials h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .testimonials h2::after {
+    /* width: 120px; */
+    display: none;
+  }
+
+  .testimonial-cards {
+    gap: 1.5rem;
+  }
+
+  .testimonial {
+    max-width: 100%;
+    padding: 1.4rem;
+  }
+
+  .testimonial p {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .testimonial h4 {
+    font-size: 0.95rem;
+  }
+}
+
+                          /* ------------------- TABLET (577px – 1024px) ------------------------ */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .testimonials {
+    padding: 3rem 2rem;
+  }
+
+  .testimonials h2 {
+    font-size: 1.8rem;
+  }
+
+  .testimonials h2::after {
+    width: 150px;
+  }
+
+  .testimonial-cards {
+    gap: 2rem;
+  }
+
+  .testimonial {
+    max-width: 300px;
+  }
+}
+
+                          /* ------------------- SMALL DESKTOP (1025px – 1439px) ------------------------ */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .testimonial {
+    max-width: 310px;
+  }
+}
+
+                          /* ------------------- LARGE DESKTOP (1440px+) ------------------------ */
+
+@media (min-width: 1440px) {
+
+  .testimonial {
+    max-width: 330px;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+                                /* ==================== Meet the Team ========================= */
+
 .meet-team {
   text-align: center;
   padding: 3rem 1rem;
@@ -6724,7 +7670,7 @@ section h2::after {
   display: block;
   margin: 4px auto 0;
   border-radius: 2px;
-  margin-left: 43.5%;
+  /* margin-left: 43.5%; */
 
   background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
   background-size: 300%; 
@@ -6791,7 +7737,101 @@ section h2::after {
 }
 
 
-         /*===== Company Benefits====== */
+              /* ---------------- Responsive Styles - Meet the Team Section ---------------- */
+
+                          /* ------------------- MOBILE (320px – 576px) ------------------------ */
+
+@media (max-width: 576px) {
+
+  .meet-team {
+    padding: 2rem 1rem;
+  }
+
+  .meet-team h2 {
+    font-size: 1.6rem;
+  }
+
+  .meet-team h2::after {
+    display: none;
+  }
+
+  .meet-team .team-intro {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .team-members {
+    gap: 1.5rem;
+  }
+
+  .member {
+    width: 100%;
+    max-width: 320px;
+    padding: 1.2rem;
+  }
+
+  .member img {
+    height: 200px;
+  }
+
+  .member .bio {
+    text-align: left;
+    font-size: 0.85rem;
+  }
+}
+
+
+                          /* ------------------- TABLET (577px – 1024px) ------------------------ */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .meet-team {
+    padding: 3rem 2rem;
+  }
+
+  .meet-team h2 {
+    font-size: 1.8rem;
+  }
+
+  .meet-team h2::after {
+    width: 150px;
+  }
+
+  .team-members {
+    gap: 2rem;
+  }
+
+  .member {
+    width: 230px;
+  }
+
+  .member img {
+    height: 220px;
+  }
+}
+
+
+                          /* ------------------- SMALL DESKTOP (1025px – 1439px) ------------------------ */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .team-members {
+    gap: 2.5rem;
+  }
+}
+
+                          /* ------------------- LARGE DESKTOP (1440px+) ------------------------ */
+
+@media (min-width: 1440px) {
+
+  .team-members {
+    gap: 3rem;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+                            /* ======================Careers page - Company Benefits =============================== */
 
 .benefits {
   background-color: #d6eeda;
@@ -6818,12 +7858,11 @@ section h2::after {
   display: block;
   margin: 4px auto 0;
   border-radius: 2px;
-  margin-left: 43.7%;
+  /* margin-left: 43.7%; */
 
   background: linear-gradient(90deg, #0454e9, #00c6ff, #ff0080, #ff8c00, #0454e9);
   background-size: 300%; 
   animation: colorFlow 3s linear infinite;
-  
 }
 
 .benefits ul {
@@ -6888,12 +7927,82 @@ section h2::after {
   color: #007a39;
 }
 
+              /* ---------------- Responsive Styles - Company Benefits Section ---------------- */
+
+                         /* ------------------- MOBILE (320px – 576px) ------------------------ */  
+
+
+@media (max-width: 576px) {
+
+  .benefits {
+    padding: 1.5rem 1rem;
+  }
+
+  .benefits h2 {
+    font-size: 1.4rem;
+  }
+
+  .benefits h2::after {
+    width: 110px;
+  }
+
+  .benefits li {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    margin: 14px auto;
+  }
+
+  .benefits li i {
+    font-size: 1rem;
+  }
+}
+
+
+                          /* ------------------- TABLET (577px – 1024px) ------------------------ */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .benefits {
+    padding: 2rem 2rem;
+  }
+
+  .benefits h2 {
+    font-size: 1.6rem;
+  }
+
+  .benefits h2::after {
+    width: 150px;
+  }
+
+  .benefits li {
+    font-size: 0.95rem;
+    margin: 16px 10px;
+  }
+}
+
+                          /* ------------------- SMALL DESKTOP (1025px – 1439px) ------------------------ */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .benefits li {
+    margin: 18px 75px;
+  }
+}
+
+                          /* ------------------- LARGE DESKTOP (1440px+) ------------------------ */
+
+@media (min-width: 1440px) {
+
+  .benefits li {
+    margin: 18px 170px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
 
               /* ===================================
                     CV Download Section  - Careers
                  ===================================  */
-
-
 
 .careers-section {
   display: flex;
@@ -6949,7 +8058,88 @@ section h2::after {
 }
 
 
-    /* ----------------------------------------------------------------------------------------- */
+              /* ================ Responsive Styles - CV Download Section - Careers Page ==================== */    
+
+                         /* ------------------- MOBILE (320px – 576px) ------------------------ */ 
+
+@media (max-width: 576px) {
+
+  .careers-section {
+    padding: 0 15px;
+    min-height: auto;
+  }
+
+  .cv-container {
+    padding: 20px 25px;
+    max-width: 100%;
+  }
+
+  .cv-icon img {
+    width: 100px;
+    height: 100px;
+    padding: 12px;
+    margin-top: -10px;
+  }
+
+  .cv-container h2 {
+    font-size: 20px;
+    margin-top: -8px;
+  }
+
+  .cv-container p {
+    font-size: 14px;
+  }
+}
+
+
+                          /* ------------------- TABLET (577px – 1024px) ------------------------ */
+
+@media (min-width: 577px) and (max-width: 1024px) {
+
+  .careers-section {
+    min-height: 35vh;
+  }
+
+  .cv-container {
+    padding: 25px 40px;
+    max-width: 480px;
+  }
+
+  .cv-icon img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cv-container h2 {
+    font-size: 22px;
+  }
+
+  .cv-container p {
+    font-size: 15px;
+  }
+}
+
+
+                          /* ------------------- SMALL DESKTOP (1025px – 1439px) ------------------------ */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+
+  .cv-container {
+    padding: 25px 50px;
+  }
+}
+
+                          /* ------------------- LARGE DESKTOP (1440px+) ------------------------ */
+
+@media (min-width: 1440px) {
+
+  .cv-container {
+    padding: 30px 60px;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
 
 
               /* ============================
