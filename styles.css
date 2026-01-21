@@ -684,7 +684,7 @@ nav ul.menu li .dropdown li a {
 }
 
 
-/* -------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------ */
 
         /* ======================== Home page - Career Support Services ====================== */
 
@@ -750,6 +750,139 @@ nav ul.menu li .dropdown li a {
   line-height: 1.6;
   text-align: justify;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   MOBILE DEVICES
+   320px – 414px
+========================= */
+@media (max-width: 575px) {
+
+  .career-support {
+    padding: 35px 15px;
+    margin-top: 0;
+  }
+
+  .career-support h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    margin-top: 0;
+  }
+
+  .career-support h2::after {
+    width: 140px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr; /* single column */
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 22px;
+  }
+
+  .service-card h3 {
+    font-size: 17px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   TABLET DEVICES
+   768px – 1024px
+========================= */
+@media (min-width: 576px) and (max-width: 1024px) {
+
+  .career-support {
+    padding: 45px 20px;
+  }
+
+  .career-support h2 {
+    font-size: 26px;
+    margin-bottom: 35px;
+  }
+
+  .career-support h2::after {
+    width: 180px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 30px;
+  }
+
+  .service-card {
+    padding: 30px;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+  }
+
+  .service-card p {
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   DESKTOP DEVICES
+   1280px+
+========================= */
+@media (min-width: 1025px) {
+
+  .career-support {
+    padding: 60px 20px;
+  }
+
+  .career-support h2 {
+    font-size: 28px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 35px;
+  }
+
+  .service-card {
+    padding: 35px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ----------------------------------------------------------------------------------------- */
 
