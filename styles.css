@@ -7265,11 +7265,8 @@ section h2::after {
 
 /* --------------------------------------------------------------------------------------------------------------------------- */
 
+                                    /* -------------- Terms Main Container -------------- */
 
-
-
-
-/* 📃 Main Container */
 .terms-container {
   max-width: 1000px;
   margin: 50px auto;
@@ -7365,6 +7362,133 @@ section h2::after {
   color: #000;
   margin-right: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      /* ---------------- responsive styles for terms main container ------------------ */
+
+
+
+
+/* =========================
+   MOBILE (320px – 575px)
+========================= */
+@media (max-width: 575px) {
+
+  .terms-container {
+    padding: 20px 15px;
+    margin: 20px auto;
+  }
+
+  .terms-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .terms-container h2::after {
+    width: 120px;
+  }
+
+  .terms-container h3 {
+    font-size: 18px;
+    margin-top: 25px;
+  }
+
+  .terms-container p {
+    font-size: 14px;
+    text-indent: 0;
+    line-height: 1.6;
+  }
+
+  .contact-item {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .term-address {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* =========================
+   TABLET (576px – 1024px)
+========================= */
+@media (min-width: 576px) and (max-width: 1024px) {
+
+  .terms-container {
+    padding: 30px 30px;
+    margin: 30px auto;
+  }
+
+  .terms-container h2 {
+    font-size: 30px;
+  }
+
+  .terms-container h2::after {
+    width: 180px;
+  }
+
+  .terms-container h3 {
+    font-size: 21px;
+  }
+
+  .terms-container p {
+    font-size: 16px;
+    text-indent: 15px;
+  }
+
+  .term-address {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   DESKTOP (1025px+)
+========================= */
+@media (min-width: 1025px) {
+
+  .terms-container {
+    padding: 40px 50px;
+  }
+
+  .terms-container h2 {
+    font-size: 38px;
+  }
+
+  .terms-container h3 {
+    font-size: 24px;
+  }
+
+  .terms-container p {
+    font-size: 17px;
+    text-indent: 30px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
