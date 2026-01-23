@@ -3937,7 +3937,6 @@ footer {
   }
 }
 
-
 @media (max-width: 1024px) {
   .search-bar {
     display: none;
@@ -6407,7 +6406,7 @@ section h2::after {
             /* course Days */
 
 .title-days {
-  color: #004aad; /
+  color: #004aad; 
   font-weight: bold;
 }
 
