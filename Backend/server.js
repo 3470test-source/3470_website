@@ -41,20 +41,13 @@ app.use(cors({
   origin: [
     "http://127.0.0.1:5500",
     "http://localhost:5500",
-    "https://3470healthcare.org",
-    "https://www.3470healthcare.org"
+    "https://3470healthcare.net",
+    "https://www.3470healthcare.net"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
-
-app.options("*", cors()); // 🔥 REQUIRED
-
-
-
-// 🔥 VERY IMPORTANT (preflight support)
-// app.options("*", cors());
 
 app.use(express.json());
 app.use(bodyParser.json());
