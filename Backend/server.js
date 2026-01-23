@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const db = require("./db");
-const mysql = require("mysql2");
 const app = express();
 const upload = multer();
 
@@ -17,25 +16,41 @@ const path = require("path");
    CORS (LOCAL + LIVE)
 ========================== */
 
-const allowedOrigins = [
-  "http://127.0.0.1:5500",
-  "http://localhost:5500",
-  "https://www.3470healthcare.org",
-  "https://3470healthcare.org"
-];
+// const allowedOrigins = [
+//   "http://127.0.0.1:5500",
+//   "http://localhost:5500",
+//   "https://www.3470healthcare.org",
+//   "https://3470healthcare.org"
+// ];
+
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("CORS not allowed"));
+//     }
+//   },
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true
+// }));
+
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed"));
-    }
-  },
+  origin: [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "https://3470healthcare.org",
+    "https://www.3470healthcare.org"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
+app.options("*", cors()); // 🔥 REQUIRED
+
 
 
 // 🔥 VERY IMPORTANT (preflight support)
@@ -49,17 +64,17 @@ app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, "../public")));
 
 
-const https = require("https");
-const fs = require("fs");
+// const https = require("https");
+// const fs = require("fs");
 
-const options = {
-  key: fs.readFileSync("key.pem"),
-  cert: fs.readFileSync("cert.pem")
-};
+// const options = {
+//   key: fs.readFileSync("key.pem"),
+//   cert: fs.readFileSync("cert.pem")
+// };
 
-https.createServer(options, app).listen(443, () => {
-  console.log("HTTPS API running on 443");
-});
+// https.createServer(options, app).listen(443, () => {
+//   console.log("HTTPS API running on 443");
+// });
 
 
 /* ==========================
@@ -254,7 +269,7 @@ app.post("/api/reset-password", async (req, res) => {
    REGISTER USER
 ========================== */
 
-app.post("/register", async (req, res) => {
+app.post("/api/register", async (req, res) => {
   const { name, email, mobile, password } = req.body;
 
   // Basic validation
