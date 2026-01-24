@@ -5,14 +5,4 @@ const API_BASE_URL =
     : "https://api.3470healthcare.net";
 
 
-//   module.exports = {
-//   apps: [{
-//     name: "api",
-//     script: "server.js",
-//     instances: "max",
-//     exec_mode: "cluster",
-//     env: {
-//       NODE_ENV: "production"
-//     }
-//   }]
-// }
+
