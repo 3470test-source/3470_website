@@ -74,7 +74,7 @@ app.use(bodyParser.json());
        ENQUIRY FORM 
    ========================== */
 
-app.post("/autodiscover/enquiry", (req, res) => {
+app.post("/enquiry", (req, res) => {
   const { name, email, phone, course, location, message } = req.body;
 
   if (!name || !email || !phone || !course || !location) {
@@ -195,7 +195,7 @@ const sendOtp = (email, otp) => {
    FORGOT PASSWORD
 ========================== */
 
-app.post("/autodiscover/forgot-password", (req, res) => {
+app.post("/forgot-password", (req, res) => {
   const { email } = req.body;
 
   if (!users[email]) {
@@ -213,7 +213,7 @@ app.post("/autodiscover/forgot-password", (req, res) => {
    VERIFY OTP
 ========================== */
 
-app.post("/autodiscover/verify-otp", (req, res) => {
+app.post("/verify-otp", (req, res) => {
   const { email, otp } = req.body;
   const record = otpStore[email];
 
@@ -237,7 +237,7 @@ app.post("/autodiscover/verify-otp", (req, res) => {
    RESET PASSWORD
 ========================== */
 
-app.post("/autodiscover/reset-password", async (req, res) => {
+app.post("/reset-password", async (req, res) => {
   const { token, password } = req.body;
   const record = resetTokenStore[token];
 
@@ -262,7 +262,7 @@ app.post("/autodiscover/reset-password", async (req, res) => {
    REGISTER USER
 ========================== */
 
-app.post("/autodiscover/register", async (req, res) => {
+app.post("/register", async (req, res) => {
   const { name, email, mobile, password } = req.body;
 
   // Basic validation
