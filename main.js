@@ -351,7 +351,7 @@ if(registerForm){
 
     // SEND TO BACKEND ONLY IF VALID
     try {
-     const res = await fetch(`${API_BASE_URL}/api/register`, {
+     const res = await fetch(`${API_BASE_URL}/autodiscover/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, mobile, password })

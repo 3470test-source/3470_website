@@ -39,8 +39,8 @@ const path = require("path");
 
 app.use(cors({
   origin: [
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
+    "http://142.132.248.161",
+    "http://localhost:14400",
     "https://3470healthcare.net",
     "https://www.3470healthcare.net"
   ],
@@ -74,7 +74,7 @@ app.use(bodyParser.json());
        ENQUIRY FORM 
    ========================== */
 
-app.post("/api/enquiry", (req, res) => {
+app.post("/autodiscover/enquiry", (req, res) => {
   const { name, email, phone, course, location, message } = req.body;
 
   if (!name || !email || !phone || !course || !location) {
@@ -195,7 +195,7 @@ const sendOtp = (email, otp) => {
    FORGOT PASSWORD
 ========================== */
 
-app.post("/api/forgot-password", (req, res) => {
+app.post("/autodiscover/forgot-password", (req, res) => {
   const { email } = req.body;
 
   if (!users[email]) {
@@ -213,7 +213,7 @@ app.post("/api/forgot-password", (req, res) => {
    VERIFY OTP
 ========================== */
 
-app.post("/api/verify-otp", (req, res) => {
+app.post("/autodiscover/verify-otp", (req, res) => {
   const { email, otp } = req.body;
   const record = otpStore[email];
 
@@ -237,7 +237,7 @@ app.post("/api/verify-otp", (req, res) => {
    RESET PASSWORD
 ========================== */
 
-app.post("/api/reset-password", async (req, res) => {
+app.post("/autodiscover/reset-password", async (req, res) => {
   const { token, password } = req.body;
   const record = resetTokenStore[token];
 
@@ -262,7 +262,7 @@ app.post("/api/reset-password", async (req, res) => {
    REGISTER USER
 ========================== */
 
-app.post("/api/register", async (req, res) => {
+app.post("/autodiscover/register", async (req, res) => {
   const { name, email, mobile, password } = req.body;
 
   // Basic validation
