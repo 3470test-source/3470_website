@@ -12,61 +12,47 @@ const upload = multer();
 
 const path = require("path");
 
-/* ==========================
-   CORS (LOCAL + LIVE)
-========================== */
 
-// const allowedOrigins = [
-//   "http://127.0.0.1:5500",
-//   "http://localhost:5500",
-//   "https://www.3470healthcare.org",
-//   "https://3470healthcare.org"
-// ];
 
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("CORS not allowed"));
-//     }
-//   },
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//   allowedHeaders: ["Content-Type", "Authorization"],
-//   credentials: true
-// }));
-
+const allowedOrigins = [
+  "http://127.0.0.1:5500",
+  "http://localhost:5500",
+  "https://3470healthcare.net",
+  "https://www.3470healthcare.net"
+];
 
 app.use(cors({
-  origin: [
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
-    "https://www.3470healthcare.net"
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS blocked"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 
+// ✅ THIS IS REQUIRED
+app.options(/.*/, cors());
+
+
+
+// app.use(cors({
+//   origin: [
+//     "http://127.0.0.1:5500",
+//     "http://localhost:5500",
+//     "https://www.3470healthcare.net",
+//     "https://3470healthcare.net" // ✅ ADD THIS
+//   ],
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true
+// }));
+
 app.use(express.json());
 app.use(bodyParser.json());
-
-
-// Serve frontend
-// app.use(express.static(path.join(__dirname, "../public")));
-
-
-// const https = require("https");
-// const fs = require("fs");
-
-// const options = {
-//   key: fs.readFileSync("key.pem"),
-//   cert: fs.readFileSync("cert.pem")
-// };
-
-// https.createServer(options, app).listen(443, () => {
-//   console.log("HTTPS API running on 443");
-// });
 
 
 /* ==========================
@@ -461,7 +447,9 @@ app.post("/grant-access", upload.none(), async (req, res) => {
    START SERVER
 ========================== */
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log("Server running on port", PORT);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });
+
