@@ -14,8 +14,9 @@ body {
 }
 
 
-    /* Top Header Styles  */
+                                 /*-------------- home page - Top Header Styles ---------------------- */
 
+                          
 .top-header {
   background-color: #068d53;
   color: white;
@@ -25,7 +26,6 @@ body {
   /* padding: 8px 100px; */
   font-size: 15px;
   flex-wrap: wrap; /* mobile friendly */
-
   padding: 8px 5%;
 }
 
@@ -57,7 +57,57 @@ body {
   color: rgb(8, 48, 228);
 }
 
- /* Main Header Styles */
+
+              /* ------------------ Tablet Responsive (768px – 1024px) ------------------- */
+
+@media (max-width: 1024px) {
+  .top-header {
+    padding: 8px 3%;
+    font-size: 14px;
+  }
+
+  .top-header .left,
+  .top-header .right {
+    gap: 12px;
+  }
+}
+
+                /* ------------------ Mobile Responsive (up to 768px) ------------------- */
+
+@media (max-width: 768px) {
+
+  .top-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .top-header .left,
+  .top-header .right {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+}
+
+                /* ------------------ Small Mobile Responsive (up to 400px) ------------------- */
+
+@media (max-width: 400px) {
+
+  .top-header {
+    font-size: 13px;
+    padding: 6px 4%;
+  }
+
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+
+                                  /* ------------------ Home Page - Main Header Styles ------------------- */
+
+ 
 header {
   display: flex;
   justify-content: space-between;
@@ -7812,7 +7862,7 @@ section h2::after {
   padding: 30px;
   color: white;
   position: relative;
-  background: url("picture/v.jpg") no-repeat center center/cover;
+  background: url("picture/cc.jpg") no-repeat center center/cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 
@@ -7825,7 +7875,8 @@ section h2::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* dark overlay */
+  /* background: rgba(0, 0, 0, 0.4);  */
+  background: rgba(1, 19, 13, 0.4); 
  
 }
 
@@ -7837,7 +7888,9 @@ section h2::after {
 
 .eligibility-section h2 {
   text-align: justify;
-  color: #6fee07; /* Dark blue heading */
+  /* color: #6fee07; */
+  /* color: #260eaa;  */
+   color: #eff303; 
   margin-bottom: 25px;
   font-size: 26px;
   font-weight: 600;
@@ -7857,7 +7910,7 @@ section h2::after {
 
 /* List item styles */
 .eligibility-section li {
-  font-size: 17px;
+  font-size: 18px;
   margin: 12px 0;
   display: flex;
   align-items: center;
@@ -7866,7 +7919,9 @@ section h2::after {
 
 /* Style for the thumbs-up icon */
 .eligibility-section li i {
-  color: #07ac75; /* Blue icon color */
+  /* color: #07ac75;  */
+  /* color: #76ec07; */
+  color: #04154d;
   margin-right: 10px;
   font-size: 18px;
 }

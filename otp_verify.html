@@ -202,7 +202,7 @@ document.getElementById("otpForm").addEventListener("submit", function(e) {
   const email = new URLSearchParams(window.location.search).get("email");
   const msg = document.getElementById("msg");
 
-  fetch("/api/verify-otp", {
+  fetch("http://localhost:3000/api/verify-otp", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, otp })
