@@ -10,9 +10,8 @@ const db = require("./db");
 const app = express();
 const upload = multer();
 
-
-
-
+const Razorpay = require("razorpay");
+const ShortUniqueId = require("short-uuid");
 
 
 const allowedOrigins = [
@@ -39,19 +38,6 @@ app.use(cors({
 app.options(/.*/, cors());
 
 
-
-// app.use(cors({
-//   origin: [
-//     "http://127.0.0.1:5500",
-//     "http://localhost:5500",
-//     "https://www.3470healthcare.net",
-//     "https://3470healthcare.net" // ✅ ADD THIS
-//   ],
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//   allowedHeaders: ["Content-Type", "Authorization"],
-//   credentials: true
-// }));
-
 app.use(express.json());
 app.use(bodyParser.json());
 
@@ -60,30 +46,30 @@ app.use(bodyParser.json());
        ENQUIRY FORM 
    ========================== */
 
-app.post("/api/enquiry", (req, res) => {
-  const { name, email, phone, course, location, message } = req.body;
+// app.post("/api/enquiry", (req, res) => {
+//   const { name, email, phone, course, location, message } = req.body;
 
-  if (!name || !email || !phone || !course || !location) {
-    return res.status(400).json({ message: "All fields required" });
-  }
+//   if (!name || !email || !phone || !course || !location) {
+//     return res.status(400).json({ message: "All fields required" });
+//   }
 
-  const sql = `
-    INSERT INTO enquiries (name, email, phone, course, location, message)
-    VALUES (?, ?, ?, ?, ?, ?)
-  `;
+//   const sql = `
+//     INSERT INTO enquiries (name, email, phone, course, location, message)
+//     VALUES (?, ?, ?, ?, ?, ?)
+//   `;
 
-  db.query(
-    sql,
-    [name, email, phone, course, location, message],
-    (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ message: "Database Error" });
-      }
-      res.json({ message: "Enquiry submitted successfully" });
-    }
-  );
-});
+//   db.query(
+//     sql,
+//     [name, email, phone, course, location, message],
+//     (err) => {
+//       if (err) {
+//         console.error(err);
+//         return res.status(500).json({ message: "Database Error" });
+//       }
+//       res.json({ message: "Enquiry submitted successfully" });
+//     }
+//   );
+// });
 
 
 
@@ -443,6 +429,221 @@ app.post("/grant-access", upload.none(), async (req, res) => {
     res.send("ERROR");
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+/* ---------------- COURSE DATA ---------------- */
+
+const courses = {
+  "Medical Coding Training": { fee: 14000, discount: 2000 },
+  "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
+  "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
+  "Certified Professional Coder": { fee: 14000, discount: 2000 },
+  "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
+  "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
+  "Certified Coding Specialist": { fee: 14000, discount: 2000 },
+  "Evaluation & Management": { fee: 14000, discount: 2000 },
+  "Emergency Department": { fee: 14000, discount: 2000 },
+  "Inpatient Coding Diagnosis Related Groups": { fee: 14000, discount: 2000 },
+  "Interactive Voice Response": { fee: 14000, discount: 2000 },
+  "Surgery Training": { fee: 14000, discount: 2000 }
+};
+
+/* ---------------- USER ID ---------------- */
+
+const uid = new ShortUniqueId({ length: 8 });
+
+const generateUserId = () => `MC-${uid()}`;
+
+/* ---------------- RAZORPAY ---------------- */
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET
+});
+
+/* =======================================================
+                FINAL ENQUIRY API
+======================================================= */
+
+app.post("/api/enquiry", async (req, res) => {
+
+  const connection = await pool.getConnection();
+
+  try {
+
+    const { name, email, phone, course, location, message } = req.body;
+
+    /* ---------- VALIDATION ---------- */
+
+    if (!name || !email || !phone || !course || !location) {
+      return res.status(400).json({
+        message: "All fields required"
+      });
+    }
+
+    if (!courses[course]) {
+      return res.status(400).json({
+        message: "Invalid course selected"
+      });
+    }
+
+    const cleanPhone = phone.replace(/\D/g, '');
+
+    if (cleanPhone.length < 10) {
+      return res.status(400).json({
+        message: "Invalid phone number"
+      });
+    }
+
+    /* ---------- PRICE ---------- */
+
+    const fee = courses[course].fee;
+    const discount = courses[course].discount;
+    const finalAmount = fee - discount;
+
+    const userId = generateUserId();
+
+    /* ===================================================
+        START TRANSACTION (VERY IMPORTANT)
+    =================================================== */
+
+    await connection.beginTransaction();
+
+    /* ---------- DUPLICATE CHECK ---------- */
+
+    const [existing] = await connection.query(
+      "SELECT id FROM enquiries WHERE phone=? LIMIT 1",
+      [cleanPhone]
+    );
+
+    if (existing.length > 0) {
+      await connection.rollback();
+      return res.status(409).json({
+        message: "You have already submitted an enquiry. Our team will contact you."
+      });
+    }
+
+    /* ---------- INSERT ENQUIRY ---------- */
+
+    const insertSQL = `
+      INSERT INTO enquiries
+      (user_id, name, email, phone, course, location, message, fee, discount, final_amount)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    await connection.query(insertSQL, [
+      userId,
+      name,
+      email,
+      cleanPhone,
+      course,
+      location,
+      message || null,
+      fee,
+      discount,
+      finalAmount
+    ]);
+
+    /* ---------- CREATE PAYMENT LINK ---------- */
+
+    const paymentLink = await razorpay.paymentLink.create({
+      amount: finalAmount * 100,
+      currency: "INR",
+      description: course,
+      customer: {
+        name,
+        email,
+        contact: cleanPhone
+      },
+      notify: {
+        sms: true,
+        email: true
+      },
+      reminder_enable: true,
+      notes: { userId }
+    });
+
+    /* ---------- COMMIT ---------- */
+
+    await connection.commit();
+
+    /* ---------- SEND EMAIL ---------- */
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Course Payment Link",
+      html: `
+        <h2>Hello ${name}</h2>
+
+        <p><b>User ID:</b> ${userId}</p>
+        <p><b>Course:</b> ${course}</p>
+
+        <h3>Final Amount: ₹${finalAmount}</h3>
+
+        <a href="${paymentLink.short_url}"
+        style="padding:12px 20px;background:#28a745;color:white;text-decoration:none;border-radius:6px;">
+        Pay Now
+        </a>
+      `
+    });
+
+    res.json({
+      message: "Enquiry submitted successfully!",
+      paymentUrl: paymentLink.short_url,
+      userId
+    });
+
+  } catch (err) {
+
+    await connection.rollback();
+
+    console.error("SERVER ERROR:", err);
+
+    res.status(500).json({
+      message: "Something went wrong"
+    });
+
+  } finally {
+    connection.release();
+  }
+});
+
+
+
+
+
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 /* ==========================
    START SERVER

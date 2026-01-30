@@ -5049,6 +5049,132 @@ body.no-scroll {
   box-shadow: 0 0 5px #4caf50; /* Soft glow effect */
 }
 
+/* ---------------- Fee Calculation Box ------------------ */
+
+#feeBox {
+  display: none;
+  /* margin-top: 18px; */
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f7f9ff, #eef2ff);
+  border: 1px solid #dbe3ff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  max-width: 420px;
+
+}
+
+/* Fee & Discount rows */
+#feeBox p {
+  /* margin: 6px 0; */
+  font-size: 15px;
+  color: #444;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+/* Final amount */
+#feeBox h3 {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #cfd8ff;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: #1a237e;
+  font-weight: 700;
+}
+
+/* Price numbers highlight */
+#fee,
+#discount,
+#final {
+  font-weight: 700;
+}
+
+/* Discount in green */
+#discount {
+  color: #16a34a;
+}
+
+/* Final price highlight */
+#final {
+  color: #0b5ed7;
+  font-size: 22px;
+}
+
+
+                            /* ----------- responsive Styles for Fee Calculation Box ------------ */
+
+                     /* ------------------------ ✅ Tablet (768px and below) --------------------------- */
+
+@media (max-width: 768px) {
+  #feeBox {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  #feeBox h3 {
+    font-size: 18px;
+  }
+}
+
+
+       /* -------------------------------- ✅ Mobile (480px and below) ------------------------------- */
+
+@media (max-width: 480px) {
+
+  #feeBox {
+    max-width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  #feeBox p {
+    font-size: 14px;
+  }
+
+  #feeBox h3 {
+    font-size: 17px;
+  }
+
+  #final {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+                      /* ----------------------- ✅ Laptops (1025px to 1366px) ------------------------ */  
+
+@media (min-width: 1600px) {
+  #feeBox {
+    max-width: 600px;
+    padding: 26px 32px;
+  }
+
+  #feeBox h3 {
+    font-size: 22px;
+  }
+
+  #final {
+    font-size: 24px;
+  }
+}
+
+                      /* ----------------------- ✅ Desktops (1367px to 1599px) ------------------------ */ 
+
+@media (min-width: 1920px) {
+  #feeBox {
+    max-width: 680px;
+  }
+}
+
+
+
+
 
                       /* ----------------- responsive styles - home page popup enquiry form -------------------- */
 

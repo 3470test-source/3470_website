@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// -----------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------------------
 
 
   // ========= 📊 Dashboard Page Script =================
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// ---------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------------
 
 
 // =============== 👁️ Password Icon - show / hide password =================
@@ -195,7 +195,7 @@ toggleIcons.forEach((icon) => {
 });
 
 
-// -----------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------------
 
 
 //      //register popup alerts
@@ -398,7 +398,7 @@ if(registerForm){
 }
 
 
-// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -426,18 +426,103 @@ if(registerForm){
 
 
 
-// ---------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------------
 
 
            // ===== Enquiry Form Submission - Home Page =====
 
+
+// window.addEventListener("DOMContentLoaded", () => {
+//   const popup = document.getElementById("popupForm");
+//   const form = document.getElementById("enquiryForm");
+
+//   if (!form) return;
+
+//   // Show popup after 4 seconds (once per session)
+//   if (!sessionStorage.getItem("formShown") && popup) {
+//     setTimeout(() => {
+//       popup.style.display = "flex";
+//       document.body.classList.add("no-scroll");
+//       sessionStorage.setItem("formShown", "true");
+//     }, 4000);
+//   }
+
+//   // Close popup function
+//   window.closePopup = function() {
+//     if (popup) {
+//       popup.style.display = "none";
+//       document.body.classList.remove("no-scroll");
+//     }
+//   }
+
+//   // Form submission
+//   form.addEventListener("submit", async function(e) {
+//     e.preventDefault();
+
+//     const data = {
+//       name: document.getElementById("name")?.value.trim(),
+//       email: document.getElementById("email")?.value.trim(),
+//       phone: document.getElementById("phone")?.value.trim(),
+//       course: document.getElementById("course")?.value.trim(),
+//       location: document.getElementById("location")?.value.trim(),
+//       message: document.getElementById("message")?.value.trim()
+//     };
+
+//     // Optional: Basic validation
+//     if (!data.name || !data.email || !data.phone) {
+//       alert("Please fill all required fields!");
+//       return;
+//     }
+
+//     try {
+//       const res = await fetch(`${API_BASE_URL}/api/enquiry`, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(data)
+//       });
+
+//       const result = await res.json();
+
+//       alert(result.message || "Enquiry submitted successfully!");
+//       form.reset();
+//       closePopup();
+
+//     } catch (err) {
+//       console.error("Enquiry submission error:", err);
+//       alert("Error submitting enquiry. Please try again.");
+//     }
+//   });
+// });
+
+
 window.addEventListener("DOMContentLoaded", () => {
+
   const popup = document.getElementById("popupForm");
   const form = document.getElementById("enquiryForm");
+  const courseDropdown = document.getElementById("course");
+  const feeBox = document.getElementById("feeBox");
 
   if (!form) return;
 
-  // Show popup after 4 seconds (once per session)
+  /* ---------------- COURSE DATA ---------------- */
+
+  const courses = {
+    "Medical Coding Training": { fee: 14000, discount: 2000 },
+    "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
+    "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
+    "Certified Professional Coder": { fee: 14000, discount: 2000 },
+    "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
+    "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
+    "Certified Coding Specialist": { fee: 14000, discount: 2000 },
+    "Evaluation & Management": { fee: 14000, discount: 2000 },
+    "Emergency Department": { fee: 14000, discount: 2000 },
+    "Inpatient Coding Diagnosis Related Groups": { fee: 14000, discount: 2000 },
+    "Interactive Voice Response": { fee: 14000, discount: 2000 },
+    "Surgery Training": { fee: 14000, discount: 2000 }
+  };
+
+  /* ---------------- POPUP ---------------- */
+
   if (!sessionStorage.getItem("formShown") && popup) {
     setTimeout(() => {
       popup.style.display = "flex";
@@ -446,34 +531,57 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 4000);
   }
 
-  // Close popup function
-  window.closePopup = function() {
-    if (popup) {
-      popup.style.display = "none";
-      document.body.classList.remove("no-scroll");
-    }
-  }
+  window.closePopup = function () {
+    popup.style.display = "none";
+    document.body.classList.remove("no-scroll");
+  };
 
-  // Form submission
-  form.addEventListener("submit", async function(e) {
+  /* ---------------- FEE CALCULATION ---------------- */
+
+  courseDropdown.addEventListener("change", () => {
+
+    const selected = courseDropdown.value;
+
+    if (!courses[selected]) {
+      feeBox.style.display = "none";
+      return;
+    }
+
+    const fee = courses[selected].fee;
+    const discount = courses[selected].discount;
+    const final = fee - discount;
+
+    document.getElementById("fee").innerText = fee;
+    document.getElementById("discount").innerText = discount;
+    document.getElementById("final").innerText = final;
+
+    feeBox.style.display = "block";
+  });
+
+  /* ---------------- FORM SUBMIT ---------------- */
+
+  form.addEventListener("submit", async function (e) {
+
     e.preventDefault();
 
     const data = {
-      name: document.getElementById("name")?.value.trim(),
-      email: document.getElementById("email")?.value.trim(),
-      phone: document.getElementById("phone")?.value.trim(),
-      course: document.getElementById("course")?.value.trim(),
-      location: document.getElementById("location")?.value.trim(),
-      message: document.getElementById("message")?.value.trim()
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      course: document.getElementById("course").value.trim(),
+      location: document.getElementById("location").value.trim(),
+      message: document.getElementById("message").value.trim()
     };
 
-    // Optional: Basic validation
-    if (!data.name || !data.email || !data.phone) {
+    /* ---------- Validation ---------- */
+
+    if (!data.name || !data.email || !data.phone || !data.course) {
       alert("Please fill all required fields!");
       return;
     }
 
     try {
+
       const res = await fetch(`${API_BASE_URL}/api/enquiry`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -483,21 +591,33 @@ window.addEventListener("DOMContentLoaded", () => {
       const result = await res.json();
 
       alert(result.message || "Enquiry submitted successfully!");
+
       form.reset();
+      feeBox.style.display = "none";
       closePopup();
 
+      /* ---------- Open Payment Link ---------- */
+
+      if (result.paymentUrl) {
+        window.open(result.paymentUrl, "_blank");
+      }
+
     } catch (err) {
+
       console.error("Enquiry submission error:", err);
       alert("Error submitting enquiry. Please try again.");
     }
   });
+
 });
 
 
 
 
 
-// ------------------------------------------------------------------
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------------
 
 
                   // ========= About page ==========

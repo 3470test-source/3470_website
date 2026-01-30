@@ -913,6 +913,12 @@
             <option value="Surgery Training">Surgery - Training</option>
           </select>
 
+          <div id="feeBox" style="display:none;">
+            <p>Fee: ₹<span id="fee"></span></p>
+            <p>Discount: ₹<span id="discount"></span></p>
+            <h3>Final: ₹<span id="final"></span></h3>
+          </div>
+
           <select id="location" name="location" required>
             <option value="">-- Select Location --</option>
             <option value="Chennai">Chennai</option>
@@ -990,7 +996,7 @@
 
 
 
-
+ <!-- Menu Toggle & Mobile Dropdown Script -->
 
 <script>
   const menuToggle = document.getElementById("menuToggle-fixing");
