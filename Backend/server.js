@@ -6,12 +6,15 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
-const db = require("./db");
+// const db = require("./db");
 const app = express();
 const upload = multer();
 
+const pool = require("./db");
+
 const Razorpay = require("razorpay");
-const ShortUniqueId = require("short-uuid");
+const crypto = require("crypto");
+// const { default: ShortUniqueId } = require("short-uuid");
 
 
 const allowedOrigins = [
@@ -90,6 +93,33 @@ const FRONTEND_URL =
   process.env.NODE_ENV === "production"
     ? process.env.PROD_FRONTEND_URL
     : process.env.LOCAL_FRONTEND_URL;
+
+
+
+    /* ---------------- RAZORPAY ---------------- */
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET
+});
+
+
+/* ---------------- COURSE DATA ---------------- */
+
+const courses = {
+  "Medical Coding Training": { fee: 10, discount: 9 },
+  "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
+  "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
+  "Certified Professional Coder": { fee: 14000, discount: 2000 },
+  "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
+  "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
+  "Certified Coding Specialist": { fee: 14000, discount: 2000 },
+  "Evaluation & Management": { fee: 14000, discount: 2000 },
+  "Emergency Department": { fee: 14000, discount: 2000 },
+  "Inpatient Coding Diagnosis Related Groups": { fee: 14000, discount: 2000 },
+  "Interactive Voice Response": { fee: 14000, discount: 2000 },
+  "Surgery Training": { fee: 14000, discount: 2000 }
+};
 
 
 /* ==========================
@@ -442,195 +472,329 @@ app.post("/grant-access", upload.none(), async (req, res) => {
 
 // ----------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-/* ---------------- COURSE DATA ---------------- */
-
-const courses = {
-  "Medical Coding Training": { fee: 14000, discount: 2000 },
-  "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
-  "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
-  "Certified Professional Coder": { fee: 14000, discount: 2000 },
-  "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
-  "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
-  "Certified Coding Specialist": { fee: 14000, discount: 2000 },
-  "Evaluation & Management": { fee: 14000, discount: 2000 },
-  "Emergency Department": { fee: 14000, discount: 2000 },
-  "Inpatient Coding Diagnosis Related Groups": { fee: 14000, discount: 2000 },
-  "Interactive Voice Response": { fee: 14000, discount: 2000 },
-  "Surgery Training": { fee: 14000, discount: 2000 }
-};
-
 /* ---------------- USER ID ---------------- */
 
-const uid = new ShortUniqueId({ length: 8 });
+// const uid = new ShortUniqueId({ length: 8 });
 
-const generateUserId = () => `MC-${uid()}`;
+// const generateUserId = () => `MC-${uid()}`;
 
-/* ---------------- RAZORPAY ---------------- */
+// const generateUserId = () => {
+//   return `MC-${uuidv4().slice(0,8)}`;
+// };
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET
-});
 
-/* =======================================================
-                FINAL ENQUIRY API
-======================================================= */
+
+
+// =======================================================
+// ✅ ENQUIRY API → CREATE PAYMENT LINK
+// =======================================================
+
+// app.post("/api/enquiry", async (req, res) => {
+
+//   try {
+
+//     const { name, email, phone, course, location, message } = req.body;
+
+//     if (!name || !email || !phone || !course || !location) {
+//       return res.status(400).json({
+//         message: "All fields required"
+//       });
+//     }
+
+//     if (!courses[course]) {
+//       return res.status(400).json({
+//         message: "Invalid course"
+//       });
+//     }
+
+//     const finalAmount =
+//       courses[course].fee - courses[course].discount;
+
+//     /* CREATE PAYMENT LINK */
+
+//     const paymentLink = await razorpay.paymentLink.create({
+//       amount: finalAmount * 100,
+//       currency: "INR",
+//       description: course,
+//       customer: { name, email, contact: phone }
+//     });
+
+//     /* SAVE AS PENDING */
+
+//     await pool.query(`
+//      INSERT INTO enquiries_3470_data
+// (name,email,phone,course,location,message,final_amount,razorpay_link_id)
+// VALUES (?,?,?,?,?,?,?,?)
+
+//     `, [
+//       name,
+//       email,
+//       phone,
+//       course,
+//       location,
+//       message,
+//       finalAmount,
+//       paymentLink.id
+//     ]);
+
+
+//      /* 3️⃣ Send Email */
+//     await transporter.sendMail({
+//       from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
+//       to: email,
+//       subject: "Complete Your Payment – 3470 HealthCare",
+//       html: `
+//         <h3>Hello ${name},</h3>
+//         <p>Your payment link for <b>${course}</b> is ready.</p>
+//         <p><b>Amount:</b> ₹${finalAmount}</p>
+//         <p>
+//           <a href="${paymentLink.short_url}"
+//              style="padding:10px 20px;background:#068545;color:#fff;
+//              text-decoration:none;border-radius:5px;">
+//              Pay Now
+//           </a>
+//         </p>
+//         <p>– 3470 HealthCare Team</p>
+//       `
+//     });
+
+
+//     // res.json({
+//     //   paymentUrl: paymentLink.short_url
+//     // });
+
+//     res.json({
+//       success: true,
+//       message: "Payment link sent to your email"
+//     });
+
+//   } catch (err) {
+
+//     console.log("SERVER ERROR:", err);
+//     res.status(500).json({
+//       message: "Server error"
+//     });
+//   }
+// });
+
 
 app.post("/api/enquiry", async (req, res) => {
-
-  const connection = await pool.getConnection();
-
   try {
-
     const { name, email, phone, course, location, message } = req.body;
 
-    /* ---------- VALIDATION ---------- */
-
     if (!name || !email || !phone || !course || !location) {
-      return res.status(400).json({
-        message: "All fields required"
-      });
+      return res.status(400).json({ message: "All fields required" });
     }
 
     if (!courses[course]) {
-      return res.status(400).json({
-        message: "Invalid course selected"
-      });
+      return res.status(400).json({ message: "Invalid course" });
     }
 
-    const cleanPhone = phone.replace(/\D/g, '');
+    const finalAmount = courses[course].fee - courses[course].discount;
 
-    if (cleanPhone.length < 10) {
-      return res.status(400).json({
-        message: "Invalid phone number"
-      });
-    }
-
-    /* ---------- PRICE ---------- */
-
-    const fee = courses[course].fee;
-    const discount = courses[course].discount;
-    const finalAmount = fee - discount;
-
-    const userId = generateUserId();
-
-    /* ===================================================
-        START TRANSACTION (VERY IMPORTANT)
-    =================================================== */
-
-    await connection.beginTransaction();
-
-    /* ---------- DUPLICATE CHECK ---------- */
-
-    const [existing] = await connection.query(
-      "SELECT id FROM enquiries WHERE phone=? LIMIT 1",
-      [cleanPhone]
-    );
-
-    if (existing.length > 0) {
-      await connection.rollback();
-      return res.status(409).json({
-        message: "You have already submitted an enquiry. Our team will contact you."
-      });
-    }
-
-    /* ---------- INSERT ENQUIRY ---------- */
-
-    const insertSQL = `
-      INSERT INTO enquiries
-      (user_id, name, email, phone, course, location, message, fee, discount, final_amount)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
-
-    await connection.query(insertSQL, [
-      userId,
-      name,
-      email,
-      cleanPhone,
-      course,
-      location,
-      message || null,
-      fee,
-      discount,
-      finalAmount
-    ]);
-
-    /* ---------- CREATE PAYMENT LINK ---------- */
-
+    /* 1️⃣ Create Razorpay Payment Link */
     const paymentLink = await razorpay.paymentLink.create({
       amount: finalAmount * 100,
       currency: "INR",
       description: course,
-      customer: {
-        name,
-        email,
-        contact: cleanPhone
-      },
-      notify: {
-        sms: true,
-        email: true
-      },
-      reminder_enable: true,
-      notes: { userId }
+      customer: { name, email, contact: phone }
     });
 
-    /* ---------- COMMIT ---------- */
+    /* 2️⃣ Save to DB */
+    await pool.query(`
+      INSERT INTO enquiries_3470_data
+      (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
+      VALUES (?,?,?,?,?,?,?,?,'pending')
+    `, [
+      name,
+      email,
+      phone,
+      course,
+      location,
+      message || "NA",
+      finalAmount,
+      paymentLink.id
+    ]);
 
-    await connection.commit();
-
-    /* ---------- SEND EMAIL ---------- */
-
+    /* 3️⃣ SEND ENQUIRY DETAILS TO ADMIN */
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: "Course Payment Link",
+      from: `"3470 HealthCare Enquiry" <${process.env.GMAIL_USER}>`,
+      to: "vignesh.g@3470healthcare.com",
+      subject: "📝 New Enquiry Received – Payment Link Created",
       html: `
-        <h2>Hello ${name}</h2>
+        <div style="font-family:Arial;padding:20px;border:1px solid #e5e5e5;border-radius:8px;
+                    background:#f9fbff;max-width:550px;">
+                    
+        <h2 style="color:#068545;">New Enquiry Received</h2>
 
-        <p><b>User ID:</b> ${userId}</p>
-        <p><b>Course:</b> ${course}</p>
+        <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;font-size:14px;color:#333;">
+          <tr><td style="font-weight:bold;width:35%;"><b>Name</b></td><td>${name}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Email</b></td><td>${email}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Mobile</b></td><td>${phone}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Course</b></td><td>${course}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Location</b></td><td>${location}</td></tr>
+          <tr><td style="font-weight:bold;vertical-align:top;""><b>Message</b></td><td style="word-break:break-word;">${message || "NA"}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Amount</b></td><td>₹${finalAmount}</td></tr>
+        </table>
 
-        <h3>Final Amount: ₹${finalAmount}</h3>
+        <p>
+          <b>Payment Link:</b><br>
+          <a href="${paymentLink.short_url}">
+            ${paymentLink.short_url}
+          </a>
+        </p>
+        
+        <hr style="margin:15px 0;">
 
-        <a href="${paymentLink.short_url}"
-        style="padding:12px 20px;background:#28a745;color:white;text-decoration:none;border-radius:6px;">
-        Pay Now
-        </a>
+        <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
+           3470 Healthcare Training & Certification Program
+        </p>
+
+        <p style="margin-top:5px;font-size:14px;font-weight:600;">
+          Regards,<br>
+          3470 HealthCare Pvt Ltd
+        </p>
+      </div>
       `
     });
 
+
+     /* 4️⃣ SEND PAYMENT LINK TO USER */
+   
+    await transporter.sendMail({
+  from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
+  to: email,
+  subject: "Payment Confirmation for Your Course – 3470 HealthCare",
+  html: `
+  <div style="font-family:Arial;padding:20px;border:1px solid #e5e5e5;border-radius:8px;
+      background:#f9fbff;max-width:550px;">
+
+    <h3 style="color:#333;">Hello ${name},</h3>
+
+    <p style="font-size:14px;color:#555;">
+      Your payment link for <b>${course}</b> is ready.
+    </p>
+
+    <p style="font-size:14px;color:#555;">
+      <b>Amount:</b> ₹${finalAmount}
+    </p>
+
+    <a href="${paymentLink.short_url}"
+       style="display:inline-block;padding:12px 24px;background-color:#068545;color:#ffffff;text-decoration:none;border-radius:4px;
+              font-size:14px;font-weight:bold;">
+      Pay Now
+    </a>
+
+    <div style="margin:20px 0;padding:12px;background:#e9f7ef;border-left:4px solid #068545;">
+      <p style="margin:0;font-size:13px;color:#11682e;">
+        If you have any questions, feel free to contact our support team.
+      </p>
+
+      <p style="margin:6px 0 0;font-size:13px;color:#11682e;">
+         📞 <b>Support:</b> +91 99766 14395 
+      </p>
+  
+    </div>
+
+      <hr style="margin:15px 0;">
+
+      <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
+      3470 Healthcare Training & Certification Program
+      </p>
+
+      <p style="margin-top:5px;font-size:14px;font-weight:600;">
+      Regards,<br>
+      3470 HealthCare Pvt Ltd
+      </p>
+
+  </div>
+  `
+});
+
+
+    /* 4️⃣ Single Response */
     res.json({
-      message: "Enquiry submitted successfully!",
-      paymentUrl: paymentLink.short_url,
-      userId
+      success: true,
+      message: "Enquiry submitted successfully!. ✅ Payment link has been sent to your email."
     });
 
   } catch (err) {
-
-    await connection.rollback();
-
     console.error("SERVER ERROR:", err);
-
-    res.status(500).json({
-      message: "Something went wrong"
-    });
-
-  } finally {
-    connection.release();
+    res.status(500).json({ message: "Server error" });
   }
 });
 
 
+// =======================================================
+// 🔥 RAZORPAY WEBHOOK (MOST IMPORTANT)
+// =======================================================
+
+app.post(
+  "/razorpay-webhook",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+
+    const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+
+    const expected = crypto
+      .createHmac("sha256", secret)
+      .update(req.body)
+      .digest("hex");
+
+    const signature = req.headers["x-razorpay-signature"];
+
+    if (expected !== signature) {
+      return res.status(400).send("Invalid signature");
+    }
+
+    // const body = JSON.parse(req.body);
+
+    const body = JSON.parse(req.body.toString());
 
 
+    if (body.event === "payment_link.paid") {
 
+      const payment = body.payload.payment.entity;
+      const link = body.payload.payment_link.entity;
+
+      const userId = `MC-${uuidv4().slice(0,8)}`;
+
+      try {
+
+        await pool.query(`
+          UPDATE enquiries_3470_data
+          SET 
+            status='paid',
+            user_id=?,
+            razorpay_payment_id=?
+          WHERE razorpay_link_id=?
+        `, [
+          userId,
+          payment.id,
+          link.id
+        ]);
+
+        // SEND EMAIL AFTER SUCCESS
+        await transporter.sendMail({
+          to: payment.email,
+          subject: "Payment Successful 🎉",
+          html: `
+            <h2>Payment Confirmed</h2>
+            <p>Your User ID:</p>
+            <h1>${userId}</h1>
+          `
+        });
+
+        console.log("✅ Payment success. User:", userId);
+
+      } catch (err) {
+        console.log("DB ERROR:", err);
+      }
+    }
+
+    res.json({ status: "ok" });
+  }
+);
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------

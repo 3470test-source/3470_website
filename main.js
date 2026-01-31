@@ -507,7 +507,7 @@ window.addEventListener("DOMContentLoaded", () => {
   /* ---------------- COURSE DATA ---------------- */
 
   const courses = {
-    "Medical Coding Training": { fee: 14000, discount: 2000 },
+    "Medical Coding Training": { fee: 10, discount: 9 },
     "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
     "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
     "Certified Professional Coder": { fee: 14000, discount: 2000 },
@@ -590,7 +590,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       const result = await res.json();
 
-      alert(result.message || "Enquiry submitted successfully!");
+      alert(result.message || "Enquiry submitted successfully!. ✅ Payment link has been sent to your email.");
 
       form.reset();
       feeBox.style.display = "none";
@@ -598,9 +598,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
       /* ---------- Open Payment Link ---------- */
 
-      if (result.paymentUrl) {
-        window.open(result.paymentUrl, "_blank");
-      }
+      // if (result.paymentUrl) {
+      //   window.open(result.paymentUrl, "_blank");
+      //   // window.location.href = result.paymentUrl;
+
+      // }
+      
 
     } catch (err) {
 
@@ -610,9 +613,6 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
-
-
 
 
 
