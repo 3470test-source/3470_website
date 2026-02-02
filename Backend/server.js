@@ -601,20 +601,54 @@ app.post("/api/enquiry", async (req, res) => {
     });
 
     /* 2️⃣ Save to DB */
-    await pool.query(`
-      INSERT INTO enquiries_3470_data
-      (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
-      VALUES (?,?,?,?,?,?,?,?,'pending')
-    `, [
-      name,
-      email,
-      phone,
-      course,
-      location,
-      message || "NA",
-      finalAmount,
-      paymentLink.id
-    ]);
+    // await pool.query(`
+    //   INSERT INTO enquiries_3470_data
+    //   (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
+    //   VALUES (?,?,?,?,?,?,?,?,'pending')
+    // `, [
+    //   name,
+    //   email,
+    //   phone,
+    //   course,
+    //   location,
+    //   message || "NA",
+    //   finalAmount,
+    //   paymentLink.id
+    // ]);
+
+
+
+/* 2️⃣ Save to DB */
+const [result] = await pool.query(`
+  INSERT INTO enquiries_3470_data
+  (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
+  VALUES (?,?,?,?,?,?,?,?,'pending')
+`, [
+  name,
+  email,
+  phone,
+  course,
+  location,
+  message || "NA",
+  finalAmount,
+  paymentLink.id
+]);
+
+const insertedId = result.insertId;
+const enquiryNo = `3470-${insertedId}`;
+
+await pool.query(`
+  UPDATE enquiries_3470_data
+  SET enquiry_no = ?
+  WHERE id = ?
+`, [enquiryNo, insertedId]);
+
+
+
+
+
+
+
 
     /* 3️⃣ SEND ENQUIRY DETAILS TO ADMIN */
     await transporter.sendMail({
