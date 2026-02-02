@@ -763,6 +763,75 @@ await pool.query(`
 // 🔥 RAZORPAY WEBHOOK (MOST IMPORTANT)
 // =======================================================
 
+// app.post(
+//   "/razorpay-webhook",
+//   express.raw({ type: "application/json" }),
+//   async (req, res) => {
+
+//     const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+
+//     const expected = crypto
+//       .createHmac("sha256", secret)
+//       .update(req.body)
+//       .digest("hex");
+
+//     const signature = req.headers["x-razorpay-signature"];
+
+//     if (expected !== signature) {
+//       return res.status(400).send("Invalid signature");
+//     }
+
+//     // const body = JSON.parse(req.body);
+
+//     const body = JSON.parse(req.body.toString());
+
+
+//     if (body.event === "payment_link.paid") {
+
+//       const payment = body.payload.payment.entity;
+//       const link = body.payload.payment_link.entity;
+
+//       const userId = `MC-${uuidv4().slice(0,8)}`;
+
+//       try {
+
+//         await pool.query(`
+//           UPDATE enquiries_3470_data
+//           SET 
+//             status='paid',
+//             user_id=?,
+//             razorpay_payment_id=?
+//           WHERE razorpay_link_id=?
+//         `, [
+//           userId,
+//           payment.id,
+//           link.id
+//         ]);
+
+//         // SEND EMAIL AFTER SUCCESS
+//         await transporter.sendMail({
+//           to: payment.email,
+//           subject: "Payment Successful 🎉",
+//           html: `
+//             <h2>Payment Confirmed</h2>
+//             <p>Your User ID:</p>
+//             <h1>${userId}</h1>
+//           `
+//         });
+
+//         console.log("✅ Payment success. User:", userId);
+
+//       } catch (err) {
+//         console.log("DB ERROR:", err);
+//       }
+//     }
+
+//     res.json({ status: "ok" });
+//   }
+// );
+
+
+
 app.post(
   "/razorpay-webhook",
   express.raw({ type: "application/json" }),
@@ -778,51 +847,42 @@ app.post(
     const signature = req.headers["x-razorpay-signature"];
 
     if (expected !== signature) {
+      console.log("❌ Invalid signature");
       return res.status(400).send("Invalid signature");
     }
 
-    // const body = JSON.parse(req.body);
-
     const body = JSON.parse(req.body.toString());
-
+    console.log("📦 Event:", body.event);
 
     if (body.event === "payment_link.paid") {
 
       const payment = body.payload.payment.entity;
       const link = body.payload.payment_link.entity;
+      const customerEmail = link.customer.email;
 
-      const userId = `MC-${uuidv4().slice(0,8)}`;
+      const userId = `MC-${uuidv4().slice(0, 8)}`;
 
       try {
-
-        await pool.query(`
+        const [result] = await pool.query(`
           UPDATE enquiries_3470_data
-          SET 
-            status='paid',
-            user_id=?,
-            razorpay_payment_id=?
+          SET status='paid',
+              user_id=?,
+              razorpay_payment_id=?
           WHERE razorpay_link_id=?
-        `, [
-          userId,
-          payment.id,
-          link.id
-        ]);
+        `, [userId, payment.id, link.id]);
 
-        // SEND EMAIL AFTER SUCCESS
+        console.log("DB Updated:", result.affectedRows);
+
         await transporter.sendMail({
-          to: payment.email,
+          to: customerEmail,
           subject: "Payment Successful 🎉",
-          html: `
-            <h2>Payment Confirmed</h2>
-            <p>Your User ID:</p>
-            <h1>${userId}</h1>
-          `
+          html: `<h2>Payment Confirmed</h2><h1>${userId}</h1>`
         });
 
-        console.log("✅ Payment success. User:", userId);
+        console.log("✅ Mail sent to", customerEmail);
 
       } catch (err) {
-        console.log("DB ERROR:", err);
+        console.error("DB / MAIL ERROR:", err);
       }
     }
 
