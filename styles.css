@@ -1218,7 +1218,7 @@ nav ul.menu li .dropdown li a {
 
   .career-support {
     padding: 35px 15px;
-    margin-top: 0;
+    margin-top: -10px;
   }
 
   .career-support h2 {
@@ -1258,11 +1258,14 @@ nav ul.menu li .dropdown li a {
 
   .career-support {
     padding: 45px 20px;
+
+    margin-top: -20px;
   }
 
   .career-support h2 {
     font-size: 26px;
     margin-bottom: 35px;
+
   }
 
   .career-support h2::after {
@@ -1655,11 +1658,11 @@ nav ul.menu li .dropdown li a {
 @media (max-width: 480px) {
   .international-certifications {
     padding: 35px 12px;
-    margin-top: 0;
+    margin-top: -40px;
   }
 
   .international-certifications h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .international-certifications p {
@@ -2115,7 +2118,7 @@ nav ul.menu li .dropdown li a {
 }
 
 
-/* ------------------------------------------------------------------------------------------------ */
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
                             /* ==================== Home Pages - Certifications Offered ============================= */
 
@@ -2258,7 +2261,7 @@ nav ul.menu li .dropdown li a {
   }
 
   .certifications-cert-group h2 {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .certifications-cert-group h2::after {
@@ -2541,12 +2544,12 @@ nav ul.menu li .dropdown li a {
 
 
 
-  /* animation: slideUp 1.2s ease-in-out;
-  transition: all 0.4s ease; */
+  animation: slideUp 1.2s ease-in-out;
+  transition: all 0.4s ease;
 
 }
 
-/* @keyframes slideUp {
+@keyframes slideUp {
   from {
     transform: translateY(50px);
     opacity: 0;
@@ -2555,7 +2558,7 @@ nav ul.menu li .dropdown li a {
     transform: translateY(0);
     opacity: 1;
   }
-} */
+}
 
     
        /* ----- Left Side (Logo + Text) ----- */
@@ -4286,6 +4289,9 @@ footer {
 
 /* -------------------------------------------------------------------------------------------------------------------------- */
 
+
+                                 /* ---------------- Contact pages - Form styles --------------- */
+
 .contact-section {
   max-width: 1200px;
   margin: 50px auto;
@@ -4297,6 +4303,7 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   gap: 40px;
+  
 }
 
 .contact-form h2 {
@@ -4332,85 +4339,6 @@ footer {
   margin-bottom: 15px;
 }
 
-
-
-
-
-
-
-@media (max-width: 576px) {
-
-  .contact-section {
-    margin: 20px auto;
-    padding: 10px;
-  }
-
-  .contact-container {
-    flex-direction: column;   /* stack form + info */
-    gap: 25px;
-  }
-
-  .contact-form {
-    order: 1;                 /* form first on mobile */
-    padding: 15px;
-  }
-
-  .contact-form h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-
-  .form-group {
-    margin-bottom: 12px;
-  }
-}
-
-
-
-
-@media (min-width: 577px) and (max-width: 1024px) {
-
-  .contact-section {
-    margin: 30px auto;
-    padding: 15px;
-  }
-
-  .contact-container {
-    gap: 30px;
-  }
-
-  .contact-form {
-    padding: 18px;
-  }
-
-  .contact-form h2 {
-    font-size: 22px;
-  }
-}
-
-
-
-
-@media (min-width: 1025px) and (max-width: 1366px) {
-
-  .contact-section {
-    padding: 0 15px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ----------------------------------------------------------------------------------------------------------------------------- */
 
                                      /* --------------- Contact pages --------------*/
                                       /* ------------- Address styles ------------ */
@@ -4467,96 +4395,86 @@ footer {
 }
 
 
+            /* ------------------------------ responsive styles for Contact Us Form Page and address ----------------------------  */
 
+/* ===============================
+   TABLET VIEW
+   768px – 1023px
+================================ */
+@media (max-width: 1024px) {
+  .contact-container {
+    gap: 25px;
+  }
 
-
-
-
-
-
-
-@media (max-width: 576px) {
-
-  .contact-info {
-    gap: 15px;
-    margin-top: 10px;
-    padding: 0 10px;
+  .contact-info,
+  .contact-form {
+    flex: 1 1 50%;
   }
 
   .address-box {
-    padding: 15px;
     max-width: 100%;
-    margin: 10px auto;
+    margin: 10px 0;
+  }
+}
+
+/* ===============================
+   MOBILE VIEW
+   ≤ 767px
+================================ */
+@media (max-width: 767px) {
+  .contact-container {
+    flex-direction: column;
+    gap: 20px;
+
   }
 
+  /* Address first, form below */
+  .contact-info {
+    order: 2;
+  }
+
+  .contact-form {
+    order: 1;
+    margin-top: -20px;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 100%;
+  }
+
+  .address-box {
+    max-width: 100%;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .contact-form {
+    padding: 15px;
+  }
+
+  .contact-form h2 {
+    font-size: 20px;
+  }
+
+  .address-box p {
+    font-size: 14px;
+  }
+}
+
+/* ===============================
+   VERY SMALL MOBILES
+   ≤ 375px
+================================ */
+@media (max-width: 375px) {
   .address-box h4 {
     font-size: 16px;
   }
 
-  .address-box p,
-  .contact-info p {
-    font-size: 14px;
-    margin: 10px 0;
-  }
-
-  .address-box h4 i {
-    margin-left: 0;
-  }
-}
-
-
-
-
-
-@media (min-width: 577px) and (max-width: 1024px) {
-
-  .contact-info {
-    padding: 0 20px;
-  }
-
-  .address-box {
-    max-width: 90%;
-    padding: 20px;
-  }
-
-  .address-box h4 {
-    font-size: 17px;
-  }
-
   .address-box p {
-    font-size: 15px;
+    font-size: 13px;
   }
 }
-
-
-
-
-
-@media (min-width: 1025px) and (max-width: 1366px) {
-
-  .address-box {
-    max-width: 480px;
-  }
-}
-
-
-
-
-
-@media (hover: hover) {
-  .address-box:hover {
-    transform: translateY(-5px);
-  }
-}
-
-
-
-
-
-
-
-
-
 
 
 /* ----------------------------------------------------------------------------------------------------------------------------------- */

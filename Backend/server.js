@@ -3,10 +3,10 @@ const express = require("express");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
-// const db = require("./db");
+
 const app = express();
 const upload = multer();
 
@@ -14,7 +14,162 @@ const pool = require("./db");
 
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
-// const { default: ShortUniqueId } = require("short-uuid");
+
+
+
+
+
+/* ==========================
+   NODEMAILER (GMAIL)
+========================== */
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS
+  }
+});
+
+
+const FRONTEND_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.PROD_FRONTEND_URL
+    : process.env.LOCAL_FRONTEND_URL;
+
+
+
+    /* ---------------- RAZORPAY ---------------- */
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET
+});
+
+
+
+/* =====================================================
+   🔥 RAZORPAY WEBHOOK (MUST BE FIRST)
+===================================================== */
+
+app.post(
+  "/razorpay-webhook",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+    try {
+      const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+
+      const expectedSignature = crypto
+        .createHmac("sha256", secret)
+        .update(req.body)
+        .digest("hex");
+
+      const razorpaySignature = req.headers["x-razorpay-signature"];
+
+      if (expectedSignature !== razorpaySignature) {
+        console.log("❌ Signature mismatch", {
+    expectedSignature,
+    razorpaySignature
+  });
+        return res.status(400).send("Invalid signature");
+      }
+
+      const body = JSON.parse(req.body.toString());
+      console.log("📦 Webhook Event:", body.event);
+
+      if (body.event === "payment_link.paid") {
+        const payment = body.payload.payment.entity;
+        const link = body.payload.payment_link.entity;
+
+        const customerEmail = link.customer.email;
+        const userId = `MC-${uuidv4().slice(0, 8)}`;
+
+        const [result] = await pool.query(
+          `
+          UPDATE enquiries_3470_data
+          SET status='paid',
+              user_id=?,
+              razorpay_payment_id=?
+          WHERE razorpay_link_id=? AND status!='paid'
+        `,
+          [userId, payment.id, link.id]
+        );
+
+        console.log("🗄️ DB Updated Rows:", result.affectedRows);
+
+        if (result.affectedRows > 0) {
+          await transporter.sendMail({
+            from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
+            to: customerEmail,
+            subject: "Payment Successful 🎉",
+            html: `
+              <h2>Payment Confirmed</h2>
+              <p>Your User ID:</p>
+              <h1>${userId}</h1>
+              <p>Thank you for choosing 3470 HealthCare.</p>
+            `
+          });
+
+          console.log("📧 Confirmation email sent to", customerEmail);
+        }
+      }
+
+      res.json({ status: "ok" });
+
+    } catch (err) {
+      console.error("🔥 Webhook Error:", err);
+      res.status(500).send("Webhook error");
+    }
+  }
+);
+
+/* AFTER webhook */
+app.use(express.json());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   MIDDLEWARES (AFTER WEBHOOK)
+===================================================== */
 
 
 const allowedOrigins = [
@@ -41,8 +196,218 @@ app.use(cors({
 app.options(/.*/, cors());
 
 
-app.use(express.json());
-app.use(bodyParser.json());
+
+
+/* ---------------- COURSE DATA ---------------- */
+
+const courses = {
+  "Medical Coding Training": { fee: 10, discount: 9 },
+  "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
+  "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
+  "Certified Professional Coder": { fee: 14000, discount: 2000 },
+  "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
+  "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
+  "Certified Coding Specialist": { fee: 14000, discount: 2000 },
+  "Evaluation & Management": { fee: 14000, discount: 2000 },
+  "Emergency Department": { fee: 14000, discount: 2000 },
+  "Inpatient Coding Diagnosis Related Groups": { fee: 14000, discount: 2000 },
+  "Interactive Voice Response": { fee: 14000, discount: 2000 },
+  "Surgery Training": { fee: 14000, discount: 2000 }
+};
+
+
+
+app.post("/api/enquiry", async (req, res) => {
+  try {
+    const { name, email, phone, course, location, message } = req.body;
+
+    if (!name || !email || !phone || !course || !location) {
+      return res.status(400).json({ message: "All fields required" });
+    }
+
+    if (!courses[course]) {
+      return res.status(400).json({ message: "Invalid course" });
+    }
+
+    const finalAmount = courses[course].fee - courses[course].discount;
+
+    /* 1️⃣ Create Razorpay Payment Link */
+    const paymentLink = await razorpay.paymentLink.create({
+      amount: finalAmount * 100,
+      currency: "INR",
+      description: course,
+      customer: { name, email, contact: phone }
+    });
+
+    /* 2️⃣ Save to DB */
+    // await pool.query(`
+    //   INSERT INTO enquiries_3470_data
+    //   (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
+    //   VALUES (?,?,?,?,?,?,?,?,'pending')
+    // `, [
+    //   name,
+    //   email,
+    //   phone,
+    //   course,
+    //   location,
+    //   message || "NA",
+    //   finalAmount,
+    //   paymentLink.id
+    // ]);
+
+
+
+/* 2️⃣ Save to DB */
+const [result] = await pool.query(`
+  INSERT INTO enquiries_3470_data
+  (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
+  VALUES (?,?,?,?,?,?,?,?,'pending')
+`, [
+  name,
+  email,
+  phone,
+  course,
+  location,
+  message || "NA",
+  finalAmount,
+  paymentLink.id
+]);
+
+const insertedId = result.insertId;
+const enquiryNo = `3470-${insertedId}`;
+
+await pool.query(`
+  UPDATE enquiries_3470_data
+  SET enquiry_no = ?
+  WHERE id = ?
+`, [enquiryNo, insertedId]);
+
+
+
+
+
+
+
+
+    /* 3️⃣ SEND ENQUIRY DETAILS TO ADMIN */
+    await transporter.sendMail({
+      from: `"3470 HealthCare Enquiry" <${process.env.GMAIL_USER}>`,
+      to: "vignesh.g@3470healthcare.com",
+      subject: "📝 New Enquiry Received – Payment Link Created",
+      html: `
+        <div style="font-family:Arial;padding:20px;border:1px solid #e5e5e5;border-radius:8px;
+                    background:#f9fbff;max-width:550px;">
+                    
+        <h2 style="color:#068545;">New Enquiry Received</h2>
+
+        <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;font-size:14px;color:#333;">
+          <tr><td style="font-weight:bold;width:35%;"><b>Name</b></td><td>${name}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Email</b></td><td>${email}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Mobile</b></td><td>${phone}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Course</b></td><td>${course}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Location</b></td><td>${location}</td></tr>
+          <tr><td style="font-weight:bold;vertical-align:top;""><b>Message</b></td><td style="word-break:break-word;">${message || "NA"}</td></tr>
+          <tr><td style="font-weight:bold;width:35%;"><b>Amount</b></td><td>₹${finalAmount}</td></tr>
+        </table>
+
+        <p>
+          <b>Payment Link:</b><br>
+          <a href="${paymentLink.short_url}">
+            ${paymentLink.short_url}
+          </a>
+        </p>
+        
+        <hr style="margin:15px 0;">
+
+        <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
+           3470 Healthcare Training & Certification Program
+        </p>
+
+        <p style="margin-top:5px;font-size:14px;font-weight:600;">
+          Regards,<br>
+          3470 HealthCare Pvt Ltd
+        </p>
+      </div>
+      `
+    });
+
+
+     /* 4️⃣ SEND PAYMENT LINK TO USER */
+   
+    await transporter.sendMail({
+  from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
+  to: email,
+  subject: "Payment Confirmation for Your Course – 3470 HealthCare",
+  html: `
+  <div style="font-family:Arial;padding:20px;border:1px solid #e5e5e5;border-radius:8px;
+      background:#f9fbff;max-width:550px;">
+
+    <h3 style="color:#333;">Hello ${name},</h3>
+
+    <p style="font-size:14px;color:#555;">
+      Your payment link for <b>${course}</b> is ready.
+    </p>
+
+    <p style="font-size:14px;color:#555;">
+      <b>Amount:</b> ₹${finalAmount}
+    </p>
+
+    <a href="${paymentLink.short_url}"
+       style="display:inline-block;padding:12px 24px;background-color:#068545;color:#ffffff;text-decoration:none;border-radius:4px;
+              font-size:14px;font-weight:bold;">
+      Pay Now
+    </a>
+
+    <div style="margin:20px 0;padding:12px;background:#e9f7ef;border-left:4px solid #068545;">
+      <p style="margin:0;font-size:13px;color:#11682e;">
+        If you have any questions, feel free to contact our support team.
+      </p>
+
+      <p style="margin:6px 0 0;font-size:13px;color:#11682e;">
+         📞 <b>Support:</b> +91 99766 14395 
+      </p>
+  
+    </div>
+
+      <hr style="margin:15px 0;">
+
+      <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
+      3470 Healthcare Training & Certification Program
+      </p>
+
+      <p style="margin-top:5px;font-size:14px;font-weight:600;">
+      Regards,<br>
+      3470 HealthCare Pvt Ltd
+      </p>
+
+  </div>
+  `
+});
+
+
+    /* 4️⃣ Single Response */
+    res.json({
+      success: true,
+      message: "Enquiry submitted successfully!. ✅ Payment link has been sent to your email."
+    });
+
+  } catch (err) {
+    console.error("SERVER ERROR:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+// app.use(express.json());
+// app.use(bodyParser.json());
 
 
 /* ==========================
@@ -76,50 +441,7 @@ app.use(bodyParser.json());
 
 
 
-/* ==========================
-   NODEMAILER (GMAIL)
-========================== */
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS
-  }
-});
-
-
-const FRONTEND_URL =
-  process.env.NODE_ENV === "production"
-    ? process.env.PROD_FRONTEND_URL
-    : process.env.LOCAL_FRONTEND_URL;
-
-
-
-    /* ---------------- RAZORPAY ---------------- */
-
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET
-});
-
-
-/* ---------------- COURSE DATA ---------------- */
-
-const courses = {
-  "Medical Coding Training": { fee: 10, discount: 9 },
-  "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
-  "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
-  "Certified Professional Coder": { fee: 14000, discount: 2000 },
-  "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
-  "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
-  "Certified Coding Specialist": { fee: 14000, discount: 2000 },
-  "Evaluation & Management": { fee: 14000, discount: 2000 },
-  "Emergency Department": { fee: 14000, discount: 2000 },
-  "Inpatient Coding Diagnosis Related Groups": { fee: 14000, discount: 2000 },
-  "Interactive Voice Response": { fee: 14000, discount: 2000 },
-  "Surgery Training": { fee: 14000, discount: 2000 }
-};
 
 
 /* ==========================
@@ -452,7 +774,7 @@ app.post("/grant-access", upload.none(), async (req, res) => {
 
   try {
     await transporter.sendMail(userMail);
-    console.log("Approval mail sent to user");
+    console.log("Approval mail sent to user");  
     res.send("GRANTED_AND_NOTIFIED");
   } catch (err) {
     console.log("Approval Mail Error:", err);
@@ -578,185 +900,6 @@ app.post("/grant-access", upload.none(), async (req, res) => {
 // });
 
 
-app.post("/api/enquiry", async (req, res) => {
-  try {
-    const { name, email, phone, course, location, message } = req.body;
-
-    if (!name || !email || !phone || !course || !location) {
-      return res.status(400).json({ message: "All fields required" });
-    }
-
-    if (!courses[course]) {
-      return res.status(400).json({ message: "Invalid course" });
-    }
-
-    const finalAmount = courses[course].fee - courses[course].discount;
-
-    /* 1️⃣ Create Razorpay Payment Link */
-    const paymentLink = await razorpay.paymentLink.create({
-      amount: finalAmount * 100,
-      currency: "INR",
-      description: course,
-      customer: { name, email, contact: phone }
-    });
-
-    /* 2️⃣ Save to DB */
-    // await pool.query(`
-    //   INSERT INTO enquiries_3470_data
-    //   (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
-    //   VALUES (?,?,?,?,?,?,?,?,'pending')
-    // `, [
-    //   name,
-    //   email,
-    //   phone,
-    //   course,
-    //   location,
-    //   message || "NA",
-    //   finalAmount,
-    //   paymentLink.id
-    // ]);
-
-
-
-/* 2️⃣ Save to DB */
-const [result] = await pool.query(`
-  INSERT INTO enquiries_3470_data
-  (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
-  VALUES (?,?,?,?,?,?,?,?,'pending')
-`, [
-  name,
-  email,
-  phone,
-  course,
-  location,
-  message || "NA",
-  finalAmount,
-  paymentLink.id
-]);
-
-const insertedId = result.insertId;
-const enquiryNo = `3470-${insertedId}`;
-
-await pool.query(`
-  UPDATE enquiries_3470_data
-  SET enquiry_no = ?
-  WHERE id = ?
-`, [enquiryNo, insertedId]);
-
-
-
-
-
-
-
-
-    /* 3️⃣ SEND ENQUIRY DETAILS TO ADMIN */
-    await transporter.sendMail({
-      from: `"3470 HealthCare Enquiry" <${process.env.GMAIL_USER}>`,
-      to: "vignesh.g@3470healthcare.com",
-      subject: "📝 New Enquiry Received – Payment Link Created",
-      html: `
-        <div style="font-family:Arial;padding:20px;border:1px solid #e5e5e5;border-radius:8px;
-                    background:#f9fbff;max-width:550px;">
-                    
-        <h2 style="color:#068545;">New Enquiry Received</h2>
-
-        <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;font-size:14px;color:#333;">
-          <tr><td style="font-weight:bold;width:35%;"><b>Name</b></td><td>${name}</td></tr>
-          <tr><td style="font-weight:bold;width:35%;"><b>Email</b></td><td>${email}</td></tr>
-          <tr><td style="font-weight:bold;width:35%;"><b>Mobile</b></td><td>${phone}</td></tr>
-          <tr><td style="font-weight:bold;width:35%;"><b>Course</b></td><td>${course}</td></tr>
-          <tr><td style="font-weight:bold;width:35%;"><b>Location</b></td><td>${location}</td></tr>
-          <tr><td style="font-weight:bold;vertical-align:top;""><b>Message</b></td><td style="word-break:break-word;">${message || "NA"}</td></tr>
-          <tr><td style="font-weight:bold;width:35%;"><b>Amount</b></td><td>₹${finalAmount}</td></tr>
-        </table>
-
-        <p>
-          <b>Payment Link:</b><br>
-          <a href="${paymentLink.short_url}">
-            ${paymentLink.short_url}
-          </a>
-        </p>
-        
-        <hr style="margin:15px 0;">
-
-        <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
-           3470 Healthcare Training & Certification Program
-        </p>
-
-        <p style="margin-top:5px;font-size:14px;font-weight:600;">
-          Regards,<br>
-          3470 HealthCare Pvt Ltd
-        </p>
-      </div>
-      `
-    });
-
-
-     /* 4️⃣ SEND PAYMENT LINK TO USER */
-   
-    await transporter.sendMail({
-  from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
-  to: email,
-  subject: "Payment Confirmation for Your Course – 3470 HealthCare",
-  html: `
-  <div style="font-family:Arial;padding:20px;border:1px solid #e5e5e5;border-radius:8px;
-      background:#f9fbff;max-width:550px;">
-
-    <h3 style="color:#333;">Hello ${name},</h3>
-
-    <p style="font-size:14px;color:#555;">
-      Your payment link for <b>${course}</b> is ready.
-    </p>
-
-    <p style="font-size:14px;color:#555;">
-      <b>Amount:</b> ₹${finalAmount}
-    </p>
-
-    <a href="${paymentLink.short_url}"
-       style="display:inline-block;padding:12px 24px;background-color:#068545;color:#ffffff;text-decoration:none;border-radius:4px;
-              font-size:14px;font-weight:bold;">
-      Pay Now
-    </a>
-
-    <div style="margin:20px 0;padding:12px;background:#e9f7ef;border-left:4px solid #068545;">
-      <p style="margin:0;font-size:13px;color:#11682e;">
-        If you have any questions, feel free to contact our support team.
-      </p>
-
-      <p style="margin:6px 0 0;font-size:13px;color:#11682e;">
-         📞 <b>Support:</b> +91 99766 14395 
-      </p>
-  
-    </div>
-
-      <hr style="margin:15px 0;">
-
-      <p style="color:#11682e;font-size:15px;margin-top:15px;font-weight:bold;">
-      3470 Healthcare Training & Certification Program
-      </p>
-
-      <p style="margin-top:5px;font-size:14px;font-weight:600;">
-      Regards,<br>
-      3470 HealthCare Pvt Ltd
-      </p>
-
-  </div>
-  `
-});
-
-
-    /* 4️⃣ Single Response */
-    res.json({
-      success: true,
-      message: "Enquiry submitted successfully!. ✅ Payment link has been sent to your email."
-    });
-
-  } catch (err) {
-    console.error("SERVER ERROR:", err);
-    res.status(500).json({ message: "Server error" });
-  }
-});
 
 
 // =======================================================
@@ -832,63 +975,63 @@ await pool.query(`
 
 
 
-app.post(
-  "/razorpay-webhook",
-  express.raw({ type: "application/json" }),
-  async (req, res) => {
+// app.post(
+//   "/razorpay-webhook",
+//   express.raw({ type: "application/json" }),
+//   async (req, res) => {
 
-    const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+//     const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
 
-    const expected = crypto
-      .createHmac("sha256", secret)
-      .update(req.body)
-      .digest("hex");
+//     const expected = crypto
+//       .createHmac("sha256", secret)
+//       .update(req.body)
+//       .digest("hex");
 
-    const signature = req.headers["x-razorpay-signature"];
+//     const signature = req.headers["x-razorpay-signature"];
 
-    if (expected !== signature) {
-      console.log("❌ Invalid signature");
-      return res.status(400).send("Invalid signature");
-    }
+//     if (expected !== signature) {
+//       console.log("❌ Invalid signature");
+//       return res.status(400).send("Invalid signature");
+//     }
 
-    const body = JSON.parse(req.body.toString());
-    console.log("📦 Event:", body.event);
+//     const body = JSON.parse(req.body.toString());
+//     console.log("📦 Event:", body.event);
 
-    if (body.event === "payment_link.paid") {
+//     if (body.event === "payment_link.paid") {
 
-      const payment = body.payload.payment.entity;
-      const link = body.payload.payment_link.entity;
-      const customerEmail = link.customer.email;
+//       const payment = body.payload.payment.entity;
+//       const link = body.payload.payment_link.entity;
+//       const customerEmail = link.customer.email;
 
-      const userId = `MC-${uuidv4().slice(0, 8)}`;
+//       const userId = `MC-${uuidv4().slice(0, 8)}`;
 
-      try {
-        const [result] = await pool.query(`
-          UPDATE enquiries_3470_data
-          SET status='paid',
-              user_id=?,
-              razorpay_payment_id=?
-          WHERE razorpay_link_id=?
-        `, [userId, payment.id, link.id]);
+//       try {
+//         const [result] = await pool.query(`
+//           UPDATE enquiries_3470_data
+//           SET status='paid',
+//               user_id=?,
+//               razorpay_payment_id=?
+//           WHERE razorpay_link_id=?
+//         `, [userId, payment.id, link.id]);
 
-        console.log("DB Updated:", result.affectedRows);
+//         console.log("DB Updated:", result.affectedRows);
 
-        await transporter.sendMail({
-          to: customerEmail,
-          subject: "Payment Successful 🎉",
-          html: `<h2>Payment Confirmed</h2><h1>${userId}</h1>`
-        });
+//         await transporter.sendMail({
+//           to: customerEmail,
+//           subject: "Payment Successful 🎉",
+//           html: `<h2>Payment Confirmed</h2><h1>${userId}</h1>`
+//         });
 
-        console.log("✅ Mail sent to", customerEmail);
+//         console.log("✅ Mail sent to", customerEmail);
 
-      } catch (err) {
-        console.error("DB / MAIL ERROR:", err);
-      }
-    }
+//       } catch (err) {
+//         console.error("DB / MAIL ERROR:", err);
+//       }
+//     }
 
-    res.json({ status: "ok" });
-  }
-);
+//     res.json({ status: "ok" });
+//   }
+// );
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
