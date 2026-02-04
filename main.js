@@ -683,75 +683,163 @@ document.addEventListener("DOMContentLoaded", () => {
           // ========= Home Page - OUR ACHIEVERS ==========
 
 
+// const slideContainer = document.querySelector('.carousel-slide');
+// const slides = document.querySelectorAll('.carousel-slide img');
+// const dots = document.querySelectorAll('.dot');
+
+// const gap = 60; // gap between images
+// const imageWidth = 360; // width of each image
+// const slideWidth = imageWidth + gap; // total width including gap
+
+// // Clone first and last images for smooth infinite effect
+// const firstClone = slides[0].cloneNode(true);
+// const lastClone = slides[slides.length - 1].cloneNode(true);
+
+// slideContainer.appendChild(firstClone);
+// slideContainer.insertBefore(lastClone, slides[0]);
+
+// let index = 1; // start at first original image
+// slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+
+// // Update dots
+// function updateDots() {
+//   let dotIndex = index - 1;
+//   if(dotIndex < 0) dotIndex = slides.length - 1;
+//   if(dotIndex >= slides.length) dotIndex = 0;
+//   dots.forEach(dot => dot.classList.remove('active-dot'));
+//   dots[dotIndex].classList.add('active-dot');
+// }
+
+// // Move to next slide
+// function nextSlide() {
+//   index++;
+//   slideContainer.style.transition = 'transform 0.5s ease-in-out';
+//   slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+//   updateDots();
+// }
+
+// // Move to previous slide
+// function prevSlide() {
+//   index--;
+//   slideContainer.style.transition = 'transform 0.5s ease-in-out';
+//   slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+//   updateDots();
+// }
+
+// // Looping effect
+// slideContainer.addEventListener('transitionend', () => {
+//   if(index === 0) {
+//     slideContainer.style.transition = 'none';
+//     index = slides.length;
+//     slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+//   }
+//   if(index === slides.length + 1) {
+//     slideContainer.style.transition = 'none';
+//     index = 1;
+//     slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+//   }
+// });
+
+// // Dot click event
+// dots.forEach((dot, dotIndex) => {
+//   dot.addEventListener('click', () => {
+//     index = dotIndex + 1;
+//     slideContainer.style.transition = 'transform 0.5s ease-in-out';
+//     slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+//     updateDots();
+//   });
+// });
+
+// // Auto slide every 3 seconds 
+// setInterval(nextSlide, 3000);
+
+
+
+
 const slideContainer = document.querySelector('.carousel-slide');
-const slides = document.querySelectorAll('.carousel-slide img');
+let slides = document.querySelectorAll('.carousel-slide img');
 const dots = document.querySelectorAll('.dot');
 
-const gap = 60; // gap between images
-const imageWidth = 360; // width of each image
-const slideWidth = imageWidth + gap; // total width including gap
-
-// Clone first and last images for smooth infinite effect
+// Clone first and last slide
 const firstClone = slides[0].cloneNode(true);
 const lastClone = slides[slides.length - 1].cloneNode(true);
 
 slideContainer.appendChild(firstClone);
 slideContainer.insertBefore(lastClone, slides[0]);
 
-let index = 1; // start at first original image
-slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+slides = document.querySelectorAll('.carousel-slide img');
+
+let index = 1;
+
+// Get dynamic slide width (image width + gap)
+function getSlideWidth() {
+  const slide = slideContainer.querySelector('img');
+  const gap = parseInt(getComputedStyle(slideContainer).gap);
+  return slide.offsetWidth + gap;
+}
+
+// Move slide
+function moveSlide() {
+  const slideWidth = getSlideWidth();
+  slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+}
+
+// Initial position
+slideContainer.style.transition = 'none';
+moveSlide();
 
 // Update dots
 function updateDots() {
   let dotIndex = index - 1;
-  if(dotIndex < 0) dotIndex = slides.length - 1;
-  if(dotIndex >= slides.length) dotIndex = 0;
+  if (dotIndex < 0) dotIndex = dots.length - 1;
+  if (dotIndex >= dots.length) dotIndex = 0;
+
   dots.forEach(dot => dot.classList.remove('active-dot'));
   dots[dotIndex].classList.add('active-dot');
 }
 
-// Move to next slide
+// Next slide
 function nextSlide() {
   index++;
   slideContainer.style.transition = 'transform 0.5s ease-in-out';
-  slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+  moveSlide();
   updateDots();
 }
 
-// Move to previous slide
-function prevSlide() {
-  index--;
-  slideContainer.style.transition = 'transform 0.5s ease-in-out';
-  slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
-  updateDots();
-}
-
-// Looping effect
+// Loop logic
 slideContainer.addEventListener('transitionend', () => {
-  if(index === 0) {
+  if (index === 0) {
     slideContainer.style.transition = 'none';
-    index = slides.length;
-    slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+    index = slides.length - 2;
+    moveSlide();
   }
-  if(index === slides.length + 1) {
+
+  if (index === slides.length - 1) {
     slideContainer.style.transition = 'none';
     index = 1;
-    slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+    moveSlide();
   }
 });
 
-// Dot click event
+// Dot click
 dots.forEach((dot, dotIndex) => {
   dot.addEventListener('click', () => {
     index = dotIndex + 1;
     slideContainer.style.transition = 'transform 0.5s ease-in-out';
-    slideContainer.style.transform = `translateX(-${slideWidth * index}px)`;
+    moveSlide();
     updateDots();
   });
 });
 
-// Auto slide every 3 seconds 
+// Auto slide
 setInterval(nextSlide, 3000);
+
+// Fix on resize
+window.addEventListener('resize', () => {
+  slideContainer.style.transition = 'none';
+  moveSlide();
+});
+
 
 
 // -----------------------------------------------------------------------------------------------------------
