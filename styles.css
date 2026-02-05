@@ -2731,6 +2731,10 @@ nav ul.menu li .dropdown li a {
 
 @media (max-width: 1024px) {
 
+  body{
+    overflow:scroll;
+ }
+
   body::before,
   body::after {
     display: none;
@@ -2753,6 +2757,10 @@ nav ul.menu li .dropdown li a {
                  /* ---------------- Register page - Tab - 768 x 1024 ------------------- */
                             
 @media (max-width: 768px) {
+
+  body{
+    overflow:scroll;
+ }
 
   body {
     display: block;        
@@ -2820,6 +2828,10 @@ nav ul.menu li .dropdown li a {
                   /* ---------------- Register page - Mobile - 480 x 320 ------------------- */
 
 @media (max-width: 480px) {
+
+  body{
+    overflow:scroll;
+ }
 
   body {
     padding: 15px;

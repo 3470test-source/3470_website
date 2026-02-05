@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3470 Healthcare & Medical Coding Training Institute | Enquiry Form</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
+    
+    <link rel="stylesheet" href="styles.css" />
+    
+
+    <style>
+
+* {
+    box-sizing: border-box;
+    font-family:initial;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    /* overflow: hidden;  */
+    background: url("picture/enquiry_from_image.jpg") center / cover no-repeat;
+}
+
+.enquiry-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    background: #c7d4cc;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);    
+
+
+    
+    width: 95%;  
+}
+
+.enquiry-logo {
+    flex: 1;
+    text-align: center;
+}
+
+.enquiry-logo img {
+    width: 220px;
+}
+
+.form-container-enquiry {
+    flex: 1;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.form-container-enquiry h2 {
+    text-align: center;
+    color: #078b33;
+}
+
+.enquiryForm-std-3470 label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #0f53ac;
+}
+
+.enquiryForm-std-3470 input,
+.enquiryForm-std-3470 select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    background-color: #f1f5f3;
+    border: 1px solid #2ecc71;
+}
+
+.enquiryForm-std-3470 button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #039734;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#message-enquiry-btn {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+    .enquiry-wrapper {
+        max-width: 95%;
+    }
+
+    .enquiry-logo img {
+        width: 180px;
+    }
+
+    .form-container-enquiry {
+        padding: 20px;
+    }
+}
+
+
+
+
+/* @media (max-width: 767px) {
+    .enquiry-wrapper {
+        flex-direction: column;
+        margin: 20px auto;
+        border-radius: 8px;
+    }
+
+    .enquiry-logo {
+        padding: 20px 0;
+    }
+
+    .enquiry-logo img {
+        width: 150px;
+    }
+
+    .form-container-enquiry {
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+        padding: 20px;
+    }
+
+    .enquiryForm-std-3470 input,
+    .enquiryForm-std-3470 select {
+        font-size: 14px;
+        padding: 9px;
+    }
+
+    .enquiryForm-std-3470 button {
+        font-size: 15px;
+        padding: 11px;
+    }
+} */
+
+
+@media (max-width: 768px) {
+
+    body {
+        background-attachment: scroll;
+
+        background-position: top center;
+    }
+
+    .enquiry-wrapper {
+        flex-direction: column;   /* 🔥 FIX */
+        align-items: stretch;
+        margin: 20px auto;
+        width: 95%;
+    }
+
+    .enquiry-logo {
+        /* flex: none;
+        padding: 20px 0;
+        background: #c7d4cc;
+        border-radius: 10px 10px 0 0; */
+
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .enquiry-logo img {
+        width: 140px;
+    }
+
+    .form-container-enquiry {
+        flex: none;
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+
+
+
+@media (max-width: 360px) {
+    .enquiry-logo img {
+        width: 130px;
+    }
+
+    .form-container-enquiry h2 {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+
+
+
+/* =========================
+   DEFAULT (DESKTOP ≥1280px)
+========================= */
+/* .enquiry-wrapper {
+    max-width: 900px; 
+    padding: 0;
+} */
+
+/* =========================
+   TABLET (768px – 1024px)
+========================= */
+/* @media (max-width: 1024px) {
+
+ body{
+    overflow:scroll;
+ }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+
+    .enquiry-wrapper {
+        flex-direction: column;
+        max-width: 90%;
+        margin: 30px auto;
+    }
+
+    .enquiry-logo {
+        padding: 20px 0;
+    }
+
+    .enquiry-logo img {
+        width: 180px;
+    }
+
+    .form-container-enquiry {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+} */
+
+/* =========================
+   MOBILE (≤480px)
+========================= */
+/* @media (max-width: 480px) { */
+
+  /* body{
+    overflow:scroll;
+ }
+
+    body::before,
+    body::after {
+        display: none;
+    }
+
+    .enquiry-wrapper {
+        max-width: 100%;
+        border-radius: 10px;
+
+         margin-bottom: 40px;
+    }
+
+    .enquiry-logo img {
+        width: 140px;
+    }
+
+    .form-container-enquiry {
+        padding: 20px;
+        box-shadow: none;
+    }
+
+    .form-container-enquiry h2 {
+        font-size: 18px;
+    }
+
+    .enquiryForm-std-3470 input,
+    .enquiryForm-std-3470 select {
+        font-size: 14px;
+        padding: 9px;
+    }
+
+    .enquiryForm-std-3470 button {
+        font-size: 15px;
+        padding: 11px;
+    } */
+     /* body{
+    overflow:scroll;
+ } */
+
+  /* body::before,
+  body::after {
+    display: none;
+  }
+
+    .enquiry-wrapper {
+        flex-direction: column;
+        max-width: 90%;
+        margin: 30px auto;
+    }
+
+    .enquiry-logo {
+        padding: 20px 0;
+    }
+
+    .enquiry-logo img {
+        width: 180px;
+    }
+
+    .form-container-enquiry {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+} */
+
+
+
+
+
+
+
+</style>
+
+</head>
+<body>
+
+<div class="enquiry-wrapper">
+
+    <!-- LEFT: Logo -->
+    <div class="enquiry-logo">
+        <img src="picture/Logo3470-health3-removebg-preview.png" alt="Institute Logo">
+    </div>
+
+
+<div class="form-container-enquiry">
+    <h2>Enquiry Form</h2>
+
+    <form id="enquiryForm-std-3470" class="enquiryForm-std-3470">
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number">
+
+        <label>Course</label>
+        <select id="course">
+            <option value="">-- Select Course --</option>
+            <option value="Basic Medical Coding Training">
+              BMCT - Basic Medical Coding Training
+            </option>
+            <option value="Advanced Medical Coding Training">
+              AMCT - Advanced Medical Coding Training
+            </option>
+            <option value="Certified Professional Coder">
+              CPC - Certified Professional Coder
+            </option>
+            <option value="Certified Professional Medical Auditor">
+              CPMA - Certified Professional Medical Auditor
+            </option>
+            <option value="Certified Risk Adjustment Coder">
+              CRC - Certified Risk Adjustment Coder
+            </option>
+            <option value="Certified Coding Specialist">
+              CCS - Certified Coding Specialist
+            </option>
+            <option value="Evaluation & Management">
+              E&M - Evaluation & Management
+            </option>
+            <option value="Emergency Department">
+              ED - Emergency Department
+            </option>
+            <option value="Inpatient Coding Diagnosis Related Groups">
+              IPDRG - Inpatient Diagnosis-Related Group
+            </option>
+            <option value="Interactive Voice Response">
+              IVR - Interventional Radiology
+            </option>
+            <option value="Surgery Training">Surgery</option>
+        </select>
+
+        <label>Batch</label>
+        <select id="batch">
+            <option value="">Select Batch</option>
+            <option value="Weekdays">Weekdays</option>
+            <option value="Weekend">Weekend</option>
+        </select>
+
+        <label>Time Slot</label>
+        <select id="time">
+            <option value="">Select Time</option>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+        </select>
+
+        <label>Mode</label>
+        <select id="mode">
+            <option value="">Select Mode</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+        </select>
+
+        <button type="submit">Submit Enquiry</button>
+    </form>
+
+    <p id="message-enquiry-btn"></p>
+</div>
+
+</div>
+
+<script src="main.js"></script>
+
+<script>
+
+document.getElementById("enquiryForm-std-3470").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let course = document.getElementById("course").value;
+    let batch = document.getElementById("batch").value;
+    let time = document.getElementById("time").value;
+    let mode = document.getElementById("mode").value;
+
+    let message = document.getElementById("message-enquiry-btn");
+
+    if (!name || !email || !phone || !course || !batch || !time || !mode) {
+        message.style.color = "red";
+        message.textContent = "Please fill all fields!";
+        return;
+    }
+
+    // ✅ Success message
+    message.style.color = "green";
+    message.textContent = "Your enquiry has been submitted successfully!. Our team will call you shortly.";
+
+    // ✅ Reset form
+    document.getElementById("enquiryForm-std-3470").reset();
+
+    // ✅ Hide message after 5 seconds (5000 ms)
+    setTimeout(() => {
+        message.textContent = "";
+    }, 4000);
+});
+
+</script>
+
+</body>
+</html>

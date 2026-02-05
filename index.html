@@ -997,9 +997,6 @@
 
           <select id="course" name="course" required>
             <option value="">-- Select Course --</option>
-            <option value="Medical Coding Training">
-              Medical Coding - Training
-            </option>
             <option value="Basic Medical Coding Training">
               BMCT - Basic Medical Coding Training
             </option>
@@ -1025,12 +1022,12 @@
               ED - Emergency Department
             </option>
             <option value="Inpatient Coding Diagnosis Related Groups">
-              IPDRG - Inpatient Coding Diagnosis Related Groups
+              IPDRG - Inpatient Diagnosis-Related Group
             </option>
             <option value="Interactive Voice Response">
-              IVR - Interactive Voice Response
+              IVR - Interventional Radiology
             </option>
-            <option value="Surgery Training">Surgery - Training</option>
+            <option value="Surgery Training">Surgery</option>
           </select>
 
           <div id="feeBox" style="display:none;">
@@ -1098,7 +1095,7 @@
         // Disable specific keyboard shortcuts (Ctrl+S, Ctrl+P, Ctrl+U)
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey) {
-                const forbiddenKeys = ['s', 'p', 'u']; // s=Save, p=Print, u=View Source
+                const forbiddenKeys = ['s', 'p', 'u','c']; // s=Save, p=Print, u=View Source
                 if (forbiddenKeys.includes(e.key.toLowerCase())) {
                     e.preventDefault();
                 }

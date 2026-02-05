@@ -53,7 +53,7 @@ const razorpay = new Razorpay({
 ===================================================== */
 
 app.post(
-  "/razorpay-webhook",
+  "/webhook/payment",
   express.raw({ type: "application/json" }),
   async (req, res) => {
     try {
