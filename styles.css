@@ -2483,7 +2483,7 @@ nav ul.menu li .dropdown li a {
   z-index: 2; */
 
   width: 100%;
-  max-width: 900px;   /* desktop limit */
+  max-width: 900px;   
   display: flex;
   background: #fff;
   border-radius: 10px;
@@ -11810,12 +11810,86 @@ button.admin-approve-btn:hover {
 
 
 
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+                              /* ----------------- Enquiry form user fill -------------------- */
 
 
 
 
 
 
+
+
+
+/* @media (max-width: 767px) {
+    .enquiry-wrapper-std {
+        flex-direction: column;
+        margin: 20px;
+        padding: 15px;
+
+        min-height: auto;
+        height: auto;
+    }
+
+    .enquiry-logo img {
+        width: 150px;
+        margin-bottom: 15px;
+    }
+
+    .form-container-enquiry {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-container-enquiry h2 {
+        font-size: 20px;
+    }
+
+    .enquiryForm-std-3470 input,
+    .enquiryForm-std-3470 select {
+        padding: 9px;
+    }
+
+    .enquiryForm-std-3470 button {
+        font-size: 15px;
+        padding: 11px;
+    }
+} */
+
+
+
+/* @media (min-width: 768px) and (max-width: 1024px) {
+    .enquiry-wrapper-std {
+        max-width: 95%;
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .enquiry-logo img {
+        width: 180px;
+    }
+
+    .form-container-enquiry {
+        padding: 22px;
+    }
+
+    .form-container-enquiry h2 {
+        font-size: 22px;
+    }
+}
+
+
+@media (min-width: 1600px) {
+    .enquiry-wrapper-std {
+        max-width: 1000px;
+    }
+
+    .enquiry-logo img {
+        width: 240px;
+    }
+} */
 
 
 

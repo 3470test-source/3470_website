@@ -9,7 +9,6 @@
     
     <link rel="stylesheet" href="styles.css" />
     
-
     <style>
 
 * {
@@ -20,22 +19,26 @@
 body {
     margin: 0;
     min-height: 100vh;
-    /* overflow: hidden;  */
     background: url("picture/enquiry_from_image.jpg") center / cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
 }
 
-.enquiry-wrapper {
+.enquiry-wrapper-std {
     max-width: 900px;
-    margin: 40px auto;
     display: flex;
     align-items: center;
     background: #c7d4cc;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);    
-
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    width: 100%;
+    margin: 20px;
 
     
-    width: 95%;  
+    margin: 20px auto;
+    padding: 20px;
+    gap: 20px;
 }
 
 .enquiry-logo {
@@ -45,6 +48,11 @@ body {
 
 .enquiry-logo img {
     width: 220px;
+    max-width: 100%;
+
+
+
+    height: auto;
 }
 
 .form-container-enquiry {
@@ -99,248 +107,12 @@ body {
 
 
 
-
-
-
-
-
-
-
-@media (max-width: 1024px) {
-    .enquiry-wrapper {
-        max-width: 95%;
-    }
-
-    .enquiry-logo img {
-        width: 180px;
-    }
-
-    .form-container-enquiry {
-        padding: 20px;
-    }
-}
-
-
-
-
-/* @media (max-width: 767px) {
-    .enquiry-wrapper {
-        flex-direction: column;
-        margin: 20px auto;
-        border-radius: 8px;
-    }
-
-    .enquiry-logo {
-        padding: 20px 0;
-    }
-
-    .enquiry-logo img {
-        width: 150px;
-    }
-
-    .form-container-enquiry {
-        width: 100%;
-        border-radius: 0 0 8px 8px;
-        padding: 20px;
-    }
-
-    .enquiryForm-std-3470 input,
-    .enquiryForm-std-3470 select {
-        font-size: 14px;
-        padding: 9px;
-    }
-
-    .enquiryForm-std-3470 button {
-        font-size: 15px;
-        padding: 11px;
-    }
-} */
-
-
-@media (max-width: 768px) {
-
-    body {
-        background-attachment: scroll;
-
-        background-position: top center;
-    }
-
-    .enquiry-wrapper {
-        flex-direction: column;   /* 🔥 FIX */
-        align-items: stretch;
-        margin: 20px auto;
-        width: 95%;
-    }
-
-    .enquiry-logo {
-        /* flex: none;
-        padding: 20px 0;
-        background: #c7d4cc;
-        border-radius: 10px 10px 0 0; */
-
-        display: flex;
-    align-items: center;
-    justify-content: center;
-    }
-
-    .enquiry-logo img {
-        width: 140px;
-    }
-
-    .form-container-enquiry {
-        flex: none;
-        width: 100%;
-        border-radius: 0 0 10px 10px;
-    }
-}
-
-
-
-
-@media (max-width: 360px) {
-    .enquiry-logo img {
-        width: 130px;
-    }
-
-    .form-container-enquiry h2 {
-        font-size: 18px;
-    }
-}
-
-
-
-
-
-
-
-
-/* =========================
-   DEFAULT (DESKTOP ≥1280px)
-========================= */
-/* .enquiry-wrapper {
-    max-width: 900px; 
-    padding: 0;
-} */
-
-/* =========================
-   TABLET (768px – 1024px)
-========================= */
-/* @media (max-width: 1024px) {
-
- body{
-    overflow:scroll;
- }
-
-  body::before,
-  body::after {
-    display: none;
-  }
-
-    .enquiry-wrapper {
-        flex-direction: column;
-        max-width: 90%;
-        margin: 30px auto;
-    }
-
-    .enquiry-logo {
-        padding: 20px 0;
-    }
-
-    .enquiry-logo img {
-        width: 180px;
-    }
-
-    .form-container-enquiry {
-        width: 100%;
-        border-radius: 0 0 10px 10px;
-    }
-} */
-
-/* =========================
-   MOBILE (≤480px)
-========================= */
-/* @media (max-width: 480px) { */
-
-  /* body{
-    overflow:scroll;
- }
-
-    body::before,
-    body::after {
-        display: none;
-    }
-
-    .enquiry-wrapper {
-        max-width: 100%;
-        border-radius: 10px;
-
-         margin-bottom: 40px;
-    }
-
-    .enquiry-logo img {
-        width: 140px;
-    }
-
-    .form-container-enquiry {
-        padding: 20px;
-        box-shadow: none;
-    }
-
-    .form-container-enquiry h2 {
-        font-size: 18px;
-    }
-
-    .enquiryForm-std-3470 input,
-    .enquiryForm-std-3470 select {
-        font-size: 14px;
-        padding: 9px;
-    }
-
-    .enquiryForm-std-3470 button {
-        font-size: 15px;
-        padding: 11px;
-    } */
-     /* body{
-    overflow:scroll;
- } */
-
-  /* body::before,
-  body::after {
-    display: none;
-  }
-
-    .enquiry-wrapper {
-        flex-direction: column;
-        max-width: 90%;
-        margin: 30px auto;
-    }
-
-    .enquiry-logo {
-        padding: 20px 0;
-    }
-
-    .enquiry-logo img {
-        width: 180px;
-    }
-
-    .form-container-enquiry {
-        width: 100%;
-        border-radius: 0 0 10px 10px;
-    }
-} */
-
-
-
-
-
-
-
-</style>
+    </style>
 
 </head>
 <body>
 
-<div class="enquiry-wrapper">
+<div class="enquiry-wrapper-std">
 
     <!-- LEFT: Logo -->
     <div class="enquiry-logo">
@@ -430,40 +202,53 @@ body {
 <script src="main.js"></script>
 
 <script>
-
 document.getElementById("enquiryForm-std-3470").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let phone = document.getElementById("phone").value.trim();
-    let course = document.getElementById("course").value;
-    let batch = document.getElementById("batch").value;
-    let time = document.getElementById("time").value;
-    let mode = document.getElementById("mode").value;
+    let data = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        course: document.getElementById("course").value,
+        batch: document.getElementById("batch").value,
+        time: document.getElementById("time").value,
+        mode: document.getElementById("mode").value
+    };
 
     let message = document.getElementById("message-enquiry-btn");
 
-    if (!name || !email || !phone || !course || !batch || !time || !mode) {
+    if (Object.values(data).includes("")) {
         message.style.color = "red";
         message.textContent = "Please fill all fields!";
         return;
     }
 
-    // ✅ Success message
-    message.style.color = "green";
-    message.textContent = "Your enquiry has been submitted successfully!. Our team will call you shortly.";
+    fetch("https://script.google.com/macros/s/AKfycbzVpiOJflJZJq2vggpHk0wA6ghVgKWgZ6LOevSrVHPA8Rd4xhVmg_zvAzHsc7PsUQkF/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    .then(res => res.text())
+    .then(response => {
+         console.log("Server response:", response);
 
-    // ✅ Reset form
-    document.getElementById("enquiryForm-std-3470").reset();
+        message.style.color = "green";
+        message.textContent =
+          "Your enquiry has been submitted successfully! Our team will call you shortly.";
 
-    // ✅ Hide message after 5 seconds (5000 ms)
-    setTimeout(() => {
-        message.textContent = "";
-    }, 4000);
+        document.getElementById("enquiryForm-std-3470").reset();
+
+        setTimeout(() => {
+            message.textContent = "";
+        }, 4000);
+    })
+    .catch(error => {
+        message.style.color = "red";
+        message.textContent = "Error submitting form. Try again.";
+        console.error(error);
+    });
 });
-
 </script>
+
 
 </body>
 </html>

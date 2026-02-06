@@ -97,6 +97,20 @@ app.post(
 
         console.log("🗄️ DB Updated Rows:", result.affectedRows);
 
+
+         // -------------------------------
+        // 4️⃣ Fetch Razorpay Invoice PDF
+        // -------------------------------
+        let invoicePdfUrl = null;
+
+        if (payment.invoice_id) {
+          const invoice = await razorpay.invoices.fetch(payment.invoice_id);
+           invoicePdfUrl = invoice.pdf_url; // ✅ REAL PDF FILE
+          console.log("📄 Invoice PDF URL:", invoicePdfUrl);
+        }
+
+
+
         if (result.affectedRows > 0) {
           await transporter.sendMail({
             from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
@@ -106,8 +120,17 @@ app.post(
               <h2>Payment Confirmed</h2>
               <p>Your User ID:</p>
               <h1>${userId}</h1>
+              <p>Please find your payment receipt attached.</p>
               <p>Thank you for choosing 3470 HealthCare.</p>
-            `
+            `,
+            attachments: invoicePdfUrl
+              ? [
+                  {
+                    filename: "Payment_Receipt.pdf",
+                    path: invoicePdfUrl
+                  }
+                ]
+              : []
           });
 
           console.log("📧 Confirmation email sent to", customerEmail);
@@ -125,44 +148,6 @@ app.post(
 
 /* AFTER webhook */
 app.use(express.json());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -239,25 +224,9 @@ app.post("/api/enquiry", async (req, res) => {
       customer: { name, email, contact: phone }
     });
 
-    /* 2️⃣ Save to DB */
-    // await pool.query(`
-    //   INSERT INTO enquiries_3470_data
-    //   (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
-    //   VALUES (?,?,?,?,?,?,?,?,'pending')
-    // `, [
-    //   name,
-    //   email,
-    //   phone,
-    //   course,
-    //   location,
-    //   message || "NA",
-    //   finalAmount,
-    //   paymentLink.id
-    // ]);
+    
+     /* ----- 2️⃣ Save to DB ----- */
 
-
-
-/* 2️⃣ Save to DB */
 const [result] = await pool.query(`
   INSERT INTO enquiries_3470_data
   (name,email,phone,course,location,message,final_amount,razorpay_link_id,status)
@@ -283,13 +252,8 @@ await pool.query(`
 `, [enquiryNo, insertedId]);
 
 
+    /* --------- 3️⃣ SEND ENQUIRY DETAILS TO ADMIN -------- */
 
-
-
-
-
-
-    /* 3️⃣ SEND ENQUIRY DETAILS TO ADMIN */
     await transporter.sendMail({
       from: `"3470 HealthCare Enquiry" <${process.env.GMAIL_USER}>`,
       to: "vignesh.g@3470healthcare.com",
