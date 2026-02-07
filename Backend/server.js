@@ -6,6 +6,8 @@ const cors = require("cors");
 // const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
+const axios = require("axios");
+
 
 const app = express();
 const upload = multer();
@@ -101,12 +103,34 @@ app.post(
          // -------------------------------
         // 4️⃣ Fetch Razorpay Invoice PDF
         // -------------------------------
+        let attachments = [];
         let invoicePdfUrl = null;
 
         if (payment.invoice_id) {
-          const invoice = await razorpay.invoices.fetch(payment.invoice_id);
-           invoicePdfUrl = invoice.pdf_url; // ✅ REAL PDF FILE
-          console.log("📄 Invoice PDF URL:", invoicePdfUrl);
+          try {
+            const invoice = await razorpay.invoices.fetch(payment.invoice_id);
+            invoicePdfUrl = invoice.pdf_url;
+
+            console.log("📄 Invoice PDF URL:", invoicePdfUrl);
+
+            if (invoicePdfUrl) {
+              const response = await axios.get(invoicePdfUrl, {
+                responseType: "arraybuffer"
+              });
+
+              attachments.push({
+                filename: "Payment_Receipt.pdf",
+                content: response.data,
+                contentType: "application/pdf"
+              });
+
+              console.log("✅ Invoice downloaded & attached");
+            }
+          } catch (err) {
+            console.log("❌ Invoice fetch/download failed:", err.message);
+          }
+        } else {
+          console.log("⚠️ No invoice_id from Razorpay");
         }
 
 
@@ -123,14 +147,7 @@ app.post(
               <p>Please find your payment receipt attached.</p>
               <p>Thank you for choosing 3470 HealthCare.</p>
             `,
-            attachments: invoicePdfUrl
-              ? [
-                  {
-                    filename: "Payment_Receipt.pdf",
-                    path: invoicePdfUrl
-                  }
-                ]
-              : []
+            attachments
           });
 
           console.log("📧 Confirmation email sent to", customerEmail);
@@ -155,7 +172,6 @@ app.use(express.json());
 /* =====================================================
    MIDDLEWARES (AFTER WEBHOOK)
 ===================================================== */
-
 
 const allowedOrigins = [
   "http://127.0.0.1:5500",

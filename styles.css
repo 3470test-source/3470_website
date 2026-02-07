@@ -2464,24 +2464,13 @@ nav ul.menu li .dropdown li a {
 }
 
 
-/* ----------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------------ */
 
-       /* ==============================
-            Register Page Form Styles
-           ============================== */
-
-
-/* ----- Register Page Styles ----- */
+                                            /* ==============================
+                                                 Register Page Form Styles
+                                               ============================== */
 
 .register-container {
-  /* width: 850px;
-  display: flex;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  z-index: 2; */
-
   width: 100%;
   max-width: 900px;   
   display: flex;
@@ -2491,11 +2480,8 @@ nav ul.menu li .dropdown li a {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   margin: 20px;
 
-
-
   animation: slideUp 1.2s ease-in-out;
   transition: all 0.4s ease;
-
 }
 
 @keyframes slideUp {
@@ -2509,7 +2495,6 @@ nav ul.menu li .dropdown li a {
   }
 }
 
-    
        /* ----- Left Side (Logo + Text) ----- */
 
 .left-register {
@@ -2519,51 +2504,31 @@ nav ul.menu li .dropdown li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  /* Center everything vertically */
+  justify-content: center;  
   text-align: center;
   position: relative;
   padding: 60px 40px;
 
+  /* background: linear-gradient(120deg, #85bfd3, #d0cbe6); */
 }
 
 .left-register .home-link {
   position: absolute;
   top: 15px;
   left: 20px;
-  color: #fff;             
+  color: #fff;
+  /* color: #035c28; */
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
   z-index: 10;
-
 }
-
-/* .left-register a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.9rem;
-  position: absolute;
-  top: 15px;
-  left: 50px;
-  margin-top: 20px;
-
-} */
-
-/* a.home-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  z-index: 10; 
-       
-} */
 
 .home-link:hover {
   color: #052e6d; 
 }
 
-    /* Company Logo */
+    /*---- Company Logo ---- */
 
 .register-logo {
   width: 180px;
@@ -2587,12 +2552,15 @@ nav ul.menu li .dropdown li a {
   margin-top: 5px;
   margin-bottom: 20px;
 
+  /* color: #0d7e4f; */
 }
 
 .left-register p {
   font-size: 1rem;
-  margin-top: -10px;
-      
+  margin-top: -10px;  
+  /* font-weight: bold; */
+  
+  /* color: #0d7e4f; */
 }
 
 .left-register button {
@@ -2606,6 +2574,8 @@ nav ul.menu li .dropdown li a {
   transition: 0.3s;
   margin-top: 20px;
 
+  /* color: #0d7e4f;
+  border: 2px solid #0d7e4f; */
 }
 
 .left-register button:hover {
@@ -2644,13 +2614,36 @@ nav ul.menu li .dropdown li a {
   flex-direction: column;
 }
 
+.register-form label {
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;       
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="mobile"],
+.register-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: 0.3s;  
+}
+
+.register-form input:focus {
+  border-color: #0d7e4f;
+  box-shadow: 0 0 5px rgba(2, 190, 81, 0.5);
+}
+
 .register-terms {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   font-size: 0.9rem;
   color: #333;
-
 }
 
 .password-wrapper {
@@ -2674,7 +2667,6 @@ nav ul.menu li .dropdown li a {
 
 .password-wrapper .toggle-password:hover {
   color: #0d7e4f;
-
 }
 
 .register-terms input {
@@ -2697,125 +2689,52 @@ nav ul.menu li .dropdown li a {
 }
 
 
-
-      /* ----- SweetAlert2 Popup Customization ----- */
-                 /* Register popup message */
+                                           /* ----- SweetAlert2 Popup Customization ----- */
+                                                    /*--- Register popup message --- */
 
 .swal-title {
-  font-size: 22px; /* change title size */
+  font-size: 22px; 
   font-weight: bold;
-  color: #2c3e50; /* custom title color */
+  color: #2c3e50; 
 }
 
 .swal-text {
-  font-size: 16px; /* change text size */
-  color: #555; /* custom text color */
+  font-size: 16px; 
+  color: #555; 
 }
 
 .swal-btn {
-  font-size: 14px; /* smaller/larger button text */
+  font-size: 14px; 
   border-radius: 8px;
-  background-color: #28a745 !important; /* green button */
+  background-color: #28a745 !important; 
 }
 
 .swal-small-icon {
   color: #28a745;
-  transform: scale(0.7); /* smaller size */
+  transform: scale(0.7); 
   font-size: 15px;
 }
 
+                           /* ---------------- Responsive Styles - Register Page ---------------- */
 
-           /* ---------------- Responsive Styles - Register Page ---------------- */
-              /* ---------------- Tab - 1024 x 768 ------------------- */
-
-
+/* =================================
+          TABLET  768 – 1024
+   ================================= */
 @media (max-width: 1024px) {
-
-  body{
-    overflow:scroll;
- }
-
-  body::before,
-  body::after {
-    display: none;
-  }
-
   .register-container {
-    max-width: 720px;
-  }
-
-  .left-register,
-  .right-register {
-    padding: 40px 30px;
-  }
-
-  .left-register h2 {
-    font-size: 2.2rem;
-  }
-}
-
-                 /* ---------------- Register page - Tab - 768 x 1024 ------------------- */
-                            
-@media (max-width: 768px) {
-
-  body{
-    overflow:scroll;
- }
-
-  body {
-    display: block;        
-    align-items: unset;
-    justify-content: unset;
-    padding: 15px;
-    overflow-y: auto;
-  }
-
-  body::before,
-  body::after {
-    display: none;
-  }
-
-  .register-container {
-    flex-direction: column;
-    /* max-width: 100%; */
-    /* margin: 10px; */
-
-    margin: 0 auto;
-    /* width: 100%; */
+    max-width: 95%;
   }
 
   .left-register {
-    padding: 30px 20px;
-    text-align: center;
-  }
-
-  .left-register .home-link {
-    position: absolute;
-    left: 15px;
-    top: 10px;
-    font-size: 0.85rem;
-  }
-
-  .register-logo {
-    width: 160px;
-    margin-bottom: 5px;
+    padding: 40px 25px;
   }
 
   .left-register h2 {
     font-size: 2rem;
   }
 
-  /* .left-register button {
-    width: 100%;
-    max-width: 260px;
-  } */
-
   .right-register {
-    padding: 30px 20px;
-  }
-
-  .right-register h3 {
-    margin-top: 10px;
+    padding: 35px;
   }
 
   .right-register .help {
@@ -2825,82 +2744,91 @@ nav ul.menu li .dropdown li a {
   }
 }
 
-                  /* ---------------- Register page - Mobile - 480 x 320 ------------------- */
-
-@media (max-width: 480px) {
-
-  body{
-    overflow:scroll;
- }
-
-  body {
-    padding: 15px;
-    min-height: 100vh;
-    overflow-y: auto;
-  }
-
-  body::before,
-  body::after {
-    display: none;
-  }
+/* =================================
+          MOBILE below 768
+   ================================= */
+@media (max-width: 767px) {
 
   .register-container {
-    /* width: 100%; */
-    flex-direction: column;
-    margin: 0 auto;
+    flex-direction: column;  
+    margin: 10px;
   }
 
   .left-register {
-    padding: 35px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;     
-    justify-content: center; 
-    text-align: center;
+    padding: 30px 20px;
   }
 
   .register-logo {
-    width: 130px;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    width: 140px;
+    margin: 0 auto 10px;
+    margin-top: 15px;
   }
 
   .left-register h2 {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
+    margin-top: -10px;
   }
 
   .left-register p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .left-register button {
-    margin-top: 20px;   /* ✅ small & safe */
-    margin-left: 0;     /* ❌ remove */
-    font-size: 0.95rem;
-    /* width: 80%; */
-    max-width: 240px;
+    font-size: 0.9rem;
+    padding: 8px 20px;
   }
 
-    .right-register {
+  .right-register {
     padding: 25px 20px;
   }
 
   .right-register h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
-  input {
+  .register-form input {
+    padding: 9px;
     font-size: 14px;
   }
 
   .signup-btn {
-    font-size: 15px;
     padding: 10px;
+    font-size: 14px;
+  }
+
+  .right-register .help {
+    display: none;
   }
 }
 
 
-/* ------------------------------------------------------------------------------------- */
+/* =================================
+     VERY SMALL PHONES below 480
+   ================================= */
+@media (max-width: 480px) {
+  .left-register h2 {
+    font-size: 1.4rem;
+  }
+
+  .register-form label {
+    font-size: 13px;
+  }
+
+  .register-terms {
+    font-size: 12px;
+  }
+
+  .right-register .help {
+    display: none;
+  }
+
+  .right-register h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------------- */
 
                                 /* <!-- First Footer (Detailed Info) --> */
 
@@ -11813,85 +11741,168 @@ button.admin-approve-btn:hover {
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
-                              /* ----------------- Enquiry form user fill -------------------- */
+                              /* ----------------- Enquiry form -- user fill -------------------- */
 
 
 
+.enquiry-wrapper-std {
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    background: #c7d4cc;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    width: 100%;
+    margin: 20px;
 
+    
+    margin: 20px auto;
+    padding: 20px;
+    gap: 20px;
+}
 
+.enquiry-logo {
+    flex: 1;
+    text-align: center;
+}
 
+.enquiry-logo img {
+    width: 220px;
+    max-width: 100%;
+}
 
+.form-container-enquiry {
+    flex: 1;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
 
+.form-container-enquiry h2 {
+    text-align: center;
+    color: #078b33;
+}
 
-/* @media (max-width: 767px) {
-    .enquiry-wrapper-std {
-        flex-direction: column;
-        margin: 20px;
-        padding: 15px;
+.enquiryForm-std-3470 label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #0f53ac;
+}
 
-        min-height: auto;
-        height: auto;
-    }
+.enquiryForm-std-3470 input,
+.enquiryForm-std-3470 select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    background-color: #f1f5f3;
+    border: 1px solid #2ecc71;
+}
 
-    .enquiry-logo img {
-        width: 150px;
-        margin-bottom: 15px;
-    }
+.enquiryForm-std-3470 button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #039734;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-    .form-container-enquiry {
-        width: 100%;
-        padding: 20px;
-    }
+#message-enquiry-btn {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
 
-    .form-container-enquiry h2 {
-        font-size: 20px;
-    }
+                                          /* ----------- responsive style  -- Enquiry form ---------------------  */
 
-    .enquiryForm-std-3470 input,
-    .enquiryForm-std-3470 select {
-        padding: 9px;
-    }
+/* =====================================
+   TABLET
+   768 - 1024
+===================================== */
+@media (max-width: 1024px) {
+  .enquiry-wrapper-std {
+    max-width: 95%;
+    padding: 18px;
+    gap: 18px;
+  }
 
-    .enquiryForm-std-3470 button {
-        font-size: 15px;
-        padding: 11px;
-    }
-} */
+  .enquiry-logo img {
+    width: 180px;
+  }
 
-
-
-/* @media (min-width: 768px) and (max-width: 1024px) {
-    .enquiry-wrapper-std {
-        max-width: 95%;
-        margin: 30px auto;
-        padding: 20px;
-    }
-
-    .enquiry-logo img {
-        width: 180px;
-    }
-
-    .form-container-enquiry {
-        padding: 22px;
-    }
-
-    .form-container-enquiry h2 {
-        font-size: 22px;
-    }
+  .form-container-enquiry {
+    padding: 20px;
+  }
 }
 
 
-@media (min-width: 1600px) {
-    .enquiry-wrapper-std {
-        max-width: 1000px;
-    }
+/* =====================================
+   LARGE MOBILES
+   481 - 767
+===================================== */
+@media (max-width: 767px) {
+  body {
+    padding: 15px;
+    align-items: flex-start;
+  }
 
-    .enquiry-logo img {
-        width: 240px;
-    }
-} */
+  .enquiry-wrapper-std {
+    flex-direction: column;   
+    /* margin: 0; */
+  }
+
+  .enquiry-logo {
+    margin-bottom: -10px;
+  }
+
+  .enquiry-logo img {
+    width: 160px;
+  }
+
+  .form-container-enquiry {
+    width: 100%;
+  }
+}
 
 
+/* =====================================
+   SMALL MOBILES
+   up to 480
+===================================== */
+@media (max-width: 480px) {
+
+  .form-container-enquiry {
+    padding: 15px;
+  }
+
+  .form-container-enquiry h2 {
+    font-size: 18px;
+  }
+
+  .enquiryForm-std-3470 label {
+    font-size: 13px;
+  }
+
+  .enquiryForm-std-3470 input,
+  .enquiryForm-std-3470 select {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .enquiryForm-std-3470 button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 
 
 

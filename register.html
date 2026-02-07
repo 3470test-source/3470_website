@@ -26,108 +26,48 @@
 
     <style>
 
-         * {
-      margin: 0;
-      padding: 0;
+    * {
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
     }
            
     body {
-      /* height: 100vh; */
-      overflow: hidden;
+      margin: 0;
+      min-height: 100vh;
+      /* background: url("picture/enquiry_from_image.jpg") center / cover no-repeat; */
+      background: linear-gradient(135deg, #068545, #03521d);
       display: flex;
       justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #068545, #03521d);
-      /* background: linear-gradient(120deg, #4b6cb7, #182848); */
-     
-      min-height: 100vh;
-      /* overflow-x: hidden; */
+      align-items: center;  
 
       animation: fadeIn 1.2s ease-in;
     }
 
-     @keyframes fadeIn {
-        from {
-          opacity: 0;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
           transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
-
-      /* Header animation */
-      header {
-        animation: slideDown 1s ease;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      @keyframes slideDown {
-        from {
-          transform: translateY(-100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
+    /*--- Header animation ---*/
+    header {
+      animation: slideDown 1s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
       }
-
-    /* Animated Background */
-    body::before, body::after {
-      content: "";
-      position: absolute;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      animation: float 6s ease-in-out infinite alternate;
-    }
-
-    body::before {
-      top: -150px;
-      left: -150px;
-    }
-
-    body::after {
-      bottom: -150px;
-      right: -150px;
-      animation-delay: 3s;
-    }
-
-    @keyframes float {
-      from { transform: translateY(0px); }
-      to { transform: translateY(40px); }
-    }
-
-
-    label {
-      margin-bottom: 5px;
-      color: #333;
-      font-weight: 500;
-       
-    }
-
-    
-    input[type="text"],
-    input[type="email"],
-    input[type="mobile"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1.5px solid #ccc;
-      border-radius: 5px;
-      outline: none;
-      transition: 0.3s;
-    
-    }
-
-    input:focus {
-      border-color: #0d7e4f;
-      box-shadow: 0 0 5px rgba(2, 190, 81, 0.5);
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     </style>
