@@ -18,9 +18,6 @@ const Razorpay = require("razorpay");
 const crypto = require("crypto");
 
 
-
-
-
 /* ==========================
    NODEMAILER (GMAIL)
 ========================== */
@@ -47,7 +44,6 @@ const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_KEY_SECRET
 });
-
 
 
 /* =====================================================
@@ -165,9 +161,6 @@ app.post(
 /* AFTER webhook */
 app.use(express.json());
 
-
-
-
 /* =====================================================
    MIDDLEWARES (AFTER WEBHOOK)
 ===================================================== */
@@ -196,8 +189,6 @@ app.use(cors({
 app.options(/.*/, cors());
 
 
-
-
 /* ---------------- COURSE DATA ---------------- */
 
 const courses = {
@@ -214,7 +205,6 @@ const courses = {
   "Interactive Voice Response": { fee: 14000, discount: 2000 },
   "Surgery Training": { fee: 14000, discount: 2000 }
 };
-
 
 
 app.post("/api/enquiry", async (req, res) => {
@@ -309,7 +299,6 @@ await pool.query(`
       </div>
       `
     });
-
 
      /* 4️⃣ SEND PAYMENT LINK TO USER */
    
@@ -652,8 +641,8 @@ app.post("/api/register", async (req, res) => {
 
 
 /* ==========================
-   SEND REQUEST → ADMIN
-========================== */
+      SEND REQUEST → ADMIN
+   ========================== */
 
 app.post("/send-request", upload.none(), async (req, res) => {
   const { username, email, course, mobile } = req.body;
