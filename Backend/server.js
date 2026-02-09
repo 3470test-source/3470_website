@@ -134,7 +134,6 @@ app.post(
         }
 
 
-
         if (result.affectedRows > 0) {
           await transporter.sendMail({
             from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
