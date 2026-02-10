@@ -11904,6 +11904,181 @@ button.admin-approve-btn:hover {
 
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
 
+                     /* --------------- Website Enquiry Form ----- User fill -------------------  */
+
+
+ 
+.website-host-std {
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  background: #c7d4cc;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+  width: 100%;
+  margin: 20px;
+  
+  margin: 20px auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* --- LEFT --- */
+.website-host-logo {
+   flex: 1;
+   text-align: center;
+}
+
+.website-host-logo img {
+  width: 220px;
+  max-width: 100%;
+}
+
+  /* --- RIGHT --- */
+.website-host-enquiry {
+  flex: 1;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.website-host-enquiry h2 {
+  text-align: center;
+  color: #078b33;
+}
+
+.website-host-enquiry label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #0f53ac;
+}
+
+.website-host-enquiry input,
+.website-host-enquiry textarea,
+.website-host-enquiry select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  background-color: #f1f5f3;
+  border: 1px solid #2ecc71;
+}
+
+.website-host-enquiry textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.website-host-enquiry button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #039734;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.website-host-enquiry button:hover {
+  background: #1b3c4a;
+}
+
+#message-website-btn {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+
+  
+                                    /* ----------- responsive style  -- Website Enquiry form ---------------------  */
 
 
 
+/* =====================================
+   TABLET
+   768 - 1024
+===================================== */
+@media (max-width: 1024px) {
+  .website-host-std {
+    max-width: 95%;
+    padding: 18px;
+    gap: 18px;
+  }
+
+  .website-host-logo img {
+    width: 180px;
+  }
+
+  .website-host-enquiry {
+    padding: 20px;
+  }
+}
+
+
+/* =====================================
+   LARGE MOBILES
+   481 - 767
+===================================== */
+@media (max-width: 767px) {
+  body {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .website-host-std {
+    flex-direction: column;   
+    /* margin: 0; */
+  }
+
+  .website-host-logo {
+    margin-bottom: -10px;
+  }
+
+  .website-host-logo img {
+    width: 160px;
+  }
+
+  .website-host-enquiry {
+    width: 100%;
+  }
+}
+
+
+/* =====================================
+   SMALL MOBILES
+   up to 480
+===================================== */
+@media (max-width: 480px) {
+
+  .website-host-enquiry {
+    padding: 15px;
+  }
+
+  .website-host-enquiry h2 {
+    font-size: 18px;
+  }
+
+  .websiteFrom-std-3470 label {
+    font-size: 13px;
+  }
+
+  .websiteFrom-std-3470 input,
+  .websiteFrom-std-3470 select {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .websiteFrom-std-3470 button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
