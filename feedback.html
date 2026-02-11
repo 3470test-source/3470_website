@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3470 Healthcare & Medical Coding Training Institute | Website Host</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
+    
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+
+    * {
+      box-sizing: border-box;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    
+    body {
+      margin: 0; 
+      background: linear-gradient(135deg, #18413d, #3c859e, #4e82f1);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+
+    }
+
+  </style>
+
+</head>
+<body>        
+
+<div class="feedback-form-container">
+
+  <!--- Left Side Logo --->
+  <div class="feedback-left-logo">
+    <img src="picture/Logo3470-health3-removebg-preview.png" alt="Company Logo">
+  </div>
+
+    <!--- Right side form --->
+  <div class="feedback-right-form">
+    <h2>Student Feedback</h2>
+
+   <form class="feedback-form" id="feedbackForm">
+
+    <label>Name</label>
+      <input type="text" id="name" placeholder="Enter your name">
+
+    <label for="referral">Referral</label>
+      <select id="referral" required>
+        <option value="">Select Option</option>
+        <option value="Social Media">Social Media</option>
+        <option value="Friend">Friend</option>
+        <option value="Google Search">Google Search</option> 
+      </select>
+
+    <label for="Batch">Batch</label>
+      <select id="Batch" required>
+        <option value="">Select Batch</option>
+        <option value="Weekdays">Weekdays</option>
+        <option value="Weekend">Weekend</option>
+      </select>
+
+    <label for="course">Course</label>
+      <select id="course" required>
+        <option value="">Select Course</option>
+        <option value="IPDRG">IPDRG - Inpatient Diagnosis-Related Group</option>
+        <option value="E&M">E&M - Evaluation & Management</option>
+        <option value="Surgery">Surgery</option> 
+      </select>
+
+    <label for="trainer">Trainer</label>
+      <select id="trainer" required>
+        <option value="">Select Trainer</option>
+      </select>
+
+    <label for="feedback">Feedback</label>
+      <textarea id="feedback" rows="4" placeholder="Write your feedback here..." required></textarea>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+
+    <p id="message-feedback-btn"></p>
+  </div>
+
+</div>
+
+
+<script src="main.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Map course to multiple trainers
+  const courseTrainerMap = {
+    "IPDRG": ["JD", "Pallavi"],
+    "Surgery": ["Leela Krishna", "Sarath Kumar"],
+    "E&M": ["Madeshwaran"]
+  };
+
+  const courseSelect = document.getElementById('course');
+  const trainerSelect = document.getElementById('trainer');
+  const feedbackForm = document.getElementById('feedbackForm');
+
+  /* ---------------------------
+     Course -> Trainer Binding
+  ----------------------------*/
+  courseSelect.addEventListener('change', () => {
+    const selectedCourse = courseSelect.value;
+    const trainers = courseTrainerMap[selectedCourse] || [];
+
+    trainerSelect.innerHTML = '<option value="">Select Trainer</option>';
+
+    trainers.forEach(trainer => {
+      const option = document.createElement('option');
+      option.value = trainer;
+      option.textContent = trainer;
+      trainerSelect.appendChild(option);
+    });
+  });
+
+
+  /* ---------------------------
+     Submit + Google Sheet
+  ----------------------------*/
+  feedbackForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    let data = {
+      name: document.getElementById("name").value.trim(),
+      referral:document.getElementById("referral").value,
+      batch: document.getElementById("Batch").value,
+      course: courseSelect.value,
+      trainer: trainerSelect.value,
+      feedback: document.getElementById("feedback").value.trim()
+    };
+
+    if (Object.values(data).includes("")) {
+      alert("Please fill all fields!");
+      return;
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbxZY4SvnNVxz6IJ-yNRIF163M0rq-NNFv0i6RQU0COIlvmFDl-WcQqSUBbNGGT8ULfr/exec", {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(res => res.text())
+    .then(response => {
+      console.log("Server response:", response);
+      alert("Feedback submitted successfully !");
+
+      feedbackForm.reset();
+      trainerSelect.innerHTML = '<option value="">Select Trainer</option>';
+    })
+    .catch(error => {
+      alert("Error submitting form");
+      console.error(error);
+    });
+
+  });
+
+});
+</script>
+
+</body>
+</html>   
+

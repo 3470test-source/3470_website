@@ -112,13 +112,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 5px 205px; */
   background-color: white;
   border-bottom: 1px solid #e3e8ee;
   flex-wrap: wrap;
-
   padding: 10px 5%;
-
 }
 
 .header-left-logo img {
@@ -127,7 +124,8 @@ header {
   margin-top: -2px;
 }
 
-/* Main menu */
+    /* --- Main menu --- */
+
 nav ul.menu {
   list-style: none;
   margin: 0;
@@ -155,7 +153,8 @@ nav ul.menu li a:hover {
   border-radius: 9px;
 }
 
-/* Dropdown menu */
+  /*--- Dropdown menu ---*/
+
 nav ul.menu li .dropdown {
   display: none;
   list-style: none;
@@ -170,16 +169,16 @@ nav ul.menu li .dropdown {
   z-index: 100;
   border: 1.5px solid #555;
   border-radius: 9px;
-
-  overflow: hidden; /* keeps hover background inside */
+  overflow: hidden; 
 }
 
 nav ul.menu li .dropdown li {
-  width: 100%;
+  /* width: 100%; */
   min-width: 300px;
 }
 
-/* Show dropdown on hover */
+    /*--- Show dropdown on hover ---*/
+
 nav ul.menu li:hover .dropdown {
   display: block;
 }
@@ -245,194 +244,123 @@ nav ul.menu li .dropdown li a {
   color: white;
 }
 
+      /*--- Icon Menu mobile , Tab --- */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 1024px) {
-
-  /* Show hamburger */
-  .menu-toggle {
-    display: block;
-  }
-
-  /* Hide menu initially */
-  nav ul.menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: white;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 15px 0;
-    border-top: 1px solid #ddd;
-    z-index: 999;
-  }
-
-  /* Show menu when active */
-  nav ul.menu.active {
-    display: flex;
-  }
-
-  nav ul.menu li {
-    width: 100%;
-    text-align: center;
-  }
-
-  nav ul.menu li a {
-    font-size: 17px;
-    padding: 12px;
-  }
-
-  /* Disable hover dropdown */
-  nav ul.menu li:hover .dropdown {
-    display: none;
-  }
-
-  /* Mobile dropdown */
-  nav ul.menu li .dropdown {
-    position: static;
-    box-shadow: none;
-    border: none;
-    display: none;
-  }
-
-  nav ul.menu li.open .dropdown {
-    display: block;
-  }
-
-  nav ul.menu li .dropdown li {
-    min-width: 100%;
-  }
-
-  /* Header buttons stack */
-  .buttons {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 0;
-  }
-
-  .login-btn,
-  .register-btn {
-    margin-top: 0;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-.menu-toggle-fixing {
+.menuToggle-fixing {
   display: none;
   font-size: 28px;
   cursor: pointer;
   color: #068d53;
 }
 
-
-
-@media (max-width: 1024px) {
-
-  /* Show hamburger */
-  .menu-toggle-fixing {
-    display: block;
-  }
-
-  /* Hide menu initially */
-  nav ul.menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: white;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 15px 0;
-    border-top: 1px solid #ddd;
-    z-index: 999;
-  }
-
-  /* Show menu when active */
-  nav ul.menu.active {
-    display: flex;
-  }
-
-  nav ul.menu li {
-    width: 100%;
-    text-align: center;
-  }
-
-  nav ul.menu li a {
-    font-size: 17px;
-    padding: 12px;
-  }
-
-  /* Disable hover dropdown */
-  nav ul.menu li:hover .dropdown {
-    display: none;
-  }
-
-  /* Mobile dropdown */
-  nav ul.menu li .dropdown {
-    position: static;
-    box-shadow: none;
-    border: none;
-    display: none;
-  }
-
-  nav ul.menu li.open .dropdown {
-    display: block;
-  }
-
-  nav ul.menu li .dropdown li {
-    min-width: 100%;
-  }
-
-  /* Header buttons stack */
-  .buttons {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 0;
-  }
-
-  .login-btn,
-  .register-btn {
-    margin-top: 0;
-  }
+/* --- login / register hide inside menu show ---*/
+.mobile-buttons {
+  display: none;
 }
 
 
+                                   /* ------------- Responsive style header ---------------*/
 
+                                            /* ========== Mobile & Tablet ========== */
 
+@media (max-width: 1024px) {
 
+  /* show icon */
+  .menuToggle-fixing {
+    display: block;
+    order: 2;
+  }
 
+  /* hide buttons outside */
+  .buttons {
+    display: none;
+  }
 
+  /* make nav sidebar */
+  #mainMenu-st {
+    position: fixed;
+    top: 0;
+    left: -270px;
+    width: 260px;
+    height: 100%;
+    background: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+    padding-top: 60px;
+    z-index: 2000;
+  }
 
+  /* open */
+  #mainMenu-st.active {
+    left: 0;
+  }
+
+  /* vertical list */
+  nav ul.menu {
+    flex-direction: column;
+    padding: 0;
+  }
+
+   nav ul.menu li {
+    width: 100%;
+  }
+
+  nav ul.menu li a {
+    font-size: 18px;          /* reduce */
+    padding: 7px 18px;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 0;         /* remove desktop curve */
+  }
+
+  /* remove big min width from desktop */
+  nav ul.menu li .dropdown li {
+    min-width: auto;
+  }
+  /* dropdown behave normal */
+  nav ul.menu li .dropdown {
+    background: #f7f7f7;
+  }
+
+  nav ul.menu li .dropdown li a {
+    font-size: 12px;
+    padding-left: 20px;       /* indent submenu */
+  }
+
+  /* remove green hover box */
+  nav ul.menu li a:hover {
+    background: none;
+    color: #068d53;
+  }
+
+  nav ul.menu li:last-child a {
+    border-bottom: none;
+  }
+}
+
+                      /* ---------- mobile-buttons login & register --------- */
+
+@media (max-width: 1024px) {
+  .mobile-buttons {
+    display: block;
+    padding: 7px 18px;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0;                    
+  }
+
+  .mobile-buttons a {
+    display: block;
+    width: 100%; 
+  }
+}
+
+@media (max-width: 1024px) {
+  .mobile-buttons .login-btn,
+  .mobile-buttons .register-btn {
+    border: none;       
+    background: none;  
+    margin: 0;   
+  }
+}
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
                                 /* ---------------------- Home page - Banner Styles ------------------------ */
@@ -12082,3 +12010,184 @@ button.admin-approve-btn:hover {
 
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+                                  /* --------- Student feedback - form -------- */
+
+.feedback-form-container {
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      background: #c7d4cc;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+      width: 100%;
+      margin: 20px;
+  
+      margin: 20px auto;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .feedback-left-logo {
+      flex: 1;
+      text-align: center;
+    }
+
+    .feedback-left-logo img {
+      width: 220px;
+      max-width: 100%;
+    }
+
+    .feedback-right-form {
+      flex: 1;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    .feedback-right-form h2 {
+      text-align: center;
+      color: #078b33;
+    }
+
+    .feedback-right-form label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #0f53ac;
+
+      font-size: 18px;
+    }
+
+    .feedback-right-form input,
+    .feedback-right-form textarea,
+    .feedback-right-form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      background-color: #f1f5f3;
+      border: 1px solid #2ecc71;
+
+      font-size: 15px;
+    }
+
+    .feedback-right-form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .feedback-right-form button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background: #039734;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .feedback-right-form button:hover {
+      background: #034e29;
+    }
+
+    #message-feedback-btn {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+
+                                    /* ----------- responsive style  -- Student Feedback form ---------------------  */
+
+
+/* =====================================
+   TABLET
+   768 - 1024
+===================================== */
+@media (max-width: 1024px) {
+  .feedback-form-container {
+    max-width: 95%;
+    padding: 18px;
+    gap: 18px;
+  }
+
+  .feedback-left-logo img {
+    width: 180px;
+  }
+
+  .feedback-right-form {
+    padding: 20px;
+  }
+}
+
+
+/* =====================================
+   LARGE MOBILES
+   481 - 767
+===================================== */
+@media (max-width: 767px) {
+  body {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .feedback-form-container {
+    flex-direction: column;   
+    /* margin: 0; */
+  }
+
+  .feedback-left-logo {
+    margin-bottom: -10px;
+  }
+
+  .feedback-left-logo img {
+    width: 160px;
+  }
+
+  .feedback-right-form {
+    width: 100%;
+  }
+}
+
+
+/* =====================================
+   SMALL MOBILES
+   up to 480
+===================================== */
+@media (max-width: 480px) {
+
+  .feedback-right-form {
+    padding: 15px;
+  }
+
+  .feedback-right-form h2 {
+    font-size: 18px;
+  }
+
+  .feedback-form label {
+    font-size: 13px;
+  }
+
+  .feedback-form input,
+  .feedback-form select {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .feedback-form button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
