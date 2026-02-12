@@ -28,6 +28,23 @@
     </style>
   </head>
   <body class="no-right-click-3470">
+
+    <!-- top-header -->
+    <div class="top-header">
+      <div class="left">
+        <span><i class="fa-regular fa-clock"></i> Mon-Sun <b>:</b> 24/7</span>
+        <span
+          ><i class="fa-regular fa-envelope"></i>
+          <a href="#">3470healthcare@gmail.com</a></span
+        >
+      </div>
+      <div class="right">
+        <span class="gap_phone"
+          ><i class="fa-solid fa-phone"></i> +91 9976614395 <b>/</b> +91
+          8778346428</span
+        >
+      </div>
+    </div>
     
     <!-- header -->
     <header>
@@ -38,8 +55,11 @@
         />
       </div>
 
+      <!-- Mobile & Tab menu icon   -->
+    <div class="menuToggle-fixing" id="menuToggle-fixing"></div>
+
       <div class="header-right">
-        <nav>
+        <nav id="mainMenu-st">
           <ul class="menu">
             <li><a href="../index.html">Home</a></li>
             <li><a href="../about.html">About Us</a></li>
@@ -105,6 +125,15 @@
 
             <li><a href="../careers.html">Careers</a></li>
             <li><a href="../contact_us.html">Contact Us</a></li>
+
+            <!-- Mobile & Tab btn inside the menu icon  -->
+            <li class="mobile-buttons">
+              <a href="../login.html" class="login-btn">Login</a>
+            </li>
+            <li class="mobile-buttons">
+              <a href="../register.html" class="register-btn">Register</a>
+            </li>
+
           </ul>
         </nav>
       </div>
@@ -373,6 +402,20 @@
 })();
 
 </script>
+
+<!-- Menu icon btn Tab & Mobile   -->
+<script>
+  
+const menuToggle = document.getElementById("menuToggle-fixing");
+const menu = document.getElementById("mainMenu-st");
+
+menuToggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  menuToggle.classList.toggle("open");
+});
+
+</script>
+
 
   </body>
 </html>

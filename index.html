@@ -44,15 +44,10 @@
         />
       </div>
 
+    <!-- Mobile & Tab menu icon   -->
+    <div class="menuToggle-fixing" id="menuToggle-fixing"></div>
 
-      
-      <div class="menuToggle-fixing" id="menuToggle-fixing">
-       ☰
-      </div>
-
-
-
-
+      <!-- header Topic -->
       <div class="header-right">
         <nav id="mainMenu-st">
           <ul class="menu">
@@ -129,16 +124,13 @@
             <li><a href="careers.html">Careers</a></li>
             <li><a href="contact_us.html">Contact Us</a></li>
 
-
-            
+            <!-- Mobile & Tab btn inside the menu icon  -->
             <li class="mobile-buttons">
               <a href="login.html" class="login-btn">Login</a>
             </li>
             <li class="mobile-buttons">
               <a href="register.html" class="register-btn">Register</a>
             </li>
-
-
 
           </ul>
         </nav>
@@ -166,43 +158,6 @@
 
       <a href="course.html" class="explore-courses">Explore Courses</a>
     </div>
-
-
-
-
-    <!-- <div class="slider-banner">
-    <div class="slides-banner-3470">
-        <img src="picture/Abdul Kalam A-05.jpg" class="slide-home-3470">
-        <img src="picture/Muneeswaran Eswaran-06.jpg" class="slide-home-3470">
-        <img src="picture/Vigneshkanna-09.jpg" class="slide-home-3470">
-    </div>
-</div> -->
-
-
-<!-- <div class="slider-banner">
-    <div class="slide-home-3470 active">
-        <img src="picture/Abdul Kalam A-05.jpg">
-    </div>
-
-    <div class="slide-home-3470">
-        <img src="picture/Muneeswaran Eswaran-06.jpg">
-    </div>
-
-    <div class="slislide-home-3470de">
-        <img src="picture/Vigneshkanna-09.jpg">
-    </div>
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
 
 
     <!-- Our Founder -->
@@ -365,7 +320,6 @@
       </div>
     </section>
 
-    
     <!-- Our Placement Partners -->`
     <section class="placement-partners">
       <h2>Medical Coding Companies</h2>
@@ -782,7 +736,7 @@
     </section>
 
 
-  <!-- Certifications & Specialties -->
+<!-- Certifications & Specialties -->
 
 <section class="certifications-cert-group">
   <h2>Certifications & Specialties</h2>
@@ -1079,7 +1033,7 @@
         // Disable specific keyboard shortcuts (Ctrl+S, Ctrl+P, Ctrl+U)
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey) {
-                const forbiddenKeys = ['s', 'p', 'u','c']; // s=Save, p=Print, u=View Source
+                const forbiddenKeys = ['s', 'p', 'u','c']; // s=Save, p=Print, u=View Source, c=copy 
                 if (forbiddenKeys.includes(e.key.toLowerCase())) {
                     e.preventDefault();
                 }
@@ -1090,94 +1044,18 @@
 
 </script>
 
-
-
-
-
-
-
-
-
-
- <!-- Menu Toggle & Mobile Dropdown Script -->
-
-<!-- <script>
-  const menuToggle = document.getElementById("menuToggle-fixing");
-  const menu = document.querySelector("nav ul.menu");
-
-  menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
-
-  // Mobile dropdown click
-  document.querySelectorAll("nav ul.menu > li").forEach(item => {
-    item.addEventListener("click", function (e) {
-      if (window.innerWidth <= 1024) {
-        this.classList.toggle("open");
-      }
-    });
-  });
-</script> -->
-
-
+<!-- Menu icon btn Tab & Mobile   -->
 <script>
+  
 const menuToggle = document.getElementById("menuToggle-fixing");
 const menu = document.getElementById("mainMenu-st");
 
 menuToggle.addEventListener("click", () => {
   menu.classList.toggle("active");
+  menuToggle.classList.toggle("open");
 });
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-//   let slides = document.querySelectorAll(".slide-home-3470");
-// let index = 0;
-
-// function showSlide() {
-//     slides.forEach(slide => slide.classList.remove("active"));
-//     slides[index].classList.add("active");
-
-//     index++;
-//     if(index === slides.length){
-//         index = 0;
-//     }
-// }
-
-// // Show first slide
-// showSlide();
-
-// // Auto move
-// setInterval(showSlide, 3000);
-
-
-// let slides = document.querySelectorAll(".slide-home-3470");
-// let index = 0;
-
-// function changeSlide(){
-//     slides[index].classList.remove("active");
-
-//     index = (index + 1) % slides.length;
-
-//     slides[index].classList.add("active");
-// }
-
-// setInterval(changeSlide, 3000);
-
 
 </script>
-
 
   </body>
 </html>

@@ -48,7 +48,6 @@
 
 
 
-
 // ============ Login Script ===========
 
 const loginForm = document.getElementById("loginForm");
@@ -145,11 +144,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.getElementById("sidebar");
 
     // Toggle profile dropdown
-    if (profileBtn) {
-      profileBtn.addEventListener("click", function () {
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
-      });
-    }
+    // if (profileBtn) {
+    //   profileBtn.addEventListener("click", function () {
+    //     menu.style.display = menu.style.display === "block" ? "none" : "block";
+    //   });
+    // }
 
     // Toggle sidebar
     if (menuToggle) {
@@ -158,6 +157,15 @@ document.addEventListener("DOMContentLoaded", function () {
           sidebar.style.display === "none" ? "block" : "none";
       });
     }
+
+
+    // Toggle sidebar
+if (menuToggle && sidebar) {
+  menuToggle.addEventListener("click", function () {
+    sidebar.classList.toggle("active");
+  });
+}
+
 
     // Close dropdown when clicking outside
     window.addEventListener("click", function (e) {
@@ -1004,8 +1012,6 @@ async function approveAccess() {
 
 
 // ----------------------------------------------------------------------------------------------------------
-
-
 
    
 
