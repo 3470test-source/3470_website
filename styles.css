@@ -629,15 +629,26 @@ nav ul.menu li .dropdown li a {
   flex: 1 1 450px;
   display: flex;
   justify-content: center;
+
+  align-items: center;
+  background: linear-gradient(135deg, #aee0c9, #6ca574);
+  padding: 20px;
+  border-radius: 12px;
 }
 
 .founder-image img {
-  width: 500px;
+  /* width: 500px;
   height: 350px;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: -40px;
+  margin-bottom: -40px; */
 
+  width: 100%;
+  max-width: 335px;
+  height: auto;         
+  border-radius: 10px;
+  display: block;
+  margin-bottom: -40px;
 }
 
 .founder-content {
@@ -651,7 +662,6 @@ nav ul.menu li .dropdown li a {
   text-align: center;
   font-size: 18px;
   margin-top: -1px;
-
 }
 
 .founder-content p {
@@ -661,7 +671,6 @@ nav ul.menu li .dropdown li a {
   /* font-size: 18px; */
 
   font-size: clamp(18px, 1.2vw, 18px);
-
 }
 
 
