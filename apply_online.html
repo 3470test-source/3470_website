@@ -177,15 +177,15 @@
   <img src="picture/Logo3470-health3-removebg-preview.png" class="logo-apply-online-form">
     <h2>Apply Online</h2>
 
-<form>
+<form id="applyFrom-online">
     <div class="apply-online-form-grid-2">
 
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <input type="tel" placeholder="Phone No">
+      <input type="text" name="name" placeholder="Name">
+      <input type="email" name="email" placeholder="Email">
+      <input type="tel" name="phoneNo" placeholder="Phone No">
 
       <!-- Posting To Apply -->
-      <select id="posting" class="posting to apply">
+      <select id="posting" name="PostingtoApply" class="posting to apply">
         <option>-- Select Posting to Apply --</option>
           <option value="Medical Coding">Medical Coding</option>
           <option value="AR Calling">AR Calling</option>
@@ -205,7 +205,7 @@
       </select>
 
       <!-- Medical Coding -->
-      <select id="Medical Coding" class="Medical Coding">
+      <select id="Medical-Coding" name="medicalCoding" class="Medical-Coding">
         <option>-- Medical Coding --</option>
           <option value="Radiology">Radiology</option>
           <option value="IPDRG">IPDRG</option>
@@ -220,7 +220,7 @@
       </select>
 
       <!-- Medical-Coding-Trainers -->
-      <select id="Medical-Coding-Trainers" class="Medical-Coding-Trainers">
+      <select id="Medical-Coding-Trainers" name="MedicalCodingTrainer" class="Medical-Coding-Trainers">
         <option>-- Medical Coding Trainers --</option>
           <option value="CCS">CCS</option>
           <option value="Surgery">Surgery</option> 
@@ -234,23 +234,23 @@
 
     </div>
 
-    <textarea placeholder="Address"></textarea>
+    <textarea name="address" placeholder="Address"></textarea>
 
     <div class="apply-online-form-grid-2">
 
-      <input type="text" placeholder="City">
-      <input type="text" placeholder="State">
-      <input type="text" placeholder="Postal Code">
+      <input type="text" name="city" placeholder="City">
+      <input type="text" name="state" placeholder="State">
+      <input type="text" name="PostalCode" placeholder="Postal Code">
 
       <!-- Country -->
-      <select id="app-onl-form-country" class="app-onl-form-country">
+      <select id="app-onl-form-country" name="country" class="app-onl-form-country">
         <option>-- Country --</option>
           <option value="India">India</option>
       </select>
 
     </div>
 
-    <select name="emp-status" id="emp-status">
+    <select name="EmployeeStatus" id="emp-status">
       <option>-- Employee Status --</option>
         <option value="Experienced">Experienced</option>
         <option value="Fresher">Fresher</option>
@@ -260,14 +260,13 @@
     <h3>Employment Information / Update Resume</h3>
 
     <div class="apply-online-form-grid-2">
-      <input type="text" placeholder="Current Employer / Last">
-      <input type="text" placeholder="Designation">
-
-      <input type="text" placeholder="Salary (Annually)">
-      <input type="text" placeholder="Reason For Leaving">
+      <input type="text" name="Employer" placeholder="Current Employer / Last">
+      <input type="text" name="Designation" placeholder="Designation">
+      <input type="text" name="salary" placeholder="Salary (Annually)">
+      <input type="text" name="reason" placeholder="Reason For Leaving">
     </div>
 
-    <input type="file">
+    <input type="file" name="resume" id="resume" required>
 
     <button type="submit">Submit</button>
 
@@ -275,6 +274,55 @@
 </div>
     
 <script src="main.js"></script>
+
+
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbxUTGDbv5prpX_N46_6Rj-Cnz8YI3rNeV7_oiDUn-3p3ZIgbp6Q79vk6uw7kBnyE9pMFQ/exec";   // ← change this
+
+document.getElementById("applyFrom-online").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const fileInput = document.getElementById("resume");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please upload resume");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function () {
+    const base64 = reader.result.split(",")[1];
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    data.file = base64;
+    data.fileName = file.name;
+    data.mimeType = file.type;
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.result === "success") {
+        alert("Application submitted successfully!");
+        e.target.reset();
+      } else {
+        alert("Error: " + res.message);
+      }
+    })
+    .catch(err => alert("Upload failed!"));
+  };
+
+  reader.readAsDataURL(file);
+});
+</script>
+
 
 </body>
 </html>        
