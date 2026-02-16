@@ -446,7 +446,7 @@ nav ul.menu li .dropdown li a {
 
 /* Explore Courses */
 
-.explore-courses {
+/* .explore-courses {
   background-color: #068d53;
   color: white;
 
@@ -460,7 +460,7 @@ nav ul.menu li .dropdown li a {
 
   margin-top: 15%;
   margin-left: 30%;
-}
+} */
 
  /* Banner title */ 
 
@@ -478,6 +478,63 @@ nav ul.menu li .dropdown li a {
   background-color: #055733;
 }
 
+
+
+/* -------------- */
+
+
+.home-banner-image {
+  position: relative;
+  background: url("picture/home_2.jpeg") no-repeat center;
+  background-size: cover;
+  height: 70vh;   /* auto adjust to screen */
+  min-height: 380px;
+  margin-top: -10px;
+}
+
+/*---- invisible clickable button area ----*/
+.home-banner-btn-link {
+  position: absolute;
+  left: 8.6%;
+  top: 72%;
+  width: 252px;
+  height: 70px;
+  cursor: pointer;
+  z-index: 5;
+  border-radius: 6px;
+}
+
+.home-banner-btn-link {
+  background: rgb(222, 226, 160);
+  opacity: -1;
+}
+      
+/*---- Tablet ----*/
+@media (max-width:1024px) {
+  .home-banner-image { 
+    height: 60vh; }
+}
+
+/*---- Mobile ----*/
+@media (max-width:768px) {
+  .home-banner-image { 
+    height: 23vh;
+    min-height: 1px;
+    background-size: contain;   /* show full image */
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+  .home-banner-btn-link {
+    left: 10%;
+    top: 68%;
+    width: 40%;
+    height: 10%;
+   }
+}
+
+
+/* ------------------- */
 
 
 
@@ -517,7 +574,7 @@ nav ul.menu li .dropdown li a {
     font-size: 14px;
     padding: 12px 18px;
 
-     margin-left: -1px;
+    margin-left: -1px;
   }
 }
 
@@ -631,7 +688,8 @@ nav ul.menu li .dropdown li a {
   justify-content: center;
 
   align-items: center;
-  background: linear-gradient(135deg, #aee0c9, #6ca574);
+  /* background: linear-gradient(135deg, #aee0c9, #6ca574); */
+  background: linear-gradient(135deg, #137748, #065013);
   padding: 20px;
   border-radius: 12px;
 }
@@ -724,11 +782,20 @@ nav ul.menu li .dropdown li a {
 
   .founder-image {
     flex: 1 1 100%;
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    /* background: linear-gradient(135deg, #aee0c9, #6ca574); */
+    background: linear-gradient(135deg, #137748, #065013);
+    padding: 10px;
+    border-radius: 12px;
   }
 
   .founder-image img {
     width: 100%;
-    max-width: 320px;
+    max-width: 270px;
     height: auto;
     margin-bottom: 0;
   }
@@ -777,6 +844,15 @@ nav ul.menu li .dropdown li a {
 
   .founder-image {
     flex: 1 1 100%;
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    /* background: linear-gradient(135deg, #aee0c9, #6ca574); */
+    background: linear-gradient(135deg, #137748, #065013);
+    padding: 10px;
+    border-radius: 12px;
   }
 
   .founder-image img {

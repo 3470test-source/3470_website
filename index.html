@@ -15,6 +15,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+
+    <style>
+
+      body {
+        margin: 0;
+      }
+
+    </style>
+
   </head>
   <body class="no-right-click-3470">
 
@@ -143,7 +152,7 @@
     </header>
 
     <!-- banner -->
-    <div class="banner">
+    <!-- <div class="banner">
       <h1>
         <span class="banner-title">Welcome to</span>
         <span class="banner-sub"
@@ -157,7 +166,21 @@
       </p>
 
       <a href="course.html" class="explore-courses">Explore Courses</a>
-    </div>
+    </div> -->
+
+
+
+
+
+  <!-- Home page banner     -->
+  <section class="home-banner-image">
+       <a href="course.html" class="home-banner-btn-link" aria-label="Explore Courses"></a>
+  </section>
+
+
+
+
+
 
 
     <!-- Our Founder -->
@@ -1037,7 +1060,7 @@
         // Disable specific keyboard shortcuts (Ctrl+S, Ctrl+P, Ctrl+U)
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey) {
-                const forbiddenKeys = ['s', 'p', 'u','c']; // s=Save, p=Print, u=View Source, c=copy 
+                const forbiddenKeys = ['s', 'p', 'u']; // s=Save, p=Print, u=View Source, c=copy 
                 if (forbiddenKeys.includes(e.key.toLowerCase())) {
                     e.preventDefault();
                 }
