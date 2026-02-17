@@ -5331,6 +5331,66 @@ body.no-scroll {
   }
 }
 
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+
+                       /* ===== course overview page equiry btn   Enquiry Button Fixed Bottom ===== */
+
+.enquiry-btn-container-cr-ls {
+  position: fixed;      
+  bottom: 30px;
+  left: 50%;            
+  transform: translateX(-50%); 
+  z-index: 9999;
+
+   /* display: flex;
+  justify-content: center;
+  margin: 40px 0; */
+}
+
+.enquiry-btn-cr-ls {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fff;
+  padding: 14px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: inline-block;
+
+  white-space: nowrap;
+}
+
+.enquiry-btn-cr-ls:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #0056b3, #003f80);
+}
+
+@media (max-width: 480px) {
+  .enquiry-btn-container-cr-ls {
+    bottom: 15px;
+  }
+
+  .enquiry-btn-cr-ls {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
+
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .enquiry-btn-container-cr-ls {
+    bottom: 25px;
+  }
+
+  .enquiry-btn-cr-ls {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -10516,7 +10576,7 @@ main.dash-video-content {
 }
 
 
-/* --------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------------------------------------------- */
               
 
              /* Dashboard -- Tests Assignment Page  */
@@ -10590,7 +10650,81 @@ main.dash-video-content {
 }
 
 
-/* ------------------------------------------------------------------------------ */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+             /* Dashboard -- Mock Tests Assignment Page  */
+
+
+/* Main content */
+.cpc-mock-test {
+  margin-left: 200px; /* space for sidebar */
+  padding: 40px;
+}
+
+.cpc-mock-test h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #004d40;
+  text-align: center;
+  /* color: #04552f; */
+  
+}
+
+.cpc-mock-test-links-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 2 equal-width columns */
+  /* grid-template-columns: repeat(2, 250px);  */
+  gap: 30px;
+}
+
+.cpc-mock-test-assignment-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cpc-mock-test-assignment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cpc-mock-test-assignment-card h3 {
+  color: #055791;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.cpc-mock-test-assignment-card a {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #004d40;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+} 
+
+.cpc-mock-test-assignment-card a:hover {
+  background: #00695c;
+}
+
+            
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  #quizForm {
+    width: 100%;
+  }
+}
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 
            /* Dashboard -- Tests-Quiz score Page  */

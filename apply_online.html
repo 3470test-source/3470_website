@@ -122,7 +122,6 @@
   }
 }
 
-
 /* ============================= */
 /* Mobile Devices */
 /* ============================= */
@@ -276,13 +275,13 @@
 <script src="main.js"></script>
 
 
+<!-- <script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyBBLT3Td_Hk_5ony2w-DPsFzfmS-91XcLz706rARDotS6x5Uxk3W_TJK0Cf8nmA78PVQ/exec";  
 
-<script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbxUTGDbv5prpX_N46_6Rj-Cnz8YI3rNeV7_oiDUn-3p3ZIgbp6Q79vk6uw7kBnyE9pMFQ/exec";   // ← change this
-
-document.getElementById("applyFrom-online").addEventListener("submit", e => {
+document.getElementById("applyFrom-online").addEventListener("submit", function (e) {
   e.preventDefault();
 
+  const form = e.target;
   const fileInput = document.getElementById("resume");
   const file = fileInput.files[0];
 
@@ -296,7 +295,7 @@ document.getElementById("applyFrom-online").addEventListener("submit", e => {
   reader.onload = function () {
     const base64 = reader.result.split(",")[1];
 
-    const formData = new FormData(e.target);
+    const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
     data.file = base64;
@@ -305,23 +304,82 @@ document.getElementById("applyFrom-online").addEventListener("submit", e => {
 
     fetch(scriptURL, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(data)
     })
-    .then(res => res.json())
+    .then(response => response.json())
     .then(res => {
       if (res.result === "success") {
         alert("Application submitted successfully!");
-        e.target.reset();
+        form.reset();
       } else {
         alert("Error: " + res.message);
       }
     })
-    .catch(err => alert("Upload failed!"));
+    .catch(error => {
+      console.error(error);
+      alert("Upload failed!");
+    });
+  };
+
+  reader.readAsDataURL(file);
+});
+</script> -->
+
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyBBLT3Td_Hk_5ony2w-DPsFzfmS-91XcLz706rARDotS6x5Uxk3W_TJK0Cf8nmA78PVQ/exec";
+
+document.getElementById("applyFrom-online").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const fileInput = document.getElementById("resume");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please upload resume");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function () {
+
+    const base64 = reader.result.split(",")[1];
+
+    const formData = new FormData(form);
+    formData.append("file", base64);
+    formData.append("fileName", file.name);
+    formData.append("mimeType", file.type);
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: formData   // ✅ NO headers
+    })
+    .then(res => res.text())
+    .then(res => {
+      const data = JSON.parse(res);
+
+      if (data.result === "success") {
+        alert("Application submitted successfully!");
+        form.reset();
+      } else {
+        alert("Error: " + data.message);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Upload failed!");
+    });
   };
 
   reader.readAsDataURL(file);
 });
 </script>
+
 
 
 </body>

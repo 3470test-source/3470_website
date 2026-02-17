@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Test Viewer</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background:#000;
+}
+
+iframe{
+    width:100%;
+    height:100vh;
+    border:none;
+}
+</style>
+</head>
+
+<body>
+
+<iframe id="testFrame"></iframe>
+
+<script>
+
+// ===============================
+// 1️⃣ Load & Validate Google Form URL
+// ===============================
+
+const params = new URLSearchParams(window.location.search);
+const testUrl = params.get("url");
+
+const frame = document.getElementById("testFrame");
+
+if(testUrl && (
+    testUrl.includes("forms.gle") || 
+    testUrl.includes("docs.google.com/forms")
+)){
+    frame.src = testUrl;
+} else {
+    alert("Invalid or Missing Test Link");
+}
+
+
+// ===============================
+// 2️⃣ Disable Right Click
+// ===============================
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+
+// ===============================
+// 3️⃣ Disable Copy / Cut / Paste
+// ===============================
+
+["copy","cut","paste"].forEach(eventType => {
+    document.addEventListener(eventType, function(e){
+        e.preventDefault();
+    });
+});
+
+
+// ===============================
+// 4️⃣ Disable Common Keyboard Shortcuts
+// ===============================
+
+document.addEventListener("keydown", function(e){
+
+    const blockedKeys = ['c','v','x','p','u','s'];
+
+    if(e.ctrlKey && blockedKeys.includes(e.key.toLowerCase())){
+        e.preventDefault();
+    }
+
+    if(e.key === "F12"){
+        e.preventDefault();
+    }
+
+});
+
+
+// ===============================
+// 5️⃣ Detect Tab Switching
+// ===============================
+
+let violationCount = 0;
+
+document.addEventListener("visibilitychange", function(){
+    if(document.hidden){
+        violationCount++;
+        alert("Tab switching detected! Violations: " + violationCount);
+
+        if(violationCount >= 3){
+            alert("Too many violations. Test session terminated.");
+            window.close();
+        }
+    }
+});
+
+
+// ===============================
+// 6️⃣ Force Fullscreen (User Interaction Required)
+// ===============================
+
+document.addEventListener("click", function(){
+    if(!document.fullscreenElement){
+        document.documentElement.requestFullscreen().catch(()=>{});
+    }
+}, { once: true });
+
+</script>
+
+</body>
+</html>
