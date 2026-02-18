@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3470 Healthcare & Medical Coding Training Institute | Home </title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
+    
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+<style>
+
+body {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2da79a, #3c9e7d, #25744c);
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.enquiry-pay-popup-box {
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  background: #c7d4cc;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+  width: 100%;
+  margin: 20px;
+  
+  margin: 20px auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+.enquiry-pay-popup-content {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+/*--- LEFT SIDE - Logo Section ---*/
+.enquiry-pay-popup-left {
+  flex: 1;
+  background: #f4f8ff;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 25px;
+}
+
+.enquiry-pay-popup-left img {
+  width: 160px;
+  margin-bottom: 10px;
+}
+
+.enquiry-pay-popup-left h3 {
+  margin: 10px 0 5px;
+  font-size: 24px;
+  color: #046d38;
+}
+
+.enquiry-pay-popup-left p {
+  font-size: 16px;
+  color: #054083;
+  font-weight: 600;
+}
+
+/*--- RIGHT SIDE - Form Section ---*/
+.enquiry-pay-popup-right {
+  flex: 1.5;
+}
+
+.enquiry-pay-popup-right h2 {
+  margin-bottom: 20px;
+  color: #00661a;
+  font-size: 28px;
+}
+
+/*--- Form Inputs ---*/
+.enquiry-pay input,
+.enquiry-pay select,
+.enquiry-pay textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #13a75d;
+  border-radius: 15px;
+  font-size: 15px;
+}
+
+/* When user clicks (focuses) on the field */
+.enquiry-pay input:focus,
+.enquiry-pay select:focus,
+.enquiry-pay textarea:focus {
+  border-color: #4c6faf; /* Green border color */
+  box-shadow: 0 0 5px #4a2df0; /* Soft glow effect */
+}
+
+.enquiry-pay textarea {
+  resize: none;
+  height: 80px;
+}
+
+/*--- Button ---*/
+.enquiry-pay button {
+  width: 100%;
+  padding: 12px;
+  background: #108f54;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.enquiry-pay button:hover {
+  background: #02582d;
+}
+
+/*--- Fee Box ---*/
+.enquiry-pay-feeBox {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* ======================================= */
+/* 📱 MOBILE (320px – 767px) */
+/* ======================================= */
+
+@media (max-width: 767px) {
+
+  .enquiry-pay-popup-box {
+    padding: 20px;
+  }
+
+  .enquiry-pay-popup-content {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .enquiry-pay-popup-left {
+    padding: 25px;
+  }
+
+  .enquiry-pay-popup-left img {
+    width: 130px;
+  }
+
+  .enquiry-pay-popup-left h3 {
+    font-size: 20px;
+  }
+
+  .enquiry-pay-popup-right h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .enquiry-pay input,
+  .enquiry-pay select,
+  .enquiry-pay textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .enquiry-pay button {
+    font-size: 16px;
+  }
+}
+
+/* ======================================= */
+/* 📲 TABLET (768px – 1024px) */
+/* ======================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .enquiry-pay-popup-box {
+    max-width: 95%;
+    padding: 25px;
+  }
+
+  .enquiry-pay-popup-content {
+    gap: 25px;
+  }
+
+  .enquiry-pay-popup-left img {
+    width: 150px;
+  }
+
+  .enquiry-pay-popup-right h2 {
+    font-size: 26px;
+  }
+}
+
+
+</style>
+
+</head>
+  <body>
+
+
+    <!-- ✅ Popup Enquiry Form  -->
+    <div class="enquiry-pay-popup-box">
+      <div class="enquiry-pay-popup-content">
+    
+    <!-- LEFT SIDE LOGO -->
+    <div class="enquiry-pay-popup-left">
+      <img src="picture/Logo3470-health3-removebg-preview.png" alt="3470 Healthcare Logo" />
+      <h3>3470Healthcare</h3>
+      <p>Medical Coding Training Institute</p>
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="enquiry-pay-popup-right">
+      <h2>Enquiry Form</h2>
+
+      <form id="enquiryForm" class="enquiry-pay" novalidate action="#" method="POST">
+        <input type="text" id="name" name="name" placeholder="Enter Name" required />
+        <input type="email" id="email" name="email" placeholder="Enter Email" required />
+        <input type="tel" id="phone" name="phone" placeholder="Enter Phone" required />
+
+        <select id="course" name="course" required>
+          <option value="">-- Select Course --</option>
+            <option value="Basic Medical Coding Training">
+              BMCT - Basic Medical Coding Training
+            </option>
+            <option value="Advanced Medical Coding Training">
+              AMCT - Advanced Medical Coding Training
+            </option>
+            <option value="Certified Professional Coder">
+              CPC - Certified Professional Coder
+            </option>
+            <option value="Certified Professional Medical Auditor">
+              CPMA - Certified Professional Medical Auditor
+            </option>
+            <option value="Certified Risk Adjustment Coder">
+              CRC - Certified Risk Adjustment Coder
+            </option>
+            <option value="Certified Coding Specialist">
+              CCS - Certified Coding Specialist
+            </option>
+            <option value="Evaluation & Management">
+              E&M - Evaluation & Management
+            </option>
+            <option value="Emergency Department">
+              ED - Emergency Department
+            </option>
+            <option value="Inpatient Coding Diagnosis Related Groups">
+              IPDRG - Inpatient Diagnosis-Related Group
+            </option>
+            <option value="Interactive Voice Response">
+              IVR - Interventional Radiology
+            </option>
+            <option value="Surgery Training">Surgery</option>
+        </select>
+
+        <div id="feeBox" class="enquiry-pay-feeBox" style="display:none;">
+            <p>Fee: ₹<span id="fee"></span></p>
+            <p>Discount: ₹<span id="discount"></span></p>
+            <h3>Final: ₹<span id="final"></span></h3>
+        </div>
+
+        <select id="location" name="location" required>
+            <option value="">-- Select Location --</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Trichy">Trichy</option>
+        </select>
+
+        <textarea id="message" class="enquiry-pay-message" name="message" placeholder="Enter Message"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+
+  const form = document.getElementById("enquiryForm");
+  const courseDropdown = document.getElementById("course");
+  const feeBox = document.getElementById("feeBox");
+
+  if (!form) return;
+
+  const courses = {
+    "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
+    "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
+    "Certified Professional Coder": { fee: 14000, discount: 2000 },
+    "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
+    "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
+    "Certified Coding Specialist": { fee: 14000, discount: 2000 },
+    "Evaluation & Management": { fee: 14000, discount: 2000 },
+    "Emergency Department": { fee: 14000, discount: 2000 },
+    "Inpatient Coding Diagnosis Related Groups": { fee: 14000, discount: 2000 },
+    "Interactive Voice Response": { fee: 14000, discount: 2000 },
+    "Surgery Training": { fee: 14000, discount: 2000 }
+  };
+
+  /* Fee Calculation */
+  courseDropdown.addEventListener("change", () => {
+
+    const selected = courseDropdown.value;
+
+    if (!courses[selected]) {
+      feeBox.style.display = "none";
+      return;
+    }
+
+    const fee = courses[selected].fee;
+    const discount = courses[selected].discount;
+    const final = fee - discount;
+
+    document.getElementById("fee").innerText = fee;
+    document.getElementById("discount").innerText = discount;
+    document.getElementById("final").innerText = final;
+
+    feeBox.style.display = "block";
+  });
+
+  /* Form Submit */
+  form.addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+    const data = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      course: document.getElementById("course").value.trim(),
+      location: document.getElementById("location").value.trim(),
+      message: document.getElementById("message").value.trim()
+    };
+
+    if (!data.name || !data.email || !data.phone || !data.course) {
+      alert("Please fill all required fields!");
+      return;
+    }
+
+    try {
+
+      const res = await fetch("http://localhost:3000/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      alert(result.message || "Enquiry submitted successfully!");
+
+      form.reset();
+      feeBox.style.display = "none";
+
+    } catch (err) {
+
+      console.error("Enquiry submission error:", err);
+      alert("Error submitting enquiry. Please try again.");
+    }
+  });
+
+});
+
+</script>
+
+
+  </body>
+</html>
+   
+
+
