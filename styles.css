@@ -12661,7 +12661,7 @@ button.admin-approve-btn:hover {
   .ccc-details-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-    margin-bottom: 0;
+    margin-bottom: -20px;
   }
 }
 
@@ -12685,3 +12685,2621 @@ button.admin-approve-btn:hover {
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+                               /*-------- Healthcare Information Management (HIM) ------------ */
+
+/*--- CONTAINER ---*/
+.him-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+/*--- TITLE ---*/
+.him-container h1 {
+  text-align: center;
+  font-size: 34px;
+  color: #04552f;
+  margin-bottom: 40px;
+}
+
+.him-container h2::after {
+  display: none;
+}
+
+/*--- OVERVIEW ---*/
+.him-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.him-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+/*--- TEXT ---*/
+.him-overview-text {
+  flex: 1;
+}
+
+.him-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.him-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/*--- IMAGE ---*/
+.him-overview-image {
+  flex: 1;
+  text-align: right;
+}
+
+.him-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.him-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/*--- CARD DESIGN ---*/
+.him-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.him-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.him-card h2 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.him-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.him-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.him-card ul {
+  padding-left: 20px;
+}
+
+.him-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/*--- GRID ---*/
+.him-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+                                /* =================================
+                                        Him - RESPONSIVE DESIGN
+                                   ================================= */
+
+/* ======================
+   TABLET (768px - 1024px)
+====================== */
+@media (max-width: 1024px) {
+
+  .him-overview-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .him-overview-image {
+    text-align: center;
+  }
+
+  .him-overview-image img {
+    max-width: 400px;
+  }
+
+  .him-overview-text h2 {
+    margin-top: 0;
+  }
+
+  .him-container {
+    padding: 40px 20px;
+  }
+}
+
+
+/* ======================
+   MOBILE (Below 768px)
+====================== */
+@media (max-width: 767px) {
+
+  .him-container {
+    padding: 30px 15px;
+  }
+
+  .him-container h1 {
+    font-size: 26px;
+  }
+
+  .him-overview {
+    padding: 20px;
+  }
+
+  .him-overview-content h2 {
+    font-size: 22px;
+  }
+
+  .him-overview-text p,
+  .him-card p,
+  .him-card ul li {
+    font-size: 16px;
+  }
+
+  .him-overview-image img {
+    max-width: 100%;
+  }
+
+  .him-details-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -20px;
+  }
+}
+
+
+/* ======================
+   SMALL MOBILE (Below 400px)
+====================== */
+@media (max-width: 400px) {
+
+  .him-container h1 {
+    font-size: 22px;
+  }
+
+  .him-overview-content h2 {
+    font-size: 20px;
+  }
+
+  .him-overview-text p {
+    font-size: 15px;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+
+
+                                 /*-------- Radiology Medical Coding ------------ */
+
+
+/*--- CONTAINER ---*/
+.radiology-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+/*--- TITLE ---*/
+.radiology-container h1 {
+  text-align: center;
+  font-size: 34px; 
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.radiology-container h2::after {
+  display: none;
+}
+
+/*--- OVERVIEW ---*/
+.radiology-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.radiology-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+/*--- TEXT ---*/
+.radiology-overview-text {
+  flex: 1;
+}
+
+.radiology-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.radiology-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/*--- IMAGE ---*/
+.radiology-overview-image {
+  flex: 1;
+  text-align: right;  
+}
+
+.radiology-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.radiology-overview-image img:hover {
+    transform: scale(1.05);
+}
+
+/*--- CARDS ---*/
+.radiology-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.radiology-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.radiology-card h2 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.radiology-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.radiology-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.radiology-card ul {
+  padding-left: 20px;
+}
+
+.radiology-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/*--- GRID ---*/
+.radiology-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+                                /* ===================================================
+                                       Radiology Medical Coding - RESPONSIVE DESIGN
+                                   =================================================== */
+
+/* ----------- TABLET (768px - 1024px) ----------- */
+
+@media (max-width: 1024px) {
+
+  .radiology-container {
+    padding: 40px 20px;
+  }
+
+  .radiology-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .radiology-overview-image {
+    text-align: center;
+  }
+
+  .radiology-overview-image img {
+    max-width: 400px;
+  }
+
+  .radiology-overview-text h2 {
+    font-size: 28px;
+  }
+
+  .radiology-container h1 {
+    font-size: 30px;
+  }
+
+  .radiology-card h2,
+  .radiology-card h3 {
+    font-size: 22px;
+  }
+
+  .radiology-card p,
+  .radiology-card ul li {
+    font-size: 16px;
+  }
+
+  .radiology-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -20px;
+  }
+}
+
+/* ----------- MOBILE (Below 768px) ----------- */
+
+@media (max-width: 767px) {
+
+  .radiology-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .radiology-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .radiology-overview {
+    padding: 20px;
+  }
+
+  .radiology-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .radiology-overview-text p {
+    font-size: 15px;
+  }
+
+  .radiology-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .radiology-overview-image img {
+    max-width: 100%;
+  }
+
+  .radiology-card {
+    padding: 20px;
+  }
+
+  .radiology-card h2,
+  .radiology-card h3 {
+    font-size: 20px;
+  }
+
+  .radiology-card p,
+  .radiology-card ul li {
+    font-size: 15px;
+  }
+
+  .radiology-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -20px;
+  }
+}
+
+/* ----------- SMALL MOBILE (Below 400px) ----------- */
+
+@media (max-width: 400px) {
+
+  .radiology-container h1 {
+    font-size: 20px;
+  }
+
+  .radiology-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .radiology-card h2,
+  .radiology-card h3 {
+    font-size: 18px;
+  }
+
+  .radiology-card p,
+  .radiology-card ul li {
+    font-size: 14px;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------- */
+
+                                         /*-------- Anesthesia Medical Coding ------------ */
+
+/*--- CONTAINER ---*/
+.anesthesia-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+/*--- TITLE ---*/
+.anesthesia-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.anesthesia-container h2::after {
+  display: none;
+}
+
+/*--- OVERVIEW ---*/
+.anesthesia-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.anesthesia-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+/*--- TEXT ---*/
+.anesthesia-overview-text {
+  flex: 1;
+}
+
+.anesthesia-overview-text h2 { 
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.anesthesia-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/*--- IMAGE ---*/
+.anesthesia-overview-image {
+  flex: 1;
+  text-align: right;    
+}
+
+.anesthesia-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.anesthesia-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/*--- CARDS ---*/
+.anesthesia-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.anesthesia-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.anesthesia-card h2 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.anesthesia-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.anesthesia-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.anesthesia-card ul {
+  padding-left: 20px;
+}
+
+.anesthesia-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/*--- GRID ---*/
+.anesthesia-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+
+                                /* ===================================================
+                                       anesthesia Medical Coding - RESPONSIVE DESIGN
+                                   =================================================== */
+
+
+/* ----------- TABLET (768px - 1024px) ----------- */
+@media (max-width: 1024px) {
+
+  .anesthesia-container {
+    padding: 40px 20px;
+  }
+
+  .anesthesia-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .anesthesia-overview-image {
+    text-align: center;
+  }
+
+  .anesthesia-overview-image img {
+    max-width: 100%;
+  }
+
+  .anesthesia-container h1 {
+    font-size: 30px;
+  }
+
+  .anesthesia-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .anesthesia-card h2,
+  .anesthesia-card h3 {
+    font-size: 22px;
+  }
+
+  .anesthesia-card p,
+  .anesthesia-card ul li {
+    font-size: 16px;
+  }
+
+  .anesthesia-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ----------- MOBILE (Below 768px) ----------- */
+@media (max-width: 767px) {
+
+  .anesthesia-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .anesthesia-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .anesthesia-overview {
+    padding: 20px;
+  }
+
+  .anesthesia-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .anesthesia-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .anesthesia-overview-text p {
+    font-size: 15px;
+  }
+
+  .anesthesia-overview-image img {
+    max-width: 100%;
+  }
+
+  .anesthesia-card {
+    padding: 20px;
+  }
+
+  .anesthesia-card h2,
+  .anesthesia-card h3 {
+    font-size: 20px;
+  }
+
+  .anesthesia-card p,
+  .anesthesia-card ul li {
+    font-size: 15px;
+  }
+
+  .anesthesia-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ----------- SMALL MOBILE (Below 400px) ----------- */
+@media (max-width: 400px) {
+
+  .anesthesia-container h1 {
+    font-size: 20px;
+  }
+
+  .anesthesia-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .anesthesia-card h2,
+  .anesthesia-card h3 {
+    font-size: 18px;
+  }
+
+  .anesthesia-card p,
+  .anesthesia-card ul li {
+    font-size: 14px;
+  }
+}
+
+
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+
+
+                                        /*-------- Hierarchical Condition Category (HCC) ------------ */
+         
+
+/* ===============================
+   COMMON COURSE CONTAINER
+================================= */
+
+.hcc-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.hcc-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.hcc-container h2::after {
+  display: none;
+}
+
+/* ===============================
+   COURSE OVERVIEW SECTION
+================================= */
+
+.hcc-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.hcc-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+.hcc-overview-text {
+  flex: 1;
+}
+
+.hcc-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.hcc-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/*--- Image Styling ---*/
+.hcc-overview-image {
+  flex: 1;
+  text-align: right;    
+}
+
+.hcc-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.hcc-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   CARD STYLING
+================================= */
+
+.hcc-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.hcc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.hcc-card h2 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.hcc-card h3 {
+ color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.hcc-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.hcc-card ul {
+  padding-left: 20px;
+}
+
+.hcc-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/* ===============================
+   DETAILS GRID
+================================= */
+
+.hcc-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+                                   /* ============================================================
+                                       Hierarchical Condition Category (HCC) - RESPONSIVE DESIGN
+                                      ============================================================ */
+
+
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .hcc-container {
+    padding: 40px 20px;
+  }
+
+  .hcc-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hcc-overview-image {
+    text-align: center;
+  }
+
+  .hcc-overview-image img {
+    max-width: 100%;
+  }
+
+  .hcc-container h1 {
+    font-size: 30px;
+  }
+
+  .hcc-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .hcc-card h2,
+  .hcc-card h3 {
+    font-size: 22px;
+  }
+
+  .hcc-card p,
+  .hcc-card ul li {
+    font-size: 16px;
+  }
+
+  .hcc-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .hcc-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .hcc-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .hcc-overview {
+    padding: 20px;
+  }
+
+  .hcc-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hcc-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .hcc-overview-text p {
+    font-size: 15px;
+  }
+
+  .hcc-overview-image img {
+    max-width: 100%;
+  }
+
+  .hcc-card {
+    padding: 20px;
+  }
+
+  .hcc-card h2,
+  .hcc-card h3 {
+    font-size: 20px;
+  }
+
+  .hcc-card p,
+  .hcc-card ul li {
+    font-size: 15px;
+  }
+
+  .hcc-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .hcc-container h1 {
+    font-size: 20px;
+  }
+
+  .hcc-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .hcc-card h2,
+  .hcc-card h3 {
+    font-size: 18px;
+  }
+
+  .hcc-card p,
+  .hcc-card ul li {
+    font-size: 14px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+                                    /*-------- Certified Coding Specialist – Physician (CCS-P) ------------ */
+
+
+/* ===================================
+   CCS-P SECTION STYLING
+=================================== */
+
+.ccsp-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.ccsp-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.ccsp-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.ccsp-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.ccsp-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+.ccsp-overview-text {
+  flex: 1;
+}
+
+.ccsp-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.ccsp-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.ccsp-overview-image {
+  flex: 1;
+  text-align: right;    
+}
+
+.ccsp-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.ccsp-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.ccsp-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.ccsp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.ccsp-card h2 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.ccsp-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.ccsp-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.ccsp-card ul {
+  padding-left: 20px;
+}
+
+.ccsp-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.ccsp-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+                                  /* ======================================================================
+                                       Certified Coding Specialist – Physician (CCS-P) - RESPONSIVE DESIGN
+                                     ====================================================================== */
+
+
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .ccsp-container {
+    padding: 40px 20px;
+  }
+
+  .ccsp-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .ccsp-overview-image {
+    text-align: center;
+  }
+
+  .ccsp-overview-image img {
+    max-width: 100%;
+  }
+
+  .ccsp-container h1 {
+    font-size: 30px;
+  }
+
+  .ccsp-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .ccsp-card h2,
+  .ccsp-card h3 {
+    font-size: 22px;
+  }
+
+  .ccsp-card p,
+  .ccsp-card ul li {
+    font-size: 16px;
+  }
+
+  .ccsp-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .ccsp-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .ccsp-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .ccsp-overview {
+    padding: 20px;
+  }
+
+  .ccsp-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ccsp-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .ccsp-overview-text p {
+    font-size: 15px;
+  }
+
+  .ccsp-overview-image img {
+    max-width: 100%;
+  }
+
+  .ccsp-card {
+    padding: 20px;
+  }
+
+  .ccsp-card h2,
+  .ccsp-card h3 {
+    font-size: 20px;
+  }
+
+  .ccsp-card p,
+  .ccsp-card ul li {
+    font-size: 15px;
+  }
+
+  .ccsp-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .ccsp-container h1 {
+    font-size: 20px;
+  }
+
+  .ccsp-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .ccsp-card h2,
+  .ccsp-card h3 {
+    font-size: 18px;
+  }
+
+  .ccsp-card p,
+  .ccsp-card ul li {
+    font-size: 14px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------------- */
+
+                              /*-------- Registered Health Information Administrator (RHIA) ------------ */
+
+
+/* ===================================
+   RHIA SECTION STYLING
+=================================== */
+
+.rhia-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.rhia-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.rhia-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.rhia-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.rhia-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+.rhia-overview-text {
+  flex: 1;
+}
+
+.rhia-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.rhia-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.rhia-overview-image {
+  flex: 1;
+  text-align: right;  
+}
+
+.rhia-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.rhia-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.rhia-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.rhia-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.rhia-card h2,
+.rhia-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.rhia-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.rhia-card ul {
+  padding-left: 20px;
+}
+
+.rhia-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.rhia-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+                                  /* ======================================================================
+                                       Certified Coding Specialist – Physician (CCS-P) - RESPONSIVE DESIGN
+                                     ====================================================================== */
+
+
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .rhia-container {
+    padding: 40px 20px;
+  }
+
+  .rhia-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .rhia-overview-image {
+    text-align: center;
+  }
+
+  .rhia-overview-image img {
+    max-width: 100%;
+  }
+
+  .rhia-container h1 {
+    font-size: 30px;
+  }
+
+  .rhia-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .rhia-card h2,
+  .rhia-card h3 {
+    font-size: 22px;
+  }
+
+  .rhia-card p,
+  .rhia-card ul li {
+    font-size: 16px;
+  }
+
+  .rhia-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .rhia-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .rhia-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .rhia-overview {
+    padding: 20px;
+  }
+
+  .rhia-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .rhia-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .rhia-overview-text p {
+    font-size: 15px;
+  }
+
+  .rhia-overview-image img {
+    max-width: 100%;
+  }
+
+  .rhia-card {
+    padding: 20px;
+  }
+
+  .rhia-card h2,
+  .rhia-card h3 {
+    font-size: 20px;
+  }
+
+  .rhia-card p,
+  .rhia-card ul li {
+    font-size: 15px;
+  }
+
+  .rhia-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .rhia-container h1 {
+    font-size: 20px;
+  }
+
+  .rhia-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .rhia-card h2,
+  .rhia-card h3 {
+    font-size: 18px;
+  }
+
+  .rhia-card p,
+  .rhia-card ul li {
+    font-size: 14px;
+  }
+}                                     
+
+/* --------------------------------------------------------------------------------------------------------------- */
+
+                                 /*----- Registered Health Information Technician (RHIT) -------*/
+
+
+
+/* ===================================
+   RHIT SECTION STYLING
+=================================== */
+
+.rhit-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.rhit-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.rhit-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.rhit-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.rhit-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+.rhit-overview-text {
+  flex: 1;
+}
+
+.rhit-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.rhit-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.rhit-overview-image {
+  flex: 1;
+  text-align: right;  
+}
+
+.rhit-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.rhit-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.rhit-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.rhit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.rhit-card h2,
+.rhit-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.rhit-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.rhit-card ul {
+  padding-left: 20px;
+}
+
+.rhit-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.rhit-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+
+
+                                  /* ======================================================================
+                                       Registered Health Information Technician (RHIT) - RESPONSIVE DESIGN
+                                     ====================================================================== */
+
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .rhit-container {
+    padding: 40px 20px;
+  }
+
+  .rhit-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .rhit-overview-image {
+    text-align: center;
+  }
+
+  .rhit-overview-image img {
+    max-width: 100%;
+  }
+
+  .rhit-container h1 {
+    font-size: 30px;
+  }
+
+  .rhit-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .rhit-card h2,
+  .rhit-card h3 {
+    font-size: 22px;
+  }
+
+  .rhit-card p,
+  .rhit-card ul li {
+    font-size: 16px;
+  }
+
+  .rhit-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .rhit-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .rhit-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .rhit-overview {
+    padding: 20px;
+  }
+
+  .rhit-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .rhit-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .rhit-overview-text p {
+    font-size: 15px;
+  }
+
+  .rhit-overview-image img {
+    max-width: 100%;
+  }
+
+  .rhit-card {
+    padding: 20px;
+  }
+
+  .rhit-card h2,
+  .rhit-card h3 {
+    font-size: 20px;
+  }
+
+  .rhit-card p,
+  .rhit-card ul li {
+    font-size: 15px;
+  }
+
+  .rhit-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .rhit-container h1 {
+    font-size: 20px;
+  }
+
+  .rhit-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .rhit-card h2,
+  .rhit-card h3 {
+    font-size: 18px;
+  }
+
+  .rhit-card p,
+  .rhit-card ul li {
+    font-size: 14px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------- */
+
+                       /*--------- Certified Inpatient Coder (CIC) --------------*/
+
+
+/* ===================================
+        CIC SECTION STYLING
+   =================================== */
+
+.cic-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.cic-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.cic-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.cic-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.cic-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+.cic-overview-text {
+  flex: 1;
+}
+
+.cic-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.cic-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.cic-overview-image {
+  flex: 1;
+  text-align: right;  
+}
+
+.cic-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.cic-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.cic-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.cic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.cic-card h2,
+.cic-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.cic-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.cic-card ul {
+  padding-left: 20px;
+}
+
+.cic-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.cic-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+                                   /* ======================================================================
+                                                Certified Inpatient Coder (CIC) - RESPONSIVE DESIGN
+                                      ====================================================================== */
+ 
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .cic-container {
+    padding: 40px 20px;
+  }
+
+  .cic-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .cic-overview-image {
+    text-align: center;
+  }
+
+  .cic-overview-image img {
+    max-width: 100%;
+  }
+
+  .cic-container h1 {
+    font-size: 30px;
+  }
+
+  .cic-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .cic-card h2,
+  .cic-card h3 {
+    font-size: 22px;
+  }
+
+  .cic-card p,
+  .cic-card ul li {
+    font-size: 16px;
+  }
+
+  .cic-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .cic-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .cic-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .cic-overview {
+    padding: 20px;
+  }
+
+  .cic-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cic-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .cic-overview-text p {
+    font-size: 15px;
+  }
+
+  .cic-overview-image img {
+    max-width: 100%;
+  }
+
+  .cic-card {
+    padding: 20px;
+  }
+
+  .cic-card h2,
+  .cic-card h3 {
+    font-size: 20px;
+  }
+
+  .cic-card p,
+  .cic-card ul li {
+    font-size: 15px;
+  }
+
+  .cic-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .cic-container h1 {
+    font-size: 20px;
+  }
+
+  .cic-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .cic-card h2,
+  .cic-card h3 {
+    font-size: 18px;
+  }
+
+  .cic-card p,
+  .cic-card ul li {
+    font-size: 14px;
+  }
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------- */
+
+                                 /*------------------ Certified Outpatient Coder (COC) -----------*/
+
+
+/* ===================================
+   COC SECTION STYLING
+=================================== */
+
+.coc-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.coc-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.coc-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.coc-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.coc-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;  
+}
+
+.coc-overview-text {
+  flex: 1;
+}
+
+.coc-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.coc-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.coc-overview-image {
+  flex: 1;
+  text-align: right;  
+}
+
+.coc-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.coc-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.coc-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.coc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.coc-card h2,
+.coc-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.coc-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.coc-card ul {
+  padding-left: 20px;
+}
+
+.coc-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.coc-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+
+                          /* =====================================
+                                  RESPONSIVE DESIGN - COC
+                             ===================================== */
+
+ 
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .coc-container {
+    padding: 40px 20px;
+  }
+
+  .coc-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .coc-overview-image {
+    text-align: center;
+  }
+
+  .coc-overview-image img {
+    max-width: 100%;
+  }
+
+  .coc-container h1 {
+    font-size: 30px;
+  }
+
+  .coc-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .coc-card h2,
+  .coc-card h3 {
+    font-size: 22px;
+  }
+
+  .coc-card p,
+  .coc-card ul li {
+    font-size: 16px;
+  }
+
+  .coc-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .coc-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .coc-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .coc-overview {
+    padding: 20px;
+  }
+
+  .coc-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .coc-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .coc-overview-text p {
+    font-size: 15px;
+  }
+
+  .coc-overview-image img {
+    max-width: 100%;
+  }
+
+  .coc-card {
+    padding: 20px;
+  }
+
+  .coc-card h2,
+  .coc-card h3 {
+    font-size: 20px;
+  }
+
+  .coc-card p,
+  .coc-card ul li {
+    font-size: 15px;
+  }
+
+  .coc-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .coc-container h1 {
+    font-size: 20px;
+  }
+
+  .coc-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .coc-card h2,
+  .coc-card h3 {
+    font-size: 18px;
+  }
+
+  .coc-card p,
+  .coc-card ul li {
+    font-size: 14px;
+  }
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+                                        /*--------- Certified Professional Biller (CPB) -----------*/
+
+/* ===================================
+   CPB SECTION STYLING
+=================================== */
+
+.cpb-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.cpb-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.cpb-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.cpb-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.cpb-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between; 
+}
+
+.cpb-overview-text {
+  flex: 1;
+}
+
+.cpb-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.cpb-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.cpb-overview-image {
+  flex: 1;
+  text-align: right; 
+}
+
+.cpb-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.cpb-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.cpb-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.cpb-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.cpb-card h2,
+.cpb-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.cpb-card p {
+  font-size: 18px;
+  color: #043819;
+}
+
+.cpb-card ul {
+  padding-left: 20px;
+}
+
+.cpb-card ul li {
+  margin-bottom: 8px;
+  color: #043819;
+  font-size: 18px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.cpb-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+
+                          /* =====================================
+                                  RESPONSIVE DESIGN - Cpb
+                             ===================================== */
+
+ 
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .cpb-container {
+    padding: 40px 20px;
+  }
+
+  .cpb-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .cpb-overview-image {
+    text-align: center;
+  }
+
+  .cpb-overview-image img {
+    max-width: 100%;
+  }
+
+  .cpb-container h1 {
+    font-size: 30px;
+  }
+
+  .cpb-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .cpb-card h2,
+  .cpb-card h3 {
+    font-size: 22px;
+  }
+
+  .cpb-card p,
+  .cpb-card ul li {
+    font-size: 16px;
+  }
+
+  .cpb-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .cpb-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .cpb-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .cpb-overview {
+    padding: 20px;
+  }
+
+  .cpb-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cpb-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .cpb-overview-text p {
+    font-size: 15px;
+  }
+
+  .cpb-overview-image img {
+    max-width: 100%;
+  }
+
+  .cpb-card {
+    padding: 20px;
+  }
+
+  .cpb-card h2,
+  .cpb-card h3 {
+    font-size: 20px;
+  }
+
+  .cpb-card p,
+  .cpb-card ul li {
+    font-size: 15px;
+  }
+
+  .cpb-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .cpb-container h1 {
+    font-size: 20px;
+  }
+
+  .cpb-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .cpb-card h2,
+  .cpb-card h3 {
+    font-size: 18px;
+  }
+
+  .cpb-card p,
+  .cpb-card ul li {
+    font-size: 14px;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------------------------------- */
