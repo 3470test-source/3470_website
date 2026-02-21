@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3470 Healthcare & Medical Coding Training Institute | Employment Form</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
+    
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+
+/* Page Background */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #068545, #03521d);
+}
+
+/*--- Main Wrapper ---*/
+.employment-online-form-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 35px;
+  border-radius: 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  background: #add9f8;
+}
+
+/*--- Header Section ---*/
+.Em-form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.Em-form-logo {
+  width: 170px;
+  margin-bottom: 10px;
+}
+
+.Em-form-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+  color: #0b7a3a;
+}
+
+::placeholder {
+  color: #0d0e0d;             
+}
+
+.Em-form-header p {
+  margin-top: 20px;
+  color: #0976d4;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/*--- Form Layout ---*/
+.employmentForm-online {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/*--- Full Width Elements ---*/
+.employmentForm-online textarea,
+.employmentForm-online button,
+.employmentForm-online input[type="file"] {
+  grid-column: span 2;
+}
+
+/*--- Inputs & Select ---*/
+.employmentForm-online input,
+.employmentForm-online select,
+.employmentForm-online textarea {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+/*--- Focus Effect ---*/
+.employmentForm-online input:focus,
+.employmentForm-online select:focus,
+.employmentForm-online textarea:focus {
+  border-color: #0bda65;
+  box-shadow: 0 0 5px rgba(2, 163, 50, 0.2);
+}
+
+/*--- File Upload ---*/
+input[type="file"] {
+  padding: 8px;
+  background: #f9f9f9;
+}
+
+/*--- Submit Button ---*/
+.employmentForm-online button {
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background: #028836;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.employmentForm-online button:hover {
+  background: #075f24;
+}
+
+/* =========================================
+   📱 MOBILE (320px – 767px)
+========================================= */
+@media (max-width: 767px) {
+
+  .employment-online-form-wrapper {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .employmentForm-online {
+    grid-template-columns: 1fr;   /* Single column */
+  }
+
+  .employmentForm-online textarea,
+  .employmentForm-online button,
+  .employmentForm-online input[type="file"] {
+    grid-column: span 1;
+  }
+
+  .Em-form-title {
+    font-size: 22px;
+  }
+
+  .Em-form-header p {
+    font-size: 14px;
+  }
+
+  .employmentForm-online button {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   📲 TABLET (768px – 1024px)
+========================================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .employment-online-form-wrapper {
+    max-width: 95%;
+    padding: 30px;
+  }
+
+  .employmentForm-online {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .Em-form-title {
+    font-size: 26px;
+  }
+}
+
+/* =========================================
+   💻 DESKTOP (1025px and above)
+========================================= */
+@media (min-width: 1025px) {
+
+  .employment-online-form-wrapper {
+    max-width: 900px;
+  }
+
+}
+
+    </style>
+
+</head>
+<body>  
+
+<div class="employment-online-form-wrapper">
+
+  <!-- Header Section -->
+  <div class="Em-form-header">
+    <img src="picture/Logo3470-health3-removebg-preview.png" 
+         alt="Company Logo" 
+         class="Em-form-logo">
+
+    <h2 class="Em-form-title">Employment Application</h2>
+    <p>Please fill in your details below</p>
+  </div>
+
+ 
+<form id="employmentForm-online" class="employmentForm-online">
+
+  <!-- Basic Info -->
+  <input type="text" name="fullName" placeholder="Full Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="tel" name="phoneNo" placeholder="Phone No" required>
+
+  <!-- Position -->
+  <select name="position" id="position" required>
+   <option value="">-- Select Position to be Applied --</option>
+    <option value="Medical Coding">Medical Coding</option>
+      <option value="AR Calling">AR Calling</option>
+      <option value="AR Analyst">AR Analyst</option>
+      <option value="Payment Posting">Payment Posting</option>
+      <option value="Charge Entry">Charge Entry</option>
+      <option value="Website Developer">Website Developer</option>
+      <option value="Application Developer">Application Developer</option>
+      <option value="Network Engineer">Network Engineer</option>
+      <option value="Human Resources">Human Resources</option>
+      <option value="Admin">Admin</option>
+      <option value="Process Associate">Process Associate</option>
+      <option value="Telecalling">Telecalling</option>
+      <option value="Accountant">Accountant</option>
+      <option value="Medical Coding Trainers">Medical Coding Trainers</option>
+      <option value="Team Lead - Coding">Team Lead - Coding</option>
+  </select>
+
+  <!-- Medical Coding -->
+  <select name="medicalCoding" id="medicalCoding">
+   <option value="">-- Select Medical Coding --</option>
+    <option value="Radiology">Radiology</option>
+      <option value="IPDRG">IPDRG</option>
+      <option value="Surgery">Surgery</option>
+      <option value="Denial">Denial</option>
+      <option value="Dermatology">Dermatology</option>
+      <option value="HCC">HCC</option>
+      <option value="E&M">E&M</option>
+      <option value="ED">ED</option>
+      <option value="IVR">IVR</option>
+      <option value="Ambulance">Ambulance</option>
+  </select>
+
+  <!-- Medical Coding Trainers -->
+  <select name="medicalCodingTrainer" id="medicalCodingTrainer">
+   <option value="">-- Select Medical Coding Trainers --</option>
+    <option value="CCS">CCS</option>
+      <option value="Surgery">Surgery</option> 
+      <option value="CIC">CIC</option>
+      <option value="CRC">CRC</option>
+      <option value="E&M">E&M</option>
+      <option value="ED">ED</option>
+      <option value="IVR">IVR</option>
+      <option value="CPMA">CPMA</option>
+  </select>
+
+  <!-- Work Experience -->
+  <select name="workExperience" required>
+    <option value="">-- Work Experience --</option>
+    <option value="Fresher">Fresher</option>
+    <option value="1-2 Years">1-2 Years</option>
+    <option value="3-5 Years">2-3 Years</option>
+    <option value="3-5 Years">3-5 Years</option>
+    <option value="3-5 Years">5+ Years</option>
+  </select>
+
+  <!-- Recommended -->
+  <select name="recommendedBy" id="recommendedBy" required>
+    <option value="">-- Recommended By --</option>
+    <option value="Employee">Ex - Employee</option>
+    <option value="Consultancy">Current Employee</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <!-- Referrer Details -->
+  <input type="text" name="refEmployeeCode" placeholder="Referrer Employee Code">
+  <input type="text" name="refName" placeholder="Referrer Name">
+  <input type="email" name="refEmail" placeholder="Referrer Email">
+  <input type="tel" name="refPhone" placeholder="Referrer Phone No">
+  
+  <!-- Relationship -->
+  <select name="relationship">
+    <option value="">-- Relationship --</option>
+    <option value="Friend">Friend</option>
+    <option value="Colleague">Colleague</option>
+    <option value="Relative">Relative</option>
+  </select>
+
+  <!-- Referee -->
+  <input type="text" name="refereeName" placeholder="Referee Name">
+  <input type="tel" name="refereePhone" placeholder="Referee Phone No">
+  <input type="email" name="refereeEmail" placeholder="Referee Email">
+  <input type="file" name="refereeResume">
+
+  <button type="submit">Submit</button>
+
+ </form>
+
+</div>
+
+    
+<script src="main.js"></script>
+
+
+<script>
+document.getElementById("employmentForm-online").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = document.getElementById("employmentForm-online");
+  const formData = new FormData(form);
+  const file = formData.get("refereeResume");
+
+  if (!file || file.size === 0) {
+    alert("Please upload referee resume");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function() {
+
+    const base64 = reader.result.split(',')[1];
+
+    const data = {
+      fullName: formData.get("fullName"),
+      email: formData.get("email"),
+      phoneNo: formData.get("phoneNo"),
+      position: formData.get("position"),
+      medicalCoding: formData.get("medicalCoding"),
+      medicalCodingTrainer: formData.get("medicalCodingTrainer"),
+      workExperience: formData.get("workExperience"),
+      recommendedBy: formData.get("recommendedBy"),
+      refEmployeeCode: formData.get("refEmployeeCode"),
+      refName: formData.get("refName"),
+      refEmail: formData.get("refEmail"),
+      refPhone: formData.get("refPhone"),
+      relationship: formData.get("relationship"),
+      refereeName: formData.get("refereeName"),
+      refereePhone: formData.get("refereePhone"),
+      refereeEmail: formData.get("refereeEmail"),
+      refereeFileName: file.name,
+      refereeMimeType: file.type,
+      refereeResumeFile: base64
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbwwwPx05uWObcYDCDgUMPm5f1xyV5LHO9wneANL_zflMOwiNQGL6gMSm1utQoEQ6nC6GA/exec", {
+      method: "POST",
+      body: new URLSearchParams(data)
+    })
+    .then(res => res.json())
+    .then(response => {
+      if (response.status === "success") {
+        alert("Employment Application Submitted Successfully!");
+        form.reset();
+      } else {
+        alert("Error submitting form");
+      }
+    })
+    .catch(error => {
+      alert("Error occurred!");
+      console.error(error);
+    });
+  };
+
+  reader.readAsDataURL(file);
+});
+</script>
+
+</body>
+</html>        
+

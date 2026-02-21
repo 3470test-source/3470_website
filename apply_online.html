@@ -176,7 +176,7 @@
   <img src="picture/Logo3470-health3-removebg-preview.png" class="logo-apply-online-form">
     <h2>Apply Online</h2>
 
-<form id="applyFrom-online">
+<form id="applyForm-online">
     <div class="apply-online-form-grid-2">
 
       <input type="text" name="name" placeholder="Name">
@@ -275,15 +275,14 @@
 <script src="main.js"></script>
 
 
-<!-- <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbyBBLT3Td_Hk_5ony2w-DPsFzfmS-91XcLz706rARDotS6x5Uxk3W_TJK0Cf8nmA78PVQ/exec";  
-
-document.getElementById("applyFrom-online").addEventListener("submit", function (e) {
+<script>
+document.getElementById("applyForm-online").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  const form = e.target;
-  const fileInput = document.getElementById("resume");
-  const file = fileInput.files[0];
+  const form = document.getElementById("applyForm-online");
+  const formData = new FormData(form);
+
+  const file = document.getElementById("resume").files[0];
 
   if (!file) {
     alert("Please upload resume");
@@ -292,94 +291,54 @@ document.getElementById("applyFrom-online").addEventListener("submit", function 
 
   const reader = new FileReader();
 
-  reader.onload = function () {
-    const base64 = reader.result.split(",")[1];
+  reader.onload = function() {
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const base64 = reader.result.split(',')[1];
 
-    data.file = base64;
-    data.fileName = file.name;
-    data.mimeType = file.type;
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phoneNo: formData.get("phoneNo"),
+      PostingtoApply: formData.get("PostingtoApply"),
+      medicalCoding: formData.get("medicalCoding"),
+      MedicalCodingTrainer: formData.get("MedicalCodingTrainer"),
+      address: formData.get("address"),
+      city: formData.get("city"),
+      state: formData.get("state"),
+      PostalCode: formData.get("PostalCode"),
+      country: formData.get("country"),
+      EmployeeStatus: formData.get("EmployeeStatus"),
+      Employer: formData.get("Employer"),
+      Designation: formData.get("Designation"),
+      salary: formData.get("salary"),
+      reason: formData.get("reason"),
+      fileName: file.name,
+      mimeType: file.type,
+      resumeFile: base64
+    };
 
-    fetch(scriptURL, {
+    fetch("https://script.google.com/macros/s/AKfycbyQj5hOhpVBGOIcqX7PXtc8oms_yr2iAit5YgUS9VysgyDGsW1ylfv2krvSlXTl-k6U/exec", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      body: new URLSearchParams(data)
     })
-    .then(response => response.json())
-    .then(res => {
-      if (res.result === "success") {
-        alert("Application submitted successfully!");
+    .then(res => res.json())
+    .then(response => {
+      if (response.status === "success") {
+        alert("Application Submitted Successfully!");
         form.reset();
       } else {
-        alert("Error: " + res.message);
+        alert("Error submitting form");
       }
     })
     .catch(error => {
+      alert("Error occurred!");
       console.error(error);
-      alert("Upload failed!");
-    });
-  };
-
-  reader.readAsDataURL(file);
-});
-</script> -->
-
-
-<script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbyBBLT3Td_Hk_5ony2w-DPsFzfmS-91XcLz706rARDotS6x5Uxk3W_TJK0Cf8nmA78PVQ/exec";
-
-document.getElementById("applyFrom-online").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const fileInput = document.getElementById("resume");
-  const file = fileInput.files[0];
-
-  if (!file) {
-    alert("Please upload resume");
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function () {
-
-    const base64 = reader.result.split(",")[1];
-
-    const formData = new FormData(form);
-    formData.append("file", base64);
-    formData.append("fileName", file.name);
-    formData.append("mimeType", file.type);
-
-    fetch(scriptURL, {
-      method: "POST",
-      body: formData   // ✅ NO headers
-    })
-    .then(res => res.text())
-    .then(res => {
-      const data = JSON.parse(res);
-
-      if (data.result === "success") {
-        alert("Application submitted successfully!");
-        form.reset();
-      } else {
-        alert("Error: " + data.message);
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert("Upload failed!");
     });
   };
 
   reader.readAsDataURL(file);
 });
 </script>
-
 
 
 </body>
