@@ -15567,3 +15567,1055 @@ button.admin-approve-btn:hover {
 
 
 /* ---------------------------------------------------------------------------------------------------------------------------- */
+
+                                  /*----- Certified Evaluation & Management Coder (CEMC) -----*/
+
+/* ===================================
+   CEMC SECTION STYLING
+=================================== */
+
+.cemc-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.cemc-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.cemc-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.cemc-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.cemc-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.cemc-overview-text {
+  flex: 1;
+}
+
+.cemc-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.cemc-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.cemc-overview-image {
+  flex: 1;
+  text-align: right;
+}
+
+.cemc-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.cemc-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.cemc-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.cemc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.cemc-card h2,
+.cemc-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.cemc-card p,
+.cemc-card ul li {
+  font-size: 18px;
+  color: #043819;
+}
+
+.cemc-card ul {
+  padding-left: 20px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.cemc-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+
+                         /* =====================================
+                                  RESPONSIVE DESIGN - CEMC
+                             ===================================== */
+
+ 
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .cemc-container {
+    padding: 40px 20px;
+  }
+
+  .cemc-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .cemc-overview-image {
+    text-align: center;
+  }
+
+  .cemc-overview-image img {
+    max-width: 100%;
+  }
+
+  .cemc-container h1 {
+    font-size: 30px;
+  }
+
+  .cemc-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .cemc-card h2,
+  .cemc-card h3 {
+    font-size: 22px;
+  }
+
+  .cemc-card p,
+  .cemc-card ul li {
+    font-size: 16px;
+  }
+
+  .cemc-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .cemc-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .cemc-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .cemc-overview {
+    padding: 20px;
+  }
+
+  .cemc-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cemc-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .cemc-overview-text p {
+    font-size: 15px;
+  }
+
+  .cemc-overview-image img {
+    max-width: 100%;
+  }
+
+  .cemc-card {
+    padding: 20px;
+  }
+
+  .cemc-card h2,
+  .cemc-card h3 {
+    font-size: 20px;
+  }
+
+  .cemc-card p,
+  .cemc-card ul li {
+    font-size: 15px;
+  }
+
+  .cemc-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .cemc-container h1 {
+    font-size: 20px;
+  }
+
+  .cemc-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .cemc-card h2,
+  .cemc-card h3 {
+    font-size: 18px;
+  }
+
+  .cemc-card p,
+  .cemc-card ul li {
+    font-size: 14px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+
+/* ===================================
+   CDEO OUTPATIENT SECTION STYLING
+=================================== */
+
+.cdeo-op-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.cdeo-op-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.cdeo-op-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.cdeo-op-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.cdeo-op-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.cdeo-op-overview-text {
+  flex: 1;
+}
+
+.cdeo-op-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.cdeo-op-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.cdeo-op-overview-image {
+  flex: 1;
+  text-align: right;
+}
+
+.cdeo-op-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.cdeo-op-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.cdeo-op-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.cdeo-op-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.cdeo-op-card h2,
+.cdeo-op-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.cdeo-op-card p,
+.cdeo-op-card ul li {
+  font-size: 18px;
+  color: #043819;
+}
+
+.cdeo-op-card ul {
+  padding-left: 20px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.cdeo-op-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+
+                          /* =====================================
+                                  RESPONSIVE DESIGN - CDEO
+                             ===================================== */
+
+ 
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .cdeo-op-container {
+    padding: 40px 20px;
+  }
+
+  .cdeo-op-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .cdeo-op-overview-image {
+    text-align: center;
+  }
+
+  .cdeo-op-overview-image img {
+    max-width: 100%;
+  }
+
+  .cdeo-op-container h1 {
+    font-size: 30px;
+  }
+
+  .cdeo-op-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .cdeo-op-card h2,
+  .cdeo-op-card h3 {
+    font-size: 22px;
+  }
+
+  .cdeo-op-card p,
+  .cdeo-op-card ul li {
+    font-size: 16px;
+  }
+
+  .cdeo-op-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .cdeo-op-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .cdeo-op-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .cdeo-op-overview {
+    padding: 20px;
+  }
+
+  .cdeo-op-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cdeo-op-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .cdeo-op-overview-text p {
+    font-size: 15px;
+  }
+
+  .cdeo-op-overview-image img {
+    max-width: 100%;
+  }
+
+  .cdeo-op-card {
+    padding: 20px;
+  }
+
+  .cdeo-op-card h2,
+  .cdeo-op-card h3 {
+    font-size: 20px;
+  }
+
+  .cdeo-op-card p,
+  .cdeo-op-card ul li {
+    font-size: 15px;
+  }
+
+  .cdeo-op-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .cdeo-op-container h1 {
+    font-size: 20px;
+  }
+
+  .cdeo-op-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .cdeo-op-card h2,
+  .cdeo-op-card h3 {
+    font-size: 18px;
+  }
+
+  .cdeo-op-card p,
+  .cdeo-op-card ul li {
+    font-size: 14px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+                            /*----- Certified Documentation Expert – Inpatient (CDEI) -----*/
+
+
+/* ===================================
+   CDEI SECTION STYLING
+=================================== */
+
+.cdei-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.cdei-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.cdei-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.cdei-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.cdei-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.cdei-overview-text {
+  flex: 1;
+}
+
+.cdei-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.cdei-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.cdei-overview-image {
+  flex: 1;
+  text-align: right;
+}
+
+.cdei-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.cdei-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.cdei-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.cdei-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.cdei-card h2,
+.cdei-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.cdei-card p,
+.cdei-card ul li {
+  font-size: 18px;
+  color: #043819;
+}
+
+.cdei-card ul {
+  padding-left: 20px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.cdei-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+                          /* =====================================
+                                  RESPONSIVE DESIGN - CDEI
+                             ===================================== */
+
+ 
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .cdei-container {
+    padding: 40px 20px;
+  }
+
+  .cdei-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .cdei-overview-image {
+    text-align: center;
+  }
+
+  .cdei-overview-image img {
+    max-width: 100%;
+  }
+
+  .cdei-container h1 {
+    font-size: 30px;
+  }
+
+  .cdei-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .cdei-card h2,
+  .cdei-card h3 {
+    font-size: 22px;
+  }
+
+  .cdei-card p,
+  .cdei-card ul li {
+    font-size: 16px;
+  }
+
+  .cdei-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .cdei-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .cdei-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .cdei-overview {
+    padding: 20px;
+  }
+
+  .cdei-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cdei-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .cdei-overview-text p {
+    font-size: 15px;
+  }
+
+  .cdei-overview-image img {
+    max-width: 100%;
+  }
+
+  .cdei-card {
+    padding: 20px;
+  }
+
+  .cdei-card h2,
+  .cdei-card h3 {
+    font-size: 20px;
+  }
+
+  .cdei-card p,
+  .cdei-card ul li {
+    font-size: 15px;
+  }
+
+  .cdei-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .cdei-container h1 {
+    font-size: 20px;
+  }
+
+  .cdei-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .cdei-card h2,
+  .cdei-card h3 {
+    font-size: 18px;
+  }
+
+  .cdei-card p,
+  .cdei-card ul li {
+    font-size: 14px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------ */
+
+
+
+
+/* ===================================
+   CPPM SECTION STYLING
+=================================== */
+
+.cppm-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+  margin-top: -10px;
+}
+
+.cppm-container h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: #04552f;
+}
+
+.cppm-container h2::after {
+  display: none;
+}
+
+/* ===================================
+   OVERVIEW SECTION
+=================================== */
+
+.cppm-overview {
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  background: #d4cea8;
+}
+
+.cppm-overview-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.cppm-overview-text {
+  flex: 1;
+}
+
+.cppm-overview-text h2 {
+  margin-bottom: 15px;
+  margin-top: -20px;
+  color: #052569;
+  font-size: 32px;
+}
+
+.cppm-overview-text p {
+  font-size: 18px;
+  color: #043819;
+}
+
+/* ===================================
+   IMAGE STYLE
+=================================== */
+
+.cppm-overview-image {
+  flex: 1;
+  text-align: right;
+}
+
+.cppm-overview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.cppm-overview-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   CARD STYLE
+=================================== */
+
+.cppm-card {
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  background: #d4cea8;
+}
+
+.cppm-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.cppm-card h2,
+.cppm-card h3 {
+  color: #052569;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.cppm-card p,
+.cppm-card ul li {
+  font-size: 18px;
+  color: #043819;
+}
+
+.cppm-card ul {
+  padding-left: 20px;
+}
+
+/* ===================================
+   DETAILS GRID
+=================================== */
+
+.cppm-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+
+
+                          /* =====================================
+                                  RESPONSIVE DESIGN - CPPM
+                             ===================================== */
+
+ 
+/* ---------- TABLET (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .cppm-container {
+    padding: 40px 20px;
+  }
+
+  .cppm-overview-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .cppm-overview-image {
+    text-align: center;
+  }
+
+  .cppm-overview-image img {
+    max-width: 100%;
+  }
+
+  .cppm-container h1 {
+    font-size: 30px;
+  }
+
+  .cppm-overview-text h2 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .cppm-card h2,
+  .cppm-card h3 {
+    font-size: 22px;
+  }
+
+  .cppm-card p,
+  .cppm-card ul li {
+    font-size: 16px;
+  }
+
+  .cppm-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- MOBILE (Below 768px) ---------- */
+@media (max-width: 767px) {
+
+  .cppm-container {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+
+  .cppm-container h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .cppm-overview {
+    padding: 20px;
+  }
+
+  .cppm-overview-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cppm-overview-text h2 {
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .cppm-overview-text p {
+    font-size: 15px;
+  }
+
+  .cppm-overview-image img {
+    max-width: 100%;
+  }
+
+  .cppm-card {
+    padding: 20px;
+  }
+
+  .cppm-card h2,
+  .cppm-card h3 {
+    font-size: 20px;
+  }
+
+  .cppm-card p,
+  .cppm-card ul li {
+    font-size: 15px;
+  }
+
+  .cppm-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: -30px;
+  }
+}
+
+
+/* ---------- SMALL MOBILE (Below 400px) ---------- */
+@media (max-width: 400px) {
+
+  .cppm-container h1 {
+    font-size: 20px;
+  }
+
+  .cppm-overview-text h2 {
+    font-size: 18px;
+  }
+
+  .cppm-card h2,
+  .cppm-card h3 {
+    font-size: 18px;
+  }
+
+  .cppm-card p,
+  .cppm-card ul li {
+    font-size: 14px;
+  }
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------- */
