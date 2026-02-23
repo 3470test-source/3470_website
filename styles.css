@@ -11328,7 +11328,6 @@ main.dash-video-content {
   }
 }
 
-
                /* ------------   Tab --> 768 x 1024 ---------- */
 
 @media (max-width: 768px) {
@@ -15660,7 +15659,7 @@ button.admin-approve-btn:hover {
   transition: 0.3s;
   background: #d4cea8;
 }
-
+ 
 .cemc-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 25px rgba(0,0,0,0.15);
@@ -15694,7 +15693,6 @@ button.admin-approve-btn:hover {
   margin-top: 20px;
   margin-bottom: -50px;
 }
-
 
 
                          /* =====================================
@@ -15958,7 +15956,6 @@ button.admin-approve-btn:hover {
 }
 
 
-
                           /* =====================================
                                   RESPONSIVE DESIGN - CDEO
                              ===================================== */
@@ -15982,7 +15979,7 @@ button.admin-approve-btn:hover {
   }
 
   .cdeo-op-overview-image img {
-    max-width: 100%;
+    max-width: 50%;
   }
 
   .cdeo-op-container h1 {
@@ -16165,7 +16162,7 @@ button.admin-approve-btn:hover {
 
 .cdei-overview-image img {
   width: 100%;
-  max-width: 450px;
+  max-width: 300px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   transition: 0.3s ease;
@@ -16246,7 +16243,7 @@ button.admin-approve-btn:hover {
   }
 
   .cdei-overview-image img {
-    max-width: 100%;
+    max-width: 50%;
   }
 
   .cdei-container h1 {
@@ -16428,7 +16425,7 @@ button.admin-approve-btn:hover {
 
 .cppm-overview-image img {
   width: 100%;
-  max-width: 450px;
+  max-width: 300px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   transition: 0.3s ease;
@@ -16510,7 +16507,7 @@ button.admin-approve-btn:hover {
   }
 
   .cppm-overview-image img {
-    max-width: 100%;
+    max-width: 50%;
   }
 
   .cppm-container h1 {
@@ -16619,3 +16616,193 @@ button.admin-approve-btn:hover {
 }
 
 /* --------------------------------------------------------------------------------------------------------------------------------- */
+
+                                /*-------------- Student attendance -----------------*/
+
+.attendance-main-container {
+  display: flex;
+  height: 100vh;
+}
+
+/*---- LEFT SIDE ----*/
+.attendance-left-section {
+  flex: 1;
+  background: #9ccaa6;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.attendance-left-section h2 {
+  font-size: 28px;
+  color: #004aad;
+}
+
+.attendance-left-section img {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+/*---- RIGHT SIDE ----*/
+.attendance-right-section {
+  flex: 1;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+}
+
+.attendance-right-section h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #078518;
+}
+
+.attendance-right-section form {
+  max-width: 450px;
+}
+
+.attendance-form-group {
+  margin-bottom: 15px;
+}
+
+.attendance-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: black;
+}
+
+.attendance-form-group input,
+.attendance-form-group select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 16px;
+  border: 1px solid #0cbe5c;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.attendance-form-group input:focus,
+.attendance-form-group select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.attendance-right-section button {
+  width: 100%;
+  padding: 10px;
+  background: #049428;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.attendance-right-section button:hover {
+  background: #035e1a;
+}
+
+
+                                   /*------ Student Attendance responsive style ------*/
+
+
+/* ============================= */
+/* TABLET VIEW (768px - 1024px) */
+/* ============================= */
+
+@media (max-width: 1024px) {
+
+  .attendance-right-section {
+    padding: 30px;
+  }
+
+  .attendance-right-section h2 {
+    font-size: 28px;
+  }
+
+  .attendance-left-section h2 {
+    font-size: 22px;
+  }
+
+  .attendance-left-section img {
+    width: 200px;
+  }
+}
+
+/* ============================= */
+/* MOBILE VIEW (Below 768px) */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .attendance-main-container {
+    flex-direction: column;
+  }
+
+  .attendance-left-section,
+  .attendance-right-section {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .attendance-left-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .attendance-left-section img {
+    width: 180px;
+  }
+
+  .attendance-right-section {
+    padding: 30px 20px;
+  }
+
+  .attendance-right-section h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .attendance-form-group label {
+    font-size: 16px;
+  }
+
+  .attendance-right-section button {
+    font-size: 16px;
+  }
+}
+
+/* ============================= */
+/* SMALL MOBILE (Below 480px) */
+/* ============================= */
+
+@media (max-width: 480px) {
+
+  .attendance-left-section img {
+    width: 150px;
+  }
+
+  .attendance-right-section {
+    padding: 20px 15px;
+  }
+
+  .attendance-form-group input,
+  .attendance-form-group select {
+    font-size: 14px;
+  }
+
+  .attendance-right-section button {
+    padding: 8px;
+    font-size: 15px;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
