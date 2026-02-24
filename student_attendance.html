@@ -47,22 +47,29 @@
     <!-- LEFT SIDE - LOGO -->
     <div class="attendance-left-section">
         <img src="picture/Logo3470-health3-removebg-preview.png" alt="Company Logo">
-        <!-- <h2>3470Healthcare &amp; Medical Coding Training Institute</h2> -->
-         <h2>
-  3470Healthcare &<br>
-  Medical Coding Training Institute
-</h2>
+        <h2>3470Healthcare &<br>Medical Coding Training Institute</h2>
     </div>
 
     <!-- RIGHT SIDE - FORM -->
     <div class="attendance-right-section">
         <h2>Student Attendance</h2>
 
-        <form>
-
+        <form id="attendanceForm">
             <div class="attendance-form-group">
                 <label>Full Name</label>
                 <input type="text" required>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="attendance-form-group">
+                <label>Contact No</label>
+                <input type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10 digit number" required>
+            </div>
+
+            <!-- Emergency Number -->
+            <div class="attendance-form-group">
+                <label>Emergency No</label>
+                <input type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="Enter Emergency number" required>
             </div>
 
             <div class="attendance-form-group">
@@ -77,9 +84,9 @@
                 <label>Batch</label>
                 <select id="Attendance-batch" required>
                   <option>Select Batch</option>
-                    <option value="morning_weekday">Weekdays Morning</option>
-                    <option value="evening_weekday">Weekdays Evening</option>
-                    <option value="morning_weekend">Weekend Morning</option>
+                    <option value="Morning weekday">Weekdays Morning</option>
+                    <option value="Evening weekday">Weekdays Evening</option>
+                    <option value="Morning weekend">Weekend Morning</option>
                 </select>
             </div>
 
@@ -94,13 +101,12 @@
                 <label>Attendance Status</label>
                 <select required>
                     <option>Select Status</option>
-                    <option>Present</option>
-                    <option>Absent</option>
+                    <option value="Present" selected>Present</option>
+                    <!-- <option value="Absent">Absent</option> -->
                 </select>
             </div>
 
             <button type="submit">Submit</button>
-
         </form>
     </div>
 
@@ -119,26 +125,49 @@ batchSelect.addEventListener("change", function () {
     // Clear old options
     timeSelect.innerHTML = '<option value="">Select Time</option>';
 
-    if (batchValue === "morning_weekday") {
-        timeSelect.innerHTML += '<option value="7am">7.00am to 9.30am</option>';
+    if (batchValue === "Morning weekday") {
+        timeSelect.innerHTML += '<option value="7am to 9:30am">7.00am to 9.30am</option>';
     } 
-    else if (batchValue === "evening_weekday") {
-        timeSelect.innerHTML += '<option value="6pm">6.00pm to 8.30pm</option>';
+    else if (batchValue === "Evening weekday") {
+        timeSelect.innerHTML += '<option value="6pm to 8:30pm">6.00pm to 8.30pm</option>';
     } 
-    else if (batchValue === "morning_weekend") {
-        timeSelect.innerHTML += '<option value="9am">9.00am to 1.30pm</option>';
+    else if (batchValue === "Morning weekend") {
+        timeSelect.innerHTML += '<option value="9am to 1:30pm">9.00am to 1.30pm</option>';
     }
 
 });
 </script>
 
+<!-- Google Sheet Data  -->
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyJD8iO_cjE9ZBeORf2chI7zNjrj8gUN4aPPWLNb0FGwxsLr7zjdKOnTGE_dwrCaLlWIA/exec";
+const form = document.getElementById("attendanceForm");
 
+form.addEventListener("submit", e => {
+    e.preventDefault();
 
+    const formData = {
+        fullName: form.querySelector('input[type="text"]').value,
+        contactNo: form.querySelectorAll('input[type="tel"]')[0].value,
+        emergencyNo: form.querySelectorAll('input[type="tel"]')[1].value,
+        course: form.querySelectorAll('select')[0].value,
+        batch: document.getElementById("Attendance-batch").value,
+        time: document.getElementById("Attendance-time").value,
+        status: form.querySelectorAll('select')[3].value
+    };
 
-
-
-
-
+    fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        alert("Attendance Saved Successfully ✅");
+        form.reset();   // ✅ This clears the form
+        timeSelect.innerHTML = '<option value="">Select Time</option>'; // reset time dropdown
+    })
+    .catch(error => alert("Error!"));
+});
+</script>
 
 </body>
 </html>   
