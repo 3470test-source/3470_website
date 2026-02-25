@@ -24,6 +24,43 @@
     body {
       background-color: #c0c9d6;
     }
+
+/* ============================= */
+/* PREMIUM SCROLL ANIMATION */
+/* ============================= */
+
+.animate-section {
+  opacity: 0;
+  transform: scale(0.9) translateY(50px);
+  transition: all 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Visible */
+.animate-section.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Text & Image stagger effect */
+.animate-section .text-container,
+.animate-section .image-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.animate-section.show .text-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.animate-section.show .image-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
   </style>
 
   <body class="no-right-click-3470">
@@ -152,7 +189,7 @@
     </header>
 
     <!-- Courses Overview -->
-    <div class="course">
+    <div class="course animate-section">
       <h1>Courses Overview</h1>
       <p>
         Our medical coding training programs are designed to help students
@@ -163,7 +200,7 @@
     </div>
 
     <!-- Medical Coding -->
-    <section id="medical" class="medical-coding-section">
+    <section id="medical" class="medical-coding-section animate-section">
       <!-- Image on the left -->
       <div class="image-container">
         <img src="picture/MC.webp" alt="Medical Coding" />
@@ -186,7 +223,7 @@
     </section>
 
     <!-- BMCT -->
-    <section id="bmct" class="bmct-section">
+    <section id="bmct" class="bmct-section animate-section">
       <!-- Text on the left -->
       <div class="text-container">
         <h2>
@@ -208,7 +245,7 @@
     </section>
 
     <!-- AMCT -->
-    <section id="amct" class="Amct-section">
+    <section id="amct" class="Amct-section animate-section">
       <!-- Image on the left -->
       <div class="image-container">
         <img src="picture/AMCT.jpeg" alt="AMCT Course" />
@@ -231,7 +268,7 @@
     </section>
 
     <!-- CPC -->
-    <section id="cpc" class="CPC-section">
+    <section id="cpc" class="CPC-section animate-section">
       <!-- Image on the left -->
       <div class="text-container">
         <h2>
@@ -253,7 +290,7 @@
     </section>
 
     <!-- EM -->
-    <section id="em" class="EM-section">
+    <section id="em" class="EM-section animate-section">
       <!-- Image on the left -->
       <div class="image-container">
         <img src="picture/E&M.jpeg" alt="Evaluation & Management" />
@@ -275,7 +312,7 @@
     </section>
 
     <!-- IPDRG -->
-    <section id="ipdrg" class="ipdrg-section">
+    <section id="ipdrg" class="ipdrg-section animate-section">
       <!-- Image on the left -->
       <div class="text-container">
         <h2>
@@ -299,7 +336,7 @@
     </section>
 
     <!-- ED -->
-    <section id="ed" class="ed-section">
+    <section id="ed" class="ed-section animate-section">
       <!-- Image on the left -->
       <div class="image-container">
         <img src="picture/ED.jpeg" alt="Emergency Department Course" />
@@ -322,7 +359,7 @@
     </section>
 
     <!-- CCS -->
-    <section id="ccs" class="ccs-section">
+    <section id="ccs" class="ccs-section animate-section">
       <!-- Text on the right -->
       <div class="text-container">
         <h2>
@@ -345,7 +382,7 @@
     </section>
 
     <!-- CPMA -->
-    <section id="cpma" class="cpma-section">
+    <section id="cpma" class="cpma-section animate-section">
       <!-- Image on the right -->
       <div class="image-container">
         <img src="picture/CPMA.jpeg" alt="CPMA Course" />
@@ -368,7 +405,7 @@
     </section>
 
     <!-- CRC -->
-    <section id="crc" class="crc-section">
+    <section id="crc" class="crc-section animate-section">
       <!-- Text on the right -->
       <div class="text-container">
         <h2>
@@ -391,7 +428,7 @@
     </section>
 
     <!-- IVR -->
-    <section id="ivr" class="ivr-section">
+    <section id="ivr" class="ivr-section animate-section">
       <!-- Image on the right -->
       <div class="image-container">
         <img src="picture/IVR.jpg" alt="IVR Course" />
@@ -413,7 +450,7 @@
     </section>
 
     <!-- Surgery -->
-    <section id="surgery" class="surgery-section">
+    <section id="surgery" class="surgery-section animate-section">
       <!-- Text on the right -->
       <div class="text-container">
         <h2>
@@ -444,7 +481,7 @@
     </div>
 
     <!-- First Footer (Detailed Info) -->
-    <footer class="footer-main">
+    <footer class="footer-main animate-section">
       <div class="footer-container">
         <div class="footer-col">
           <h3>3470<span class="add"></span> Healthcare</h3>
@@ -525,61 +562,6 @@
             </span>
           </p>
         </div>
-
-        <!-- AAPC CERTIFICATIONS -->
-        <!-- <div class="footer-col">
-          <h3>AAPC</h3>
-          <ul>
-            <li>CPC</li>
-            <li>CPMA</li>
-            <li>CRC</li>
-            <li>CIC</li>
-            <li>COC</li> 
-            <li>CPB</li>
-            <li>CEDC</li>
-            <li>CEMC</li>
-            <li>CDEO</li>
-            <li>CDEI</li>
-            <li>CPPM</li>
-          </ul>
-        </div> -->
-
-        <!-- SPECIALITIES -->
-        <!-- <div class="footer-col">
-          <h3>SPECIALITIES</h3>
-          <ul>
-            <li>Surgery</li>
-            <li>IPDRG</li>
-            <li>IVR</li>
-            <li>ED</li>
-            <li>EM</li>
-            <li>Radiology</li>
-            <li>Anesthesia</li>
-            <li>HCC</li>
-            
-          </ul>
-        </div> -->
-
-        <!-- AHIMA CERTIFICATIONS -->
-        <!-- <div class="footer-col">
-          <h3>AHIMA</h3>
-          <ul>
-            <li>CCS</li>
-            <li>CCS-P</li>
-            <li>RHIA</li>
-            <li>RHIT</li>
-          </ul>
-        </div> -->
-
-        <!-- HIMAA CERTIFICATIONS -->
-        <!-- <div class="footer-col">
-          <h3>HIMAA</h3>
-          <ul>
-            <li>CCC</li>
-            <li>HIM</li>
-          </ul>
-        </div>
-      </div> -->
     </footer>
 
 
@@ -689,6 +671,34 @@ menuToggle.addEventListener("click", () => {
 });
 
 </script>
+
+
+<!-- Animation Style -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     
+    const sections = document.querySelectorAll(".animate-section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show");
+          }
+        });
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
+
   </body>
 </html>
