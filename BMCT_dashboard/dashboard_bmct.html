@@ -99,7 +99,8 @@
 
       <!-- Main Content -->
       <main class="main-content">
-        <h1>Welcome, Student!</h1>
+        <!-- <h1>Welcome, Student!</h1> -->
+         <h1>Welcome, <span id="username"></span>!</h1>
         <p>Your progress in the BMCT - Medical Coding Training Program.</p>
 
         <!-- Progress Cards -->
@@ -195,6 +196,22 @@
     }
 })();
 
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("/getUser", { credentials: "include" })
+    .then(res => res.json())
+    .then(data => {
+      if (data.username) {
+        document.getElementById("username").textContent = data.username;
+      } else {
+        window.location.href = "/";
+      }
+    })
+    .catch(err => console.error("Error:", err));
+});
 </script>
 
   </body>
