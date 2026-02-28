@@ -368,7 +368,6 @@ await pool.query(`
 
 
 
-
 app.get("/getUser", (req, res) => {
   if (req.session && req.session.user) {
     res.json({ username: req.session.user });
