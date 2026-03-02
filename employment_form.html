@@ -195,6 +195,7 @@ input[type="file"] {
 
 }
 
+
     </style>
 
 </head>
@@ -241,8 +242,8 @@ input[type="file"] {
   </select>
 
   <!-- Medical Coding -->
-  <select name="medicalCoding" id="medicalCoding">
-   <option value="">-- Select Medical Coding --</option>
+  <select name="medicalCoding" id="medicalCoding" required>
+   <option value="">-- Select Medical Coding Job --</option>
     <option value="Radiology">Radiology</option>
       <option value="IPDRG">IPDRG</option>
       <option value="Surgery">Surgery</option>
@@ -256,8 +257,8 @@ input[type="file"] {
   </select>
 
   <!-- Medical Coding Trainers -->
-  <select name="medicalCodingTrainer" id="medicalCodingTrainer">
-   <option value="">-- Select Medical Coding Trainers --</option>
+  <select name="medicalCodingTrainer" id="medicalCodingTrainer" required>
+   <option value="">-- Select Medical Coding Trainers Job --</option>
     <option value="CCS">CCS</option>
       <option value="Surgery">Surgery</option> 
       <option value="CIC">CIC</option>
@@ -314,7 +315,6 @@ input[type="file"] {
 
     
 <script src="main.js"></script>
-
 
 <script>
 document.getElementById("employmentForm-online").addEventListener("submit", function(e) {
@@ -378,6 +378,30 @@ document.getElementById("employmentForm-online").addEventListener("submit", func
 
   reader.readAsDataURL(file);
 });
+</script>
+
+<!-- Condition for medical coding or medical coding Trainer -->
+<script>
+  const medicalCoding = document.getElementById("medicalCoding");
+  const medicalCodingTrainer = document.getElementById("medicalCodingTrainer");
+
+  // When Medical Coding changes
+  medicalCoding.addEventListener("change", function () {
+    if (this.value !== "") {
+      medicalCodingTrainer.disabled = true;
+    } else {
+      medicalCodingTrainer.disabled = false;
+    }
+  });
+
+  // When Medical Coding Trainer changes
+  medicalCodingTrainer.addEventListener("change", function () {
+    if (this.value !== "") {
+      medicalCoding.disabled = true;
+    } else {
+      medicalCoding.disabled = false;
+    }
+  });
 </script>
 
 </body>

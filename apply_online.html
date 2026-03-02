@@ -179,12 +179,12 @@
 <form id="applyForm-online">
     <div class="apply-online-form-grid-2">
 
-      <input type="text" name="name" placeholder="Name">
-      <input type="email" name="email" placeholder="Email">
-      <input type="tel" name="phoneNo" placeholder="Phone No">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phoneNo" placeholder="Phone No" required>
 
       <!-- Posting To Apply -->
-      <select id="posting" name="PostingtoApply" class="posting to apply">
+      <select id="posting" name="PostingtoApply" class="posting to apply" required>
         <option>-- Select Posting to Apply --</option>
           <option value="Medical Coding">Medical Coding</option>
           <option value="AR Calling">AR Calling</option>
@@ -204,8 +204,8 @@
       </select>
 
       <!-- Medical Coding -->
-      <select id="Medical-Coding" name="medicalCoding" class="Medical-Coding">
-        <option>-- Medical Coding --</option>
+      <select id="MedicalCoding" name="medicalCoding" class="Medical-Coding" required>
+        <option value="">-- Medical Coding Job --</option>
           <option value="Radiology">Radiology</option>
           <option value="IPDRG">IPDRG</option>
           <option value="Surgery">Surgery</option>
@@ -219,8 +219,8 @@
       </select>
 
       <!-- Medical-Coding-Trainers -->
-      <select id="Medical-Coding-Trainers" name="MedicalCodingTrainer" class="Medical-Coding-Trainers">
-        <option>-- Medical Coding Trainers --</option>
+      <select id="MedicalCodingTrainers" name="MedicalCodingTrainer" class="Medical-Coding-Trainers" required>
+        <option value="">-- Medical Coding Trainers Job --</option>
           <option value="CCS">CCS</option>
           <option value="Surgery">Surgery</option> 
           <option value="CIC">CIC</option>
@@ -233,7 +233,7 @@
 
     </div>
 
-    <textarea name="address" placeholder="Address"></textarea>
+    <textarea name="address" placeholder="Address" required></textarea>
 
     <div class="apply-online-form-grid-2">
 
@@ -340,6 +340,30 @@ document.getElementById("applyForm-online").addEventListener("submit", function(
 });
 </script>
 
+
+<!-- Condition for medical coding or medical coding Trainer -->
+<script>
+  const medicalCoding = document.getElementById("MedicalCoding");
+  const medicalCodingTrainer = document.getElementById("MedicalCodingTrainers");
+
+  // When Medical Coding changes
+  medicalCoding.addEventListener("change", function () {
+    if (this.value !== "") {
+      medicalCodingTrainer.disabled = true;
+    } else {
+      medicalCodingTrainer.disabled = false;
+    }
+  });
+
+  // When Medical Coding Trainer changes
+  medicalCodingTrainer.addEventListener("change", function () {
+    if (this.value !== "") {
+      medicalCoding.disabled = true;
+    } else {
+      medicalCoding.disabled = false;
+    }
+  });
+</script>
 
 </body>
 </html>        
