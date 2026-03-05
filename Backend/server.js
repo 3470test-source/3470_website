@@ -3,7 +3,9 @@ const express = require("express");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-// const bodyParser = require("body-parser");
+
+const bodyParser = require("body-parser");
+
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const axios = require("axios");
@@ -37,13 +39,24 @@ const FRONTEND_URL =
     : process.env.LOCAL_FRONTEND_URL;
 
 
-
     /* ---------------- RAZORPAY ---------------- */
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_KEY_SECRET
 });
+
+
+
+
+
+/* ==========================
+   PDF OTP STORE
+========================== */
+
+const pdfOtpStore = {};
+
+
 
 
 /* =====================================================
@@ -380,41 +393,8 @@ app.get("/getUser", (req, res) => {
 
 
 // app.use(express.json());
-// app.use(bodyParser.json());
-
-
-/* ==========================
-       ENQUIRY FORM 
-   ========================== */
-
-// app.post("/api/enquiry", (req, res) => {
-//   const { name, email, phone, course, location, message } = req.body;
-
-//   if (!name || !email || !phone || !course || !location) {
-//     return res.status(400).json({ message: "All fields required" });
-//   }
-
-//   const sql = `
-//     INSERT INTO enquiries (name, email, phone, course, location, message)
-//     VALUES (?, ?, ?, ?, ?, ?)
-//   `;
-
-//   db.query(
-//     sql,
-//     [name, email, phone, course, location, message],
-//     (err) => {
-//       if (err) {
-//         console.error(err);
-//         return res.status(500).json({ message: "Database Error" });
-//       }
-//       res.json({ message: "Enquiry submitted successfully" });
-//     }
-//   );
-// });
-
-
-
-
+app.use(bodyParser.json());
+app.use(express.static("public"));
 
 
 /* ==========================
@@ -645,6 +625,119 @@ app.post("/api/register", async (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+/* ==========================
+   GENERATE PDF OTP
+========================== */
+
+app.post("/api/pdf/generate-otp", async (req, res) => {
+
+  try {
+
+    const { file } = req.body;
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    pdfOtpStore[file] = {
+      otp,
+      expiry: Date.now() + 5 * 60 * 1000
+    };
+
+    console.log("PDF OTP:", otp);
+
+    await transporter.sendMail({
+      from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
+      to: "3470test@gmail.com",
+      subject: "PDF Access OTP",
+      html: `
+        <h3>PDF Access OTP</h3>
+        <p>OTP: <b>${otp}</b></p>
+        <p>Valid for 5 minutes</p>
+      `
+    });
+
+    res.json({ success: true });
+
+  } catch (err) {
+
+    console.error("OTP Error:", err);
+    res.status(500).json({ success: false });
+
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================
+   VERIFY PDF OTP
+========================== */
+
+app.post("/api/pdf/verify-otp", (req, res) => {
+
+  const { file, otp } = req.body;
+
+  const record = pdfOtpStore[file];
+
+  if (!record)
+    return res.json({ success: false, message: "OTP not found" });
+
+  if (Date.now() > record.expiry)
+    return res.json({ success: false, message: "OTP expired" });
+
+  if (record.otp !== otp)
+    return res.json({ success: false, message: "Invalid OTP" });
+
+  delete pdfOtpStore[file];
+
+  res.json({ success: true });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ==========================
       SEND REQUEST → ADMIN
    ========================== */
@@ -754,260 +847,6 @@ app.post("/grant-access", upload.none(), async (req, res) => {
     res.send("ERROR");
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-/* ---------------- USER ID ---------------- */
-
-// const uid = new ShortUniqueId({ length: 8 });
-
-// const generateUserId = () => `MC-${uid()}`;
-
-// const generateUserId = () => {
-//   return `MC-${uuidv4().slice(0,8)}`;
-// };
-
-
-
-
-// =======================================================
-// ✅ ENQUIRY API → CREATE PAYMENT LINK
-// =======================================================
-
-// app.post("/api/enquiry", async (req, res) => {
-
-//   try {
-
-//     const { name, email, phone, course, location, message } = req.body;
-
-//     if (!name || !email || !phone || !course || !location) {
-//       return res.status(400).json({
-//         message: "All fields required"
-//       });
-//     }
-
-//     if (!courses[course]) {
-//       return res.status(400).json({
-//         message: "Invalid course"
-//       });
-//     }
-
-//     const finalAmount =
-//       courses[course].fee - courses[course].discount;
-
-//     /* CREATE PAYMENT LINK */
-
-//     const paymentLink = await razorpay.paymentLink.create({
-//       amount: finalAmount * 100,
-//       currency: "INR",
-//       description: course,
-//       customer: { name, email, contact: phone }
-//     });
-
-//     /* SAVE AS PENDING */
-
-//     await pool.query(`
-//      INSERT INTO enquiries_3470_data
-// (name,email,phone,course,location,message,final_amount,razorpay_link_id)
-// VALUES (?,?,?,?,?,?,?,?)
-
-//     `, [
-//       name,
-//       email,
-//       phone,
-//       course,
-//       location,
-//       message,
-//       finalAmount,
-//       paymentLink.id
-//     ]);
-
-
-//      /* 3️⃣ Send Email */
-//     await transporter.sendMail({
-//       from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
-//       to: email,
-//       subject: "Complete Your Payment – 3470 HealthCare",
-//       html: `
-//         <h3>Hello ${name},</h3>
-//         <p>Your payment link for <b>${course}</b> is ready.</p>
-//         <p><b>Amount:</b> ₹${finalAmount}</p>
-//         <p>
-//           <a href="${paymentLink.short_url}"
-//              style="padding:10px 20px;background:#068545;color:#fff;
-//              text-decoration:none;border-radius:5px;">
-//              Pay Now
-//           </a>
-//         </p>
-//         <p>– 3470 HealthCare Team</p>
-//       `
-//     });
-
-
-//     // res.json({
-//     //   paymentUrl: paymentLink.short_url
-//     // });
-
-//     res.json({
-//       success: true,
-//       message: "Payment link sent to your email"
-//     });
-
-//   } catch (err) {
-
-//     console.log("SERVER ERROR:", err);
-//     res.status(500).json({
-//       message: "Server error"
-//     });
-//   }
-// });
-
-
-
-
-// =======================================================
-// 🔥 RAZORPAY WEBHOOK (MOST IMPORTANT)
-// =======================================================
-
-// app.post(
-//   "/razorpay-webhook",
-//   express.raw({ type: "application/json" }),
-//   async (req, res) => {
-
-//     const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
-
-//     const expected = crypto
-//       .createHmac("sha256", secret)
-//       .update(req.body)
-//       .digest("hex");
-
-//     const signature = req.headers["x-razorpay-signature"];
-
-//     if (expected !== signature) {
-//       return res.status(400).send("Invalid signature");
-//     }
-
-//     // const body = JSON.parse(req.body);
-
-//     const body = JSON.parse(req.body.toString());
-
-
-//     if (body.event === "payment_link.paid") {
-
-//       const payment = body.payload.payment.entity;
-//       const link = body.payload.payment_link.entity;
-
-//       const userId = `MC-${uuidv4().slice(0,8)}`;
-
-//       try {
-
-//         await pool.query(`
-//           UPDATE enquiries_3470_data
-//           SET 
-//             status='paid',
-//             user_id=?,
-//             razorpay_payment_id=?
-//           WHERE razorpay_link_id=?
-//         `, [
-//           userId,
-//           payment.id,
-//           link.id
-//         ]);
-
-//         // SEND EMAIL AFTER SUCCESS
-//         await transporter.sendMail({
-//           to: payment.email,
-//           subject: "Payment Successful 🎉",
-//           html: `
-//             <h2>Payment Confirmed</h2>
-//             <p>Your User ID:</p>
-//             <h1>${userId}</h1>
-//           `
-//         });
-
-//         console.log("✅ Payment success. User:", userId);
-
-//       } catch (err) {
-//         console.log("DB ERROR:", err);
-//       }
-//     }
-
-//     res.json({ status: "ok" });
-//   }
-// );
-
-
-
-// app.post(
-//   "/razorpay-webhook",
-//   express.raw({ type: "application/json" }),
-//   async (req, res) => {
-
-//     const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
-
-//     const expected = crypto
-//       .createHmac("sha256", secret)
-//       .update(req.body)
-//       .digest("hex");
-
-//     const signature = req.headers["x-razorpay-signature"];
-
-//     if (expected !== signature) {
-//       console.log("❌ Invalid signature");
-//       return res.status(400).send("Invalid signature");
-//     }
-
-//     const body = JSON.parse(req.body.toString());
-//     console.log("📦 Event:", body.event);
-
-//     if (body.event === "payment_link.paid") {
-
-//       const payment = body.payload.payment.entity;
-//       const link = body.payload.payment_link.entity;
-//       const customerEmail = link.customer.email;
-
-//       const userId = `MC-${uuidv4().slice(0, 8)}`;
-
-//       try {
-//         const [result] = await pool.query(`
-//           UPDATE enquiries_3470_data
-//           SET status='paid',
-//               user_id=?,
-//               razorpay_payment_id=?
-//           WHERE razorpay_link_id=?
-//         `, [userId, payment.id, link.id]);
-
-//         console.log("DB Updated:", result.affectedRows);
-
-//         await transporter.sendMail({
-//           to: customerEmail,
-//           subject: "Payment Successful 🎉",
-//           html: `<h2>Payment Confirmed</h2><h1>${userId}</h1>`
-//         });
-
-//         console.log("✅ Mail sent to", customerEmail);
-
-//       } catch (err) {
-//         console.error("DB / MAIL ERROR:", err);
-//       }
-//     }
-
-//     res.json({ status: "ok" });
-//   }
-// );
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
