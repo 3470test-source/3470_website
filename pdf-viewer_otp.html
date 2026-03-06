@@ -1,100 +1,302 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Secure PDF Viewer</title>
+  <title> 3470 HealthCare & Medical Coding Training Institute | Dashboard - Course Materials - Secure PDF Viewer</title>
 
-<style>
-#otpModal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-display:flex;
-justify-content:center;
-align-items:center;
+  <!-- Favicon -->
+  <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
+
+  <style>
+    body {
+      margin: 0;
+      background: #1e1e1e;
+    }
+    canvas {
+      display: block;
+      margin: 20px auto;
+    }
+
+
+ /*--- OTP popup Box ---*/
+
+.otpModal {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0, 0, 0, 0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-#otpBox{
-background:white;
-padding:20px;
+.otpBox {
+  background:white;
+  padding:40px;
+  border-radius:8px;
+  text-align:center;
+  width:300px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
-</style>
+
+.otpBox h3 {
+  margin:0 0 20px 0;
+  font-size:22px;
+  font-weight:600;
+  color:#07804d;
+}
+
+.otpBox p{
+  color:#272626;
+  margin-bottom:20px;
+}
+
+.otpBox input {
+  width:90%;
+  padding:10px;
+  font-size:14px;
+  border:1px solid #a3a7a5;
+  border-radius:8px;
+}
+
+.otpBox input:focus {
+  border: 1px solid #0aa06e;   
+  outline: none;               
+  box-shadow: 0 0 0 3px rgba(10, 160, 110, 0.15);
+}
+
+.otpBox button {
+  margin-top:10px;
+  padding:10px 20px;
+  background:#07804d;
+  border:none;
+  color:white;
+  font-size:16px;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+.otpBox button:hover {
+  background:#0056b3;
+}
+
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
+}
+
+  </style>
 </head>
 
-<body>
+<body oncontextmenu="return false" class="no-right-click-3470">
 
-<div id="otpModal">
-<div id="otpBox">
-<h3>Enter OTP</h3>
-<input type="text" id="otp">
-<button onclick="submitOtp()">Submit</button>
+
+<!-- Otp popup Box -->
+
+<div id="otpModal" class="otpModal">
+  <div id="otpBox" class="otpBox">
+   <h3>🔐 Secure Document Access</h3>
+   <p>Enter the OTP provided by the administrator to view this document.</p>
+  <input type="text" id="otp" placeholder="Enter OTP">
+
+<br><br>
+
+   <button onclick="submitOtp()">Submit</button>
+  </div>
 </div>
-</div>
 
-<iframe id="pdfFrame" width="100%" height="800px" style="display:none;"></iframe>
-
+<iframe id="pdfFrame" style="display:none;"></iframe>
 
 
+<!-- Javascript -->
+<script src="config.js" defer></script>
+<script src="main.js" defer></script>
 
-
-
+<!-- Load PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <script>
+  // REQUIRED: worker file path
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-const params = new URLSearchParams(window.location.search);
-const file = decodeURIComponent(params.get("file"));
+  // Get PDF from URL
+  const params = new URLSearchParams(window.location.search);
+  const pdfUrl = params.get("file");
 
+  if (!pdfUrl) {
+    alert("PDF not found");
+  }
+
+  // Load PDF
+  pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+
+      pdf.getPage(pageNum).then(page => {
+
+        const viewport = page.getViewport({ scale: 1.5 });
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        document.body.appendChild(canvas);
+
+        page.render({
+          canvasContext: context,
+          viewport: viewport
+        });
+
+      });
+    }
+
+  });
+
+  // Disable right click
+  document.addEventListener("contextmenu", e => e.preventDefault());
+
+  // Disable Ctrl shortcuts
+  document.addEventListener("keydown", e => {
+    if (e.ctrlKey && ['s', 'p', 'u'].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+  });
+
+
+
+
+
+
+    //--------- OTP Popup -----------
+
+// const params = new URLSearchParams(window.location.search)
+const file = decodeURIComponent(params.get("file"))
 
 if(!file){
-alert("Invalid PDF link");
-throw new Error("No file provided");
+
+alert("Invalid PDF")
+throw new Error("No file")
+
 }
 
+/* ====================
+CHECK TOKEN
+==================== */
+
+const expiry = Number(localStorage.getItem("pdfExpiry"))
+const token = localStorage.getItem("pdfToken")
+
+if(expiry && Date.now() < expiry && token){
+
+fetch("http://localhost:3000/api/pdf/check-token?token="+token+"&file="+encodeURIComponent(file))
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.valid){
+
+loadPdf(token)
+
+}else{
+
+localStorage.removeItem("pdfToken")
+localStorage.removeItem("pdfExpiry")
+generateOtp()
+
+}
+
+})
+
+}else{
+
+generateOtp()
+
+}
+
+/* ====================
+GENERATE OTP
+==================== */
+
+function generateOtp(){
 
 fetch("http://localhost:3000/api/pdf/generate-otp",{
+
 method:"POST",
+
 headers:{
 "Content-Type":"application/json"
 },
+
 body:JSON.stringify({file})
-});
+
+})
+
+}
+
+/* ====================
+VERIFY OTP
+==================== */
 
 function submitOtp(){
 
-const otp=document.getElementById("otp").value;
+const otp=document.getElementById("otp").value
 
 fetch("http://localhost:3000/api/pdf/verify-otp",{
+
 method:"POST",
+
 headers:{
 "Content-Type":"application/json"
 },
+
 body:JSON.stringify({file,otp})
+
 })
+
 .then(res=>res.json())
+
 .then(data=>{
 
 if(data.success){
 
-document.getElementById("otpModal").style.display="none";
+localStorage.setItem("pdfToken",data.token)
+localStorage.setItem("pdfExpiry",data.expiry)
 
-document.getElementById("pdfFrame").src=file;
+loadPdf(data.token)
 
 }else{
 
-alert(data.message || "Invalid OTP");
+alert(data.message)
 
 }
 
-});
+})
+
+}
+
+/* ====================
+LOAD PDF
+==================== */
+
+function loadPdf(token){
+
+document.getElementById("otpModal").style.display="none"
+
+document.getElementById("pdfFrame").style.display="block"
+
+document.getElementById("pdfFrame").src =
+"http://localhost:3000/api/pdf/stream?file="+encodeURIComponent(file)+"&token="+token
 
 }
 
 </script>
 
-
-
-
 </body>
 </html>
+
+

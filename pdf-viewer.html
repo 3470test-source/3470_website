@@ -7,6 +7,7 @@
   <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
 
   <style>
+
     body {
       margin: 0;
       background: #1e1e1e;
@@ -16,146 +17,10 @@
       margin: 20px auto;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #otpModal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-#otpBox{
-background:white;
-padding:20px;
-}
   </style>
 </head>
 
 <body class="no-right-click-3470">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="otpModal">
-<div id="otpBox">
-<h3>Enter OTP</h3>
-<input type="text" id="otp">
-<button onclick="submitOtp()">Submit</button>
-</div>
-</div>
-
-<iframe id="pdfFrame" width="100%" height="800px" style="display:none;"></iframe>
-
-
-<script>
-
-// const params = new URLSearchParams(window.location.search);
-// const file = decodeURIComponent(params.get("file"));
-
-
-// if(!file){
-// alert("Invalid PDF link");
-// throw new Error("No file provided");
-// }
-
-
-// fetch("http://localhost:3000/api/pdf/generate-otp",{
-// method:"POST",
-// headers:{
-// "Content-Type":"application/json"
-// },
-// body:JSON.stringify({file})
-// });
-
-// function submitOtp(){
-
-// const otp=document.getElementById("otp").value;
-
-// fetch("http://localhost:3000/api/pdf/verify-otp",{
-// method:"POST",
-// headers:{
-// "Content-Type":"application/json"
-// },
-// body:JSON.stringify({file,otp})
-// })
-// .then(res=>res.json())
-// .then(data=>{
-
-// if(data.success){
-
-// document.getElementById("otpModal").style.display="none";
-
-// document.getElementById("pdfFrame").src=file;
-
-// }else{
-
-// alert(data.message || "Invalid OTP");
-
-// }
-
-// });
-
-// }
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- Javascript -->
 <script src="config.js" defer></script>
@@ -211,71 +76,6 @@ padding:20px;
       e.preventDefault();
     }
   });
-
-
-
-
-
-
-
-// const params = new URLSearchParams(window.location.search);
-const file = decodeURIComponent(params.get("file"));
-
-
-if(!file){
-alert("Invalid PDF link");
-throw new Error("No file provided");
-}
-
-
-fetch("http://localhost:3000/api/pdf/generate-otp",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({file})
-});
-
-function submitOtp(){
-
-const otp=document.getElementById("otp").value;
-
-fetch("http://localhost:3000/api/pdf/verify-otp",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({file,otp})
-})
-.then(res=>res.json())
-.then(data=>{
-
-if(data.success){
-
-document.getElementById("otpModal").style.display="none";
-
-document.getElementById("pdfFrame").src=file;
-
-}else{
-
-alert(data.message || "Invalid OTP");
-
-}
-
-});
-
-}
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 
