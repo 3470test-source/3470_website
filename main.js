@@ -80,6 +80,9 @@ if(loginForm){
     // Admin login
     if(role === "admin"){
       if(email === "admin@gmail.com" && password === "admin123"){
+
+        localStorage.setItem("loggedUser", "Admin");
+
         window.location.href = "admin_portal.html";
       } else {
         errorMsg.style.display = "block";
@@ -94,6 +97,9 @@ if(loginForm){
       const student = students.find(s => s.email === email && s.password === password);
 
       if(student){
+
+        localStorage.setItem("loggedUser", student.email);
+
         window.location.href = "dashboard.html";
       } else {
         errorMsg.style.display = "block";
@@ -144,11 +150,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.getElementById("sidebar");
 
     // Toggle profile dropdown
-    // if (profileBtn) {
-    //   profileBtn.addEventListener("click", function () {
-    //     menu.style.display = menu.style.display === "block" ? "none" : "block";
-    //   });
-    // }
+    if (profileBtn) {
+      profileBtn.addEventListener("click", function () {
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      });
+    }
 
     // Toggle sidebar
     if (menuToggle) {

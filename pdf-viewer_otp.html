@@ -20,6 +20,11 @@
 
  /*--- OTP popup Box ---*/
 
+body.no-scroll{
+  overflow: hidden;
+  height: 100vh;
+}
+
 .otpModal {
   position:fixed;
   top:0;
@@ -171,10 +176,17 @@ iframe{
 
 
 
-    //--------- OTP Popup -----------
+//--------- OTP Popup -----------
 
-// const params = new URLSearchParams(window.location.search)
+
 const file = decodeURIComponent(params.get("file"))
+
+// Get popup
+const popup = document.getElementById("otpModal");
+
+// Disable scroll when popup opens
+document.body.classList.add("no-scroll");
+
 
 if(!file){
 
@@ -286,6 +298,8 @@ LOAD PDF
 function loadPdf(token){
 
 document.getElementById("otpModal").style.display="none"
+
+document.body.classList.remove("no-scroll")
 
 document.getElementById("pdfFrame").style.display="block"
 
