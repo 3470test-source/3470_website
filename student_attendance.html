@@ -74,9 +74,19 @@
 
             <div class="attendance-form-group">
                 <label>Course</label>
-                <select required>
+                <select id="Attendance-course" required>
                     <option>Select Course</option>
+                    <option value="BMCT">BMCT - Basic Medical Coding Training</option>
+                    <option value="AMCT">AMCT - Advanced Medical Coding Training</option>
                     <option value="CPC">CPC - Certified Professional Coder</option>
+                    <option value="CPMA">CPMA - Certified Professional Medical Auditor</option>
+                    <option value="CRC">CRC - Certified Risk Adjustment Coder</option>
+                    <option value="CCS">CCS - Certified Coding Specialist</option>
+                    <option value="ED">ED - Emergency Dearptment</option>
+                    <option value="E&M">E&M - Evaluation & Management</option>
+                    <option value="IPDRG">IPDRG - Inpatient Diagnosis-Related Group</option>
+                    <option value="IVR">IVR - Interventional Radiology</option>
+                    <option value="Surgery">Surgery</option>
                 </select>
             </div>
 
@@ -84,9 +94,6 @@
                 <label>Batch</label>
                 <select id="Attendance-batch" required>
                   <option>Select Batch</option>
-                    <option value="Morning weekday">Weekdays Morning</option>
-                    <option value="Evening weekday">Weekdays Evening</option>
-                    <option value="Morning weekend">Weekend Morning</option>
                 </select>
             </div>
 
@@ -114,28 +121,208 @@
 
 <script src="main.js"></script>
 
+
 <script>
-    const batchSelect = document.getElementById("Attendance-batch");
-    const timeSelect = document.getElementById("Attendance-time");
+
+const courseSelect = document.getElementById("Attendance-course");
+const batchSelect = document.getElementById("Attendance-batch");
+const timeSelect = document.getElementById("Attendance-time");
+
+courseSelect.addEventListener("change", function () {
+
+const courseValue = this.value;
+
+/*---- reset batch ----*/
+
+batchSelect.innerHTML = '<option value="">Select Batch</option>';
+timeSelect.innerHTML = '<option value="">Select Time</option>';
+
+/*---------- BMCT Course -----------*/
+
+if(courseValue  === "BMCT"){
+
+batchSelect.innerHTML += `
+<option value="Morning weekday">Weekdays Morning</option>
+<option value="Weekdays Afternoon">Weekdays Afternoon</option>
+<option value="Evening weekday">Weekdays Evening</option>
+<option value="Morning weekend">Weekend Morning</option>
+`;
+
+}
+
+/*---------- CPC Course -----------*/
+
+else if(courseValue === "CPC"){
+
+batchSelect.innerHTML += `
+<option value="Morning weekday">Weekdays Morning</option>
+<option value="Evening weekday">Weekdays Evening</option>
+<option value="Morning weekend">Weekend Morning</option>
+`;
+
+}
+
+/*---------- Surgery Course -----------*/
+
+else if(courseValue === "Surgery"){
+
+batchSelect.innerHTML += `
+<option value="Evening weekday">Weekdays Evening</option>
+<option value="Morning weekend">Weekend Morning</option>
+`;
+
+}
+
+
+/*---------- IPDRG Course -----------*/
+
+else if(courseValue === "IPDRG"){
+
+batchSelect.innerHTML += `
+<option value="Evening weekday">Weekdays Evening</option>
+<option value="Morning weekend">Weekend Morning</option>
+`;
+
+}
+
+/*---------- E&M Course -----------*/
+
+else if(courseValue === "E&M"){
+
+batchSelect.innerHTML += `
+<option value="Morning weekend">Weekend Morning</option>
+`;
+
+}
+
+/*---------- CPMA Course -----------*/
+
+else if(courseValue === "CPMA"){
+
+batchSelect.innerHTML += `
+<option value="Evening weekend">Weekend Evening</option>
+`;
+
+}
+
+/*---------- CPMA Course -----------*/
+
+else if(courseValue === "IVR"){
+
+batchSelect.innerHTML += `
+<option value="Evening weekday">Weekdays Evening</option>
+`;
+
+}
+
+/*---------- CCS Course -----------*/
+
+else if(courseValue === "CCS"){
+
+batchSelect.innerHTML += `
+<option value="Evening weekday">Weekdays Evening</option>
+`;
+
+}
+
+});
+
+
+
+
+/*------- Batch → Time ---------*/
 
 batchSelect.addEventListener("change", function () {
 
-    const batchValue = this.value;
+const batchValue = this.value;
+const courseValue = courseSelect.value;
 
-    // Clear old options
-    timeSelect.innerHTML = '<option value="">Select Time</option>';
+timeSelect.innerHTML = '<option value="">Select Time</option>';
 
-    if (batchValue === "Morning weekday") {
-        timeSelect.innerHTML += '<option value="7am to 9:30am">7.00am to 9.30am</option>';
-    } 
-    else if (batchValue === "Evening weekday") {
-        timeSelect.innerHTML += '<option value="6pm to 8:30pm">6.00pm to 8.30pm</option>';
-    } 
-    else if (batchValue === "Morning weekend") {
-        timeSelect.innerHTML += '<option value="9am to 1:30pm">9.00am to 1.30pm</option>';
-    }
+/*---------- CPC Course -----------*/
+
+if (courseValue === "CPC" && batchValue === "Morning weekday") {
+timeSelect.innerHTML += '<option value="7am to 9:30am">7.00am to 9.30am</option>';
+}
+
+else if (courseValue === "CPC" && batchValue === "Evening weekday") {
+timeSelect.innerHTML += '<option value="6pm to 8:30pm">6.00pm to 8.30pm</option>';
+}
+
+else if (courseValue === "CPC" && batchValue === "Morning weekend") {
+timeSelect.innerHTML += '<option value="9am to 1:30pm">9.00am to 1.30pm</option>';
+}
+
+
+/*---------- BMCT Course -----------*/
+
+if (courseValue === "BMCT" && batchValue === "Morning weekday") {
+timeSelect.innerHTML += '<option value="9.30am to 12:30pm">9.30am to 12.30pm</option>';
+}
+
+else if (courseValue === "BMCT" && batchValue === "Weekdays Afternoon") {
+timeSelect.innerHTML += '<option value="2pm to 5pm">2.00pm to 5.00pm</option>';
+}
+
+else if (courseValue === "BMCT" && batchValue === "Evening weekday") {
+timeSelect.innerHTML += '<option value="6pm to 8pm">6.00pm to 8.00pm</option>';
+}
+
+else if (courseValue === "BMCT" && batchValue === "Morning weekend") {
+timeSelect.innerHTML += '<option value="9am to 5pm">9.00am to 5.00pm</option>';
+}
+
+
+/*---------- Surgery Course -----------*/
+
+else if (courseValue === "Surgery" && batchValue === "Evening weekday") {
+timeSelect.innerHTML += '<option value="6pm to 8pm">6.00pm to 8.00pm</option>';
+}
+
+else if (courseValue === "Surgery" && batchValue === "Morning weekend") {
+timeSelect.innerHTML += '<option value="9.30am to 4pm">9.30am to 4.00pm</option>';
+}
+
+
+/*---------- IPDRG Course -----------*/
+
+else if (courseValue === "IPDRG" && batchValue === "Evening weekday") {
+timeSelect.innerHTML += '<option value="7pm to 9pm">7.00pm to 9.00pm</option>';
+}
+
+else if (courseValue === "IPDRG" && batchValue === "Morning weekend") {
+timeSelect.innerHTML += '<option value="10am to 1.30pm">10.00am to 1.30pm</option>';
+}
+
+
+/*---------- E&M Course -----------*/
+
+else if (courseValue === "E&M" && batchValue === "Morning weekend") {
+timeSelect.innerHTML += '<option value="10am to 1pm">10.00am to 1.00pm</option>';
+}
+
+
+/*---------- CPMA Course -----------*/
+
+else if (courseValue === "CPMA" && batchValue === "Evening weekend") {
+timeSelect.innerHTML += '<option value="3pm to 5pm">3.00pm to 5.00pm</option>';
+}
+
+/*---------- IVR Course -----------*/
+
+else if (courseValue === "IVR" && batchValue === "Evening weekday") {
+timeSelect.innerHTML += '<option value="6pm to 8pm">6.00pm to 8.00pm</option>';
+}
+
+/*---------- CCS Course -----------*/
+
+else if (courseValue === "CCS" && batchValue === "Evening weekday") {
+timeSelect.innerHTML += '<option value="7pm to 9pm">7.00pm to 9.00pm</option>';
+}
+
 
 });
+
 </script>
 
 <!-- Google Sheet Data  -->

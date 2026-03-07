@@ -111,7 +111,7 @@
       <!-- Main Content -->
       <main class="main-content">
         <!-- <h1>Welcome, Student!</h1> -->
-         <h1>Welcome, <span id="username"></span>!</h1>
+        <h1>Welcome,<span id="welcomeUsername"></span></h1>
         <p>Your progress in the BMCT - Medical Coding Training Program.</p>
 
         <!-- Progress Cards -->
@@ -231,6 +231,10 @@ const user = localStorage.getItem("loggedUser");
 
 if(user){
   document.getElementById("username").textContent = user;
+
+  const welcomeUser = document.getElementById("welcomeUsername");
+
+   if(welcomeUser) welcomeUser.textContent = user;
 }
 </script>
 
