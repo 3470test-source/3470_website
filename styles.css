@@ -10705,7 +10705,7 @@ main.dash-video-content {
 
 .cpc-mock-test-links-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 2 equal-width columns */
+  grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
   gap: 40px;
 }
 
@@ -10784,18 +10784,8 @@ main.dash-video-content {
 
 /* Main content area */
 .test-quiz-content {
-  margin-left: 240px; /* for sidebar space */
-  padding: 40px;
-}
-
-.test-quiz-content h1 {
-  font-size: 28px;
-  color: #0d47a1;
-  margin-bottom: 25px;
-}
-
-/* Progress container card */
-.test-quiz-content {
+  max-width:900px;
+  margin:20px auto;
   background: #ffffff;
   max-width: 600px;
   margin: 50px auto;
@@ -10805,51 +10795,64 @@ main.dash-video-content {
   transition: transform 0.3s ease;
 }
 
-.test-quiz-content:hover {
-  transform: translateY(-3px);
+.test-quiz-content h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #0d47a1;
+  border-bottom: 2px solid #0a5f66;
+  padding-bottom: 6px;
 }
 
-/* Text styles */
-.test-quiz-content p {
+.test-quiz-content .score-card {
+  background:linear-gradient(135deg,#ffffff,#88afab);
+  padding:16px 20px;
+  margin:20px 0;
+  border-left:6px solid #0aa6a6;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  font-size:17px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.test-quiz-content .score-card p {
+  display:flex;
+  align-items:center;
+  margin:0;
+}
+
+.test-quiz-content .score-card:hover {
+  transform:scale(1.02);
+}
+
+.score-card p .test-name{
+  width:220px;
+  font-weight:600;
+  color:#333;
+}
+
+.score-card .colon{
+  margin:0 10px;
+}
+
+.test-quiz-content .score-card p {
   font-size: 18px;
   color: #333;
   margin: 15px 0;
   line-height: 1.6;
 }
 
-/* Highlight values dynamically */
-.test-quiz-content p span {
-  font-weight: 600;
-  color: #005fa3;
+.score-card p .score-number{
+  color:#0a8f2e;   
+  font-weight:bold;
+  font-size:18px;
 }
 
-/* Progress bar styling */
-.progress-bar {
-  background: #e3f2fd;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 16px;
-  margin-top: 15px;
+.score-card p .score-total{
+  color:#e53935;    
+  font-weight:600;
+  margin-left:6px;
 }
-
-.progress {
-  height: 100%;
-  background: linear-gradient(90deg, #005fa3, #0077c2);
-  width: 50%; /* Example: 50% complete */
-  border-radius: 10px;
-  transition: width 0.4s ease-in-out;
-
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .main-content {
-    margin: 20px;
-    padding: 25px;
-  }
-}
-
-
 
 
 /* -------------------------------------------------------------------------------------------------------------------------- */

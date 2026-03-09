@@ -17,12 +17,49 @@
  
       }
 
-      #username{
+      #username {
         font-size:18px;
         margin-top:2px;
         color: rgb(8, 128, 175);
       }
 
+
+       /*--- Enter the test score ---*/
+
+      .cpc-test-assignment-card .score-box {
+        display:flex;
+        gap:10px;
+        margin-top:10px;
+      }
+
+      .cpc-test-assignment-card .score-input {
+        width:150px;
+        padding:8px;
+        border:1px solid #ccc;
+        border-radius:6px;
+        font-size:13px;
+      }
+
+      .cpc-test-assignment-card .score-input:focus {
+        border: 1px solid #0aa06e;   
+        outline: none;               
+        box-shadow: 0 0 0 3px rgba(10, 160, 110, 0.15); 
+      }
+
+      .cpc-test-assignment-card .save-btn {
+        width:150px;
+        padding:8px;
+        background:#007bff;
+        color:white;
+        border:none;
+        border-radius:5px;
+        cursor:pointer;
+      }
+
+      .cpc-test-assignment-card .save-btn:hover {
+        background:#0056b3;
+      }
+      
     </style>
 
     <!-- Css - Styles -->
@@ -129,146 +166,396 @@
           <a href="https://forms.gle/oAfsPpRNsd8HsrAw5" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Introduction-to-CPCscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Introduction-to-CPC')">
+             Save Score
+            </button>
+            <p id="Introduction-to-CPCresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>0 Series</h3> 
           <a href="https://forms.gle/xiicE8tQWykAXpmS9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="0-Seriesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('0-Series')">
+             Save Score
+            </button>
+            <p id="0-Seriesresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>1 Series</h3> 
           <a href="https://forms.gle/PrpZK3WNsZ4v38veA" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="1-Seriesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('1-Series')">
+             Save Score
+            </button>
+            <p id="1-Seriesresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>2 Series</h3> 
           <a href="https://forms.gle/W4U3QzFozQRdx3vc9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="2-Seriesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('2-Series')">
+             Save Score
+            </button>
+            <p id="2-Seriesresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>3 Series Part - 1</h3> 
           <a href="https://forms.gle/YbQ894nc5RbQAJb66" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="3-Series-Part-1score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('3-Series-Part-1')">
+             Save Score
+            </button>
+            <p id="3-Series-Part-1result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>3 Series Part - 2</h3> 
           <a href="https://forms.gle/4JGPF7okYfaqPwZ8A" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="3-Series-Part-2score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('3-Series-Part-2')">
+             Save Score
+            </button>
+            <p id="3-Series-Part-2result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>4 Series</h3> 
           <a href="https://forms.gle/jcKRa827w42sf2z29" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="4-Seriesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('4-Series')">
+             Save Score
+            </button>
+            <p id="4-Seriesresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>5 Series Part - 1</h3> 
           <a href="https://forms.gle/UmVTiYWPU32Xub2h9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="5-Series-Part-1score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('5-Series-Part-1')">
+             Save Score
+            </button>
+            <p id="5-Series-Part-1result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>5 Series Part - 2</h3> 
           <a href="https://forms.gle/fyGBPFKKyhbAvdqm9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="5-Series-Part-2score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('5-Series-Part-2')">
+             Save Score
+            </button>
+            <p id="5-Series-Part-2result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>6 Series Part - 1</h3> 
           <a href="https://forms.gle/gg7FH3tJhSqS43wM6" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="6-Series-Part-1score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('6-Series-Part-1')">
+             Save Score
+            </button>
+            <p id="6-Series-Part-1result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>6 Series Part - 2</h3> 
           <a href="https://forms.gle/JZ8xU8hJ9QBVWHAMA" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="6-Series-Part-2score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('6-Series-Part-2')">
+             Save Score
+            </button>
+            <p id="6-Series-Part-2result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>7 Series</h3> 
           <a href="https://forms.gle/6NLZcUBaWZ9TXEL77" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="7-Seriesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('7-Series')">
+             Save Score
+            </button>
+            <p id="7-Seriesresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>8 Series</h3> 
           <a href="https://forms.gle/ro1JVRge1XaftAwq5" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="8-Seriesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('8-Series')">
+             Save Score
+            </button>
+            <p id="8-Seriesresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>9 Series</h3> 
           <a href="https://forms.gle/aYobsyq7uzsPKk4H7" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="9-Seriesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('9-Series')">
+             Save Score
+            </button>
+            <p id="9-Seriesresult"></p>
+          </div>
         </div>
-        
+
+
+
         <div class="cpc-test-assignment-card">
           <h3>99 Series</h3> 
           <a href="https://forms.gle/KLxsSdMEANkNZsLQ6" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="99-Seriesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('99-Series')">
+             Save Score
+            </button>
+            <p id="99-Seriesresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>Modifiers</h3> 
           <a href="https://forms.gle/test3" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Modifiersscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Modifiers')">
+             Save Score
+            </button>
+            <p id="Modifiersresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>ICD</h3> 
           <a href="https://forms.gle/test3" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="ICDscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('ICD')">
+             Save Score
+            </button>
+            <p id="ICDresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>HCPCS</h3> 
           <a href="https://forms.gle/test3" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="HCPCSscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('HCPCS')">
+             Save Score
+            </button>
+            <p id="HCPCSresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>Coding Case Studies</h3> 
           <a href="https://forms.gle/test3" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Coding-Case-Studiesscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Coding-Case-Studies')">
+             Save Score
+            </button>
+            <p id="Coding-Case-Studiesresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>Revision</h3> 
           <a href="https://forms.gle/8pMsMeU4eLJzrJf77" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Revisionscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Revision')">
+             Save Score
+            </button>
+            <p id="Revisionresult"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-test-assignment-card">
           <h3>Repeated Questions</h3> 
           <a href="https://forms.gle/mqBqvyziBaooiA6x9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Repeated-Questionsscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Repeated-Questions')">
+             Save Score
+            </button>
+            <p id="Repeated-Questionsresult"></p>
+          </div>
         </div>
 
       </div>
@@ -339,6 +626,33 @@ function logout(){
   localStorage.removeItem("loggedUser");
 }
 </script>
+
+
+
+<!-- save scrose - Test Assignmenst -->
+
+<script>
+
+function saveScore(testName){
+
+const scoreInput = document.getElementById(testName + "score");
+const result = document.getElementById(testName + "result");
+
+const score = scoreInput.value;
+
+if(score === ""){
+alert("Please enter your score");
+return;
+}
+
+localStorage.setItem(testName + "Score", score);
+
+result.innerHTML = "Saved Score: " + score + " / 100";
+
+}
+
+</script>
+
 
   </body>
 </html>

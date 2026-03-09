@@ -12,15 +12,51 @@
 
     <style>
 
-        body {
-          background: linear-gradient(120deg, #87aca3, #9cdbd2);
-        }
+      body {
+        background: linear-gradient(120deg, #87aca3, #9cdbd2);
+      }
 
-        #username{
-          font-size:18px;
-          margin-top:2px;
-          color: rgb(8, 128, 175);
-        }
+      #username{
+        font-size:18px;
+        margin-top:2px;
+        color: rgb(8, 128, 175);
+      }
+
+      /*--- Enter the test score ---*/
+
+      .cpc-mock-test-assignment-card .score-box {
+        display:flex;
+        gap:10px;
+        margin-top:10px;
+      }
+
+      .cpc-mock-test-assignment-card .score-input {
+        width:150px;
+        padding:8px;
+        border:1px solid #ccc;
+        border-radius:6px;
+        font-size:13px;
+      }
+
+      .cpc-mock-test-assignment-card .score-input:focus {
+        border: 1px solid #0aa06e;   
+        outline: none;               
+        box-shadow: 0 0 0 3px rgba(10, 160, 110, 0.15); 
+      }
+
+      .cpc-mock-test-assignment-card .save-btn {
+        width:150px;
+        padding:8px;
+        background:#007bff;
+        color:white;
+        border:none;
+        border-radius:5px;
+        cursor:pointer;
+      }
+
+      .cpc-mock-test-assignment-card .save-btn:hover {
+        background:#0056b3;
+      }
 
     </style>
 
@@ -125,104 +161,286 @@
           <a href="../test_viewer.html?url=https://forms.gle/BQiYRmH2uAafFQCk6" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-1score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-1')">
+             Save Score
+            </button>
+            <p id="Mock-Test-1result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 2</h3>
           <a href="https://forms.gle/TXRfKkFpeXeUZ5p27" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-2score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-2')">
+             Save Score
+            </button>
+            <p id="Mock-Test-2result"></p>
+          </div>
         </div>
+
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 3</h3> 
           <a href="https://forms.gle/12uZv1XF6rjJdPmEA" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-3score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-3')">
+             Save Score
+            </button>
+            <p id="Mock-Test-3result"></p>
+          </div>
         </div>
+
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 4</h3> 
           <a href="https://forms.gle/NmBwQbPz7iJ65HoU9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-4score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-4')">
+             Save Score
+            </button>
+            <p id="Mock-Test-4result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 5</h3> 
           <a href="https://forms.gle/x1mpssyCew1bKVdi8" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-5score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-5')">
+             Save Score
+            </button>
+            <p id="Mock-Test-5result"></p>
+          </div>
         </div>
+
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 6</h3> 
           <a href="https://forms.gle/TsbuDHkDduR8o6rJ9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-6score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-6')">
+             Save Score
+            </button>
+            <p id="Mock-Test-6result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 7</h3> 
           <a href="https://forms.gle/UXhcyZCCj3cUHiet9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-7score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-7')">
+             Save Score
+            </button>
+            <p id="Mock-Test-7result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 8</h3> 
           <a href="https://forms.gle/gCCHkfY3FCFpiyNX9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-8score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-8')">
+             Save Score
+            </button>
+            <p id="Mock-Test-8result"></p>
+          </div>
         </div>
+
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 9</h3> 
           <a href="https://forms.gle/8oJcbZym8K5e6zvL9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-9score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-9')">
+             Save Score
+            </button>
+            <p id="Mock-Test-9result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 10</h3> 
           <a href="https://forms.gle/4Sv8hetz6mFYpk1r8" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-10score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-10')">
+             Save Score
+            </button>
+            <p id="Mock-Test-10result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 11</h3> 
           <a href="https://forms.gle/NQgiKgBW4ydFeZty5" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-11score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-11')">
+             Save Score
+            </button>
+            <p id="Mock-Test-11result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 12</h3> 
           <a href="https://forms.gle/wJAXAWkh8PnkwFyW9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-12score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-12')">
+             Save Score
+            </button>
+            <p id="Mock-Test-12result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 13</h3> 
           <a href="https://forms.gle/DdEvVNk3qvcZbtJA6" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-13score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-13')">
+             Save Score
+            </button>
+            <p id="Mock-Test-13result"></p>
+          </div>
         </div>
+
+
 
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 14</h3> 
           <a href="https://forms.gle/A3BqGYntJL5CDG948" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-14score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-14')">
+             Save Score
+            </button>
+            <p id="Mock-Test-14result"></p>
+          </div>
         </div>
 
+
+        
         <div class="cpc-mock-test-assignment-card">
           <h3>Mock Test - 15</h3> 
           <a href="../test_viewer.html?url=https://forms.gle/pbVHL9VDugYbbPs3A" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Mock-Test-15score" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Mock-Test-15')">
+             Save Score
+            </button>
+            <p id="Mock-Test-15result"></p>
+          </div>
         </div>
 
       </div>
@@ -291,6 +509,32 @@ if(user){
 function logout(){
   localStorage.removeItem("loggedUser");
 }
+</script>
+
+
+
+<!-- save scrose - Test Assignmenst -->
+
+<script>
+
+function saveScore(testName){
+
+const scoreInput = document.getElementById(testName + "score");
+const result = document.getElementById(testName + "result");
+
+const score = scoreInput.value;
+
+if(score === ""){
+alert("Please enter your score");
+return;
+}
+
+localStorage.setItem(testName + "Score", score);
+
+result.innerHTML = "Saved Score: " + score + " / 100";
+
+}
+
 </script>
 
   </body>

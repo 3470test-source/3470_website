@@ -18,6 +18,11 @@
         color: rgb(8, 128, 175);
       }
 
+      #welcomeUsername{
+        color:#087caf;
+        font-weight:600;
+      }
+
     </style>
 
     <!-- Css - Styles -->
@@ -111,7 +116,7 @@
 
       <!-- Main Content -->
       <main class="main-content">
-        <h1>Welcome, Student!</h1>
+        <h1>Welcome, <span id="welcomeUsername"></span> 🎓</h1>
         <p>Your progress in the CPC - Medical Coding Training Program.</p>
 
         <!-- Progress Cards -->
@@ -209,19 +214,37 @@
 
 </script>
 
-<!-- Header Profile Id  -->
+<!-- Header Profile Id / Main page Name -->
 <script>
-const user = localStorage.getItem("loggedUser");
 
-if(user){
-  document.getElementById("username").textContent = user;
+document.addEventListener("DOMContentLoaded", function(){
+
+const userEmail = localStorage.getItem("loggedUser");
+const userName = localStorage.getItem("loggedUserName");
+  
+// if(!userEmail){
+// window.location.href = "../login.html";
+// return;
+// }
+
+const emailElement = document.getElementById("username");
+const nameElement = document.getElementById("welcomeUsername");
+
+if(emailElement){
+emailElement.textContent = userEmail;
 }
-</script>
 
-<script>
+if(nameElement){
+nameElement.textContent = userName || "Student";
+}
+
+});
+
 function logout(){
-  localStorage.removeItem("loggedUser");
+localStorage.removeItem("loggedUser");
+localStorage.removeItem("loggedUserName");
 }
+
 </script>
 
   </body>

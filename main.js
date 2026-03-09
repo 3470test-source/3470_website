@@ -98,6 +98,7 @@ if(loginForm){
 
       if(student){
 
+        localStorage.setItem("loggedUserName", student.name);
         localStorage.setItem("loggedUser", student.email);
 
         window.location.href = "dashboard.html";
@@ -108,7 +109,6 @@ if(loginForm){
     }
   });
 }
-
 
 
 // =========  Admin / Student Toggle Buttons ===========

@@ -21,6 +21,11 @@
         color: rgb(8, 128, 175);
       }
 
+      #welcomeUsername{
+        color:#087caf;
+        font-weight:600;
+      }
+
     </style>
 
     <!-- Font Awesome CDN -->
@@ -110,8 +115,7 @@
 
       <!-- Main Content -->
       <main class="main-content">
-        <!-- <h1>Welcome, Student!</h1> -->
-        <h1>Welcome,<span id="welcomeUsername"></span></h1>
+        <h1>Welcome, <span id="welcomeUsername"></span> 🎓</h1>
         <p>Your progress in the BMCT - Medical Coding Training Program.</p>
 
         <!-- Progress Cards -->
@@ -210,39 +214,39 @@
 </script>
 
 
+<!-- Header Profile Id / Main page Name -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  fetch("/getUser", { credentials: "include" })
-    .then(res => res.json())
-    .then(data => {
-      if (data.username) {
-        document.getElementById("username").textContent = data.username;
-      } else {
-        window.location.href = "/";
-      }
-    })
-    .catch(err => console.error("Error:", err));
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const userEmail = localStorage.getItem("loggedUser");
+const userName = localStorage.getItem("loggedUserName");
+
+if(!userEmail){
+window.location.href = "../login.html";
+return;
+}
+
+const emailElement = document.getElementById("username");
+const nameElement = document.getElementById("welcomeUsername");
+
+if(emailElement){
+emailElement.textContent = userEmail;
+}
+
+if(nameElement){
+nameElement.textContent = userName || "Student";
+}
+
 });
-</script>
 
-<!-- Header Profile Id  -->
-<script>
-const user = localStorage.getItem("loggedUser");
-
-if(user){
-  document.getElementById("username").textContent = user;
-
-  const welcomeUser = document.getElementById("welcomeUsername");
-
-   if(welcomeUser) welcomeUser.textContent = user;
-}
-</script>
-
-<script>
 function logout(){
-  localStorage.removeItem("loggedUser");
+localStorage.removeItem("loggedUser");
+localStorage.removeItem("loggedUserName");
 }
+
 </script>
+
 
   </body>
 </html>
