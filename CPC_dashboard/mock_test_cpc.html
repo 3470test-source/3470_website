@@ -58,6 +58,18 @@
         background:#0056b3;
       }
 
+      .score-box p{
+        margin-top:12px;
+        padding:10px 14px;
+        background:#e8f5e9;
+        border-left:4px solid #2e7d32;
+        border-radius:6px;
+        font-size:16px;
+        font-weight:600;
+        color:#1b5e20;
+        display:inline-block;
+      }
+
     </style>
 
     <!-- Css - Styles -->
@@ -521,6 +533,7 @@ function saveScore(testName){
 
 const scoreInput = document.getElementById(testName + "score");
 const result = document.getElementById(testName + "result");
+const scoreBox = scoreInput.parentElement;
 
 const score = scoreInput.value;
 
@@ -532,6 +545,10 @@ return;
 localStorage.setItem(testName + "Score", score);
 
 result.innerHTML = "Saved Score: " + score + " / 100";
+
+// hide input + button
+scoreInput.style.display = "none";
+scoreBox.querySelector(".save-btn").style.display = "none";
 
 }
 

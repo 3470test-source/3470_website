@@ -24,7 +24,7 @@
       }
 
 
-       /*--- Enter the test score ---*/
+      /*--- Enter the test score ---*/
 
       .cpc-test-assignment-card .score-box {
         display:flex;
@@ -58,6 +58,18 @@
 
       .cpc-test-assignment-card .save-btn:hover {
         background:#0056b3;
+      }
+
+      .score-box p{
+        margin-top:12px;
+        padding:10px 14px;
+        background:#e8f5e9;
+        border-left:4px solid #2e7d32;
+        border-radius:6px;
+        font-size:16px;
+        font-weight:600;
+        color:#1b5e20;
+        display:inline-block;
       }
       
     </style>
@@ -170,8 +182,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="Introduction-to-CPCscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('Introduction-to-CPC')">
+            <input type="number" class="score-input" id="Introduction-to-CPCscore" placeholder="Enter your score" min="0" max="25">
+            <button class="save-btn" onclick="saveScore('Introduction-to-CPC',25)">
              Save Score
             </button>
             <p id="Introduction-to-CPCresult"></p>
@@ -189,8 +201,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="0-Seriesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('0-Series')">
+            <input type="number" class="score-input" id="0-Seriesscore" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('0-Series',55)">
              Save Score
             </button>
             <p id="0-Seriesresult"></p>
@@ -208,8 +220,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="1-Seriesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('1-Series')">
+            <input type="number" class="score-input" id="1-Seriesscore" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('1-Series',55)">
              Save Score
             </button>
             <p id="1-Seriesresult"></p>
@@ -227,8 +239,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="2-Seriesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('2-Series')">
+            <input type="number" class="score-input" id="2-Seriesscore" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('2-Series',55)">
              Save Score
             </button>
             <p id="2-Seriesresult"></p>
@@ -246,8 +258,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="3-Series-Part-1score" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('3-Series-Part-1')">
+            <input type="number" class="score-input" id="3-Series-Part-1score" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('3-Series-Part-1',55)">
              Save Score
             </button>
             <p id="3-Series-Part-1result"></p>
@@ -265,8 +277,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="3-Series-Part-2score" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('3-Series-Part-2')">
+            <input type="number" class="score-input" id="3-Series-Part-2score" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('3-Series-Part-2',55)">
              Save Score
             </button>
             <p id="3-Series-Part-2result"></p>
@@ -284,8 +296,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="4-Seriesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('4-Series')">
+            <input type="number" class="score-input" id="4-Seriesscore" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('4-Series',55)">
              Save Score
             </button>
             <p id="4-Seriesresult"></p>
@@ -303,8 +315,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="5-Series-Part-1score" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('5-Series-Part-1')">
+            <input type="number" class="score-input" id="5-Series-Part-1score" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('5-Series-Part-1',55)">
              Save Score
             </button>
             <p id="5-Series-Part-1result"></p>
@@ -322,8 +334,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="5-Series-Part-2score" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('5-Series-Part-2')">
+            <input type="number" class="score-input" id="5-Series-Part-2score" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('5-Series-Part-2',55)">
              Save Score
             </button>
             <p id="5-Series-Part-2result"></p>
@@ -341,8 +353,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="6-Series-Part-1score" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('6-Series-Part-1')">
+            <input type="number" class="score-input" id="6-Series-Part-1score" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('6-Series-Part-1',55)">
              Save Score
             </button>
             <p id="6-Series-Part-1result"></p>
@@ -360,8 +372,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="6-Series-Part-2score" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('6-Series-Part-2')">
+            <input type="number" class="score-input" id="6-Series-Part-2score" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('6-Series-Part-2',55)">
              Save Score
             </button>
             <p id="6-Series-Part-2result"></p>
@@ -379,8 +391,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="7-Seriesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('7-Series')">
+            <input type="number" class="score-input" id="7-Seriesscore" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('7-Series',55)">
              Save Score
             </button>
             <p id="7-Seriesresult"></p>
@@ -398,8 +410,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="8-Seriesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('8-Series')">
+            <input type="number" class="score-input" id="8-Seriesscore" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('8-Series',55)">
              Save Score
             </button>
             <p id="8-Seriesresult"></p>
@@ -417,8 +429,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="9-Seriesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('9-Series')">
+            <input type="number" class="score-input" id="9-Seriesscore" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('9-Series',55)">
              Save Score
             </button>
             <p id="9-Seriesresult"></p>
@@ -436,8 +448,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="99-Seriesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('99-Series')">
+            <input type="number" class="score-input" id="99-Seriesscore" placeholder="Enter your score" min="0" max="55">
+            <button class="save-btn" onclick="saveScore('99-Series',55)">
              Save Score
             </button>
             <p id="99-Seriesresult"></p>
@@ -531,8 +543,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="Revisionscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('Revision')">
+            <input type="number" class="score-input" id="Revisionscore" placeholder="Enter your score" min="0" max="124">
+            <button class="save-btn" onclick="saveScore('Revision',124)">
              Save Score
             </button>
             <p id="Revisionresult"></p>
@@ -550,8 +562,8 @@
           <br><br>
 
           <div class="score-box">
-            <input type="number" class="score-input" id="Repeated-Questionsscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('Repeated-Questions')">
+            <input type="number" class="score-input" id="Repeated-Questionsscore" placeholder="Enter your score" min="0" max="150">
+            <button class="save-btn" onclick="saveScore('Repeated-Questions',150)">
              Save Score
             </button>
             <p id="Repeated-Questionsresult"></p>
@@ -633,10 +645,11 @@ function logout(){
 
 <script>
 
-function saveScore(testName){
+function saveScore(testName,totalMarks){
 
 const scoreInput = document.getElementById(testName + "score");
 const result = document.getElementById(testName + "result");
+const scoreBox = scoreInput.parentElement;
 
 const score = scoreInput.value;
 
@@ -645,9 +658,15 @@ alert("Please enter your score");
 return;
 }
 
+// save score
 localStorage.setItem(testName + "Score", score);
 
-result.innerHTML = "Saved Score: " + score + " / 100";
+// show result
+result.innerHTML = "Saved Score : " + score + " / " + totalMarks;
+
+// hide input + button
+scoreInput.style.display = "none";
+scoreBox.querySelector(".save-btn").style.display = "none";
 
 }
 
