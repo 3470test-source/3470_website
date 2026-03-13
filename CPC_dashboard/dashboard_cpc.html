@@ -10,6 +10,9 @@
     <!-- Favicon -->
     <link rel="icon" href="../picture/Logo3470-health3 (2).jpg" type="image/x-icon">
 
+    <!-- KPI Chart  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
 
       #username{
@@ -21,6 +24,31 @@
       #welcomeUsername{
         color:#087caf;
         font-weight:600;
+      }
+
+      .charts-container{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:20px;
+        margin-top:30px;
+      }
+
+      .chart-box h3 {
+        margin-bottom:20px;
+        font-size: 22px;
+      }
+
+      .chart-box{
+        background:#fff;
+        padding:30px;
+        border-radius:10px;
+        box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .chart-box canvas{
+        /* height: 200px !important; */
+        width:100% !important;
+        max-height:250px;
       }
 
     </style>
@@ -137,38 +165,48 @@
           </div>
         </section>
 
+<!-- KPI Chart -->
+<div class="charts-container">
 
-        <!-- Modules List -->
-        <!-- <section class="modules">
-        <h2>Training Modules</h2>
-        <ul>
-          <li>✅ Introduction to Medical Coding</li>
-          <li>✅ ICD-10 Coding Basics</li>
-          <li>✅ CPT Coding System</li>
-          <li>🕒 HCPCS Level II Codes</li>
-          <li>🕒 Billing and Reimbursement</li>
-        </ul>
-      </section> -->
-      
-
-        <!-- Resources -->
-        <!-- <section class="resources">
-        <h2>Helpful Resources</h2>
-        <ul>
-          <li><a href="#">ICD-10 Code Lookup</a></li>
-          <li><a href="#">CPT Code Manual (PDF)</a></li>
-          <li><a href="#">Sample Claims</a></li>
-        </ul>
-      </section> -->
-
-      
-      </main>
+    <div class="chart-box">
+        <h3>Topics Progress</h3>
+        <canvas id="topicsChart"></canvas>
     </div>
 
+    <div class="chart-box">
+        <h3>Course Materials</h3>
+        <canvas id="materialsChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Course Videos</h3>
+        <canvas id="videosChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Test Assignments</h3>
+        <canvas id="assignmentChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Mock Test</h3>
+        <canvas id="mockChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Score %</h3>
+        <canvas id="scoreChart"></canvas>
+    </div>
+
+</div>
   
+    </main>
+</div>
+
     <!-- Javascript -->
     <script src="../config.js" defer></script>
     <script src="../main.js" defer></script>
+    
 
     <!-- Dashboard  sidebar full - Dropdown  -->
     <script>
@@ -221,11 +259,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 const userEmail = localStorage.getItem("loggedUser");
 const userName = localStorage.getItem("loggedUserName");
-  
-// if(!userEmail){
-// window.location.href = "../login.html";
-// return;
-// }
 
 const emailElement = document.getElementById("username");
 const nameElement = document.getElementById("welcomeUsername");
@@ -244,6 +277,147 @@ function logout(){
 localStorage.removeItem("loggedUser");
 localStorage.removeItem("loggedUserName");
 }
+
+</script>
+
+
+<!-- KPI Chart -->
+<script>
+
+/*---- topicsChart ----*/
+new Chart(document.getElementById("topicsChart"), {
+type: "doughnut",
+data: {
+labels: ["Completed","Remaining"],
+datasets: [{
+data: [5,5],
+backgroundColor: ["#28a745","#dee2e6"]
+}]
+},
+
+options:{
+responsive:true,
+plugins:{
+legend:{
+position:"bottom"
+}
+}
+}
+});
+
+
+/*---- materialsChart ----*/
+new Chart(document.getElementById("materialsChart"), {
+type: "polarArea",
+data: {
+labels: ["PDF","Slides","Docs","Case Study"],
+datasets: [{
+data: [10,7,5,3],
+backgroundColor: [
+"#17a2b8",
+"#007bff",
+"#ffc107",
+"#28a745"
+]
+}]
+},
+options:{
+responsive:true,
+plugins:{
+legend:{
+position:"bottom"
+}
+}
+}
+});
+
+
+/*---- videosChart ----*/
+new Chart(document.getElementById("videosChart"), {
+type: "doughnut",
+data: {
+labels: ["Watched","Not Watched"],
+datasets: [{
+data: [7,3],
+backgroundColor: ["#ffc107","#dee2e6"]
+}]
+},
+options:{
+responsive:true,
+plugins:{
+legend:{
+position:"bottom"
+}
+}
+}
+});
+
+
+/*---- assignmentChart ----*/
+new Chart(document.getElementById("assignmentChart"), {
+type: "pie",
+data: {
+labels: ["Submitted","Pending"],
+datasets: [{
+data: [4,2],
+backgroundColor: ["#28a745","#dc3545"]
+}]
+},
+options:{
+responsive:true,
+plugins:{
+legend:{
+position:"bottom"
+}
+}
+}
+});
+
+
+/*---- mockChart ----*/
+new Chart(document.getElementById("mockChart"), {
+type: "bar",
+data: {
+labels: ["Mock 1","Mock 2","Mock 3"],
+datasets: [{
+label:"Marks",
+data:[65,75,82],
+backgroundColor:"#007bff"
+}]
+},
+options:{
+responsive:true,
+plugins:{
+legend:{
+position:"bottom"
+}
+}
+}
+});
+
+
+/*---- scoreChart ----*/
+new Chart(document.getElementById("scoreChart"), {
+type: "line",
+data: {
+labels: ["Test1","Test2","Test3","Test4"],
+datasets: [{
+label:"Score %",
+data:[70,75,80,82],
+borderColor:"#007bff",
+fill:false
+}]
+},
+options:{
+responsive:true,
+plugins:{
+legend:{
+position:"bottom"
+}
+}
+}
+});
+
 
 </script>
 
