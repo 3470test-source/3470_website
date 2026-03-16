@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Secure PDF Viewer</title>
+
+<style>
+
+
+
+canvas {
+      display: block;
+      margin: 20px auto;
+    }
+
+
+
+body{
+margin:0;
+background:#1e1e1e;
+font-family:Arial;
+}
+
+#otpModal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.otpBox{
+background:white;
+padding:30px;
+border-radius:8px;
+text-align:center;
+width:300px;
+}
+
+.otpBox input{
+width:100%;
+padding:10px;
+margin-top:10px;
+font-size:16px;
+}
+
+.otpBox button{
+margin-top:15px;
+padding:10px 20px;
+background:#007bff;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+#pdfFrame{
+width:100%;
+height:100vh;
+border:none;
+display:none;
+}
+
+</style>
+
+</head>
+
+<body oncontextmenu="return false" class="no-right-click-3470">
+
+<div id="otpModal">
+
+<div class="otpBox">
+
+<h3>Enter OTP</h3>
+
+<input type="text" id="otpInput" placeholder="Enter OTP">
+
+<button onclick="verifyOTP()">Verify</button>
+
+<p id="error" style="color:red;"></p>
+
+</div>
+
+</div>
+
+<iframe id="pdfFrame"></iframe>
+
+
+
+<!-- Javascript -->
+<script src="config.js" defer></script>
+<script src="main.js" defer></script>
+
+<!-- Load PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+
+
+  // REQUIRED: worker file path
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  // Get PDF from URL
+  const params = new URLSearchParams(window.location.search);
+  const pdfUrl = params.get("file");
+
+  if (!pdfUrl) {
+    alert("PDF not found");
+  }
+
+  // Load PDF
+  pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+
+      pdf.getPage(pageNum).then(page => {
+
+        const viewport = page.getViewport({ scale: 1.5 });
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        document.body.appendChild(canvas);
+
+        page.render({
+          canvasContext: context,
+          viewport: viewport
+        });
+
+      });
+    }
+
+  });
+
+  // Disable right click
+  document.addEventListener("contextmenu", e => e.preventDefault());
+
+  // Disable Ctrl shortcuts
+  document.addEventListener("keydown", e => {
+    if (e.ctrlKey && ['s', 'p', 'u'].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+// const params = new URLSearchParams(window.location.search)
+
+const file = params.get("file")
+const ts = params.get("ts")
+
+function verifyOTP(){
+
+const otp = document.getElementById("otpInput").value.trim()
+
+fetch("http://localhost:3000/api/pdf/verify-otp",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+file:file,
+otp:otp,
+ts:ts
+})
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.success){
+
+document.getElementById("otpModal").style.display="none"
+
+const token = data.token
+
+document.getElementById("pdfFrame").src =
+`http://localhost:3000/api/pdf/stream?file=${file}&token=${token}`
+
+document.getElementById("pdfFrame").style.display="block"
+
+}else{
+
+document.getElementById("error").innerText = data.message
+
+}
+
+})
+
+}
+
+</script>
+
+
+</body>
+</html>
