@@ -927,6 +927,64 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// app.post("/api/create-payment-link", async (req, res) => {
+//   try {
+//     const { name, email, phone, program, amount } = req.body;
+
+//     const paymentLink = await razorpay.paymentLink.create({
+//       amount: amount * 100,
+//       currency: "INR",
+//       description: `${program} Registration Fee`,
+
+//       customer: {
+//         name,
+//         email,
+//         contact: phone
+//       },
+
+//       notify: {
+//         sms: true,
+//         email: true
+//       },
+
+//       callback_url: "http://localhost:5500/success.html",
+//       callback_method: "get"
+//     });
+
+//     // 👉 Save link.id in DB (IMPORTANT for webhook match)
+//     await pool.query(
+//       `UPDATE enquiries_3470_data 
+//        SET razorpay_link_id=? 
+//        WHERE email=? 
+//        ORDER BY id DESC LIMIT 1`,
+//       [paymentLink.id, email]
+//     );
+
+//     res.json({
+//       success: true,
+//       payment_url: paymentLink.short_url
+//     });
+
+//   } catch (err) {
+//     console.error("Payment link error:", err);
+//     res.status(500).json({ success: false });
+//   }
+// });
+
+
+
 // /* ==========================
 //    START SERVER
 // ========================== */
@@ -966,10 +1024,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 /* STATIC OTP */
-const STATIC_OTP = "34347050";
+const STATIC_OTP = "34347052";
 
 /* LINK EXPIRY (10 DAYS) */
-const LINK_EXPIRY = 5 * 60 * 1000;
+const LINK_EXPIRY = 35 * 24 * 60 * 60 * 1000;
 
 /* TOKEN STORE */
 const tokenStore = {};
@@ -1008,7 +1066,7 @@ const token = Math.random().toString(36).substring(2);
 
 tokenStore[token] = {
 file:file,
-expiry:Date.now() + (10 * 60 * 1000)
+expiry:Date.now() + (35 * 24 * 60 * 60 * 1000)
 };
 
 res.json({

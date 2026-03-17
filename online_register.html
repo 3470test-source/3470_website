@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3470 Healthcare & Medical Coding Training Institute | Online Student Register </title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
+    
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+<style>
+    body {
+      margin: 0;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .fee-box {
+      margin-top: 20px;
+      padding: 15px;
+      background: #dfe3ea;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .fee-box p {
+      margin: 5px 0;
+    }
+
+    .fee-box h3 {
+      color: #0939bb;
+    }
+</style>
+
+  </head>
+<body>
+
+<div class="student-registration-form">
+
+    <!-- LEFT SIDE LOGO -->
+    <div class="student-registration-logo">
+        <img src="picture/Logo3470-health3-removebg-preview.png" alt="Institute Logo">
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="right-student-registration-form">
+        <h2>Online Student Registration Form</h2>
+
+        <form id="student-registration-3470" class="student-registration-3470">
+
+            <label>Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label>Email ID</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label>Contact Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label>Location</label>
+            <input type="text" id="location" name="location" placeholder="Enter your location" required>
+
+            <label>College Name</label>
+            <input type="text" id="college" name="college" placeholder="Enter your college name" required>
+
+            <label>Department</label>
+            <input type="text" id="department" name="department" placeholder="Enter your department" required>
+
+            <label>Internship / Workshop</label>
+            <select id="internship-workshop" name="program" required>
+                <option value="">Select</option>
+                <option value="Internship">Internship</option>
+                <option value="Workshop">Workshop</option>
+            </select>
+
+            <div class="fee-box" id="register-feeBox" style="display:none;">
+                <p>Registration Fee: ₹ <span id="register-fee">0</span></p>
+                <hr>
+                <h3>Final: ₹ <span id="register-final">0</span></h3>
+            </div>
+
+            <label>Year</label>
+            <select id="years" name="year" required>
+                <option value="">Select Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+            </select>
+
+            <button type="submit">Register Now</button>
+        </form>
+
+        <p id="student-registration-btn"></p>
+    </div>
+
+</div>
+
+<!-- Javascript -->
+<script src="config.js" defer></script>
+<script src="main.js" defer></script>
+
+
+<script>
+const form = document.getElementById("student-registration-3470");
+const programSelect = document.getElementById("internship-workshop");
+
+const feeBox = document.getElementById("register-feeBox");
+const feeText = document.getElementById("register-fee");
+const finalText = document.getElementById("register-final");
+
+// ✅ Single source of truth
+function getAmount(program) {
+    if (program === "Internship") return 100;
+    if (program === "Workshop") return 100;
+    return 0;
+}
+
+// ✅ Update fee UI
+function updateFee() {
+    const program = programSelect.value;
+    const amount = getAmount(program);
+
+    if (amount > 0) {
+        feeText.innerText = amount;
+        finalText.innerText = amount;
+        feeBox.style.display = "block";
+    } else {
+        feeBox.style.display = "none";
+    }
+}
+
+// ✅ Run when dropdown changes
+programSelect.addEventListener("change", updateFee);
+
+// ✅ Run on page load (IMPORTANT FIX)
+window.addEventListener("DOMContentLoaded", updateFee);
+
+
+// ✅ FORM SUBMIT
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const program = programSelect.value;
+    const amount = getAmount(program);
+
+    console.log("Program:", program);
+    console.log("Amount:", amount);
+
+    if (!program) {
+        alert("Please select Internship / Workshop");
+        return;
+    }
+
+    if (amount === 0) {
+        alert("Invalid amount");
+        return;
+    }
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        location: document.getElementById("location").value,
+        college: document.getElementById("college").value,
+        department: document.getElementById("department").value,
+        program: program,
+        year: document.getElementById("years").value,
+        amount: amount
+    };
+
+    try {
+
+        // 1️⃣ Save enquiry
+        await fetch("http://localhost:3000/api/enquiry", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        // 2️⃣ Create payment link
+        const res = await fetch("http://localhost:3000/api/create-payment-link", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
+            window.open(result.payment_url, "_blank");
+        } else {
+            alert("Payment link failed");
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Something went wrong");
+    }
+});
+</script>
+
+
+  </body>
+</html>
+

@@ -16844,3 +16844,191 @@ button.admin-approve-btn:hover {
 .user-profile-company-logo {
   width:200px;
 } */
+
+
+/* -------------------------------------------------------------------------------------------------------------------------------------- */
+
+                        /*======================================
+                             Online Student registration Form
+                          ======================================*/
+ 
+/*--- Main Layout ---*/
+.student-registration-form {
+  display: flex;
+  min-height: 100vh;
+}
+
+/*--- Left Logo Section ---*/
+.student-registration-logo {
+  flex: 1;
+  background: #a2bdbe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-registration-logo img {
+  max-width: 40%;
+}
+
+/*--- Right Form Section ---*/
+.right-student-registration-form {
+  flex: 1;
+  padding: 50px;
+  background: #64ac90;
+}
+
+.right-student-registration-form h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  text-align: center;
+  color:#0a319c;
+}
+
+/*--- Form Styling ---*/
+.student-registration-3470 label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.student-registration-3470 input,
+.student-registration-3470 select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.student-registration-3470 input:focus,
+.student-registration-3470 select:focus {
+  border: 1px solid #02147a;     
+  outline: none;               
+  box-shadow: 0 0 0 3px rgba(10, 160, 110, 0.15);
+}
+
+/*---- Button ----*/
+.student-registration-3470 button {
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  background: #0a319c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.student-registration-3470 button:hover {
+  background: #0056b3;
+}
+
+/*--- Success Message ---*/
+#student-registration-btn {
+  margin-top: 15px;
+  color: green;
+}
+
+                                              /*----------- Responsive style -------------------*/
+
+/* =========================
+   📱 MOBILE (320px – 767px)
+========================= */
+@media (max-width: 767px) {
+
+  .student-registration-form {
+    flex-direction: column;
+  }
+
+  .student-registration-logo {
+    height: 180px;
+  }
+
+  .student-registration-logo img {
+    max-width: 60%;
+  }
+
+  .right-student-registration-form {
+    padding: 20px;
+  }
+
+  .right-student-registration-form h2 {
+    font-size: 20px;
+  }
+
+  .student-registration-3470 input,
+  .student-registration-3470 select {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .student-registration-3470 button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+
+/* =========================
+   📲 TABLET (768px – 1024px)
+========================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .student-registration-form {
+    flex-direction: column;
+  }
+
+  .student-registration-logo {
+    height: 220px;
+  }
+
+  .student-registration-logo img {
+    max-width: 50%;
+  }
+
+  .right-student-registration-form {
+    padding: 30px;
+  }
+
+  .right-student-registration-form h2 {
+    font-size: 24px;
+  }
+}
+
+
+/* =========================
+   💻 SMALL DESKTOP (1025px – 1366px)
+========================= */
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+  .student-registration-logo img {
+    max-width: 45%;
+  }
+
+  .right-student-registration-form {
+    padding: 40px;
+  }
+}
+
+
+/* =========================
+   🖥 LARGE DESKTOP (1367px+)
+========================= */
+@media (min-width: 1367px) {
+
+  .student-registration-logo img {
+    max-width: 35%;
+  }
+
+  .right-student-registration-form {
+    padding: 60px;
+  }
+
+  .right-student-registration-form h2 {
+    font-size: 32px;
+  }
+}                          
+
+/* --------------------------------------------------------------------------------------------------------------------------- */
