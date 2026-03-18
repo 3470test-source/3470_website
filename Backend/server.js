@@ -1012,6 +1012,109 @@
 
 
 
+// const express = require("express");
+// const path = require("path");
+// const fs = require("fs");
+// const cors = require("cors");
+
+// const app = express();
+
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static("public"));
+
+// /* CONFIG */
+// const STATIC_OTP = "34347052";
+// const LINK_EXPIRY = 50 * 24 * 60 * 60 * 1000; // 50 days
+// const TOKEN_EXPIRY = 15 * 60 * 1000; // 15 mins
+
+// const tokenOtpStore = {};
+
+// /* ================= OTP VERIFY ================= */
+
+// app.post("/api/pdf/verify-otp", (req, res) => {
+
+//   const { file, otp, ts } = req.body;
+
+//   if (!file || !otp || !ts) {
+//     return res.json({ success: false, message: "Missing data" });
+//   }
+
+//   if (Date.now() > Number(ts) + LINK_EXPIRY) {
+//     return res.json({ success: false, message: "Link expired" });
+//   }
+
+//   if (otp.trim() !== STATIC_OTP) {
+//     return res.json({ success: false, message: "Invalid OTP" });
+//   }
+
+//   const token = Math.random().toString(36).substring(2);
+
+//   tokenOtpStore[token] = {
+//     file,
+//     expiry: Date.now() + TOKEN_EXPIRY
+//   };
+
+//   res.json({ success: true, token });
+
+// });
+
+// /* ================= PDF STREAM ================= */
+
+// app.get("/api/pdf/stream", (req, res) => {
+
+//   const { file, token } = req.query;
+
+//   if (!file || !token) {
+//     return res.status(400).send("Missing params");
+//   }
+
+//   const record = tokenOtpStore[token];
+
+//   if (!record) return res.status(403).send("Invalid token");
+
+//   if (Date.now() > record.expiry)
+//     return res.status(403).send("Token expired");
+
+//   if (record.file !== file)
+//     return res.status(403).send("Access denied");
+
+//   // 🔐 SAFE FILE HANDLING
+//   const safeFile = path.basename(file);
+//   const filePath = path.join(__dirname, "CPC_PDF", safeFile);
+
+//   console.log("Serving file:", filePath);
+
+//   if (!fs.existsSync(filePath)) {
+//     return res.status(404).send("File not found");
+//   }
+
+//   res.setHeader("Content-Type", "application/pdf");
+//   res.setHeader("Content-Disposition", "inline");
+
+//   res.sendFile(filePath);
+
+// });
+
+// /* CLEANUP */
+
+// setInterval(() => {
+//   const now = Date.now();
+//   for (let t in tokenOtpStore) {
+//     if (tokenOtpStore[t].expiry < now) delete tokenOtpStore[t];
+//   }
+// }, 10 * 60 * 1000);
+
+// /* START */
+
+// app.listen(3000, () => {
+//   console.log("✅ Server running: http://localhost:3000");
+// });
+
+
+
+
+
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -1021,88 +1124,121 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
 
-/* STATIC OTP */
+/* ================= CONFIG ================= */
+
 const STATIC_OTP = "34347052";
+const LINK_EXPIRY = 50 * 24 * 60 * 60 * 1000; // 50 days
+const TOKEN_EXPIRY = 1 * 24 * 60 * 60 * 1000; // 15 minutes
 
-/* LINK EXPIRY (10 DAYS) */
-const LINK_EXPIRY = 35 * 24 * 60 * 60 * 1000;
+const tokenOtpStore = {};
 
-/* TOKEN STORE */
-const tokenStore = {};
+/* ================= VERIFY OTP ================= */
 
-/* VERIFY OTP */
+app.post("/api/pdf/verify-otp", (req, res) => {
 
-app.post("/api/pdf/verify-otp",(req,res)=>{
+  let { file, otp, ts } = req.body;
 
-const {file,otp,ts} = req.body;
+  if (!file || !otp || !ts) {
+    return res.json({ success: false, message: "Missing data" });
+  }
 
-/* check link expiry */
+  // 🔥 FIX: normalize file name
+  file = path.basename(file);
 
-if(Date.now() > Number(ts) + LINK_EXPIRY){
+  // 🔒 Link expiry check
+  if (Date.now() > Number(ts) + LINK_EXPIRY) {
+    return res.json({ success: false, message: "Link expired" });
+  }
 
-return res.json({
-success:false,
-message:"Link expired"
-});
+  // 🔐 OTP check
+  if (otp.trim() !== STATIC_OTP) {
+    return res.json({ success: false, message: "Invalid OTP" });
+  }
 
-}
+  // 🔑 Generate token
+  const token = Math.random().toString(36).substring(2);
 
-/* verify otp */
+  // 🔥 STORE CLEAN FILE NAME
+  tokenOtpStore[token] = {
+    file: file,
+    expiry: Date.now() + TOKEN_EXPIRY
+  };
 
-if(otp.trim() !== STATIC_OTP){
+  console.log("✅ Token Created:", token, "File:", file);
 
-return res.json({
-success:false,
-message:"Invalid OTP"
-});
-
-}
-
-/* create token */
-
-const token = Math.random().toString(36).substring(2);
-
-tokenStore[token] = {
-file:file,
-expiry:Date.now() + (35 * 24 * 60 * 60 * 1000)
-};
-
-res.json({
-success:true,
-token:token
-});
+  res.json({
+    success: true,
+    token: token
+  });
 
 });
 
 
-/* STREAM PDF */
+/* ================= STREAM PDF ================= */
 
-app.get("/api/pdf/stream",(req,res)=>{
+app.get("/api/pdf/stream", (req, res) => {
 
-const {file,token} = req.query;
+  let { file, token } = req.query;
 
-const record = tokenStore[token];
+  if (!file || !token) {
+    return res.status(400).send("Missing params");
+  }
 
-if(!record)
-return res.status(403).send("Invalid token");
+  // normalize file
+  file = path.basename(file);
 
-if(record.file !== file)
-return res.status(403).send("Access denied");
+  const record = tokenOtpStore[token];
 
-const safeFile = path.basename(file);
+  if (!record) return res.status(403).send("Invalid token");
 
-const safePath = path.join(__dirname,"CPC_PDF",safeFile);
+  if (Date.now() > record.expiry)
+    return res.status(403).send("Token expired");
 
-if(!fs.existsSync(safePath))
-return res.send("File not found");
+  // 🔥 READ ALL FILES IN FOLDER
+  const folderPath = path.join(__dirname, "..", "CPC_PDF");
+  const files = fs.readdirSync(folderPath);
 
-res.sendFile(safePath);
+  console.log("📂 Available files:");
+  files.forEach(f => console.log("➡", f));
+
+  // 🔥 AUTO MATCH FILE (IGNORE SMALL DIFFERENCES)
+  const matchedFile = files.find(f =>
+    f.toLowerCase().includes(file.toLowerCase().replace(".pdf",""))
+  );
+
+  if (!matchedFile) {
+    console.log("❌ No matching file found");
+    return res.status(404).send("File not found");
+  }
+
+  const safePath = path.join(folderPath, matchedFile);
+
+  console.log("✅ Matched File:", matchedFile);
+  console.log("📄 Serving:", safePath);
+
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader("Content-Disposition", "inline");
+
+  res.sendFile(safePath);
 
 });
 
-app.listen(3000,()=>{
-console.log("Server running on 3000");
-});
 
+/* ================= CLEANUP ================= */
+
+setInterval(() => {
+  const now = Date.now();
+  for (let token in tokenOtpStore) {
+    if (tokenOtpStore[token].expiry < now) {
+      delete tokenOtpStore[token];
+    }
+  }
+}, 10 * 60 * 1000);
+
+
+/* ================= START ================= */
+
+app.listen(3000, () => {
+  console.log("🚀 Server running on http://localhost:3000");
+});
