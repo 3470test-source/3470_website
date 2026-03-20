@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3470 Healthcare & Medical Coding Training Institute | Admission Form</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
+    
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <style>
+
+    * {
+      box-sizing: border-box;
+      font-family:initial;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+     background: linear-gradient(135deg, #8bd1f0, #356f83);
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+    }
+
+    </style>
+
+</head>
+<body>
+
+<div class="admission-form-std">
+
+    <!-- LEFT: Logo -->
+    <div class="admission-logo">
+        <img src="picture/Logo3470-health3-removebg-preview.png" alt="Institute Logo">
+        <h3>Medical Coding Training – Admission Form</h3>
+        <p>📞 For quick response call: 9884606146</p>
+    </div>
+
+    <!-- Right: Form -->
+<div class="admission-container-enquiry">
+    <h2>Admission Form</h2>
+
+    <form id="admissionForm-std-3470" class="admissionForm-std-3470">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+
+        <label>Email ID</label>
+        <input type="email" id="email" placeholder="Enter your email">
+
+        <label>Mobile Number</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number">
+
+        <label>Qualification</label>
+        <select id="qualification">
+            <option value="">-- Select Qualification --</option>
+            <option value="B.Pharmacy">B.Pharmacy</option>
+            <option value="D.Pharmacy">D.Pharmacy</option>
+            <option value="B.SC Life science">B.SC Life science</option>
+            <option value="Nursing">Nursing</option>
+            <option value="Bio technology">Bio technology</option>
+            <option value="Medical">Medical</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Are you a life Science Graduate</label>
+        <select id="life-Science-Graduate">
+            <option value="">-- Select --</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>Preferred Training Mode</label>
+        <select id="Training-Mode">
+            <option value="">-- Select Mode --</option>
+            <option value="Online">Online</option>
+            <option value="Offline (Trichy)">Offline - (Trichy)</option>
+        </select>
+
+        <label>When do you want to join?</label>
+        <select id="join">
+            <option value="">-- Select --</option>
+            <option value="Immediately">Immediately</option>
+            <option value="Within 1 Month">Within 1 Month</option>
+            <option value="Just Enquiring">Just Enquiring</option>
+        </select>
+
+        <label>Do you need Job Placement?</label>
+        <select id="Job-Placement">
+            <option value="">-- Select --</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Just Enquiring">Just Enquiring</option>
+        </select>
+
+        <label>Your Requirement</label>
+        <textarea id="message" type="text" name="message" placeholder="Enter your requirement"></textarea>
+
+        <button type="submit">Submit Enquiry</button>
+    </form>
+
+    <p id="admission-enquiry-btn"></p>
+</div>
+
+</div>
+
+<script src="main.js"></script>
+
+<script>
+document.getElementById("admissionForm-std-3470").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let data = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        qualification: document.getElementById("qualification").value,
+        lifeScience: document.getElementById("life-Science-Graduate").value,
+        trainingMode: document.getElementById("Training-Mode").value,
+        join: document.getElementById("join").value,
+        jobPlacement: document.getElementById("Job-Placement").value,
+        message: document.getElementById("message").value.trim()
+    };
+
+    let messageBox = document.getElementById("admission-enquiry-btn");
+
+    // Validation
+    if (Object.values(data).some(val => val === "")) {
+        messageBox.style.color = "red";
+        messageBox.textContent = "Please fill all fields!";
+        return;
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbyH2JrYZxaZMpG89vqRKgn-tNDicU_oM9V0XauSQjYPadFxoAw1KvFqSiyoeWzEbJ5N/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    .then(res => res.text())
+    .then(response => {
+        console.log(response);
+
+        messageBox.style.color = "green";
+        messageBox.textContent =
+           "Your enquiry has been submitted successfully! Our team will call you shortly.";
+
+        document.getElementById("admissionForm-std-3470").reset();
+
+        setTimeout(() => {
+            messageBox.textContent = "";
+        }, 4000);
+    })
+    .catch(error => {
+        messageBox.style.color = "red";
+        messageBox.textContent = "Error submitting form.";
+        console.error(error);
+    });
+});
+</script>
+
+</body>
+</html>

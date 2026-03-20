@@ -17032,3 +17032,197 @@ button.admin-approve-btn:hover {
 }                          
 
 /* --------------------------------------------------------------------------------------------------------------------------- */
+
+                           /* ----------------- Admission form -- user fill -------------------- */
+
+                           
+.admission-form-std {
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  background: #c7d4cc;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+  width: 100%;
+  margin: 20px;
+  margin: 20px auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+.admission-logo {
+  flex: 1;
+  text-align: center;
+}
+
+.admission-logo img {
+  width: 220px;
+  max-width: 100%;
+}
+
+.admission-logo h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.admission-logo p {
+  color: #555;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.admission-container-enquiry {
+  flex: 1;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.admission-container-enquiry h2 {
+  text-align: center;
+  color: #078b33;
+}
+
+.admissionForm-std-3470 label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #0f53ac;
+}
+
+.admissionForm-std-3470 input,
+.admissionForm-std-3470 select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  background-color: #f1f5f3;
+  border: 1px solid #2ecc71;
+}
+
+.admissionForm-std-3470 textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #2ecc71;
+  background-color: #f1f5f3;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.admissionForm-std-3470 textarea {
+  resize: none;
+  height: 80px;
+}
+
+.admissionForm-std-3470 button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #039734;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.admissionForm-std-3470 button:hover {
+  background-color: rgb(6, 89, 167);
+}
+
+#admission-enquiry-btn {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+                                         /*------ Responsive Size - Admission Size ------*/
+
+
+/* ========================= */
+/* 📱 MOBILE (320px - 480px) */
+/* ========================= */
+@media (max-width: 480px) {
+  .admission-form-std {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .admission-logo img {
+    width: 140px;
+  }
+
+  .admission-logo h3 {
+    font-size: 18px;
+  }
+
+  .admission-logo p {
+    font-size: 14px;
+  }
+
+  .admission-container-enquiry {
+    padding: 15px;
+  }
+
+  .admissionForm-std-3470 button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* ========================= */
+/* 📱 LARGE MOBILE (481–767px) */
+/* ========================= */
+@media (min-width: 481px) and (max-width: 767px) {
+  .admission-form-std {
+    flex-direction: column;
+  }
+
+  .admission-logo img {
+    width: 160px;
+  }
+}
+
+/* ========================= */
+/* 📟 TABLET (768px - 1024px) */
+/* ========================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .admission-form-std {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .admission-logo {
+    margin-bottom: 10px;
+  }
+
+  .admission-logo img {
+    width: 180px;
+  }
+}
+
+/* ========================= */
+/* 💻 SMALL DESKTOP (1025–1366px) */
+/* ========================= */
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .admission-form-std {
+    max-width: 1000px;
+  }
+}
+
+/* ========================= */
+/* 🖥 LARGE DESKTOP (1367px+) */
+/* ========================= */
+@media (min-width: 1367px) {
+  .admission-form-std {
+    max-width: 1200px;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
