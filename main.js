@@ -50,25 +50,94 @@
 
 // ============ Login Script ===========
 
+// const loginForm = document.getElementById("loginForm");
+
+// if(loginForm){
+//   const errorMsg = document.getElementById("error");
+
+//   // Switch role (click, not change)
+//   const userOptions = document.querySelectorAll(".user-option");
+//   const userTypeInput = document.getElementById("userType");
+
+//   userOptions.forEach(button => {
+//     button.addEventListener("click", function(){
+//       userOptions.forEach(btn => btn.classList.remove("active"));
+//       this.classList.add("active");
+//       userTypeInput.value = this.dataset.role;
+//       errorMsg.textContent = "";
+//     });
+//   });
+
+//   loginForm.addEventListener("submit", function(e){
+//     e.preventDefault();
+
+//     const email = document.getElementById("loginEmail").value.trim();
+//     const password = document.getElementById("loginPassword").value.trim();
+//     const role = userTypeInput.value;
+
+//     errorMsg.style.display = "none";
+
+//     // Admin login
+//     if(role === "admin"){
+//       if(email === "admin@gmail.com" && password === "admin123"){
+
+//         localStorage.setItem("loggedUser", "Admin");
+
+//         window.location.href = "admin_portal.html";
+//       } else {
+//         errorMsg.style.display = "block";
+//         errorMsg.innerText = "Admin Invalid credentials!";
+//       }
+//       return;
+//     }
+
+//     // Student login
+//     if(role === "student"){
+//       const students = JSON.parse(localStorage.getItem("students") || "[]");
+//       const student = students.find(s => s.email === email && s.password === password);
+
+//       if(student){
+
+//         localStorage.setItem("loggedUserName", student.name);
+//         localStorage.setItem("loggedUser", student.email);
+
+//         window.location.href = "dashboard.html";
+//       } else {
+//         errorMsg.style.display = "block";
+//         errorMsg.innerText = "Student Invalid credentials!";
+//       }
+//     }
+//   });
+// }
+
+
+
+
+
+
+
+
+
 const loginForm = document.getElementById("loginForm");
 
-if(loginForm){
+if (loginForm) {
   const errorMsg = document.getElementById("error");
 
-  // Switch role (click, not change)
   const userOptions = document.querySelectorAll(".user-option");
   const userTypeInput = document.getElementById("userType");
 
+  // 🔄 Switch role
   userOptions.forEach(button => {
-    button.addEventListener("click", function(){
+    button.addEventListener("click", function () {
       userOptions.forEach(btn => btn.classList.remove("active"));
       this.classList.add("active");
       userTypeInput.value = this.dataset.role;
-      errorMsg.textContent = "";
+      errorMsg.style.display = "none";
     });
   });
 
-  loginForm.addEventListener("submit", function(e){
+  // 🚀 LOGIN SUBMIT
+  loginForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const email = document.getElementById("loginEmail").value.trim();
@@ -77,12 +146,10 @@ if(loginForm){
 
     errorMsg.style.display = "none";
 
-    // Admin login
-    if(role === "admin"){
-      if(email === "admin@gmail.com" && password === "admin123"){
-
+    /* ================= ADMIN LOGIN ================= */
+    if (role === "admin") {
+      if (email === "admin@gmail.com" && password === "admin123") {
         localStorage.setItem("loggedUser", "Admin");
-
         window.location.href = "admin_portal.html";
       } else {
         errorMsg.style.display = "block";
@@ -91,49 +158,121 @@ if(loginForm){
       return;
     }
 
-    // Student login
-    if(role === "student"){
-      const students = JSON.parse(localStorage.getItem("students") || "[]");
-      const student = students.find(s => s.email === email && s.password === password);
+    /* ================= STUDENT LOGIN (BACKEND) ================= */
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
 
-      if(student){
+      const result = await res.json();
 
-        localStorage.setItem("loggedUserName", student.name);
-        localStorage.setItem("loggedUser", student.email);
+      if (result.success) {
+        localStorage.setItem("loggedUser", result.user.email);
+        localStorage.setItem("loggedUserName", result.user.name);
 
         window.location.href = "dashboard.html";
       } else {
         errorMsg.style.display = "block";
-        errorMsg.innerText = "Student Invalid credentials!";
+        errorMsg.innerText = result.message || "Invalid credentials!";
       }
+
+    } catch (err) {
+      console.error(err);
+      errorMsg.style.display = "block";
+      errorMsg.innerText = "Server error! Please try again.";
     }
   });
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// loginForm.addEventListener("submit", async function(e){
+//   e.preventDefault();
+
+//   const email = document.getElementById("loginEmail").value.trim();
+//   const password = document.getElementById("loginPassword").value.trim();
+//   const role = userTypeInput.value;
+
+//   if(role === "admin"){
+//     if(email === "admin@gmail.com" && password === "admin123"){
+//       localStorage.setItem("loggedUser", "Admin");
+//       window.location.href = "admin_portal.html";
+//     } else {
+//       errorMsg.style.display = "block";
+//       errorMsg.innerText = "Admin Invalid credentials!";
+//     }
+//     return;
+//   }
+
+//   // ✅ Student login via backend
+//   try {
+//     const res = await fetch(`${API_BASE_URL}/api/login`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify({ email, password })
+//     });
+
+//     const result = await res.json();
+
+//     if(result.success){
+//       localStorage.setItem("loggedUser", result.user.email);
+//       localStorage.setItem("loggedUserName", result.user.name);
+
+//       window.location.href = "dashboard.html";
+//     } else {
+//       errorMsg.style.display = "block";
+//       errorMsg.innerText = result.message;
+//     }
+
+//   } catch (err) {
+//     console.error(err);
+//     errorMsg.style.display = "block";
+//     errorMsg.innerText = "Server error!";
+//   }
+// });
+
+
 // =========  Admin / Student Toggle Buttons ===========
 
-document.addEventListener("DOMContentLoaded", function () {
-  const userOptions = document.querySelectorAll(".user-option");
-  const userTypeInput = document.getElementById("userType");
-  const errorMsg = document.getElementById("error");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const userOptions = document.querySelectorAll(".user-option");
+//   const userTypeInput = document.getElementById("userType");
+//   const errorMsg = document.getElementById("error");
 
-  userOptions.forEach(button => {
-    button.addEventListener("click", function () {
-      // Remove active class from all buttons
-      userOptions.forEach(btn => btn.classList.remove("active"));
+//   userOptions.forEach(button => {
+//     button.addEventListener("click", function () {
+//       // Remove active class from all buttons
+//       userOptions.forEach(btn => btn.classList.remove("active"));
       
-      // Add active class to clicked button
-      this.classList.add("active");
+//       // Add active class to clicked button
+//       this.classList.add("active");
 
-      // Update hidden input value
-      userTypeInput.value = this.dataset.role;
+//       // Update hidden input value
+//       userTypeInput.value = this.dataset.role;
 
-      // Clear any previous error
-      errorMsg.textContent = "";
-    });
-  });
-});
+//       // Clear any previous error
+//       errorMsg.textContent = "";
+//     });
+//   });
+// });
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------
