@@ -17,8 +17,6 @@ const pool = require("./db");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 
-
-
 const fs = require("fs")
 const path = require("path")
 
@@ -217,7 +215,7 @@ const courses = {
   "Certified Coding Specialist": { fee: 14000, discount: 2000 },
   "Evaluation & Management": { fee: 14000, discount: 2000 },
   "Emergency Department": { fee: 14000, discount: 2000 },
-  "Inpatient Coding Diagnosis Related Groups": { fee: 14000, discount: 2000 },
+  "Inpatient Coding Diagnosis Related Groups": { fee: 7210, discount: 0 },
   "Interactive Voice Response": { fee: 14000, discount: 2000 },
   "Surgery Training": { fee: 14000, discount: 2000 }
 };
