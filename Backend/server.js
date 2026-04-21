@@ -212,7 +212,7 @@ const courses = {
   "Certified Professional Coder": { fee: 14000, discount: 2000 },
   "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
   "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
-  "Certified Coding Specialist": { fee: 14000, discount: 2000 },
+  "Certified Coding Specialist": { fee: 3450, discount: 0 },
   "Evaluation & Management": { fee: 14000, discount: 2000 },
   "Emergency Department": { fee: 14000, discount: 2000 },
   "Inpatient Coding Diagnosis Related Groups": { fee: 7210, discount: 0 },
