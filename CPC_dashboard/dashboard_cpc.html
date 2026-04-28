@@ -51,6 +51,50 @@
         max-height:250px;
       }
 
+/* ========================= */
+/* 📱 TABLET (1024px & below) */
+/* ========================= */
+@media (max-width: 1024px) {
+  .charts-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========================= */
+/* 📱 TABLET / LARGE MOBILE (768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-box {
+    padding: 20px;
+  }
+
+  .chart-box h3 {
+    font-size: 18px;
+  }
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE (414px & below) */
+/* ========================= */
+@media (max-width: 414px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .chart-box {
+    padding: 15px;
+  }
+
+  .chart-box h3 {
+    font-size: 16px;
+  }
+}
+
     </style>
 
     <!-- Css - Styles -->
@@ -67,7 +111,7 @@
     <!-- top-header -->
     <header class="header-top-dash">
       <div class="left-section-dash">
-        <button type="submit" class="menu-toggle-dash" id="menuToggle">
+        <button type="button" class="menu-toggle-dash" id="menuToggle">
           ☰
         </button>
         <img

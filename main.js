@@ -280,49 +280,85 @@ if (loginForm) {
 
   // ========= 📊 Dashboard Page Script =================
 
+// document.addEventListener("DOMContentLoaded", function () {
+//   const bodyClass = document.body.className;
+//   if (bodyClass.includes("dashboard-page")) {
+//     const profileBtn = document.getElementById("profileBtn");
+//     const menu = document.getElementById("profileMenu");
+//     const menuToggle = document.getElementById("menuToggle");
+//     const sidebar = document.getElementById("sidebar");
+
+//     // Toggle profile dropdown
+//     if (profileBtn) {
+//       profileBtn.addEventListener("click", function () {
+//         menu.style.display = menu.style.display === "block" ? "none" : "block";
+//       });
+//     }
+
+//     // Toggle sidebar
+//     // if (menuToggle) {
+//     //   menuToggle.addEventListener("click", function () {
+//     //     sidebar.style.display =
+//     //       sidebar.style.display === "none" ? "block" : "none";
+//     //   });
+//     // }
+    
+
+
+//     // Toggle sidebar
+// if (menuToggle && sidebar) {
+//   menuToggle.addEventListener("click", function () {
+//     sidebar.classList.toggle("active");
+//   });
+// }
+
+
+//     // Close dropdown when clicking outside
+//     window.addEventListener("click", function (e) {
+//       if (
+//         profileBtn &&
+//         !profileBtn.contains(e.target) &&
+//         !menu.contains(e.target)
+//       ) {
+//         menu.style.display = "none";
+//       }
+//     });
+//   }
+// });
+
+
 document.addEventListener("DOMContentLoaded", function () {
-  const bodyClass = document.body.className;
-  if (bodyClass.includes("dashboard-page")) {
-    const profileBtn = document.getElementById("profileBtn");
-    const menu = document.getElementById("profileMenu");
-    const menuToggle = document.getElementById("menuToggle");
-    const sidebar = document.getElementById("sidebar");
 
-    // Toggle profile dropdown
-    if (profileBtn) {
-      profileBtn.addEventListener("click", function () {
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
-      });
-    }
+  const profileBtn = document.getElementById("profileBtn");
+  const menu = document.getElementById("profileMenu");
+  const menuToggle = document.getElementById("menuToggle");
+  const sidebar = document.getElementById("sidebar");
 
-    // Toggle sidebar
-    if (menuToggle) {
-      menuToggle.addEventListener("click", function () {
-        sidebar.style.display =
-          sidebar.style.display === "none" ? "block" : "none";
-      });
-    }
-
-
-    // Toggle sidebar
-if (menuToggle && sidebar) {
-  menuToggle.addEventListener("click", function () {
-    sidebar.classList.toggle("active");
-  });
-}
-
-
-    // Close dropdown when clicking outside
-    window.addEventListener("click", function (e) {
-      if (
-        profileBtn &&
-        !profileBtn.contains(e.target) &&
-        !menu.contains(e.target)
-      ) {
-        menu.style.display = "none";
-      }
+  // Profile dropdown
+  if (profileBtn) {
+    profileBtn.addEventListener("click", function () {
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
     });
   }
+
+  // Sidebar toggle ONLY for mobile
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener("click", function () {
+
+      if (window.innerWidth <= 768) {
+        sidebar.classList.toggle("active");
+      }
+
+    });
+  }
+
+  // Close dropdown outside click
+  window.addEventListener("click", function (e) {
+    if (profileBtn && menu && !profileBtn.contains(e.target) && !menu.contains(e.target)) {
+      menu.style.display = "none";
+    }
+  });
+
 });
 
 

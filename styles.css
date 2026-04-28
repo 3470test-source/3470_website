@@ -4024,19 +4024,34 @@ footer {
 
 
 
+/* MOBILE VIEW */
+/* MOBILE */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%); /* hidden */
+    z-index: 1000;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* show */
+  }
+}
 
 
 
 
 /* --------------------------------------------------------------------------------------------------------------------- */
 
-  /* Dashboard Main Content */
+/*----- Dashboard Main Content ------*/
 .main-content {
   flex-grow: 1;
   padding: 25px;
-  background: #f4f4f4;
-  
-  /* background: linear-gradient(120deg, #87aca3, #9cdbd2); */
+  /* background: #f4f4f4; */
+  background: linear-gradient(120deg, #87aca3, #9cdbd2);
 }
 
 .main-content h1 {
@@ -4096,6 +4111,87 @@ footer {
   text-decoration: none;
   color: #3498db;
 }
+
+/* ========================= */
+/* 📱 MOBILE RESPONSIVE */
+/* ========================= */
+@media (max-width: 414px) {
+  .main-content {
+    padding: 12px;
+  }
+
+  .main-content h1 {
+    font-size: 22px;
+  }
+
+  .main-content p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .cards {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card {
+    flex: 1 1 100%;
+    padding: 15px;
+  }
+
+  .modules,
+  .resources {
+    padding: 15px;
+  }
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE */
+/* ========================= */
+@media (max-width: 375px) {
+  .main-content h1 {
+    font-size: 20px;
+  }
+
+  .main-content p {
+    font-size: 13px;
+  }
+}
+
+/* ========================= */
+/* 📱 TABLET (768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 18px;
+  }
+
+  .main-content h1 {
+    font-size: 28px;
+  }
+
+  .main-content p {
+    font-size: 16px;
+  }
+
+  .cards {
+    flex-wrap: wrap;
+  }
+
+  .card {
+    flex: 1 1 45%;
+  }
+}
+
+/* ========================= */
+/* 📱 TABLET LANDSCAPE (1024px) */
+/* ========================= */
+@media (max-width: 1024px) {
+  .card {
+    flex: 1 1 45%;
+  }
+}
+
 
 /* ----------------------------------------------------------------- */
 
@@ -10211,6 +10307,83 @@ section h2::after {
 }
 
 
+
+/* ========================= */
+/* 📱 TABLET (1024px) */
+/* ========================= */
+@media (max-width: 1024px) {
+  .Topic-content {
+    margin-left: 0;   /* important for sidebar collapse */
+    padding: 25px;
+  }
+
+  .topic-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========================= */
+/* 📱 TABLET (768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  .Topic-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .Topic-content h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+
+  .topic-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .topic-list a {
+    font-size: 16px;
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE (414px & below) */
+/* ========================= */
+@media (max-width: 414px) {
+  .Topic-content {
+    padding: 15px;
+  }
+
+  .Topic-content h1 {
+    font-size: 22px;
+  }
+
+  .topic-list li {
+    padding: 12px 15px;
+  }
+
+  .topic-list a {
+    font-size: 15px;
+  }
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE (360px) */
+/* ========================= */
+@media (max-width: 360px) {
+  .Topic-content h1 {
+    font-size: 20px;
+  }
+
+  .topic-list a {
+    font-size: 14px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+
      /* Dashboard Topic Dropdown  */
 
 .Topic-dropdown-content {
@@ -10361,11 +10534,102 @@ section h2::after {
 
 
 
+/* ========================= */
+/* 📱 TABLET (1024px) */
+/* ========================= */
+@media (max-width: 1024px) {
+  .materials-content {
+    margin-left: 0;
+    padding: 25px;
+  }
 
+  .materials {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
 
+/* ========================= */
+/* 📱 TABLET (768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  .materials-content {
+    margin-left: 0;
+    padding: 20px;
+    width: 100%;
+  }
 
+  .materials-content h1 {
+    font-size: 26px;
+  }
 
+  .materials-content p {
+    font-size: 16px;
+  }
 
+  .materials {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .materials-item h3 {
+    font-size: 16px;
+  }
+
+  .materials-item a,
+  .materials-item .pdf-btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE (414px & below) */
+/* ========================= */
+@media (max-width: 414px) {
+  .materials-content {
+    padding: 15px;
+  }
+
+  .materials-content h1 {
+    font-size: 22px;
+  }
+
+  .materials-content p {
+    font-size: 14px;
+  }
+
+  .materials-item {
+    padding: 15px;
+  }
+
+  .materials-item a,
+  .materials-item .pdf-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE (360px) */
+/* ========================= */
+@media (max-width: 360px) {
+  .materials-content h1 {
+    font-size: 20px;
+  }
+
+  .materials-content p {
+    font-size: 13px;
+  }
+
+  .materials-item a,
+  .materials-item .pdf-btn {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
 
 
 
@@ -10440,39 +10704,6 @@ section h2::after {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 /* -------------------------------------------------------------------------------- */
 
 
@@ -10483,20 +10714,18 @@ main.dash-video-content {
   text-align: center;
   padding: 40px;
   margin-left: 100px; /* space for sidebar */
-  
 }
 
 .dash-video-content h1 {
   font-size: 32px;
   color: #04552f;
   margin-bottom: 35px;
-
 }
 
 .dash-video-container {
   justify-items: center;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
+  grid-template-columns: repeat(3, 1fr); /* 2 equal-width columns */
   gap: 80px;
 }
 
@@ -10506,8 +10735,13 @@ main.dash-video-content {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 25px;
   transition: transform 0.2s ease;
-  width: 500px; 
-  height: 350px;
+
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+
+  /* width: 500px; 
+  height: 350px; */
 }
 
 .video-item h2 {
@@ -10522,8 +10756,6 @@ main.dash-video-content {
   border-radius: 8px;
   border: none;
 }
-
-
 
           /* Form - course video request access - Dashboard */
 
@@ -10552,7 +10784,6 @@ main.dash-video-content {
   font-size: 17px;
   text-align: justify;
   margin-left: 5px;
-
 }
 
 .request-box input {
@@ -10609,6 +10840,105 @@ main.dash-video-content {
   margin-top: 15px;
   font-weight: 600;
   font-family: 'Lato', 'Calibri', sans-serif;
+}
+
+
+/* ========================= */
+/* 📱 TABLET (1024px) */
+/* ========================= */
+@media (max-width: 1024px) {
+  main.dash-video-content {
+    margin-left: 0;
+    padding: 25px;
+  }
+
+  .dash-video-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+/* ========================= */
+/* 📱 TABLET (768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  main.dash-video-content {
+    margin-left: 0;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .dash-video-content h1 {
+    font-size: 26px;
+  }
+
+  .dash-video-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .video-item {
+    padding: 18px;
+  }
+
+  .video-item iframe {
+    height: 220px;
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE (414px & below) */
+/* ========================= */
+@media (max-width: 414px) {
+  main.dash-video-content {
+    padding: 15px;
+  }
+
+  .dash-video-content h1 {
+    font-size: 22px;
+  }
+
+  .video-item iframe {
+    height: 200px;
+  }
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE (360px) */
+/* ========================= */
+@media (max-width: 360px) {
+  .dash-video-content h1 {
+    font-size: 20px;
+  }
+
+  .video-item iframe {
+    height: 180px;
+  }
+}
+
+
+
+/* ========================= */
+/* 📱 FORM MOBILE FIX */
+/* ========================= */
+@media (max-width: 414px) {
+  .request-box {
+    padding: 18px;
+    margin: 15px;
+  }
+
+  .request-box h2 {
+    font-size: 20px;
+  }
+
+  .request-box label {
+    font-size: 15px;
+  }
+
+  .request-box input,
+  .request-box select {
+    font-size: 14px;
+  }
 }
 
 
@@ -10671,20 +11001,82 @@ main.dash-video-content {
   background: #00695c;
 }
 
-            
-/* Responsive */
-@media (max-width: 768px) {
-  .main-content {
+
+/* ========================= */
+/* 📱 TABLET (1024px) */
+/* ========================= */
+@media (max-width: 1024px) {
+  .cpc-test-assignments {
     margin-left: 0;
-    padding: 20px;
+    padding: 25px;
   }
 
-  #quizForm {
+  .cpc-test-links-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+/* ========================= */
+/* 📱 TABLET / MOBILE (768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  .cpc-test-assignments {
+    margin-left: 0;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .cpc-test-assignments h1 {
+    font-size: 26px;
+  }
+
+  .cpc-test-links-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .score-box {
+    flex-direction: column;
+  }
+
+  .score-input,
+  .save-btn {
     width: 100%;
   }
 }
 
+/* ========================= */
+/* 📱 MOBILE (414px) */
+/* ========================= */
+@media (max-width: 414px) {
+  .cpc-test-assignments h1 {
+    font-size: 22px;
+  }
 
+  .cpc-test-assignment-card {
+    padding: 15px;
+  }
+
+  .cpc-test-assignment-card h3 {
+    font-size: 18px;
+  }
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE (360px) */
+/* ========================= */
+@media (max-width: 360px) {
+  .cpc-test-assignments h1 {
+    font-size: 20px;
+  }
+
+  .cpc-test-assignment-card h3 {
+    font-size: 16px;
+  }
+}
+
+            
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
              /* Dashboard -- Mock Tests Assignment Page  */
@@ -10741,7 +11133,76 @@ main.dash-video-content {
   background: #00695c;
 }
 
-            
+
+/* ========================= */
+/* 📱 TABLET (1024px) */
+/* ========================= */
+@media (max-width: 1024px) {
+  .cpc-mock-test {
+    margin-left: 0;
+    padding: 25px;
+  }
+
+  .cpc-mock-test-links-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+/* ========================= */
+/* 📱 TABLET / MOBILE (768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  .cpc-mock-test {
+    margin-left: 0;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .cpc-mock-test h1 {
+    font-size: 26px;
+  }
+
+  .cpc-mock-test-links-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE (414px) */
+/* ========================= */
+@media (max-width: 414px) {
+  .cpc-mock-test h1 {
+    font-size: 22px;
+  }
+
+  .cpc-mock-test-assignment-card {
+    padding: 15px;
+  }
+
+  .cpc-mock-test-assignment-card h3 {
+    font-size: 18px;
+  }
+}
+
+/* ========================= */
+/* 📱 SMALL MOBILE (360px) */
+/* ========================= */
+@media (max-width: 360px) {
+  .cpc-mock-test h1 {
+    font-size: 20px;
+  }
+
+  .cpc-mock-test-assignment-card h3 {
+    font-size: 16px;
+  }
+}
+
+
+
+
+   
 /* Responsive */
 @media (max-width: 768px) {
   .main-content {
@@ -10753,7 +11214,6 @@ main.dash-video-content {
     width: 100%;
   }
 }
-
 
 /* 1366 and below */
 @media (max-width: 1400px) {
@@ -10783,7 +11243,7 @@ main.dash-video-content {
 
 
 /* Main content area */
-.test-quiz-content {
+/* .test-quiz-content {
   max-width:900px;
   margin:20px auto;
   background: #ffffff;
@@ -10853,6 +11313,184 @@ main.dash-video-content {
   font-weight:600;
   margin-left:6px;
 }
+ */
+
+
+
+
+
+
+
+.test-quiz-content {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* TITLE */
+.test-quiz-content h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #0d47a1;
+  border-bottom: 2px solid #0a5f66;
+  padding-bottom: 6px;
+}
+
+/* SCORE CARD */
+.test-quiz-content .score-card {
+  background: linear-gradient(135deg, #ffffff, #88afab);
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-left: 6px solid #0aa6a6;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-size: 17px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.test-quiz-content .score-card:hover {
+  transform: scale(1.02);
+}
+
+/* TEXT ROW */
+.test-quiz-content .score-card p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* LEFT SIDE (TEST NAME) */
+.score-card p .test-name {
+  flex: 1;
+  font-weight: 600;
+  color: #333;
+}
+
+/* COLON */
+.score-card .colon {
+  margin: 0 10px;
+}
+
+/* SCORE */
+.score-card p .score-number {
+  color: #0a8f2e;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* TOTAL */
+.score-card p .score-total {
+  color: #e53935;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+/* =========================
+   📱 MOBILE (320px - 768px)
+   ========================= */
+@media (max-width: 768px) {
+
+  .test-quiz-content {
+    margin: 20px 10px;
+    padding: 20px 15px;
+  }
+
+  .test-quiz-content h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  
+  .test-quiz-content .score-card p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 16px;
+  }
+
+  .score-card .colon {
+    display: none;
+  }
+
+  .score-number,
+  .score-total {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+
+
+/* =========================
+   📲 SMALL MOBILE (≤480px)
+   ========================= */
+@media (max-width: 480px) {
+
+  .test-quiz-content {
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .test-quiz-content h1 {
+    font-size: 20px;
+  }
+
+  .test-quiz-content .score-card p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .score-card .colon {
+    display: none;
+  }
+
+  .score-number,
+  .score-total {
+    display: inline-block;
+  }
+}
+
+/* =========================
+   💻 TABLET (768px - 1024px)
+   ========================= */
+@media (max-width: 1024px) {
+  .test-quiz-content {
+    max-width: 90%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* -------------------------------------------------------------------------------------------------------------------------- */
