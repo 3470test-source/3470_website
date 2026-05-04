@@ -40,6 +40,163 @@
       align-items: center;  
     }
 
+
+    .enquiry-wrapper-std {
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    background: #c7d4cc;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    width: 100%;
+    margin: 20px;
+
+    
+    margin: 20px auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.enquiry-logo {
+    flex: 1;
+    text-align: center;
+}
+
+.enquiry-logo img {
+    width: 220px;
+    max-width: 100%;
+}
+
+.form-container-enquiry {
+    flex: 1;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.form-container-enquiry h2 {
+    text-align: center;
+    color: #078b33;
+}
+
+.enquiryForm-std-3470 label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #0f53ac;
+}
+
+.enquiryForm-std-3470 input,
+.enquiryForm-std-3470 select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    background-color: #f1f5f3;
+    border: 1px solid #2ecc71;
+}
+
+.enquiryForm-std-3470 button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #039734;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#message-enquiry-btn {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+                                          /* ----------- responsive style  -- Enquiry form ---------------------  */
+
+/* =====================================
+   TABLET
+   768 - 1024
+===================================== */
+@media (max-width: 1024px) {
+  .enquiry-wrapper-std {
+    max-width: 95%;
+    padding: 18px;
+    gap: 18px;
+  }
+
+  .enquiry-logo img {
+    width: 180px;
+  }
+
+  .form-container-enquiry {
+    padding: 20px;
+  }
+}
+
+
+/* =====================================
+   LARGE MOBILES
+   481 - 767
+===================================== */
+@media (max-width: 767px) {
+  body {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .enquiry-wrapper-std {
+    flex-direction: column;   
+    /* margin: 0; */
+  }
+
+  .enquiry-logo {
+    margin-bottom: -10px;
+  }
+
+  .enquiry-logo img {
+    width: 160px;
+  }
+
+  .form-container-enquiry {
+    width: 100%;
+  }
+}
+
+
+/* =====================================
+   SMALL MOBILES
+   up to 480
+===================================== */
+@media (max-width: 480px) {
+
+  .form-container-enquiry {
+    padding: 15px;
+  }
+
+  .form-container-enquiry h2 {
+    font-size: 18px;
+  }
+
+  .enquiryForm-std-3470 label {
+    font-size: 13px;
+  }
+
+  .enquiryForm-std-3470 input,
+  .enquiryForm-std-3470 select {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .enquiryForm-std-3470 button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
     </style>
 
 </head>
