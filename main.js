@@ -884,6 +884,10 @@ window.addEventListener("DOMContentLoaded", () => {
       alert(result.message);
       form.reset();
       feeBox.style.display = "none";
+
+      // ✅ CLOSE POPUP
+      closePopup();
+
     } catch (err) {
       console.error(err);
       alert("Error submitting enquiry. Please try again.");
