@@ -304,6 +304,11 @@ document.addEventListener("DOMContentLoaded", function(){
 const userEmail = localStorage.getItem("loggedUser");
 const userName = localStorage.getItem("loggedUserName");
 
+if(!userEmail){
+window.location.href = "../login.html";
+return;
+}
+
 const emailElement = document.getElementById("username");
 const nameElement = document.getElementById("welcomeUsername");
 
