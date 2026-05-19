@@ -468,7 +468,7 @@
 
           <div class="score-box">
             <input type="number" class="score-input" id="Modifiersscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('Modifiers')">
+            <button class="save-btn" onclick="saveScore('Modifiers',100)">
              Save Score
             </button>
             <p id="Modifiersresult"></p>
@@ -487,7 +487,7 @@
 
           <div class="score-box">
             <input type="number" class="score-input" id="ICDscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('ICD')">
+            <button class="save-btn" onclick="saveScore('ICD',100)">
              Save Score
             </button>
             <p id="ICDresult"></p>
@@ -506,7 +506,7 @@
 
           <div class="score-box">
             <input type="number" class="score-input" id="HCPCSscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('HCPCS')">
+            <button class="save-btn" onclick="saveScore('HCPCS',100)">
              Save Score
             </button>
             <p id="HCPCSresult"></p>
@@ -525,7 +525,7 @@
 
           <div class="score-box">
             <input type="number" class="score-input" id="Coding-Case-Studiesscore" placeholder="Enter your score" min="0" max="100">
-            <button class="save-btn" onclick="saveScore('Coding-Case-Studies')">
+            <button class="save-btn" onclick="saveScore('Coding-Case-Studies',100)">
              Save Score
             </button>
             <p id="Coding-Case-Studiesresult"></p>
@@ -641,6 +641,29 @@ function logout(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- save scrose - Test Assignmenst -->
 
 <script>
@@ -671,6 +694,17 @@ scoreBox.querySelector(".save-btn").style.display = "none";
 }
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
 
 
   </body>
