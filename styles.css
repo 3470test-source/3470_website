@@ -3232,12 +3232,13 @@ footer {
 
 .login-left {
   flex: 1;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
   display: flex;
   align-items: center;
   justify-content: center;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   padding: 40px;
+  background-color: rgb(219, 250, 234);
 }
 
 .login-left img {

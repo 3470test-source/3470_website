@@ -16,7 +16,7 @@
         background: linear-gradient(120deg, #87aca3, #9cdbd2);
       }
 
-      #username{
+      #username {
         font-size:18px;
         margin-top:2px;
         color: rgb(8, 128, 175);
@@ -29,9 +29,9 @@
     <!-- Font Awesome CDN -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+</head>
 
   <body class="dashboard-page no-right-click-3470">
     <!-- top-header -->
@@ -47,7 +47,7 @@
         />
       </div>
 
-      <!-- Add title here -->
+     <!-- Add title here -->
      <h2 class="portal-title">Student Study Portal</h2>
 
       <div class="right-section-dash">
@@ -383,7 +383,7 @@
     </script> -->
 
     <!-- Form Submission Script -->
-    <script>
+    <!-- <script>
       document
         .getElementById("course-requestForm")
         .addEventListener("submit", function (e) {
@@ -424,7 +424,92 @@
 
             });
         });
-    </script>
+    </script> -->
+
+
+
+
+
+
+<script>
+  
+document
+  .getElementById("course-requestForm")
+  .addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+    let msg = document.getElementById("responseMsg");
+
+    const formData = {
+      username: this.username.value,
+      email: this.email.value,
+      course: this.course.value,
+      mobile: this.mobile.value
+    };
+
+    try {
+
+      // Node.js API
+      const nodeResponse = await fetch(
+        "http://localhost:3000/send-request",
+        {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify(formData)
+
+        }
+      );
+
+      // Google Sheet API
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbxRcCzuLK7XrdtOSq65_77SXeNXgwO75tdgE0VvEw_s3dn3Z-Msk41IiJYgmyD2nDQbNQ/exec",
+        {
+
+          method: "POST",
+
+          mode: "no-cors",
+
+          body: JSON.stringify(formData)
+
+        }
+      );
+
+      const nodeResult = await nodeResponse.text();
+
+      console.log(nodeResult);
+
+      msg.innerText =
+        "Request sent! You will get access once the owner approves.";
+
+      msg.style.color = "green";
+
+      document
+        .getElementById("course-requestForm")
+        .reset();
+
+    } catch (error) {
+
+      console.log(error);
+
+      msg.innerText = "Server error! Try again later.";
+      msg.style.color = "red";
+    }
+
+    setTimeout(() => {
+      msg.innerHTML = "";
+    }, 5000);
+
+});
+
+</script>
+
+
 
     <!-- Dashboard  sidebar full - Dropdown  -->
     <script>
