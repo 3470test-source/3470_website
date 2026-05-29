@@ -212,7 +212,7 @@ const courses = {
   "Certified Professional Coder": { fee: 14000, discount: 2000 },
   "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
   "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
-  "Certified Coding Specialist": { fee: 3450, discount: 0 },
+  "Certified Coding Specialist": { fee: 46350, discount: 0 },
   "Evaluation & Management": { fee: 14000, discount: 2000 },
   "Emergency Department": { fee: 14000, discount: 2000 },
   "Inpatient Coding Diagnosis Related Groups": { fee: 7210, discount: 0 },
@@ -275,7 +275,7 @@ await pool.query(`
 
     await transporter.sendMail({
       from: `"3470 HealthCare Enquiry" <${process.env.GMAIL_USER}>`,
-      to: "vignesh.g@3470healthcare.com",
+      to: "3470test@gmail.com",
       subject: "📝 New Enquiry Received – Payment Link Created",
       html: `
         <div style="font-family:Arial;padding:20px;border:1px solid #e5e5e5;border-radius:8px;
