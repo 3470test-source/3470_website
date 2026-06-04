@@ -22,6 +22,54 @@
         color: rgb(8, 128, 175);
       }
 
+      /*--- Enter the test score ---*/
+
+      .cpc-test-assignment-card .score-box {
+        display:flex;
+        gap:10px;
+        margin-top:10px;
+      }
+
+      .cpc-test-assignment-card .score-input {
+        width:150px;
+        padding:8px;
+        border:1px solid #ccc;
+        border-radius:6px;
+        font-size:13px;
+      }
+
+      .cpc-test-assignment-card .score-input:focus {
+        border: 1px solid #0aa06e;   
+        outline: none;               
+        box-shadow: 0 0 0 3px rgba(10, 160, 110, 0.15); 
+      }
+
+      .cpc-test-assignment-card .save-btn {
+        width:150px;
+        padding:8px;
+        background:#007bff;
+        color:white;
+        border:none;
+        border-radius:5px;
+        cursor:pointer;
+      }
+
+      .cpc-test-assignment-card .save-btn:hover {
+        background:#0056b3;
+      }
+
+      .score-box p {
+        margin-top:12px;
+        padding:10px 14px;
+        background:#e8f5e9;
+        border-left:4px solid #2e7d32;
+        border-radius:6px;
+        font-size:16px;
+        font-weight:600;
+        color:#1b5e20;
+        display:inline-block;
+      }
+
     </style>
 
     <!-- Css - Styles -->
@@ -123,150 +171,272 @@
       <div class="cpc-test-links-container">
 
         <div class="cpc-test-assignment-card">
-          <h3>Introduction to Medical Coding</h3>
-          <a href="https://forms.gle/test2" target="_blank">
+          <h3>Introduction to Medical Terminologies</h3>
+          <a href="https://forms.gle/7co7ewt7xu7hdNm69" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Introduction-to-Medical-Terminologiesscore" placeholder="Enter your score" min="0" max="36">
+            <button class="save-btn" onclick="saveScore('Introduction-to-Medical-Terminologies',25)">
+             Save Score
+            </button>
+            <p id="Introduction-to-Medical-Terminologiesresult"></p>
+          </div>
         </div>
 
-        <div class="cpc-test-assignment-card">
-          <h3>Introduction to Medical Terminologies</h3>
-          <a href="https://forms.gle/test2" target="_blank">
-             Start Test
-          </a>
-        </div>
 
         <div class="cpc-test-assignment-card">
           <h3>EYE</h3> 
-          <a href="https://forms.gle/arGgaB8fAaYWvhYT9" target="_blank">
+          <a href="https://forms.gle/opNb6xRSTzfctNju6" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Eyescore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Eye',25)">
+             Save Score
+            </button>
+            <p id="Eyeresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>ENT</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/B2gf7DNX6dXU2Sva7" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Entscore" placeholder="Enter your score" min="0" max="50">
+            <button class="save-btn" onclick="saveScore('Ent',25)">
+             Save Score
+            </button>
+            <p id="Entresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Respiratory System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/h2U5F2YktEYwtmeS6" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Respiratory-Systemscore" placeholder="Enter your score" min="0" max="31">
+            <button class="save-btn" onclick="saveScore('Respiratory-System',25)">
+             Save Score
+            </button>
+            <p id="Respiratory-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Cardiovascular System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/13k4diMSQnCKADmJ9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Cardiovascular-Systemscore" placeholder="Enter your score" min="0" max="46">
+            <button class="save-btn" onclick="saveScore('Cardiovascular-System',25)">
+             Save Score
+            </button>
+            <p id="Cardiovascular-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Digestive System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/kt76Tp5THZNQu8sz8" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Digestive-Systemscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Digestive-System',25)">
+             Save Score
+            </button>
+            <p id="Digestive-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Female Reproductive System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/a4WcWDKQzptARh1t7" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Female-Reproductive-Systemscore" placeholder="Enter your score" min="0" max="31">
+            <button class="save-btn" onclick="saveScore('Female-Reproductive-System',25)">
+             Save Score
+            </button>
+            <p id="Female-Reproductive-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Genitourinary System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/fSJJbebBAFHNYhKY9" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Genitourinary-Systemscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('Genitourinary-System',25)">
+             Save Score
+            </button>
+            <p id="Genitourinary-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Integumentary System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/dTUgkkCci4RKurHX7" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Integumentary-Systemscore" placeholder="Enter your score" min="0" max="40">
+            <button class="save-btn" onclick="saveScore('Integumentary-System',25)">
+             Save Score
+            </button>
+            <p id="Integumentary-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Musculoskeletal System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/eybDfGo4Z2bokZw97" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Musculoskeletal-Systemscore" placeholder="Enter your score" min="0" max="96">
+            <button class="save-btn" onclick="saveScore('Musculoskeletal-System',25)">
+             Save Score
+            </button>
+            <p id="Musculoskeletal-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Nervous System</h3> 
-          <a href="https://forms.gle/562NdqLSsPWLsDzJ7" target="_blank">
+          <a href="https://forms.gle/ter6j1EnQjbPBzSr7" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Nervous-Systemscore" placeholder="Enter your score" min="0" max="96">
+            <button class="save-btn" onclick="saveScore('Nervous-System',25)">
+             Save Score
+            </button>
+            <p id="Nervous-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Endocrine System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/3nFz84pvXJNT4Xk99" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Endocrine-Systemscore" placeholder="Enter your score" min="0" max="99">
+            <button class="save-btn" onclick="saveScore('Endocrine-System',25)">
+             Save Score
+            </button>
+            <p id="Endocrine-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Blood System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/e5CsAE93JQPVTuyq8" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Blood-Systemscore" placeholder="Enter your score" min="0" max="60">
+            <button class="save-btn" onclick="saveScore('Blood-System',25)">
+             Save Score
+            </button>
+            <p id="Blood-Systemresult"></p>
+          </div>
         </div>
+
 
         <div class="cpc-test-assignment-card">
           <h3>Lymphatic System</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <a href="https://forms.gle/PXKcn81wxX6Qtmd66" target="_blank">
              Start Test
           </a>
+
+          <br><br>
+
+          <div class="score-box">
+            <input type="number" class="score-input" id="Lymphatic-Systemscore" placeholder="Enter your score" min="0" max="50">
+            <button class="save-btn" onclick="saveScore('Lymphatic-System',25)">
+             Save Score
+            </button>
+            <p id="Lymphatic-Systemresult"></p>
+          </div>
         </div>
 
-        <div class="cpc-test-assignment-card">
-          <h3>ICD 10cm - Convention & Guidelines</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
-             Start Test
-          </a>
-        </div>
 
         <div class="cpc-test-assignment-card">
-          <h3>ICD 10cm Chapters Guidelines 1-5</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
+          <h3>ICD CPT FINAL</h3> 
+          <a href="https://forms.gle/Pt6XeEJ4ynuvmCWJ7" target="_blank">
              Start Test
           </a>
-        </div>
-        
-        <div class="cpc-test-assignment-card">
-          <h3>ICD 10cm Chapters Guidelines 6-11</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
-             Start Test
-          </a>
-        </div>
 
-        <div class="cpc-test-assignment-card">
-          <h3>ICD 10cm Chapters Guidelines 12-18</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
-             Start Test
-          </a>
-        </div>
+          <br><br>
 
-        <div class="cpc-test-assignment-card">
-          <h3>ICD 10cm Chapters Guidelines 19-21</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
-             Start Test
-          </a>
-        </div>
-
-        <div class="cpc-test-assignment-card">
-          <h3>CPT Introduction</h3> 
-          <a href="https://forms.gle/test3" target="_blank">
-             Start Test
-          </a>
+          <div class="score-box">
+            <input type="number" class="score-input" id="ICD-CPT-FINALscore" placeholder="Enter your score" min="0" max="100">
+            <button class="save-btn" onclick="saveScore('ICD-CPT-FINAL',25)">
+             Save Score
+            </button>
+            <p id="ICD-CPT-FINALresult"></p>
+          </div>
         </div>
 
       </div>
@@ -337,6 +507,39 @@ function logout(){
   localStorage.removeItem("loggedUser");
 }
 </script>
+
+
+<!-- save scrose - Test Assignmenst -->
+
+<script>
+
+function saveScore(testName,totalMarks){
+
+const scoreInput = document.getElementById(testName + "score");
+const result = document.getElementById(testName + "result");
+const scoreBox = scoreInput.parentElement;
+
+const score = scoreInput.value;
+
+if(score === ""){
+alert("Please enter your score");
+return;
+}
+
+// save score
+localStorage.setItem(testName + "Score", score);
+
+// show result
+result.innerHTML = "Saved Score : " + score + " / " + totalMarks;
+
+// hide input + button
+scoreInput.style.display = "none";
+scoreBox.querySelector(".save-btn").style.display = "none";
+
+}
+
+</script>
+
 
   </body>
 </html>

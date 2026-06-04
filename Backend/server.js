@@ -209,7 +209,7 @@ const courses = {
   "Medical Coding Training": { fee: 10, discount: 9 },
   "Basic Medical Coding Training": { fee: 14000, discount: 2000 },
   "Advanced Medical Coding Training": { fee: 14000, discount: 2000 },
-  "Certified Professional Coder": { fee: 5000, discount: 0 },
+  "Certified Professional Coder": { fee: 14369, discount: 0 },
   "Certified Professional Medical Auditor": { fee: 14000, discount: 2000 },
   "Certified Risk Adjustment Coder": { fee: 14000, discount: 2000 },
   "Certified Coding Specialist": { fee: 46350, discount: 0 },
