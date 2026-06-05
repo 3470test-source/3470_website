@@ -149,7 +149,7 @@ if (loginForm) {
     /* ================= ADMIN LOGIN ================= */
     if (role === "admin") {
       if (email === "admin@gmail.com" && password === "admin123") {
-        localStorage.setItem("loggedUser", "Admin");
+        localStorage.setItem("loggedUser", email);
         window.location.href = "admin_portal.html";
       } else {
         errorMsg.style.display = "block";

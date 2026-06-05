@@ -790,39 +790,106 @@ app.post("/api/register", async (req, res) => {
 
 
 
+// app.post("/api/login", async (req, res) => {
+//   const { email, password } = req.body;
+
+//   try {
+//     const [rows] = await pool.query(
+//       "SELECT * FROM users WHERE email = ?",
+//       [email]
+//     );
+
+//     if (rows.length === 0) {
+//       return res.json({ success: false, message: "User not found" });
+//     }
+
+//     const user = rows[0];
+
+//     const isMatch = await bcrypt.compare(password, user.password);
+
+//     if (!isMatch) {
+//       return res.json({ success: false, message: "Invalid password" });
+//     }
+
+//     res.json({
+//       success: true,
+//       user: {
+//         name: user.name,
+//         email: user.email
+//       }
+//     });
+
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ success: false });
+//   }
+// });
+
+
 app.post("/api/login", async (req, res) => {
+
   const { email, password } = req.body;
 
   try {
+
     const [rows] = await pool.query(
       "SELECT * FROM users WHERE email = ?",
       [email]
     );
 
     if (rows.length === 0) {
-      return res.json({ success: false, message: "User not found" });
+      return res.json({
+        success: false,
+        message: "User not found"
+      });
     }
 
     const user = rows[0];
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    // Check if account is disabled
+    if (user.status === "disabled") {
+      return res.status(403).json({
+        success: false,
+        message:
+          "Your account has been disabled. Contact Administrator."
+      });
+    }
+
+    // Verify password
+    const isMatch = await bcrypt.compare(
+      password,
+      user.password
+    );
 
     if (!isMatch) {
-      return res.json({ success: false, message: "Invalid password" });
+      return res.json({
+        success: false,
+        message: "Invalid password"
+      });
     }
 
     res.json({
       success: true,
       user: {
+        id: user.id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        role: user.role,
+        status: user.status
       }
     });
 
   } catch (err) {
+
     console.error(err);
-    res.status(500).json({ success: false });
+
+    res.status(500).json({
+      success: false,
+      message: "Server Error"
+    });
+
   }
+
 });
 
 
@@ -1186,6 +1253,88 @@ app.post("/api/create-payment-link", async (req, res) => {
     res.status(500).json({ success: false });
   }
 });
+
+
+
+
+
+
+
+
+
+
+app.get("/admin/users", async (req, res) => {
+
+  const [users] = await pool.query(`
+    SELECT
+      id,
+      name,
+      email,
+      status
+    FROM users
+  `);
+
+  res.json(users);
+
+});
+
+
+
+
+app.put("/admin/users/:id/disable", async (req, res) => {
+
+  try {
+
+    const id = req.params.id;
+
+    await pool.query(
+      "UPDATE users SET status='disabled' WHERE id=?",
+      [id]
+    );
+
+    res.json({
+      success: true
+    });
+
+  } catch(err) {
+
+    console.error(err);
+
+    res.status(500).json({
+      error: err.message
+    });
+
+  }
+
+});
+
+app.put("/admin/users/:id/enable", async (req, res) => {
+
+  try {
+
+    const id = req.params.id;
+
+    await pool.query(
+      "UPDATE users SET status='active' WHERE id=?",
+      [id]
+    );
+
+    res.json({
+      success: true
+    });
+
+  } catch(err) {
+
+    console.error(err);
+
+    res.status(500).json({
+      error: err.message
+    });
+
+  }
+
+});
+
 
 
 

@@ -29,3 +29,332 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   </head>
+
+  <body class="dashboard-page no-right-click-3470">
+    <!-- top-header -->
+    <header class="header-top-dash">
+      <div class="left-section-dash">
+        <button type="submit" class="menu-toggle-dash" id="menuToggle">
+          ☰
+        </button>
+        <img
+          src="../picture/Logo3470-health3 (2).jpg"
+          alt="Logo"
+          class="logo-dash"
+        />
+      </div>
+
+     <!-- Add title here -->
+     <h2 class="portal-title">Student Study Portal</h2>
+
+      <div class="right-section-dash">
+        <!-- <input type="text" placeholder="Search..." class="search-bar" /> -->
+        
+        <div class="profile-dropdown">
+          <button id="profileBtn">
+            <i class="fa-solid fa-user-gear"></i>
+            <span id="username"></span>
+          </button>
+
+          <div class="dropdown-menu" id="profileMenu">
+            <a href="#"><i class="fas fa-cog"></i>Account Settings</a>
+            <a href="#"><i class="fas fa-user"></i>Profile</a>
+            <a href="../login.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard">
+      <aside class="sidebar" id="sidebar">
+        <ul>
+          <li><a href="dashboard_bmct.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+
+
+          <!-- Dropdown Topic -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topics 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="topics_bmct.html">BMCT Topic</a></li>
+      </ul>
+    </li>
+
+          <!-- Dropdown Course Materials -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-folder-open"></i> Course Materials 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_materials_bmct.html">BMCT Course</a></li>
+      </ul>
+    </li>
+
+    <!-- Dropdown Course Videos -->
+          <li class="dash-Topic-dropdown">
+            <a class="Topic-dropdown-btn"><i class="fa-solid fa-video"></i> Course Videos 
+               <i class="fa-solid fa-angle-down Topic-dropdown-arrow"></i>
+            </a>
+            <ul class="Topic-dropdown-content">
+          <li><a href="course_video_bmct.html">BMCT Videos</a></li>
+      </ul>
+    </li>
+
+          <li><a href="tests_quiz_bmct.html"><i class="fa-solid fa-pen-to-square"></i> Test Assignments</a></li>
+          <li><a href="test_score_bmct.html"><i class="fa-solid fa-chart-line"></i> Score %</a></li>
+          <li><a href="../login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+      </aside>
+
+
+    <!-- CPC - Test Assignment Scores -->
+    <main class="test-quiz-content">
+
+     <h1>BMCT - Test Assignment Scores</h1>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Introduction to Medical Terminologies</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Introduction-to-Medical-Terminologies"></span> 
+            <span class="score-total"> / 36</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">EYE</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Eye"></span> 
+            <span class="score-total"> / 100</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">ENT</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Ent"></span> 
+            <span class="score-total"> / 50</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Respiratory System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Respiratory-System"></span> 
+            <span class="score-total"> / 31</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Cardiovascular System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Cardiovascular-System"></span> 
+            <span class="score-total"> / 46</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Digestive System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Digestive-System"></span> 
+            <span class="score-total"> / 100</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Female Reproductive System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Female-Reproductive-System"></span> 
+            <span class="score-total"> / 31</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Genitourinary System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Genitourinary-System"></span> 
+            <span class="score-total"> / 100</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Integumentary System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Integumentary-System"></span> 
+            <span class="score-total"> / 40</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Musculoskeletal System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Musculoskeletal-System"></span> 
+            <span class="score-total"> / 96</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Nervous System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Nervous-System"></span> 
+            <span class="score-total"> / 96</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Endocrine System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Endocrine-System"></span> 
+            <span class="score-total"> / 99</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Blood System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Blood-System"></span> 
+            <span class="score-total"> / 60</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">Lymphatic System</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="Lymphatic-System"></span> 
+            <span class="score-total"> / 50</span>
+          </p>
+        </div>
+
+        <div class="score-card">
+          <p>
+            <span class="test-name">ICD CPT FINAL</span>
+            <span class="colon">:</span>
+            <span class="score-number" id="ICD-CPT-FINAL"></span> 
+            <span class="score-total"> / 100</span>
+          </p>
+        </div>
+
+    </main>    
+
+  </div>  
+
+
+    <!-- Javascript -->
+    <script src="../config.js" defer></script>
+    <script src="../main.js" defer></script>
+
+    <!-- Dashboard  sidebar full - Dropdown  -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const dropdownButtons = document.querySelectorAll(".Topic-dropdown-btn");
+
+      dropdownButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+      
+      const content = btn.nextElementSibling;  // the <ul>
+      const arrow = btn.querySelector(".Topic-dropdown-arrow");
+
+      content.classList.toggle("dash-topic-show");
+      arrow.classList.toggle("rotate");
+    });
+  });
+
+});
+</script>
+
+<!-- ========= Disable Right-Click on All Page ========== -->
+<script>
+
+ (function() {
+    // Only apply if body has this class
+    if (document.body.classList.contains('no-right-click-3470')) {
+
+        // Disable right-click
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // Disable specific keyboard shortcuts (Ctrl+S, Ctrl+P, Ctrl+U)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                const forbiddenKeys = ['s', 'p', 'u']; // s=Save, p=Print, u=View Source
+                if (forbiddenKeys.includes(e.key.toLowerCase())) {
+                    e.preventDefault();
+                }
+            }
+        });
+    }
+})();
+
+</script>
+
+<!-- Header Profile Id  -->
+<script>
+const user = localStorage.getItem("loggedUser");
+
+if(user){
+  document.getElementById("username").textContent = user;
+}
+</script>
+
+<script>
+function logout(){
+  localStorage.removeItem("loggedUser");
+}
+</script>
+
+
+<!-- BMCT Scores Test Assignment mark show  -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const tests = [
+"Introduction-to-Medical-Terminologies",
+"Eye",
+"Ent",
+"Respiratory-System",
+"Cardiovascular-System",
+"Digestive-System",
+"Female-Reproductive-System",
+"Genitourinary-System",
+"Integumentary-System",
+"Musculoskeletal-System",
+"Nervous-System",
+"Endocrine-System",
+"Blood-System",
+"Lymphatic-System",
+"ICD-CPT-FINAL"
+];
+
+tests.forEach(function(test){
+
+const score = localStorage.getItem(test + "Score") || "0";
+
+const element = document.getElementById(test);
+
+if(element){
+element.textContent = score;
+}
+
+});
+
+});
+
+</script>
+

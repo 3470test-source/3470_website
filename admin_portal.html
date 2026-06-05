@@ -13,16 +13,63 @@
 
    <!-- Font Awesome CDN -->
    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-   />
+    rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
     <style>
 
       body {
-       margin: 0;
-       font-family: Arial, sans-serif;
-       background-color: #c8f8f1;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        /* background-color: #b6f8ee; */
+        background-color: #bbe0f8;
+      }
+
+      #username{
+        font-size:18px;
+        margin-top:2px;
+        color: rgb(8, 128, 175);
+      }
+
+      .admin-stats-container .card {
+        flex:1;
+        background:white;
+        padding:20px;
+        border-radius:10px;
+        text-align:center;
+        box-shadow:0 2px 8px rgba(0,0,0,.1);
+      }
+
+      .admin-stats-container .card:hover {
+        transform: translateY(-3px);
+      }
+
+      table {
+        width:100%;
+        border-collapse:collapse;
+      }
+
+      th {
+        background:#068545;
+        color:white;
+      }
+ 
+      th,td {
+        border:1px solid #ddd;
+        padding:12px;
+      }
+
+      .active-badge {
+        background:#d4edda;
+        color:#155724;
+        padding:5px 10px;
+        border-radius:20px;
+      }
+
+      .disabled-badge {
+        background:#f8d7da;
+        color:#721c24;
+        padding:5px 10px;
+        border-radius:20px;
       }
 
     </style>
@@ -36,18 +83,14 @@
         <button type="submit" class="menu-toggle-dash" id="menuToggle">
           ☰
         </button>
-        <img
-          src="picture/Logo3470-health3 (2).jpg"
-          alt="Logo"
-          class="logo-dash"
-        />
+        <img src="picture/Logo3470-health3 (2).jpg" alt="Logo" class="logo-dash"/>
       </div>
 
      <!-- Add title here -->
      <h2 class="portal-title">Admin Access Portal</h2>
 
       <div class="right-section-dash">
-        <input type="text" placeholder="Search..." class="search-bar" />
+        <!-- <input type="text" placeholder="Search..." class="search-bar" /> -->
         
         <div class="profile-dropdown">
           <button id="profileBtn">
@@ -77,9 +120,217 @@
      </div>
     </div>
 
-    <!-- Javascript -->
-    <script src="config.js" defer></script>
-    <script src="main.js" defer></script>
+
+
+<!-- Stutent Active / InActive -->
+<div class="admin-dashboard-container">
+
+    <!-- Statistics -->
+    <div class="admin-stats-container">
+
+      <div class="card">
+        <h3 id="totalStudents">120</h3>
+        <p>Total Students</p>
+      </div>
+
+      <div class="card">
+        <h3 id="activeStudents">110</h3>
+        <p>Active</p>
+      </div>
+
+      <div class="card">
+        <h3 id="disabledStudents">10</h3>
+        <p>Disabled</p>
+      </div>
+
+    </div>
+
+
+    <!-- Search -->
+    <div class="admin-search-section">
+      <input type="text" id="searchInput" placeholder="Search User">
+    </div>
+
+
+    <!-- User Table -->
+    <div class="admin-table-container">
+
+      <h2>User Management</h2>
+
+        <table>
+          <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+          </thead>
+
+          <tbody id="userTable">
+          </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+<!-- Javascript -->
+<script src="config.js" defer></script>
+<script src="main.js" defer></script>
+
+
+<!-- Header Profile Id  -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const loggedUser = localStorage.getItem("loggedUser");
+
+    if (loggedUser) {
+        document.getElementById("username").textContent = loggedUser;
+    } else {
+        document.getElementById("username").textContent = "Admin";
+    }
+
+});
+</script>
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  async function loadUsers() {
+
+  try {
+
+    console.log("Loading users...");
+
+    const response = await fetch("http://localhost:3000/admin/users");
+
+    console.log("Response Status:", response.status);
+
+    const users = await response.json();
+
+    console.log("Users:", users);
+
+    document.getElementById("totalStudents").textContent = users.length;
+
+    document.getElementById("activeStudents").textContent = users.filter(user => user.status === "active").length;
+
+    document.getElementById("disabledStudents").textContent = users.filter(user => user.status === "disabled").length;
+
+    let html = "";
+
+    users.forEach(user => {
+
+      html += `
+      <tr>
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+
+        <td>
+          ${
+            user.status === "active"
+              ? '<span class="active-badge">Active</span>'
+              : '<span class="disabled-badge">Disabled</span>'
+          }
+        </td>
+
+        <td>
+          ${
+            user.status === "active"
+              ? `<button class="disable-btn" onclick="disableUser(${user.id})">Disable</button>`
+              : `<button class="enable-btn" onclick="enableUser(${user.id})">Enable</button>`
+          }
+        </td>
+      </tr>
+      `;
+    });
+
+    document.getElementById("userTable").innerHTML = html;
+
+  } catch(error) {
+
+    console.error("Load Users Error:", error);
+
+  }
+
+}
+
+loadUsers();
+</script>
+
+
+
+
+
+
+
+<script>
+  async function disableUser(id){
+
+  if(!confirm("Disable Student?"))
+    return;
+
+  await fetch(
+    `http://localhost:3000/admin/users/${id}/disable`,
+    {
+      method:"PUT"
+    }
+  );
+
+  loadUsers();
+}
+</script>
+
+
+<script>
+  async function enableUser(id){
+
+  if(!confirm("Enable Student?"))
+    return;
+
+  await fetch(
+    `http://localhost:3000/admin/users/${id}/enable`,
+    {
+      method:"PUT"
+    }
+  );
+
+  loadUsers();
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
   </body>
 </html>

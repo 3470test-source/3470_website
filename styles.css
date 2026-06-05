@@ -12516,21 +12516,19 @@ main.dash-video-content {
 }
 
 
-/* ------------------------------------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 
 
               /* ============== Admin Access Portal ================  */
 
-
-
-   /* Course video Access  */
-
+/*--- Course video Access ---*/
 .admin-box h2 {
-  text-align: center;
+  text-align:justify;
   color: #1d75af;
-  font-size: 25px;
+  font-size: 26px;
   margin-top: 35px;
   margin-bottom: 10px;
+  margin-left: 5%;
 }
 
 .admin-box input {
@@ -12563,8 +12561,7 @@ button.admin-approve-btn {
   cursor: pointer;
   margin: 20px auto;  
   display: block; 
-  box-sizing: border-box;    
-        
+  box-sizing: border-box;      
 }
 
 button.admin-approve-btn:hover {
@@ -12576,6 +12573,47 @@ button.admin-approve-btn:hover {
   text-align: center;
   font-weight: bold;
 }              
+
+                    /* =================================================
+                            Responsive size - Course video Access
+                    ================================================== */
+
+@media screen and (max-width: 767px) {
+
+  .admin-box {
+    padding: 15px;
+  }
+
+  .admin-box h2 {
+    font-size: 22px;
+  }
+
+  .admin-box input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  button.admin-approve-btn {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .admin-box {
+    max-width: 700px;
+  }
+
+  .admin-box h2 {
+    font-size: 24px;
+  }
+
+  .admin-box input {
+    font-size: 15px;
+  }
+}
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -17954,3 +17992,48 @@ button.admin-approve-btn:hover {
 
 
 /* ----------------------------------------------------------------------------------------------------------------------------------- */
+
+/*---- User Management ----*/
+
+.admin-dashboard-container {
+  padding:30px 80px;
+}
+
+.admin-stats-container {
+  display:flex;
+  gap:50px;
+  margin-bottom:40px;
+}
+
+.admin-search-section {
+  margin-bottom:30px;
+}
+
+.admin-search-section input {
+  width:300px;
+  padding:13px;
+  border-radius: 30px;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);
+  border:1px solid #ddd;
+}
+
+.admin-search-section input:focus {
+  border-color: #4caf50; /* Green border color */
+  box-shadow: 0 0 5px #4caf50; /* Soft glow effect */
+  outline: none;
+}
+
+.admin-table-container {
+  background:white;
+  padding:20px;
+  border-radius:10px;
+}
+
+.admin-table-container h2 {
+  margin-bottom: 15px;
+  text-align:justify;
+  font-size: 26px;
+  color: #1d75af;
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------------- */
