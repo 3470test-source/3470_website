@@ -25,7 +25,7 @@ app.use(cors())
 
 
 /* ==========================
-   PDF OTP STORE
+        PDF OTP STORE
 ========================== */
 
 const pdfOtpStore = {};
@@ -33,7 +33,7 @@ const tokenStore = {}
 
 
 /* ==========================
-   NODEMAILER (GMAIL)
+      NODEMAILER (GMAIL)
 ========================== */
 
 const transporter = nodemailer.createTransport({
@@ -51,7 +51,7 @@ const FRONTEND_URL =
     : process.env.LOCAL_FRONTEND_URL;
 
 
-    /* ---------------- RAZORPAY ---------------- */
+/* ---------------- RAZORPAY ---------------- */
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
@@ -61,7 +61,7 @@ const razorpay = new Razorpay({
 
 
 /* =====================================================
-   🔥 RAZORPAY WEBHOOK (MUST BE FIRST)
+        🔥 RAZORPAY WEBHOOK (MUST BE FIRST)
 ===================================================== */
 
 app.post(
@@ -110,9 +110,9 @@ app.post(
         console.log("🗄️ DB Updated Rows:", result.affectedRows);
 
 
-         // -------------------------------
-        // 4️⃣ Fetch Razorpay Invoice PDF
-        // -------------------------------
+      /* --------------------------------------
+             4️⃣ Fetch Razorpay Invoice PDF
+         -------------------------------------- */
         let attachments = [];
         let invoicePdfUrl = null;
 
@@ -172,11 +172,12 @@ app.post(
   }
 );
 
-/* AFTER webhook */
+/*--- AFTER webhook ---*/
 app.use(express.json());
 
+
 /* =====================================================
-   MIDDLEWARES (AFTER WEBHOOK)
+            MIDDLEWARES (AFTER WEBHOOK)
 ===================================================== */
 
 const allowedOrigins = [
@@ -199,7 +200,8 @@ app.use(cors({
   credentials: true
 }));
 
-// ✅ THIS IS REQUIRED
+
+/*--- ✅ THIS IS REQUIRED ---*/
 app.options(/.*/, cors());
 
 
@@ -235,7 +237,7 @@ app.post("/api/enquiry", async (req, res) => {
 
     const finalAmount = courses[course].fee - courses[course].discount;
 
-    /* 1️⃣ Create Razorpay Payment Link */
+    /*--- 1️⃣ Create Razorpay Payment Link ---*/
     const paymentLink = await razorpay.paymentLink.create({
       amount: finalAmount * 100,
       currency: "INR",
@@ -314,9 +316,9 @@ await pool.query(`
       `
     });
 
-     /* 4️⃣ SEND PAYMENT LINK TO USER */
+     /*--- 4️⃣ SEND PAYMENT LINK TO USER ---*/
    
-    await transporter.sendMail({
+await transporter.sendMail({
   from: `"3470 HealthCare" <${process.env.GMAIL_USER}>`,
   to: email,
   subject: "Payment Confirmation for Your Course – 3470 HealthCare",
@@ -367,7 +369,7 @@ await pool.query(`
 });
 
 
-    /* 4️⃣ Single Response */
+    /*--- 4️⃣ Single Response ---*/
     res.json({
       success: true,
       message: "Enquiry submitted successfully!. ✅ Payment link has been sent to your email."
@@ -397,7 +399,7 @@ app.use(express.static("public"));
 
 
 /* ==========================
-   OTP STORES (TEMP)
+      OTP STORES (TEMP)
 ========================== */
 
 const users = {
@@ -468,7 +470,7 @@ const sendOtp = (email, otp) => {
 };
 
 /* ==========================
-   FORGOT PASSWORD
+      FORGOT PASSWORD
 ========================== */
 
 app.post("/api/forgot-password", (req, res) => {
@@ -486,7 +488,7 @@ app.post("/api/forgot-password", (req, res) => {
 });
 
 /* ==========================
-   VERIFY OTP
+        VERIFY OTP
 ========================== */
 
 app.post("/api/verify-otp", (req, res) => {
@@ -510,7 +512,7 @@ app.post("/api/verify-otp", (req, res) => {
 });
 
 /* ==========================
-   RESET PASSWORD
+        RESET PASSWORD
 ========================== */
 
 app.post("/api/reset-password", async (req, res) => {
@@ -534,8 +536,10 @@ app.post("/api/reset-password", async (req, res) => {
   res.json({ success: true });
 });
 
+
+
 /* ==========================
-   REGISTER USER
+       REGISTER USER
 ========================== */
 
 // app.post("/api/register", async (req, res) => {
@@ -659,13 +663,13 @@ app.post("/api/reset-password", async (req, res) => {
 
 app.post("/api/register", async (req, res) => {
   try {
-    // ✅ Trim inputs
+    /*--- ✅ Trim inputs ---*/
     const name = req.body.name?.trim();
     const email = req.body.email?.trim();
     const mobile = req.body.mobile?.trim();
     const password = req.body.password?.trim();
 
-    // ✅ Basic validation
+    /*--- ✅ Basic validation ---*/
     if (!name || !email || !mobile || !password) {
       return res.status(400).json({
         success: false,
@@ -673,7 +677,7 @@ app.post("/api/register", async (req, res) => {
       });
     }
 
-    // ✅ Email validation
+    /*--- ✅ Email validation ---*/
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({
@@ -682,7 +686,7 @@ app.post("/api/register", async (req, res) => {
       });
     }
 
-    // ✅ Mobile validation
+    /*--- ✅ Mobile validation ---*/
     const mobileRegex = /^[6-9]\d{9}$/;
     if (!mobileRegex.test(mobile)) {
       return res.status(400).json({
@@ -691,7 +695,7 @@ app.post("/api/register", async (req, res) => {
       });
     }
 
-    // ✅ Strong password validation
+    /*--- ✅ Strong password validation ---*/
     const strongPass = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
     if (!strongPass.test(password)) {
       return res.status(400).json({
@@ -700,7 +704,7 @@ app.post("/api/register", async (req, res) => {
       });
     }
 
-    // ✅ Check duplicate email (fast query)
+    /*--- ✅ Check duplicate email (fast query) ---*/
     const [existingUser] = await pool.query(
       "SELECT id FROM users WHERE email = ?",
       [email]
@@ -713,16 +717,16 @@ app.post("/api/register", async (req, res) => {
       });
     }
 
-    // ✅ Hash password
+    /*--- ✅ Hash password ---*/
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // ✅ Insert user
+    /*--- ✅ Insert user ---*/
     await pool.query(
       "INSERT INTO users (name, email, mobile, password) VALUES (?, ?, ?, ?)",
       [name, email, mobile, hashedPassword]
     );
 
-    // ✅ Send safe email (NO PASSWORD)
+    /*--- ✅ Send safe email (NO PASSWORD) ---*/
     await transporter.sendMail({
       from: `"3470 HealthCare" <3470test@gmail.com>`,
       to: email,
@@ -781,15 +785,6 @@ app.post("/api/register", async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
 // app.post("/api/login", async (req, res) => {
 //   const { email, password } = req.body;
 
@@ -838,34 +833,26 @@ app.post("/api/login", async (req, res) => {
     );
 
     if (rows.length === 0) {
-      return res.json({
-        success: false,
-        message: "User not found"
-      });
+      return res.json({success: false, message: "User not found"});
     }
 
     const user = rows[0];
 
-    // Check if account is disabled
+    /*--- Check if account is disabled ---*/
     if (user.status === "disabled") {
-      return res.status(403).json({
-        success: false,
-        message:
+      return res.status(403).json({success: false, message:
           "Your account has been disabled. Contact Administrator."
       });
     }
 
-    // Verify password
+    /*--- Verify password ---*/
     const isMatch = await bcrypt.compare(
       password,
       user.password
     );
 
     if (!isMatch) {
-      return res.json({
-        success: false,
-        message: "Invalid password"
-      });
+      return res.json({success: false, message: "Invalid password"});
     }
 
     res.json({
@@ -896,9 +883,6 @@ app.post("/api/login", async (req, res) => {
 
 
 
-
-
-
 /* ==========================
       SEND REQUEST → ADMIN
    ========================== */
@@ -910,7 +894,7 @@ app.post("/send-request", upload.none(), async (req, res) => {
     return res.status(400).send("ERROR — Missing required fields");
   }
 
-  // Send email to admin
+  /*--- Send email to admin ---*/
   const adminMail = {
     from: `"3470 Healthcare | Course Access Request" <3470test@gmail.com>`,
     to: "vignesh.g@3470healthcare.com",
@@ -962,8 +946,9 @@ app.post("/send-request", upload.none(), async (req, res) => {
   }
 });
 
+
 /* ==========================
-   GRANT ACCESS
+        GRANT ACCESS
 ========================== */
 
 app.post("/grant-access", upload.none(), async (req, res) => {
@@ -1014,13 +999,10 @@ app.post("/grant-access", upload.none(), async (req, res) => {
 
 
 
-
-
-
 /*---- pdf link otp popup alert ----*/
 
 /* ======================
-   GENERATE OTP
+      GENERATE OTP
 ====================== */
 
 app.post("/api/pdf/generate-otp",async(req,res)=>{
@@ -1102,7 +1084,7 @@ res.status(500).json({success:false})
 })
 
 /* ======================
-   VERIFY OTP
+       VERIFY OTP
 ====================== */
 
 app.post("/api/pdf/verify-otp",(req,res)=>{
@@ -1138,7 +1120,7 @@ expiry:Date.now() + (5 * 60 * 1000)
 })
 
 /* ======================
-   CHECK TOKEN
+       CHECK TOKEN
 ====================== */
 
 app.get("/api/pdf/check-token",(req,res)=>{
@@ -1165,7 +1147,7 @@ res.json({valid:true})
 })
 
 /* ======================
-   STREAM PDF
+       STREAM PDF
 ====================== */
 
 app.get("/api/pdf/stream",(req,res)=>{
@@ -1199,16 +1181,7 @@ res.sendFile(safePath)
 
 
 
-
-
-
-
-
-
-
-
-
-
+/*--- reate-payment-link ---*/
 
 app.post("/api/create-payment-link", async (req, res) => {
   try {
@@ -1234,7 +1207,7 @@ app.post("/api/create-payment-link", async (req, res) => {
       callback_method: "get"
     });
 
-    // 👉 Save link.id in DB (IMPORTANT for webhook match)
+  /*--- 👉 Save link.id in DB (IMPORTANT for webhook match) ---*/
     await pool.query(
       `UPDATE enquiries_3470_data 
        SET razorpay_link_id=? 
@@ -1257,11 +1230,7 @@ app.post("/api/create-payment-link", async (req, res) => {
 
 
 
-
-
-
-
-
+/*--- Admin portal - User ---*/
 
 app.get("/admin/users", async (req, res) => {
 
@@ -1279,7 +1248,7 @@ app.get("/admin/users", async (req, res) => {
 });
 
 
-
+/*--- Admin portal - User Disable ---*/
 
 app.put("/admin/users/:id/disable", async (req, res) => {
 
@@ -1307,6 +1276,9 @@ app.put("/admin/users/:id/disable", async (req, res) => {
   }
 
 });
+
+
+/*--- Admin portal - User Enable ---*/
 
 app.put("/admin/users/:id/enable", async (req, res) => {
 
@@ -1337,9 +1309,8 @@ app.put("/admin/users/:id/enable", async (req, res) => {
 
 
 
-
 /* ==========================
-   START SERVER
+        START SERVER
 ========================== */
 
 const PORT = process.env.PORT || 3000;
@@ -1349,16 +1320,7 @@ app.listen(PORT, "0.0.0.0", () => {
 });
 
 
-
-
-
-
-
-
-
-
-
-// ___________________________________
+/*===========================================xxxxx===================xxxxx========================xxxxx==================================*/
 
 
 

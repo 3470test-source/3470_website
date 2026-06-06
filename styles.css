@@ -17905,9 +17905,9 @@ button.admin-approve-btn:hover {
 
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
   
-                                            /* ------------------------
-                                                Our Institutes Results 
-                                               ------------------------ */
+                                            /* ----------------------------
+                                                  Our Institutes Results 
+                                               ---------------------------- */
 
 .our-results {  
   text-align: center;
@@ -18036,4 +18036,335 @@ button.admin-approve-btn:hover {
   color: #1d75af;
 }
 
+.admin-stats-container .admin-card {
+  flex:1;
+  background:white;
+  padding:30px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);  
+}
+
+.admin-card h3 {
+  color: #087267;
+  margin-bottom: 15px;
+  font-size: 32px;
+}
+
+.admin-card p {
+  margin: 25px 0;
+  color: #555;
+  font-size: 18px;
+  text-align: justify;
+  line-height: 1.5;
+  margin-bottom: -5px;
+}
+
+.admin-stats-container .admin-card:hover {
+  transform: translateY(-3px);
+}
+
+
+                                         /* =======================================
+                                                    Responsive Size 
+                                         ======================================= */
+
+
+/* =========================
+   Tablet (768px - 1024px)
+========================= */
+
+@media screen and (max-width: 1024px) {
+
+  .admin-dashboard-container {
+    padding: 25px 40px;
+  }
+
+  .admin-stats-container {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .admin-card {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 280px;
+  }
+
+  .admin-card h3 {
+    font-size: 28px;
+  }
+
+  .admin-card p {
+    font-size: 16px;
+  }
+
+  .admin-table-container h2 {
+    font-size: 22px;
+  }
+}
+
+
+/* =========================
+   Mobile (Below 768px)
+========================= */
+
+@media screen and (max-width: 767px) {
+
+  .admin-dashboard-container {
+    padding: 15px;
+  }
+
+  .admin-stats-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .admin-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .admin-search-section input {
+    width: 100%;
+  }
+
+  .admin-card h3 {
+    font-size: 24px;
+  }
+
+  .admin-card p {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .admin-table-container {
+    padding: 15px;
+  }
+
+  .admin-table-container h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+
+/* =========================
+   Small Mobile (320px-375px)
+========================= */
+
+@media screen and (max-width: 375px) {
+
+  .admin-dashboard-container {
+    padding: 10px;
+  }
+
+  .admin-card {
+    padding: 15px;
+  }
+
+  .admin-card h3 {
+    font-size: 22px;
+  }
+
+  .admin-card p {
+    font-size: 14px;
+  }
+
+  .admin-search-section input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .admin-table-container h2 {
+    font-size: 18px;
+  }
+}
+
+
 /* -------------------------------------------------------------------------------------------------------------------------------------- */
+
+/*---- User Management -- Table ----*/
+
+.admin-table-container {
+  overflow-x: auto;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+th {
+  background:#068545;
+  color:white;
+}
+ 
+th,td {
+  border:1px solid #ddd;
+  padding:12px;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: #c9e5ec;
+}
+
+.active-badge,
+.disabled-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Poppins', Arial, sans-serif;
+  text-align: center;
+  min-width: 80px;
+  cursor: pointer;
+}
+
+/*--- Active Badge ---*/
+.active-badge {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.active-badge:hover {
+  background-color: #218838;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/*--- Disabled Badge ---*/
+.disabled-badge {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.disabled-badge:hover {
+  background-color: #c82333;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.disable-btn,
+.enable-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/*--- Disable Button ---*/
+.disable-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.disable-btn:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+/*--- Enable Button ---*/
+.enable-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.enable-btn:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+
+                    /* ===================================================
+                        Responsive size - User Management -- Table 
+                    =================================================== */
+
+/* =========================
+         TABLET
+========================= */
+
+@media (max-width: 1024px) {
+
+  th,td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .disable-btn,
+  .enable-btn {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+
+  .active-badge,
+  .disabled-badge {
+    min-width: 70px;
+    font-size: 12px;
+  }
+}
+
+
+/* =========================
+          MOBILE
+========================= */
+
+@media (max-width: 767px) {
+
+  table {
+    min-width: 700px;
+  }
+
+  th,td {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .disable-btn,
+  .enable-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .active-badge,
+  .disabled-badge {
+    min-width: 65px;
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+
+/* =========================
+        SMALL MOBILE
+========================= */
+
+@media (max-width: 375px) {
+
+  table {
+    min-width: 650px;
+  }
+
+  th,td {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .disable-btn,
+  .enable-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------- */

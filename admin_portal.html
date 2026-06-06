@@ -20,7 +20,6 @@
       body {
         margin: 0;
         font-family: Arial, sans-serif;
-        /* background-color: #b6f8ee; */
         background-color: #bbe0f8;
       }
 
@@ -28,48 +27,6 @@
         font-size:18px;
         margin-top:2px;
         color: rgb(8, 128, 175);
-      }
-
-      .admin-stats-container .card {
-        flex:1;
-        background:white;
-        padding:20px;
-        border-radius:10px;
-        text-align:center;
-        box-shadow:0 2px 8px rgba(0,0,0,.1);
-      }
-
-      .admin-stats-container .card:hover {
-        transform: translateY(-3px);
-      }
-
-      table {
-        width:100%;
-        border-collapse:collapse;
-      }
-
-      th {
-        background:#068545;
-        color:white;
-      }
- 
-      th,td {
-        border:1px solid #ddd;
-        padding:12px;
-      }
-
-      .active-badge {
-        background:#d4edda;
-        color:#155724;
-        padding:5px 10px;
-        border-radius:20px;
-      }
-
-      .disabled-badge {
-        background:#f8d7da;
-        color:#721c24;
-        padding:5px 10px;
-        border-radius:20px;
       }
 
     </style>
@@ -128,18 +85,18 @@
     <!-- Statistics -->
     <div class="admin-stats-container">
 
-      <div class="card">
-        <h3 id="totalStudents">120</h3>
+      <div class="admin-card">
+        <h3 id="totalStudents"></h3>
         <p>Total Students</p>
       </div>
 
-      <div class="card">
-        <h3 id="activeStudents">110</h3>
+      <div class="admin-card">
+        <h3 id="activeStudents"></h3>
         <p>Active</p>
       </div>
 
-      <div class="card">
-        <h3 id="disabledStudents">10</h3>
+      <div class="admin-card">
+        <h3 id="disabledStudents"></h3>
         <p>Disabled</p>
       </div>
 
@@ -201,23 +158,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- User Management -->
 <script>
+
   async function loadUsers() {
 
   try {
@@ -278,18 +221,17 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 loadUsers();
+
 </script>
 
 
 
-
-
-
-
+<!-- Disable the button -->
 <script>
+
   async function disableUser(id){
 
-  if(!confirm("Disable Student?"))
+  if(!confirm("🔒 Are you sure you want to disable this account?"))
     return;
 
   await fetch(
@@ -301,13 +243,17 @@ loadUsers();
 
   loadUsers();
 }
+
 </script>
 
 
+
+<!-- Enable the button -->
 <script>
+
   async function enableUser(id){
 
-  if(!confirm("Enable Student?"))
+  if(!confirm("🔓 Are you sure you want to enable this account?"))
     return;
 
   await fetch(
@@ -319,17 +265,32 @@ loadUsers();
 
   loadUsers();
 }
+
 </script>
 
 
 
+<!-- Admin portal - search user  -->
 
+<script>
+document.getElementById("searchInput").addEventListener("keyup", function () {
 
+  const keyword = this.value.toLowerCase();
 
+  const rows = document.querySelectorAll("#userTable tr");
 
+  rows.forEach(row => {
 
+    const text = row.textContent.toLowerCase();
 
+    row.style.display = text.includes(keyword)
+      ? ""
+      : "none";
 
+  });
+
+});
+</script>
 
 
   </body>
