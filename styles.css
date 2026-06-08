@@ -18368,3 +18368,65 @@ tr:hover {
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------------- */
+
+/*---- User Management -- Table - preview 1 2 3 Next ----*/
+
+.pagination {
+  margin-top:25px;
+  text-align:center;
+}
+
+.pagination button {
+  padding:8px 12px;
+  margin:0 3px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.active-page {
+  background:#068545;
+  color:#fff;
+}
+
+.pagination button:disabled {
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+/*--- Tablet ---*/
+@media (max-width: 1024px) {
+  .pagination button {
+    padding: 7px 11px;
+    font-size: 14px;
+  }
+}
+
+                        /* ======================================================
+                              Responsive style - Table - preview 1 2 next Btn
+                        ====================================================== */
+
+/*--- Mobile ---*/
+@media (max-width: 767px) {
+  .pagination {
+    gap: 4px;
+  }
+
+  .pagination button {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+/*--- Small Mobile ---*/
+@media (max-width: 375px) {
+  .pagination button {
+    padding: 5px 8px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+

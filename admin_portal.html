@@ -125,10 +125,11 @@
               </tr>
           </thead>
 
-          <tbody id="userTable">
-          </tbody>
+          <tbody id="userTable"></tbody>
 
         </table>
+
+          <div class="pagination" id="pagination"></div>
 
     </div>
 
@@ -161,6 +162,10 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- User Management -->
 <script>
 
+let allUsers = [];
+let currentPage = 1;
+const rowsPerPage = 10;
+
   async function loadUsers() {
 
   try {
@@ -171,19 +176,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Response Status:", response.status);
 
-    const users = await response.json();
+    allUsers = await response.json();
 
-    console.log("Users:", users);
+    console.log("Users:", allUsers);
 
-    document.getElementById("totalStudents").textContent = users.length;
+/*--- Dashboard Counts ---*/
 
-    document.getElementById("activeStudents").textContent = users.filter(user => user.status === "active").length;
+    document.getElementById("totalStudents").textContent = allUsers.length;
 
-    document.getElementById("disabledStudents").textContent = users.filter(user => user.status === "disabled").length;
+    document.getElementById("activeStudents").textContent = allUsers.filter(user => user.status === "active").length;
+
+    document.getElementById("disabledStudents").textContent = allUsers.filter(user => user.status === "disabled").length;
+
+    renderTable();
+    renderPagination();
+
+    } catch (error) {
+
+    console.error("Load Users Error:", error);
+
+  }
+}
+
+
+/*--- Show Current Page Records ---*/
+function renderTable() {
+
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+
+  const usersToShow = allUsers.slice(start, end);
 
     let html = "";
 
-    users.forEach(user => {
+    usersToShow.forEach(user => {
 
       html += `
       <tr>
@@ -212,14 +238,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("userTable").innerHTML = html;
 
-  } catch(error) {
+  } 
 
-    console.error("Load Users Error:", error);
+/*--- Create Pagination Buttons ---*/
+function renderPagination() {
 
+  const pageCount = Math.ceil(allUsers.length / rowsPerPage);
+
+  let html = "";
+
+/*--- Previous Button ---*/
+  html += `
+    <button
+      ${currentPage === 1 ? "disabled" : ""}
+      onclick="changePage(${currentPage - 1})">
+      Previous
+    </button>
+  `;
+
+/*--- Page Numbers ---*/
+  for (let i = 1; i <= pageCount; i++) {
+
+    html += `
+      <button
+        class="${i === currentPage ? 'active-page' : ''}"
+        onclick="changePage(${i})">
+        ${i}
+      </button>
+    `;
   }
 
+/*--- Next Button ---*/
+  html += `
+    <button
+      ${currentPage === pageCount ? "disabled" : ""}
+      onclick="changePage(${currentPage + 1})">
+      Next
+    </button>
+  `;
+
+  document.getElementById("pagination").innerHTML = html;
 }
 
+/*--- Page Change ---*/
+function changePage(page) {
+
+  const pageCount = Math.ceil(allUsers.length / rowsPerPage);
+
+  if (page < 1 || page > pageCount) return;
+
+  currentPage = page;
+
+  renderTable();
+  renderPagination();
+}
+
+/*--- Load Data ---*/
 loadUsers();
 
 </script>
@@ -291,6 +365,7 @@ document.getElementById("searchInput").addEventListener("keyup", function () {
 
 });
 </script>
+
 
 
   </body>
