@@ -219,7 +219,7 @@ const courses = {
   "Emergency Department": { fee: 14000, discount: 2000 },
   "Inpatient Coding Diagnosis Related Groups": { fee: 7210, discount: 0 },
   "Interactive Voice Response": { fee: 14000, discount: 2000 },
-  "Surgery Training": { fee: 14000, discount: 2000 }
+  "Surgery Training": { fee: 6180, discount: 0 }
 };
 
 
@@ -669,6 +669,19 @@ app.post("/api/register", async (req, res) => {
     const mobile = req.body.mobile?.trim();
     const password = req.body.password?.trim();
 
+
+
+    // NM Portal fields
+const user_unique_id = req.body.user_unique_id?.trim() || null;
+const college_code = req.body.college_code?.trim() || null;
+const college_name = req.body.college_name?.trim() || null;
+const college_roll_no = req.body.college_roll_no?.trim() || null;
+const branch = req.body.branch?.trim() || null;
+const sem = req.body.sem?.trim() || null;
+
+
+
+
     /*--- ✅ Basic validation ---*/
     if (!name || !email || !mobile || !password) {
       return res.status(400).json({
@@ -721,11 +734,50 @@ app.post("/api/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     /*--- ✅ Insert user ---*/
-    await pool.query(
-      "INSERT INTO users (name, email, mobile, password) VALUES (?, ?, ?, ?)",
-      [name, email, mobile, hashedPassword]
-    );
+    // await pool.query(
+    //   "INSERT INTO users (name, email, mobile, password) VALUES (?, ?, ?, ?)",
+    //   [name, email, mobile, hashedPassword]
+    // );
 
+
+
+    await pool.query(
+  `INSERT INTO users
+  (
+    name,
+    email,
+    mobile,
+    password,
+    user_unique_id,
+    college_code,
+    college_name,
+    college_roll_no,
+    branch,
+    sem
+  )
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  [
+    name,
+    email,
+    mobile,
+    hashedPassword,
+    user_unique_id,
+    college_code,
+    college_name,
+    college_roll_no,
+    branch,
+    sem
+  ]
+);
+
+
+
+
+
+
+
+
+    
     /*--- ✅ Send safe email (NO PASSWORD) ---*/
     await transporter.sendMail({
       from: `"3470 HealthCare" <3470test@gmail.com>`,

@@ -488,6 +488,56 @@ toggleIcons.forEach((icon) => {
 const registerForm = document.getElementById("registerForm");
 
 if(registerForm){
+
+
+
+
+
+  // Read token from URL
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get("token");
+
+// Variable to store NM data
+let nmData = {};
+
+if (token) {
+    try {
+
+        // Decode Base64
+        const decoded = atob(token);
+
+        console.log(decoded);
+
+        // Convert query string into object
+        nmData = Object.fromEntries(new URLSearchParams(decoded));
+
+        console.log(nmData);
+
+        console.table(nmData);
+
+        // Auto-fill Name
+        document.getElementById("registerName").value =
+            nmData.full_name || "";
+
+        // Auto-fill Email if NM sends it
+        if (nmData.email) {
+            document.getElementById("registerEmail").value =
+                nmData.email;
+        }
+
+    } catch (err) {
+        console.log("Invalid Token", err);
+    }
+}
+
+
+
+
+
+
+
+
+
   registerForm.addEventListener("submit", async function(e){ // Make async
     e.preventDefault();
 
@@ -542,7 +592,37 @@ if(registerForm){
      const res = await fetch(`${API_BASE_URL}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, mobile, password })
+        // body: JSON.stringify({ name, email, mobile, password })
+
+
+
+
+
+body: JSON.stringify({
+
+    name,
+    email,
+    mobile,
+    password,
+
+    user_unique_id: nmData.user_unqiue_id,
+
+    college_code: nmData.college_code,
+
+    college_name: nmData.college_name,
+
+    college_roll_no: nmData.college_roll_no,
+
+    branch: nmData.branch,
+
+    sem: nmData.sem
+
+})
+
+
+
+
+
      });
 
       const result = await res.json();
