@@ -935,6 +935,130 @@ app.post("/api/login", async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+app.post("/api/nm-login", async (req, res) => {
+
+    try {
+
+        const {
+            user_unique_id,
+            full_name,
+            email,
+            college_code,
+            college_name,
+            college_roll_no,
+            branch,
+            sem
+        } = req.body;
+
+        // Check mandatory field
+        if (!user_unique_id) {
+            return res.status(400).json({
+                success: false,
+                message: "User Unique ID is required"
+            });
+        }
+
+        // Check whether student already exists
+        const [rows] = await pool.query(
+            "SELECT * FROM users WHERE user_unique_id = ?",
+            [user_unique_id]
+        );
+
+        let user;
+
+        if (rows.length > 0) {
+
+            // Existing student
+            user = rows[0];
+
+        } else {
+
+            // Generate a temporary password
+            const tempPassword = "NM@12345";
+
+            const hashedPassword = await bcrypt.hash(tempPassword, 10);
+
+            await pool.query(
+                `INSERT INTO users
+                (
+                    name,
+                    email,
+                    mobile,
+                    password,
+                    user_unique_id,
+                    college_code,
+                    college_name,
+                    college_roll_no,
+                    branch,
+                    sem
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                [
+                    full_name,
+                    email || null,
+                    null,
+                    hashedPassword,
+                    user_unique_id,
+                    college_code,
+                    college_name,
+                    college_roll_no,
+                    branch,
+                    sem
+                ]
+            );
+
+            const [newUser] = await pool.query(
+                "SELECT * FROM users WHERE user_unique_id=?",
+                [user_unique_id]
+            );
+
+            user = newUser[0];
+        }
+
+        return res.json({
+
+            success: true,
+
+            user: {
+
+                id: user.id,
+
+                name: user.name,
+
+                email: user.email,
+
+                role: user.role
+
+            }
+
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Server Error"
+
+        });
+
+    }
+
+});
+
+
+
+
 /* ==========================
       SEND REQUEST → ADMIN
    ========================== */

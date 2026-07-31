@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NM Portal Login</title>
+
+    <script src="config.js"></script>
+</head>
+<body>
+
+<h2>Please wait...</h2>
+<p>Logging you into 3470 Healthcare Portal...</p>
+
+<script>
+
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get("token");
+
+
+
+
+
+
+
+
+if(!token){
+    alert("Invalid Token");
+    window.location.href = "login.html";
+}
+
+let nmData = {};
+
+if (token) {
+
+    try {
+
+        const decoded = atob(token);
+
+        console.log(decoded);
+
+        nmData = Object.fromEntries(new URLSearchParams(decoded));
+
+        console.table(nmData);
+
+        nmAutoLogin();
+        
+    } catch (err) {
+
+        console.error("Invalid Token:", err);
+
+        alert("Invalid Token");
+
+        window.location.href = "login.html";
+
+    }
+
+}
+
+async function nmAutoLogin(){
+
+    try{
+
+        const res = await fetch(`${API_BASE_URL}/api/nm-login`,{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify(nmData)
+
+        });
+
+        const result = await res.json();
+
+        if(result.success){
+
+            localStorage.setItem("loggedUser",result.user.email || "");
+            localStorage.setItem("loggedUserName",result.user.name);
+
+            window.location.href="BMCT_dashboard/dashboard_bmct.html";
+
+        }else{
+
+            alert(result.message);
+
+            window.location.href="login.html";
+
+        }
+
+    }catch(err){
+
+        console.log(err);
+
+        alert("Server Error");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
