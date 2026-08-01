@@ -965,6 +965,22 @@ app.post("/api/nm-login", async (req, res) => {
             });
         }
 
+
+
+
+//----------------------------------------
+        // Create email if NM didn't send one
+        //----------------------------------------
+
+        const studentEmail =
+            email && email.trim() !== ""
+                ? email
+                : `${user_unique_id}@3470healthcare.org`;
+
+
+
+
+
         // Check whether student already exists
         const [rows] = await pool.query(
             "SELECT * FROM users WHERE user_unique_id = ?",
@@ -1001,16 +1017,27 @@ app.post("/api/nm-login", async (req, res) => {
                 )
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                 [
+
                     full_name,
-                    email || null,
-                    null,
+
+                    studentEmail,
+
+                    "",
+
                     hashedPassword,
+
                     user_unique_id,
+
                     college_code,
+
                     college_name,
-                    college_roll_no,
-                    branch,
-                    sem
+
+                    college_roll_no || "",
+
+                    branch || "",
+
+                    sem || ""
+
                 ]
             );
 
