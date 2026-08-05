@@ -229,10 +229,21 @@
             <button onclick="open_BMCT_PDF('../BMCT_PDF/FINAL BMCT BOOK 2021 CHANGES.pdf')" class="pdf-btn">📄 View PDF</button>
           </div>
 
+
+
+          
+
           <!-- <div class="materials-item">
             <h3><span class="module-label">Test 2 -</span> Test-2</h3>
-            <button onclick="open_BMCT_PDF('../BMCT_PDF/Test Question Set 2.pdf')" class="pdf-btn">📄 View PDF</button>
+            <button onclick="open_BMCT_PDF('../BMCT_PDF/UNIT-1_MEDICAL_TERMINOLOGY_-I.docx')" class="pdf-btn">📄 View PDF</button>
           </div> -->
+
+
+
+          <div class="materials-item">
+            <h3><span class="module-label">Test 2 -</span> Test-2</h3>
+            <button onclick="openDocument()">Open Handbook</button>
+          </div>
 
 
 
@@ -261,6 +272,28 @@
     window.open("../pdf-viewer.html?file=" + encodeURIComponent(pdfPath), "_blank");
    }
   </script>
+
+
+
+
+
+<script>
+function openDocument() {
+    // window.open("../BMCT_PDF/UNIT-1_MEDICAL_TERMINOLOGY_-I.docx", "_blank");
+
+    window.open(
+  "https://docs.google.com/gview?embedded=true&url=http://127.0.0.1:5500/BMCT_PDF/UNIT-1_MEDICAL_TERMINOLOGY_-I.docx",
+  "_blank"
+);
+
+}
+</script>
+
+
+
+
+
+
 
 
   <!-- Dashboard  sidebar full - Dropdown  -->
