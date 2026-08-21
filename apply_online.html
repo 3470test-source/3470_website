@@ -24,21 +24,21 @@
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-<style>
+    <style>
 
     body {
-       font-family: Arial, sans-serif;
-       background: url("picture/apply_online.jpg") center / cover no-repeat;
+      font-family: Arial, sans-serif;
+      background: url("picture/apply_online.jpg") center / cover no-repeat;
     }
 
     .apply-online-form-wrapper {
-       max-width: 900px;
-       margin: auto;
-       background: rgb(231, 224, 180);
-       padding: 25px;
-       border-radius: 20px;
-       margin-bottom: 50px;
-       margin-top: 50px;
+      max-width: 900px;
+      margin: auto;
+      background: rgb(231, 224, 180);
+      padding: 25px;
+      border-radius: 20px;
+      margin-bottom: 50px;
+      margin-top: 50px;
     }
 
     .logo-apply-online-form {
@@ -104,68 +104,61 @@
       color: #0d0e0d;             
     }
 
-/* ============================= */
-/* Tablet Devices */
-/* ============================= */
-@media (max-width: 1024px) {
-  .apply-online-form-wrapper {
-    max-width: 95%;
-    padding: 20px;
-  }
+    /*-- Tablet Devices --*/
+    @media (max-width: 1024px) {
+      .apply-online-form-wrapper {
+        max-width: 95%;
+        padding: 20px;
+      }
 
-  .apply-online-form-wrapper h2 {
-    font-size: 24px;
-  }
+      .apply-online-form-wrapper h2 {
+        font-size: 24px;
+      }
 
-  .apply-online-form-wrapper h3 {
-    font-size: 20px;
-  }
-}
+      .apply-online-form-wrapper h3 {
+        font-size: 20px;
+      }
+    }
 
-/* ============================= */
-/* Mobile Devices */
-/* ============================= */
-@media (max-width: 768px) {
+    /*-- Mobile Devices --*/
+    @media (max-width: 768px) {
 
-  .apply-online-form-grid-2 {
-    grid-template-columns: 1fr;   /* make single column */
-  }
+      .apply-online-form-grid-2 {
+        grid-template-columns: 1fr;   /* make single column */
+      }
 
-  .apply-online-form-wrapper {
-    padding: 15px;
-    border-radius: 15px;
-  }
+      .apply-online-form-wrapper {
+        padding: 15px;
+        border-radius: 15px;
+      }
 
-  input, select, textarea {
-    font-size: 14px;
-    padding: 10px;
-  }
+      input, select, textarea {
+        font-size: 14px;
+        padding: 10px;
+      }
 
-  .apply-online-form-wrapper button {
-    font-size: 16px;
-    padding: 10px;
-  }
+      .apply-online-form-wrapper button {
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .logo-apply-online-form {
-    width: 130px;
-  }
-}
+      .logo-apply-online-form {
+        width: 130px;
+      }
+    }
 
+    /*-- Very Small Phones --*/
+    @media (max-width: 400px) {
+      .apply-online-form-wrapper h2 {
+        font-size: 20px;
+      }
 
-/* ============================= */
-/* Very Small Phones */
-/* ============================= */
-@media (max-width: 400px) {
-  .apply-online-form-wrapper h2 {
-    font-size: 20px;
-  }
+      .apply-online-form-wrapper h3 {
+        font-size: 18px;
+      }
+    }
 
-  .apply-online-form-wrapper h3 {
-    font-size: 18px;
-  }
-}
-
-</style>
+    </style>
  
 </head>
 <body>  
@@ -267,86 +260,159 @@
 
     <input type="file" name="resume" id="resume" required>
 
-    <button type="submit">Submit</button>
+    <button type="submit" id="applySubmitBtn">Submit</button>
 
   </form>
 </div>
     
+
 <script src="main.js"></script>
 
-
+<!-- Js - Apply online form -->
 <script>
+
 document.getElementById("applyForm-online").addEventListener("submit", function(e) {
-  e.preventDefault();
 
-  const form = document.getElementById("applyForm-online");
-  const formData = new FormData(form);
+    e.preventDefault();
 
-  const file = document.getElementById("resume").files[0];
+    const form = document.getElementById("applyForm-online");
+    const submitButton = document.getElementById("applySubmitBtn");
 
-  if (!file) {
-    alert("Please upload resume");
-    return;
-  }
+    /*-- SAVE ORIGINAL BUTTON TEXT --*/
+    const originalText = submitButton.innerHTML;
 
-  const reader = new FileReader();
+    /*-- SHOW LOADING SPINNER --*/
+    submitButton.disabled = true;
+    submitButton.innerHTML ='<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
 
-  reader.onload = function() {
+    const formData = new FormData(form);
+    const file = document.getElementById("resume").files[0];
 
-    const base64 = reader.result.split(',')[1];
+    /*-- CHECK RESUME --*/
+    if (!file) {
 
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      phoneNo: formData.get("phoneNo"),
-      PostingtoApply: formData.get("PostingtoApply"),
-      medicalCoding: formData.get("medicalCoding"),
-      MedicalCodingTrainer: formData.get("MedicalCodingTrainer"),
-      address: formData.get("address"),
-      city: formData.get("city"),
-      state: formData.get("state"),
-      PostalCode: formData.get("PostalCode"),
-      country: formData.get("country"),
-      EmployeeStatus: formData.get("EmployeeStatus"),
-      Employer: formData.get("Employer"),
-      Designation: formData.get("Designation"),
-      salary: formData.get("salary"),
-      reason: formData.get("reason"),
-      fileName: file.name,
-      mimeType: file.type,
-      resumeFile: base64
-    };
+      alert("Please upload resume");
 
+      /*-- Restore button --*/
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalText;
+
+      return;
+    }
+
+    const reader = new FileReader();
+
+    /*-- FILE READING --*/
+    reader.onload = function() {
+
+        const base64 = reader.result.split(',')[1];
+
+        const data = {
+
+            name: formData.get("name"),
+            email: formData.get("email"),
+            phoneNo: formData.get("phoneNo"),
+            PostingtoApply: formData.get("PostingtoApply"),
+            medicalCoding: formData.get("medicalCoding"),
+            MedicalCodingTrainer: formData.get("MedicalCodingTrainer"),
+            address: formData.get("address"),
+            city: formData.get("city"),
+            state: formData.get("state"),
+            PostalCode: formData.get("PostalCode"),
+            country: formData.get("country"),
+            EmployeeStatus: formData.get("EmployeeStatus"),
+            Employer: formData.get("Employer"),
+            Designation: formData.get("Designation"),
+            salary: formData.get("salary"),
+            reason: formData.get("reason"),
+            fileName: file.name,
+            mimeType: file.type,
+            resumeFile: base64
+        };
+
+
+    /*-- SEND TO GOOGLE APPS SCRIPT --*/
     fetch("https://script.google.com/macros/s/AKfycbyQj5hOhpVBGOIcqX7PXtc8oms_yr2iAit5YgUS9VysgyDGsW1ylfv2krvSlXTl-k6U/exec", {
+
       method: "POST",
       body: new URLSearchParams(data)
-    })
-    .then(res => res.json())
-    .then(response => {
-      if (response.status === "success") {
-        alert("Application Submitted Successfully!");
-        form.reset();
-      } else {
-        alert("Error submitting form");
-      }
-    })
-    .catch(error => {
-      alert("Error occurred!");
-      console.error(error);
-    });
-  };
 
-  reader.readAsDataURL(file);
+    })
+
+    .then(res => res.json())
+
+    .then(response => {
+
+      console.log("Server response:", response);
+
+        if (response.status === "success") {
+
+            /*-- SUCCESS --*/
+            alert("✅ Application Submitted Successfully!");
+
+              /*-- Reset form --*/
+              form.reset();
+
+              /*-- Re-enable both medical coding fields --*/
+              medicalCoding.disabled = false;
+              medicalCodingTrainer.disabled = false;
+
+            } 
+
+            else {
+
+              alert("Error submitting form");
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+            alert("Error occurred while submitting application.");
+
+        })
+
+        .finally(() => {
+
+            /*-- RESTORE BUTTON --*/
+            submitButton.disabled = false;
+
+            submitButton.innerHTML = originalText;
+
+        });
+
+    };
+
+
+    /*-- FILE READING ERROR --*/
+    reader.onerror = function() {
+
+        alert("Unable to read resume file.");
+
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalText;
+
+    };
+
+
+    /*-- READ RESUME AS BASE64 --*/
+    reader.readAsDataURL(file);
+
 });
+
 </script>
 
 
 <!-- Condition for medical coding or medical coding Trainer -->
 <script>
+
   const medicalCoding = document.getElementById("MedicalCoding");
   const medicalCodingTrainer = document.getElementById("MedicalCodingTrainers");
 
-  // When Medical Coding changes
+  /*-- When Medical Coding changes --*/
   medicalCoding.addEventListener("change", function () {
     if (this.value !== "") {
       medicalCodingTrainer.disabled = true;
@@ -355,7 +421,7 @@ document.getElementById("applyForm-online").addEventListener("submit", function(
     }
   });
 
-  // When Medical Coding Trainer changes
+  /*-- When Medical Coding Trainer changes --*/
   medicalCodingTrainer.addEventListener("change", function () {
     if (this.value !== "") {
       medicalCoding.disabled = true;
@@ -363,7 +429,9 @@ document.getElementById("applyForm-online").addEventListener("submit", function(
       medicalCoding.disabled = false;
     }
   });
+
 </script>
+
 
 </body>
 </html>        

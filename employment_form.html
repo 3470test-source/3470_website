@@ -26,174 +26,166 @@
 
     <style>
 
-/* Page Background */
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #068545, #03521d);
-}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #068545, #03521d);
+    }
 
-/*--- Main Wrapper ---*/
-.employment-online-form-wrapper {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 35px;
-  border-radius: 32px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  background: #add9f8;
-}
+    /*-- Main Wrapper --*/
+    .employment-online-form-wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 35px;
+      border-radius: 32px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      background: #add9f8;
+    }
 
-/*--- Header Section ---*/
-.Em-form-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    /*-- Header Section --*/
+    .Em-form-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-.Em-form-logo {
-  width: 170px;
-  margin-bottom: 10px;
-}
+    .Em-form-logo {
+      width: 170px;
+      margin-bottom: 10px;
+    }
 
-.Em-form-title {
-  margin: 0;
-  font-size: 30px;
-  font-weight: 600;
-  color: #0b7a3a;
-}
+    .Em-form-title {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 600;
+      color: #0b7a3a;
+    }
 
-::placeholder {
-  color: #0d0e0d;             
-}
+    ::placeholder {
+      color: #0d0e0d;             
+    }
 
-.Em-form-header p {
-  margin-top: 20px;
-  color: #0976d4;
-  font-size: 18px;
-  font-weight: 600;
-}
+    .Em-form-header p {
+      margin-top: 20px;
+      color: #0976d4;
+      font-size: 18px;
+      font-weight: 600;
+    }
 
-/*--- Form Layout ---*/
-.employmentForm-online {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
+    /*-- Form Layout --*/
+    .employmentForm-online {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
 
-/*--- Full Width Elements ---*/
-.employmentForm-online textarea,
-.employmentForm-online button,
-.employmentForm-online input[type="file"] {
-  grid-column: span 2;
-}
+    /*-- Full Width Elements --*/
+    .employmentForm-online textarea,
+    .employmentForm-online button,
+    .employmentForm-online input[type="file"] {
+      grid-column: span 2;
+    }
 
-/*--- Inputs & Select ---*/
-.employmentForm-online input,
-.employmentForm-online select,
-.employmentForm-online textarea {
-  padding: 10px 12px;
-  font-size: 14px;
-  border: 1px solid #dcdcdc;
-  border-radius: 10px;
-  outline: none;
-  transition: 0.3s ease;
-  width: 100%;
-  box-sizing: border-box;
+    /*-- Inputs & Select --*/
+    .employmentForm-online input,
+    .employmentForm-online select,
+    .employmentForm-online textarea {
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid #dcdcdc;
+      border-radius: 10px;
+      outline: none;
+      transition: 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-}
+    /*-- Focus Effect --*/
+    .employmentForm-online input:focus,
+    .employmentForm-online select:focus,
+    .employmentForm-online textarea:focus {
+      border-color: #0bda65;
+      box-shadow: 0 0 5px rgba(2, 163, 50, 0.2);
+    }
 
-/*--- Focus Effect ---*/
-.employmentForm-online input:focus,
-.employmentForm-online select:focus,
-.employmentForm-online textarea:focus {
-  border-color: #0bda65;
-  box-shadow: 0 0 5px rgba(2, 163, 50, 0.2);
-}
+    /*-- File Upload --*/
+    input[type="file"] {
+      padding: 8px;
+      background: #f9f9f9;
+    }
 
-/*--- File Upload ---*/
-input[type="file"] {
-  padding: 8px;
-  background: #f9f9f9;
-}
+    /*-- Submit Button --*/
+    .employmentForm-online button {
+      padding: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      background: #028836;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-/*--- Submit Button ---*/
-.employmentForm-online button {
-  padding: 12px;
-  font-size: 18px;
-  font-weight: 600;
-  border: none;
-  border-radius: 10px;
-  background: #028836;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
+    .employmentForm-online button:hover {
+      background: #075f24;
+    }
 
-.employmentForm-online button:hover {
-  background: #075f24;
-}
+    /*-- MOBILE (320px – 767px) --*/
+    @media (max-width: 767px) {
 
-/* =========================================
-   📱 MOBILE (320px – 767px)
-========================================= */
-@media (max-width: 767px) {
+      .employment-online-form-wrapper {
+        padding: 20px;
+        border-radius: 20px;
+      }
 
-  .employment-online-form-wrapper {
-    padding: 20px;
-    border-radius: 20px;
-  }
+      .employmentForm-online {
+        grid-template-columns: 1fr;   /* Single column */
+      }
 
-  .employmentForm-online {
-    grid-template-columns: 1fr;   /* Single column */
-  }
+      .employmentForm-online textarea,
+      .employmentForm-online button,
+      .employmentForm-online input[type="file"] {
+        grid-column: span 1;
+      }
 
-  .employmentForm-online textarea,
-  .employmentForm-online button,
-  .employmentForm-online input[type="file"] {
-    grid-column: span 1;
-  }
+      .Em-form-title {
+        font-size: 22px;
+      }
 
-  .Em-form-title {
-    font-size: 22px;
-  }
+      .Em-form-header p {
+        font-size: 14px;
+      }
 
-  .Em-form-header p {
-    font-size: 14px;
-  }
+      .employmentForm-online button {
+        font-size: 16px;
+      }
+    }
 
-  .employmentForm-online button {
-    font-size: 16px;
-  }
-}
+    /*-- TABLET (768px – 1024px) --*/
+    @media (min-width: 768px) and (max-width: 1024px) {
 
-/* =========================================
-   📲 TABLET (768px – 1024px)
-========================================= */
-@media (min-width: 768px) and (max-width: 1024px) {
+      .employment-online-form-wrapper {
+        max-width: 95%;
+        padding: 30px;
+      }
 
-  .employment-online-form-wrapper {
-    max-width: 95%;
-    padding: 30px;
-  }
+      .employmentForm-online {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-  .employmentForm-online {
-    grid-template-columns: repeat(2, 1fr);
-  }
+      .Em-form-title {
+        font-size: 26px;
+      }
+    }
 
-  .Em-form-title {
-    font-size: 26px;
-  }
-}
+    /*-- DESKTOP (1025px and above) --*/
+    @media (min-width: 1025px) {
 
-/* =========================================
-   💻 DESKTOP (1025px and above)
-========================================= */
-@media (min-width: 1025px) {
+      .employment-online-form-wrapper {
+        max-width: 900px;
+      }
 
-  .employment-online-form-wrapper {
-    max-width: 900px;
-  }
-
-}
+    }
 
 
     </style>
@@ -316,76 +308,158 @@ input[type="file"] {
     
 <script src="main.js"></script>
 
+<!-- JS - Employment Form  -->
 <script>
+
 document.getElementById("employmentForm-online").addEventListener("submit", function(e) {
-  e.preventDefault();
 
-  const form = document.getElementById("employmentForm-online");
-  const formData = new FormData(form);
-  const file = formData.get("refereeResume");
+    e.preventDefault();
 
-  if (!file || file.size === 0) {
-    alert("Please upload referee resume");
-    return;
-  }
+    const form = this;
 
-  const reader = new FileReader();
+    /*--- SUBMIT BUTTON ---*/
+    const submitButton = form.querySelector('button[type="submit"]');
 
-  reader.onload = function() {
+    /*--- SAVE ORIGINAL BUTTON HTML ---*/
+    const originalText = submitButton.innerHTML;
 
-    const base64 = reader.result.split(',')[1];
+    /*--- DISABLE BUTTON ---*/
+    submitButton.disabled = true;
 
-    const data = {
-      fullName: formData.get("fullName"),
-      email: formData.get("email"),
-      phoneNo: formData.get("phoneNo"),
-      position: formData.get("position"),
-      medicalCoding: formData.get("medicalCoding"),
-      medicalCodingTrainer: formData.get("medicalCodingTrainer"),
-      workExperience: formData.get("workExperience"),
-      recommendedBy: formData.get("recommendedBy"),
-      refEmployeeCode: formData.get("refEmployeeCode"),
-      refName: formData.get("refName"),
-      refEmail: formData.get("refEmail"),
-      refPhone: formData.get("refPhone"),
-      relationship: formData.get("relationship"),
-      refereeName: formData.get("refereeName"),
-      refereePhone: formData.get("refereePhone"),
-      refereeEmail: formData.get("refereeEmail"),
-      refereeFileName: file.name,
-      refereeMimeType: file.type,
-      refereeResumeFile: base64
+    /*--- SHOW LOADING SPINNER ---*/
+    submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+
+
+    const formData = new FormData(form);
+    const file = formData.get("refereeResume");
+
+    /*--- CHECK FILE ---*/
+    if (!file || file.size === 0) {
+    
+      alert("Please upload referee resume");
+
+      /*-- Restore button --*/
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalText;
+
+      return;
+    }
+
+
+    /*--- FILE READER ---*/
+    const reader = new FileReader();
+
+    reader.onload = function() {
+
+      const base64 = reader.result.split(',')[1];
+
+      const data = {
+
+        fullName: formData.get("fullName"),
+        email: formData.get("email"),
+        phoneNo: formData.get("phoneNo"),
+        position: formData.get("position"),
+        medicalCoding: formData.get("medicalCoding"),
+        medicalCodingTrainer: formData.get("medicalCodingTrainer"),
+        workExperience: formData.get("workExperience"),
+        recommendedBy: formData.get("recommendedBy"),
+        refEmployeeCode: formData.get("refEmployeeCode"),
+        refName: formData.get("refName"),
+        refEmail: formData.get("refEmail"),
+        refPhone: formData.get("refPhone"),
+        relationship: formData.get("relationship"),
+        refereeName: formData.get("refereeName"),
+        refereePhone: formData.get("refereePhone"),
+        refereeEmail: formData.get("refereeEmail"),
+        refereeFileName: file.name,
+        refereeMimeType: file.type,
+        refereeResumeFile: base64
+
     };
 
+    /*--- SEND TO GOOGLE SHEETS ---*/
     fetch("https://script.google.com/macros/s/AKfycbwwwPx05uWObcYDCDgUMPm5f1xyV5LHO9wneANL_zflMOwiNQGL6gMSm1utQoEQ6nC6GA/exec", {
+
       method: "POST",
       body: new URLSearchParams(data)
-    })
-    .then(res => res.json())
-    .then(response => {
-      if (response.status === "success") {
-        alert("Employment Application Submitted Successfully!");
-        form.reset();
-      } else {
-        alert("Error submitting form");
-      }
-    })
-    .catch(error => {
-      alert("Error occurred!");
-      console.error(error);
-    });
-  };
 
-  reader.readAsDataURL(file);
+    })
+
+      .then(res => res.json())
+      .then(response => {
+
+        console.log("Server response:", response);
+
+        if (response.status === "success") {
+
+            /*--- SUCCESS ---*/
+            alert("✅ Employment Application Submitted Successfully!");
+
+            /*--- RESET FORM ---*/
+            form.reset();
+
+            /*--- RESET MEDICAL CODING SELECTS ---*/
+            medicalCoding.disabled = false;
+            medicalCodingTrainer.disabled = false;
+
+        }
+
+        else {
+
+            alert("❌ Error submitting form");
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Submission Error:",
+                error
+            );
+
+            alert("❌ Error occurred while submitting the application!");
+
+        })
+
+        .finally(() => {
+
+            /*--- RESTORE BUTTON ---*/
+            submitButton.disabled = false;
+
+            submitButton.innerHTML = originalText;
+
+        });
+
+    };
+
+
+    /*--- FILE READER ERROR ---*/
+    reader.onerror = function() {
+
+        alert("❌ Unable to read the uploaded resume.");
+
+        submitButton.disabled = false;
+
+        submitButton.innerHTML = originalText;
+
+    };
+
+    /*--- READ FILE ---*/
+    reader.readAsDataURL(file);
+
 });
+
 </script>
+
 
 <!-- Condition for medical coding or medical coding Trainer -->
 <script>
   const medicalCoding = document.getElementById("medicalCoding");
   const medicalCodingTrainer = document.getElementById("medicalCodingTrainer");
 
-  // When Medical Coding changes
+  /*-- When Medical Coding changes --*/
   medicalCoding.addEventListener("change", function () {
     if (this.value !== "") {
       medicalCodingTrainer.disabled = true;
@@ -394,7 +468,7 @@ document.getElementById("employmentForm-online").addEventListener("submit", func
     }
   });
 
-  // When Medical Coding Trainer changes
+  /*-- When Medical Coding Trainer changes --*/
   medicalCodingTrainer.addEventListener("change", function () {
     if (this.value !== "") {
       medicalCoding.disabled = true;

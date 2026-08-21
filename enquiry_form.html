@@ -141,9 +141,22 @@
 <script src="main.js"></script>
 
 <script>
+  
 document.getElementById("enquiryForm-std-3470").addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const form = this;
+
+    /*--- SUBMIT BUTTON ---*/
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    /* Save original button HTML */
+    const originalText = submitButton.innerHTML;
+
+    /*--- MESSAGE ---*/
+    const message = document.getElementById("message-enquiry-btn");
+
+    /*--- GET FORM DATA ---*/
     let data = {
         name: document.getElementById("name").value.trim(),
         email: document.getElementById("email").value.trim(),
@@ -154,38 +167,69 @@ document.getElementById("enquiryForm-std-3470").addEventListener("submit", funct
         mode: document.getElementById("mode").value
     };
 
-    let message = document.getElementById("message-enquiry-btn");
-
+    
+    /*--- VALIDATION ---*/
     if (Object.values(data).includes("")) {
         message.style.color = "red";
         message.textContent = "Please fill all fields!";
         return;
     }
 
+
+    /*--- SHOW LOADING SPINNER ---*/
+    submitButton.disabled = true;
+
+    submitButton.innerHTML ='<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+
+
+    /*--- SEND DATA TO GOOGLE SHEETS ---*/
     fetch("https://script.google.com/macros/s/AKfycbzVpiOJflJZJq2vggpHk0wA6ghVgKWgZ6LOevSrVHPA8Rd4xhVmg_zvAzHsc7PsUQkF/exec", {
+
         method: "POST",
         body: JSON.stringify(data)
     })
-    .then(res => res.text())
-    .then(response => {
-         console.log("Server response:", response);
 
+        .then(res => res.text())
+        .then(response => {
+
+          console.log("Server response:", response);
+
+        /*--- SUCCESS MESSAGE ---*/  
         message.style.color = "green";
         message.textContent =
           "Your enquiry has been submitted successfully! Our team will call you shortly.";
 
-        document.getElementById("enquiryForm-std-3470").reset();
+        /*-- RESET FORM --*/
+        form.reset();
 
+        /*--- RESTORE BUTTON ---*/
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalText;
+
+        /*--- CLEAR MESSAGE AFTER 4 SECONDS ---*/
         setTimeout(() => {
             message.textContent = "";
         }, 4000);
+
     })
+
     .catch(error => {
+
+        console.error("Submission error:", error);
+
+        /*--- ERROR MESSAGE ---*/
         message.style.color = "red";
-        message.textContent = "Error submitting form. Try again.";
-        console.error(error);
+
+        message.textContent = "Error submitting form. Please try again.";
+
+        /*--- RESTORE BUTTON ---*/
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalText;
+
     });
+
 });
+
 </script>
 
 </body>
