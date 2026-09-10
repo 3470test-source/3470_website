@@ -18429,4 +18429,908 @@ tr:hover {
 
 /* --------------------------------------------------------------------------------------------------------------------------------------- */
 
+                      /* =======================================
+                                College Placement Form  
+                      ======================================= */
 
+.placement-page {
+  padding: 40px 20px;
+}
+
+.placement-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
+  display: grid;
+  grid-template-columns: 0.75fr 1.65fr;
+}
+
+
+/*--- Right FORM ---*/
+.placement-rigt-form-section {
+  padding: 45px;
+}
+
+.right-form-header {
+  margin-bottom: 25px;
+}
+
+.right-form-header h1 {
+  font-size: 30px;
+  color: #116b35;
+  margin-bottom: 10px;
+  font-weight:700;
+}
+
+.right-form-header p {
+  color:#a05d05;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+}
+
+
+/*--- FORM SECTION ---*/
+.plac-right-form-section {
+  border: 1px solid #e1e8e4;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #ffffff;
+}
+
+.plac-right-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #116b35;
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #96bfeb;
+}
+
+.plac-right-section-title i {
+  font-size: 17px;
+}
+
+
+/*---  GRID ---*/
+.plac-right-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.right-clg-form-group {
+  width: 100%;
+}
+
+.right-clg-form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.clg-city label {
+  margin-top: 20px; 
+}
+
+.right-clg-form-group label span {
+  color: #dc2626;
+}
+
+.right-clg-full-width {
+  grid-column: 1 / -1;
+}
+
+
+/*--- INPUT ---*/
+.clg-input-box {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #d8e1dc;
+  border-radius: 8px;
+  background: #fff;
+  transition: 0.2s ease;
+}
+
+.clg-input-box:focus-within {
+  border-color: #168044;
+  box-shadow: 0 0 0 3px rgba(22, 128, 68, 0.10);
+}
+
+.clg-input-box i {
+  width: 45px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.clg-input-box input,
+.clg-input-box select,
+.clg-input-box textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  color: #374151;
+  padding-right: 12px;
+}
+
+.clg-input-box select {
+  cursor: pointer;
+}
+
+.clg-input-box textarea {
+  resize: vertical;
+  padding-top: 12px;
+  min-height: 90px;
+}
+
+.textarea-box {
+  height: auto;
+  align-items: flex-start;
+}
+
+.textarea-box i {
+  padding-top: 14px;
+}
+
+
+/*--- FILE UPLOAD ---*/
+.file-upload-box {
+  position: relative;
+  border: 2px dashed #cbd8d0;
+  border-radius: 10px;
+  padding: 15px 20px;
+  text-align: center;
+  background: #f8fbf9;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.file-upload-box:hover {
+  border-color: #168044;
+  background: #f3faf5;
+}
+
+.file-upload-box > i {
+  font-size: 30px;
+  color: #168044;
+}
+
+.file-upload-box input {
+  width: 100%;
+  cursor: pointer;
+}
+
+.file-upload-box p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.file-upload-box small {
+  display: block;
+  margin-top: 5px;
+  color: #6b7280;
+}
+
+
+/*--- DECLARATION ---*/
+.declaration {
+  margin: 20px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #ecf8f0;
+  border: 1px solid #e2e9e5;
+}
+
+.declaration label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.declaration input {
+  margin-top: 3px;
+  accent-color: #168044;
+  cursor: pointer;
+}
+
+.declaration span {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+
+/*--- BUTTONS ---*/
+.pla-clg-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.pla-clg-form-actions button {
+  height: 36px;
+  padding: 0 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease;
+  line-height: 1.9;
+}
+
+.pla-clg-reset-btn {
+  background: #eef1ef;
+  color: #4c5c75;
+}
+
+.pla-clg-reset-btn:hover {
+  background: #e2e7e4;
+}
+
+.pla-clg-submit-btn {
+  background: #168044;
+  color: #ffffff;
+}
+
+.pla-clg-submit-btn:hover {
+  background: #116b35;
+}
+
+.pla-clg-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+/*--- MESSAGE ---*/
+#formMessage {
+  display: none;
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#formMessage.success {
+  display: block;
+  background: #dcfce7;
+  color: #166534;
+}
+
+#formMessage.error {
+  display: block;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+
+/*--- Left LOGO ---*/
+.placement-logo-section {background: linear-gradient(145deg,#0d4f29, #dfecf3, #1ca65a);   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.clg-left-logo-content {
+  color: #ffffff;
+}
+
+.clg-left-company-logo {
+  width: 190px;
+  max-width: 80%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+.clg-left-logo-content h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+  color: #2f5994;
+}
+
+.clg-left-logo-content p {
+  font-size: 18px;
+  opacity: 0.9;
+  color: #2f5994;
+}
+
+.logo-line {
+  width: 100px;
+  height: 2px;
+  background: #b86767;
+  margin: 22px auto;
+  border-radius: 5px;
+}
+
+.clg-left-logo-content span {
+  display: block;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+  letter-spacing: 0.3px;
+  color:#a05d05;
+}
+
+
+
+            /* =========================================================
+                  RESPONSIVE DESIGN - College Placement Form
+            ========================================================= */
+
+
+/*--- SMALL DESKTOP / LARGE TABLET - 1024px - 1199px ---*/
+@media (min-width: 1024px) and (max-width: 1199px) {
+
+    .placement-page {
+        padding: 30px 20px;
+    }
+
+    .placement-container {
+        max-width: 1000px;
+        grid-template-columns: 0.65fr 1.35fr;
+    }
+
+    .placement-logo-section {
+        padding: 30px 20px;
+    }
+
+    .placement-rigt-form-section {
+        padding: 30px;
+    }
+
+    .right-form-header h1 {
+        font-size: 27px;
+    }
+
+    .right-form-header p {
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .plac-right-form-section {
+        padding: 18px;
+        margin-bottom: 16px;
+    }
+
+    .plac-right-section-title {
+        font-size: 17px;
+    }
+
+    .plac-right-form-grid {
+        gap: 16px;
+    }
+
+    .clg-left-company-logo {
+        width: 160px;
+    }
+
+    .clg-left-logo-content h2 {
+        font-size: 23px;
+    }
+
+    .clg-left-logo-content p {
+        font-size: 16px;
+    }
+
+    .clg-left-logo-content span {
+        font-size: 14px;
+    }
+
+}
+
+
+/*--- TABLET - 768px - 1023px ---*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .placement-page {
+        padding: 25px 15px;
+    }
+
+    .placement-container {
+        max-width: 760px;
+        grid-template-columns: 1fr;
+    }
+
+    .placement-logo-section {
+        min-height: 260px;
+        padding: 30px 20px;
+    }
+
+    .clg-left-company-logo {
+        width: 150px;
+        max-width: 60%;
+    }
+
+    .clg-left-logo-content h2 {
+        font-size: 24px;
+    }
+
+    .clg-left-logo-content p {
+        font-size: 16px;
+    }
+
+    .clg-left-logo-content span {
+        font-size: 14px;
+    }
+
+    .placement-rigt-form-section {
+        padding: 30px;
+    }
+
+    .right-form-header {
+        margin-bottom: 20px;
+    }
+
+    .right-form-header h1 {
+        font-size: 27px;
+    }
+
+    .right-form-header p {
+        font-size: 14px;
+        letter-spacing: 0.4px;
+    }
+
+    .plac-right-form-section {
+        padding: 18px;
+        margin-bottom: 16px;
+    }
+
+    .plac-right-section-title {
+        font-size: 17px;
+        padding-bottom: 13px;
+        margin-bottom: 16px;
+    }
+
+    .plac-right-form-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .clg-input-box {
+        height: 42px;
+    }
+
+    .clg-input-box input,
+    .clg-input-box select,
+    .clg-input-box textarea {
+        font-size: 13px;
+    }
+
+    .pla-clg-form-actions {
+        margin-top: 20px;
+    }
+
+}
+
+
+/*--- MOBILE 414px ---*/
+@media (max-width: 767px) {
+
+    .placement-page {
+        padding: 15px 10px;
+    }
+
+    .placement-container {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 12px;
+        grid-template-columns: 1fr;
+    }
+
+    .placement-logo-section {
+        padding: 25px 15px;
+        min-height: 230px;
+    }
+
+    .clg-left-company-logo {
+        width: 130px;
+        max-width: 65%;
+    }
+
+    .clg-left-logo-content h2 {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .clg-left-logo-content p {
+        font-size: 15px;
+    }
+
+    .logo-line {
+        width: 75px;
+        margin: 15px auto;
+    }
+
+    .clg-left-logo-content span {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .placement-rigt-form-section {
+        padding: 20px 15px;
+    }
+
+    .right-form-header {
+        margin-bottom: 18px;
+    }
+
+    .right-form-header h1 {
+        font-size: 23px;
+        line-height: 1.3;
+        margin-bottom: 8px;
+    }
+
+    .right-form-header p {
+        font-size: 13px;
+        line-height: 1.5;
+        letter-spacing: 0.2px;
+    }
+
+    .plac-right-form-section {
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .plac-right-section-title {
+        font-size: 16px;
+        gap: 8px;
+        padding-bottom: 12px;
+        margin-bottom: 15px;
+    }
+
+    .plac-right-section-title i {
+        font-size: 15px;
+    }
+
+    .plac-right-form-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .right-clg-form-group label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .clg-input-box {
+        height: 42px;
+        border-radius: 7px;
+    }
+
+    .clg-input-box i {
+        width: 40px;
+        font-size: 13px;
+    }
+
+    .clg-input-box input,
+    .clg-input-box select,
+    .clg-input-box textarea {
+        font-size: 13px;
+        padding-right: 8px;
+    }
+
+    .clg-input-box textarea {
+        min-height: 90px;
+        padding-top: 10px;
+    }
+
+    .right-clg-full-width {
+        grid-column: 1;
+    }
+
+    .file-upload-box {
+        padding: 15px 10px;
+    }
+
+    .file-upload-box > i {
+        font-size: 26px;
+    }
+
+    .file-upload-box p {
+        font-size: 13px;
+    }
+
+    .file-upload-box small {
+        font-size: 11px;
+    }
+
+    .declaration {
+        margin: 15px 0;
+        padding: 10px;
+    }
+
+    .declaration label {
+        gap: 8px;
+    }
+
+    .declaration span {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .pla-clg-form-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .pla-clg-form-actions button {
+        width: 100%;
+        height: 42px;
+        font-size: 14px;
+    }
+
+    #formMessage {
+        margin-top: 15px;
+        padding: 12px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+}
+
+
+/*--- SMALL MOBILE - 375px ---*/
+@media (max-width: 375px) {
+
+    .placement-page {
+        padding: 10px 7px;
+    }
+
+    .placement-container {
+        border-radius: 10px;
+    }
+
+    .placement-logo-section {
+        min-height: 210px;
+        padding: 20px 12px;
+    }
+
+    .clg-left-company-logo {
+        width: 115px;
+    }
+
+    .clg-left-logo-content h2 {
+        font-size: 20px;
+    }
+
+    .clg-left-logo-content p {
+        font-size: 14px;
+    }
+
+    .clg-left-logo-content span {
+        font-size: 12px;
+    }
+
+    .placement-rigt-form-section {
+        padding: 17px 12px;
+    }
+
+    .right-form-header h1 {
+        font-size: 21px;
+    }
+
+    .right-form-header p {
+        font-size: 12px;
+    }
+
+    .plac-right-form-section {
+        padding: 13px;
+    }
+
+    .plac-right-section-title {
+        font-size: 15px;
+    }
+
+    .clg-input-box {
+        height: 40px;
+    }
+
+    .clg-input-box i {
+        width: 36px;
+    }
+
+    .clg-input-box input,
+    .clg-input-box select,
+    .clg-input-box textarea {
+        font-size: 12px;
+    }
+
+    .declaration span {
+        font-size: 11px;
+    }
+
+}
+
+
+/*--- VERY SMALL MOBILE - 320px ---*/
+@media (max-width: 340px) {
+
+    .placement-page {
+        padding: 7px 5px;
+    }
+
+    .placement-container {
+        border-radius: 8px;
+    }
+
+    .placement-logo-section {
+        min-height: 190px;
+        padding: 18px 10px;
+    }
+
+    .clg-left-company-logo {
+        width: 100px;
+    }
+
+    .clg-left-logo-content h2 {
+        font-size: 18px;
+    }
+
+    .clg-left-logo-content p {
+        font-size: 12px;
+    }
+
+    .clg-left-logo-content span {
+        font-size: 11px;
+    }
+
+    .logo-line {
+        width: 60px;
+        margin: 12px auto;
+    }
+
+    .placement-rigt-form-section {
+        padding: 14px 9px;
+    }
+
+    .right-form-header h1 {
+        font-size: 19px;
+    }
+
+    .right-form-header p {
+        font-size: 11px;
+    }
+
+    .plac-right-form-section {
+        padding: 11px;
+        margin-bottom: 12px;
+    }
+
+    .plac-right-section-title {
+        font-size: 14px;
+        gap: 6px;
+    }
+
+    .plac-right-section-title i {
+        font-size: 13px;
+    }
+
+    .right-clg-form-group label {
+        font-size: 12px;
+    }
+
+    .clg-input-box {
+        height: 38px;
+    }
+
+    .clg-input-box i {
+        width: 32px;
+        font-size: 12px;
+    }
+
+    .clg-input-box input,
+    .clg-input-box select,
+    .clg-input-box textarea {
+        font-size: 11px;
+    }
+
+    .clg-input-box textarea {
+        min-height: 80px;
+    }
+
+    .file-upload-box {
+        padding: 12px 7px;
+    }
+
+    .file-upload-box > i {
+        font-size: 23px;
+    }
+
+    .file-upload-box p {
+        font-size: 12px;
+    }
+
+    .file-upload-box small {
+        font-size: 10px;
+    }
+
+    .declaration {
+        padding: 8px;
+    }
+
+    .declaration span {
+        font-size: 10px;
+    }
+
+    .pla-clg-form-actions button {
+        height: 40px;
+        font-size: 13px;
+    }
+
+    #formMessage {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+}
+
+
+/*--- TABLET PORTRAIT SPECIFIC - 768px x 1024px ---*/
+@media (width: 768px) and (height: 1024px) {
+
+    .placement-container {
+        max-width: 720px;
+    }
+
+    .placement-logo-section {
+        min-height: 270px;
+    }
+
+    .placement-rigt-form-section {
+        padding: 30px;
+    }
+
+}
+
+
+/*--- TABLET LANDSCAPE SPECIFIC - 1024px x 768px ---*/
+@media (width: 1024px) and (height: 768px) {
+
+    .placement-container {
+        max-width: 980px;
+    }
+
+    .placement-logo-section {
+        padding: 25px 15px;
+    }
+
+    .placement-rigt-form-section {
+        padding: 28px;
+    }
+
+    .clg-left-company-logo {
+        width: 145px;
+    }
+
+    .right-form-header h1 {
+        font-size: 26px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
