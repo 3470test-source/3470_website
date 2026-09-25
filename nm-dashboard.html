@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3470 Healthcare & Medical Coding Training Institute | College Placement Form</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
+    
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e0e8f3;
+            color: #263238;
+        }
+
+        
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+        
+
+        
+
+
+        
+
+
+
+
+
+
+        
+        
+
+
+        /* =========================================
+           KPI CARDS
+        ========================================= */
+
+        .kpi-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, minmax(180px, 1fr));
+
+            gap: 20px;
+        }
+
+
+        .kpi-card {
+            position: relative;
+
+            background: #ffffff;
+
+            min-height: 155px;
+
+            padding: 22px;
+
+            border-radius: 14px;
+
+            border: 1px solid #e2e8f0;
+
+            box-shadow:
+                0 4px 12px rgba(0,0,0,0.05);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .kpi-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.08);
+        }
+
+
+        .kpi-card::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 5px;
+            height: 100%;
+
+            background: #087caf;
+        }
+
+
+        .kpi-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 10px;
+
+            background: #e8f6fb;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #087caf;
+
+            font-size: 18px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .kpi-title {
+            font-size: 13px;
+
+            line-height: 1.45;
+
+            color: #64748b;
+
+            font-weight: 600;
+
+            min-height: 38px;
+        }
+
+
+        .kpi-value {
+            margin-top: 7px;
+
+            font-size: 28px;
+
+            font-weight: 700;
+
+            color: #1e293b;
+        }
+
+
+        .kpi-subtitle {
+            margin-top: 4px;
+
+            font-size: 12px;
+
+            color: #94a3b8;
+        }
+
+
+        
+    </style>
+
+</head>
+<body>
+
+
+        <!-- DASHBOARD HEADER -->
+        <header class="NM-dashboard-header">
+
+            <div class="NM-dashboard-logo"> 
+
+                <img src="picture/Logo3470-health3-removebg-preview.png" alt="3470 Healthcare Logo">
+
+                <div class="NM-dashboard-logo-text">
+                    Dashboard Report for the 3470 Healthcare - Course
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- MAIN DASHBOARD -->
+        <main class="NM-dashboard-container">
+
+            <!-- PAGE TITLE -->
+            <section class="NM-dashboard-title">
+
+                <h1>Dashboard Overview</h1>
+                <p>Student attendance, onboarding and academic overview</p>
+
+            </section>
+
+
+            <!-- FILTER SECTION -->
+            <section class="NM-filter-section">
+
+                <!-- UNIVERSITY -->
+                <div class="NM-filter-box">
+
+                    <label for="universitySelect">
+                        <i class="fa-solid fa-building-columns"></i> University
+                    </label>
+
+                    <select id="universitySelect">
+                        <option value="">-- Select University --</option>
+                        <option value="University of Madras">University of Madras</option>
+                        <option value="Thirivalluvar University">Thirivalluvar University</option>
+                    </select>
+
+                </div>
+
+
+                <!-- STUDENT DETAIL -->
+                <div class="NM-filter-box">
+
+                    <label for="studentDetailSelect">
+                        <i class="fa-solid fa-user-graduate"></i> Student Detail
+                    </label>
+
+                    <select id="studentDetailSelect">
+                        <option value="">-- Students Detail --</option>
+                        <option value="Students Count">Students Count</option>
+                        <option value="Students Attendance">Students Attendance</option>
+                    </select>
+
+                </div>
+
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- =====================================
+             KPI CARDS
+        ====================================== -->
+
+        <section class="kpi-grid">
+
+
+            <!-- CARD 1 -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon">
+
+                    <i class="fa-solid fa-user-clock"></i>
+
+                </div>
+
+
+                <div class="kpi-title">
+
+                    Students less than 60% Attendance
+
+                </div>
+
+
+                <div
+                    class="kpi-value"
+                    id="studentsBelow60"
+                >
+                    2883
+                </div>
+
+
+                <div class="kpi-subtitle">
+
+                    Attendance below 60%
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 2 -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon">
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                </div>
+
+
+                <div class="kpi-title">
+
+                    Students more than 60% Attendance
+
+                </div>
+
+
+                <div
+                    class="kpi-value"
+                    id="studentsAbove60"
+                >
+                    255
+                </div>
+
+
+                <div class="kpi-subtitle">
+
+                    Attendance above 60%
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 3 -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon">
+
+                    <i class="fa-solid fa-user-graduate"></i>
+
+                </div>
+
+
+                <div class="kpi-title">
+
+                    Students Onboarded on
+                    3470 Healthcare Pvt. Ltd.
+
+                </div>
+
+
+                <div
+                    class="kpi-value"
+                    id="studentsOnboarded"
+                >
+                    3138
+                </div>
+
+
+                <div class="kpi-subtitle">
+
+                    Successfully onboarded
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 4 -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+
+                <div class="kpi-title">
+
+                    Total Expected Students
+
+                </div>
+
+
+                <div
+                    class="kpi-value"
+                    id="totalExpected"
+                >
+                    3210
+                </div>
+
+
+                <div class="kpi-subtitle">
+
+                    Total expected
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 5 -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon">
+
+                    <i class="fa-solid fa-building"></i>
+
+                </div>
+
+
+                <div class="kpi-title">
+
+                    Department
+
+                </div>
+
+
+                <div
+                    class="kpi-value"
+                    id="totalDepartments"
+                >
+                    12
+                </div>
+
+
+                <div class="kpi-subtitle">
+
+                    Total departments
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</body>
+</html>
