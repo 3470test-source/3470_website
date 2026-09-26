@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3470 Healthcare & Medical Coding Training Institute | College Placement Form</title>
+    <title>3470 Healthcare & Medical Coding Training Institute | NM Dashboard Report</title>
 
     <!-- Favicon -->
     <link rel="icon" href="picture/Logo3470-health3 (2).jpg" type="image/x-icon">
@@ -26,155 +26,9 @@
 
         body {
             background: #e0e8f3;
-            color: #263238;
+            color: #263238; 
         }
 
-        
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-        
-
-        
-
-
-        
-
-
-
-
-
-
-        
-        
-
-
-        /* =========================================
-           KPI CARDS
-        ========================================= */
-
-        .kpi-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(5, minmax(180px, 1fr));
-
-            gap: 20px;
-        }
-
-
-        .kpi-card {
-            position: relative;
-
-            background: #ffffff;
-
-            min-height: 155px;
-
-            padding: 22px;
-
-            border-radius: 14px;
-
-            border: 1px solid #e2e8f0;
-
-            box-shadow:
-                0 4px 12px rgba(0,0,0,0.05);
-
-            overflow: hidden;
-
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-
-        .kpi-card:hover {
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 8px 20px rgba(0,0,0,0.08);
-        }
-
-
-        .kpi-card::before {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            top: 0;
-
-            width: 5px;
-            height: 100%;
-
-            background: #087caf;
-        }
-
-
-        .kpi-icon {
-            width: 42px;
-            height: 42px;
-
-            border-radius: 10px;
-
-            background: #e8f6fb;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: #087caf;
-
-            font-size: 18px;
-
-            margin-bottom: 15px;
-        }
-
-
-        .kpi-title {
-            font-size: 13px;
-
-            line-height: 1.45;
-
-            color: #64748b;
-
-            font-weight: 600;
-
-            min-height: 38px;
-        }
-
-
-        .kpi-value {
-            margin-top: 7px;
-
-            font-size: 28px;
-
-            font-weight: 700;
-
-            color: #1e293b;
-        }
-
-
-        .kpi-subtitle {
-            margin-top: 4px;
-
-            font-size: 12px;
-
-            color: #94a3b8;
-        }
-
-
-        
     </style>
 
 </head>
@@ -246,213 +100,1267 @@
             </section>
 
 
+            <!-- KPI CARDS -->
+            <section class="NM-kpi-grid">
 
+                <!-- CARD 1 -->
+                <div class="NM-kpi-card" data-card="below60">
 
+                    <div class="NM-kpi-icon">
+                        <i class="fa-solid fa-user-clock"></i>
+                    </div>
 
+                    <div class="NM-kpi-title">
+                        Students less than 60% Attendance
+                    </div>
 
+                    <div class="NM-kpi-value" id="studentsBelow60">0</div>
 
-
-
-
-
-
-
-
-
-
-
-
-        <!-- =====================================
-             KPI CARDS
-        ====================================== -->
-
-        <section class="kpi-grid">
-
-
-            <!-- CARD 1 -->
-
-            <div class="kpi-card">
-
-                <div class="kpi-icon">
-
-                    <i class="fa-solid fa-user-clock"></i>
+                    <div class="NM-kpi-subtitle">Attendance below 60%</div>
 
                 </div>
 
 
-                <div class="kpi-title">
+                <!-- CARD 2 -->
+                <div class="NM-kpi-card" data-card="above60">
 
-                    Students less than 60% Attendance
+                    <div class="NM-kpi-icon">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
 
-                </div>
+                    <div class="NM-kpi-title">
+                        Students more than 60% Attendance
+                    </div>
 
+                    <div class="NM-kpi-value" id="studentsAbove60">0</div>
 
-                <div
-                    class="kpi-value"
-                    id="studentsBelow60"
-                >
-                    2883
-                </div>
-
-
-                <div class="kpi-subtitle">
-
-                    Attendance below 60%
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CARD 2 -->
-
-            <div class="kpi-card">
-
-                <div class="kpi-icon">
-
-                    <i class="fa-solid fa-user-check"></i>
+                    <div class="NM-kpi-subtitle">Attendance above 60%</div>
 
                 </div>
 
 
-                <div class="kpi-title">
+                <!-- CARD 3 / 0 - 19% -->
+                <div class="NM-kpi-card hidden" data-card="attendance019">
 
-                    Students more than 60% Attendance
+                    <div class="NM-kpi-icon">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
 
-                </div>
+                    <div class="NM-kpi-title">0% - 19%</div>
 
+                    <div class="NM-kpi-value" id="attendance019">0</div>
 
-                <div
-                    class="kpi-value"
-                    id="studentsAbove60"
-                >
-                    255
-                </div>
-
-
-                <div class="kpi-subtitle">
-
-                    Attendance above 60%
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CARD 3 -->
-
-            <div class="kpi-card">
-
-                <div class="kpi-icon">
-
-                    <i class="fa-solid fa-user-graduate"></i>
+                    <div class="NM-kpi-subtitle">Attendance percentage</div>
 
                 </div>
 
 
-                <div class="kpi-title">
+                <!-- CARD 4 / 20 - 59% -->
+                <div class="NM-kpi-card hidden" data-card="attendance2059">
 
-                    Students Onboarded on
-                    3470 Healthcare Pvt. Ltd.
+                    <div class="NM-kpi-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
 
-                </div>
+                    <div class="NM-kpi-title">20% - 59%</div>
 
+                    <div class="NM-kpi-value" id="attendance2059">0</div>
 
-                <div
-                    class="kpi-value"
-                    id="studentsOnboarded"
-                >
-                    3138
-                </div>
-
-
-                <div class="kpi-subtitle">
-
-                    Successfully onboarded
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CARD 4 -->
-
-            <div class="kpi-card">
-
-                <div class="kpi-icon">
-
-                    <i class="fa-solid fa-users"></i>
+                    <div class="NM-kpi-subtitle">Attendance percentage</div>
 
                 </div>
 
 
-                <div class="kpi-title">
+                <!-- CARD 5 / 60 - 100% -->
+                <div class="NM-kpi-card hidden" data-card="attendance60100">
 
-                    Total Expected Students
+                    <div class="NM-kpi-icon">
+                        <i class="fa-solid fa-chart-column"></i>
+                    </div>
 
-                </div>
+                    <div class="NM-kpi-title">
+                        60% - 100%
+                    </div>
 
+                    <div class="NM-kpi-value" id="attendance60100">0</div>
 
-                <div
-                    class="kpi-value"
-                    id="totalExpected"
-                >
-                    3210
-                </div>
-
-
-                <div class="kpi-subtitle">
-
-                    Total expected
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CARD 5 -->
-
-            <div class="kpi-card">
-
-                <div class="kpi-icon">
-
-                    <i class="fa-solid fa-building"></i>
+                    <div class="NM-kpi-subtitle">Attendance percentage</div>
 
                 </div>
 
 
-                <div class="kpi-title">
+                <!-- CARD 6 ONBOARDED-->
+                <div class="NM-kpi-card" data-card="onboarded">
 
-                    Department
+                    <div class="NM-kpi-icon">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+
+                    <div class="NM-kpi-title">Students Onboarded on 3470 Healthcare Pvt. Ltd.</div>
+
+                    <div  class="NM-kpi-value" id="studentsOnboarded">0</div>
+
+                    <div class="NM-kpi-subtitle">Successfully onboarded</div>
+
+                </div>
+
+
+                <!-- CARD 7 - TOTAL EXPECTED -->
+                <div class="NM-kpi-card" data-card="expected">
+
+                    <div class="NM-kpi-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div class="NM-kpi-title">
+                        Total Expected Students
+                    </div>
+
+                    <div class="NM-kpi-value" id="totalExpected">0</div>
+
+                    <div class="NM-kpi-subtitle">Total expected</div>
 
                 </div>
 
 
-                <div
-                    class="kpi-value"
-                    id="totalDepartments"
-                >
-                    12
+                <!-- CARD 8 / DEPARTMENT -->
+                <div class="NM-kpi-card" data-card="department">
+
+                    <div class="NM-kpi-icon">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+
+                    <div class="NM-kpi-title">Department</div>
+
+                    <div class="NM-kpi-value" id="totalDepartments"></div>
+
                 </div>
 
+            </section>
 
-                <div class="kpi-subtitle">
 
-                    Total departments
+            <!-- KPI CHART SECTION -->
+            <section class="NM-chart-section" id="kpiChartSection">
+
+                <div class="NM-chart-header">
+
+                    <div>
+                        <h2 id="kpiChartTitle">Student Overview</h2>
+
+                        <p id="kpiChartSubtitle">
+                            Select University and Student Detail to view the chart.
+                        </p>
+
+                    </div>
 
                 </div>
 
-            </div>
+                <div class="NM-chart-container">
+                    <canvas id="kpiChart"></canvas>
+                </div>
+
+            </section>
+
+        </main>
 
 
-        </section>
+<!-- Chart - JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    </main>
+<!-- NM Dashboard Report - JS -->
+<script>
+
+/*--- GOOGLE SHEET CONFIGURATION ---*/
+const GOOGLE_SHEET_ID = "1zqNUUZHQAaACoLd6RQ__aqTwIaruAP3cWTjoIfB1YFE";
+
+
+/*--- GOOGLE SHEET TAB MAPPING ---*/
+const SHEET_MAP = {
+
+    "University of Madras": {
+
+        "Students Count": "Students Count(UNOM)",
+
+        "Students Attendance": "Students Attendance(UNOM)"
+
+    },
+
+
+    "Thirivalluvar University": {
+
+        "Students Count": "Students Count(TVU)",
+
+        "Students Attendance": "Students Attendance(TVU)"
+
+    }
+
+};
+
+
+/*--- DOM ELEMENTS ---*/
+const universitySelect = document.getElementById("universitySelect");
+
+const studentDetailSelect = document.getElementById("studentDetailSelect");
+
+const kpiGrid = document.querySelector(".NM-kpi-grid");
+
+const studentsBelow60 = document.getElementById("studentsBelow60");
+
+const studentsAbove60 = document.getElementById("studentsAbove60");
+
+const attendance019 = document.getElementById("attendance019");
+
+const attendance2059 = document.getElementById("attendance2059");
+
+const attendance60100 = document.getElementById("attendance60100");
+
+const studentsOnboarded = document.getElementById("studentsOnboarded");
+
+const totalExpected = document.getElementById("totalExpected");
+
+const totalDepartments = document.getElementById("totalDepartments");
+
+
+/*--- CHART ELEMENTS ---*/
+const kpiChartSection = document.getElementById("kpiChartSection");
+
+const kpiChartTitle = document.getElementById("kpiChartTitle");
+
+const kpiChartSubtitle = document.getElementById("kpiChartSubtitle");
+
+const kpiChartCanvas = document.getElementById("kpiChart");
+
+let kpiChart = null;
+
+
+/*--- HIDE ATTENDANCE CARDS ---*/
+function hideAttendanceCards() {
+
+    attendance019
+        .closest(".NM-kpi-card")
+        .classList.add("hidden");
+
+    attendance2059
+        .closest(".NM-kpi-card")
+        .classList.add("hidden");
+
+    attendance60100
+        .closest(".NM-kpi-card")
+        .classList.add("hidden");
+}
+
+
+/*--- SHOW ATTENDANCE CARDS ---*/
+function showAttendanceCards() {
+
+    attendance019
+        .closest(".NM-kpi-card")
+        .classList.remove("hidden");
+
+    attendance2059
+        .closest(".NM-kpi-card")
+        .classList.remove("hidden");
+
+    attendance60100
+        .closest(".NM-kpi-card")
+        .classList.remove("hidden");
+}
+
+
+/*--- RESET KPI VALUES ---*/
+function resetKPIValues() {
+
+    studentsBelow60.textContent = "0";
+
+    studentsAbove60.textContent = "0";
+
+    attendance019.textContent = "0";
+
+    attendance2059.textContent = "0";
+
+    attendance60100.textContent = "0";
+
+    studentsOnboarded.textContent = "0";
+
+    totalExpected.textContent = "0";
+
+    totalDepartments.textContent = "Medical Coding";
+}
+
+
+/*--- RESET DASHBOARD ---*/
+function resetDashboard() {
+
+    resetKPIValues();
+
+    hideAttendanceCards();
+
+    kpiGrid.classList.remove("show");
+
+    hideKPIChart();
+}
+
+
+/*--- NORMALIZE HEADER ---*/
+function normalizeHeader(value) {
+
+    return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, " ");
+}
+
+
+/*--- GET COLUMN VALUE ---*/
+function getColumnValue(
+    row,
+    possibleNames
+) {
+
+    const rowKeys = Object.keys(row);
+
+    for (const name of possibleNames) {
+
+        const normalizedName = normalizeHeader(name);
+
+        const foundKey =
+            rowKeys.find(key =>
+                normalizeHeader(key) ===
+                normalizedName
+            );
+
+
+        if (foundKey !== undefined) {
+
+            return row[foundKey];
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+/*--- NUMBER CONVERSION ---*/
+function numberValue(value) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+
+        return 0;
+
+    }
+
+
+    const cleaned =
+        String(value)
+            .replace(/,/g, "")
+            .replace(/%/g, "")
+            .trim();
+
+
+    const number = Number(cleaned);
+
+    if (Number.isNaN(number)) {
+
+        return 0;
+
+    }
+
+    return number;
+
+}
+
+
+/*--- GET GOOGLE SHEET DATA ---*/
+async function getGoogleSheetData(
+    sheetName
+) {
+
+    const url =
+        "https://docs.google.com/spreadsheets/d/" +
+        GOOGLE_SHEET_ID +
+        "/gviz/tq?sheet=" +
+        encodeURIComponent(sheetName);
+
+
+    console.log(
+        "Loading Google Sheet:",
+        sheetName
+    );
+
+    console.log(
+        "Google Sheet URL:",
+        url
+    );
+
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Google Sheet request failed. HTTP " +
+            response.status
+        );
+
+    }
+
+
+    const text = await response.text();
+
+    const start = text.indexOf("{");
+
+    const end = text.lastIndexOf("}");
+
+    if (
+        start === -1 ||
+        end === -1
+    ) {
+
+        throw new Error(
+            "Google Sheet did not return valid data."
+        );
+
+    }
+
+
+    const json =
+        JSON.parse(
+            text.substring(
+                start,
+                end + 1
+            )
+        );
+
+
+    if (
+        !json.table ||
+        !json.table.cols ||
+        !json.table.rows
+    ) {
+
+        throw new Error(
+            "No table data found."
+        );
+
+    }
+
+
+    const headers =
+        json.table.cols.map(
+            (column, index) => {
+
+                return (
+                    column.label ||
+                    column.id ||
+                    "Column" +
+                    (index + 1)
+                );
+
+            }
+        );
+
+
+    const rows = json.table.rows.map(row => {
+
+            const object = {};
+
+            headers.forEach(
+                (header, index) => {
+
+                    const cell = row.c[index];
+
+                    if (!cell) {
+
+                        object[header] = "";
+
+                    }
+                    else {
+
+                        object[header] =
+                            cell.f !== undefined &&
+                            cell.f !== null
+                                ? cell.f
+                                : cell.v;
+
+                    }
+
+                }
+            );
+
+
+            return object;
+
+        });
+
+
+    console.log(
+        "Converted Google Sheet Data:",
+        rows
+    );
+
+
+    return rows;
+
+}
+
+
+/*--- HIDE CHART ---*/
+function hideKPIChart() {
+
+    kpiChartSection.classList.remove("show");
+
+    if (kpiChart) {
+
+        kpiChart.destroy();
+
+        kpiChart = null;
+
+    }
+
+}
+
+
+/*--- CREATE / UPDATE CHART ---*/
+function updateKPIChart(
+    data,
+    detailType,
+    university
+) {
+
+    /*-- Destroy previous chart --*/
+    if (kpiChart) {
+
+        kpiChart.destroy();
+        kpiChart = null;
+
+    }
+
+
+    /*-- No data --*/
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        kpiChartSection.classList.remove("show");
+
+        return;
+
+    }
+
+
+    /*--- STUDENTS COUNT CHART ---*/
+    if (
+        detailType ===
+        "Students Count"
+    ) {
+
+        let below60Total = 0;
+
+        let above60Total = 0;
+
+        let onboardedTotal = 0;
+
+        let expectedTotal = 0;
+
+
+        data.forEach(row => {
+
+            below60Total +=
+                numberValue(
+                    getColumnValue(
+                        row,
+                        [
+                            "Students less than 60% Attendance",
+                            "Students Less Than 60% Attendance",
+                            "Less than 60% Attendance"
+                        ]
+                    )
+                );
+
+
+            above60Total +=
+                numberValue(
+                    getColumnValue(
+                        row,
+                        [
+                            "Students more than 60% Attendance",
+                            "Students More Than 60% Attendance",
+                            "More than 60% Attendance"
+                        ]
+                    )
+                );
+
+
+            onboardedTotal +=
+                numberValue(
+                    getColumnValue(
+                        row,
+                        [
+                            "Students Onboarded on 3470 Healthcare Pvt. Ltd.",
+                            "Students Onboarded",
+                            "Onboarded"
+                        ]
+                    )
+                );
+
+
+            expectedTotal +=
+                numberValue(
+                    getColumnValue(
+                        row,
+                        [
+                            "Total Expected Students",
+                            "Expected Students",
+                            "Total Expected"
+                        ]
+                    )
+                );
+
+        });
+
+
+        kpiChartTitle.textContent =
+            university +
+            " - Students Count";
+
+
+        kpiChartSubtitle.textContent =
+            "Student count overview";
+
+
+        kpiChartSection.classList.add(
+            "show"
+        );
+
+
+        kpiChart =
+            new Chart(
+                kpiChartCanvas,
+                {
+
+                    type: "pie",
+
+                    data: {
+
+                        labels: [
+
+                            "Below 60%",
+                            "Above 60%",
+                            "Onboarded",
+                            "Expected"
+
+                        ],
+
+
+                        datasets: [
+
+                            {
+
+                                label: "Students",
+
+                                data: [
+
+                                    below60Total,
+                                    above60Total,
+                                    onboardedTotal,
+                                    expectedTotal
+
+                                ],
+
+                                backgroundColor: [
+                                    "#ef4444", 
+                                    "#22c55e", 
+                                    "#3b82f6", 
+                                    "#f59e0b"  
+                                ],
+
+                                borderColor: [
+                                    "#dc2626",
+                                    "#16a34a",
+                                    "#2563eb",
+                                    "#d97706"
+                                ],
+
+                                borderWidth: 1,
+
+                                borderRadius: 8
+
+                            }
+
+                        ]
+
+                    },
+
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+
+
+                        plugins: {
+
+                            legend: {
+
+                                display: true
+
+                            }
+
+                        },
+
+
+                        scales: {
+
+                            y: {
+
+                                beginAtZero: true,
+
+                                ticks: {
+
+                                    precision: 0
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            );
+
+
+        return;
+
+    }
+
+
+    /*--- STUDENTS ATTENDANCE CHART ---*/
+    if (
+        detailType ===
+        "Students Attendance"
+    ) {
+
+        let value019Total = 0;
+
+        let value2059Total = 0;
+
+        let value60100Total = 0;
+
+
+        data.forEach(row => {
+
+            value019Total +=
+                numberValue(
+                    getColumnValue(
+                        row,
+                        [
+                            "0% - 19%",
+                            "0%-19%",
+                            "0 - 19%"
+                        ]
+                    )
+                );
+
+
+            value2059Total +=
+                numberValue(
+                    getColumnValue(
+                        row,
+                        [
+                            "20% - 59%",
+                            "20%-59%",
+                            "20 - 59%"
+                        ]
+                    )
+                );
+
+
+            value60100Total +=
+                numberValue(
+                    getColumnValue(
+                        row,
+                        [
+                            "60% - 100%",
+                            "60%-100%",
+                            "60 - 100%"
+                        ]
+                    )
+                );
+
+        });
+
+
+        kpiChartTitle.textContent =
+            university +
+            " - Students Attendance";
+
+
+        kpiChartSubtitle.textContent =
+            "Attendance percentage distribution";
+
+
+        kpiChartSection.classList.add(
+            "show"
+        );
+
+
+        kpiChart =
+            new Chart(
+                kpiChartCanvas,
+                {
+
+                    type: "doughnut",
+
+                    data: {
+
+                        labels: [
+
+                            "0% - 19%",
+                            "20% - 59%",
+                            "60% - 100%"
+
+                        ],
+
+
+                        datasets: [
+
+                            {
+
+                                label: "Students",
+
+                                data: [
+
+                                    value019Total,
+                                    value2059Total,
+                                    value60100Total
+
+                                ],
+
+                                backgroundColor: [
+                                    "#ef4444", 
+                                    "#f59e0b", 
+                                    "#22c55e"  
+                                ],
+
+                                borderColor: [
+                                    "#dc2626",
+                                    "#d97706",
+                                    "#16a34a"
+                                ],
+
+                                borderWidth: 1,
+
+                                borderRadius: 8
+
+                            }
+
+                        ]
+
+                    },
+
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+
+
+                        plugins: {
+
+                            legend: {
+
+                                display: true
+
+                            }
+
+                        },
+
+
+                        scales: {
+
+                            y: {
+
+                                beginAtZero: true,
+
+                                ticks: {
+
+                                    precision: 0
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            );
+
+    }
+
+}
+
+
+
+/*--- UPDATE DASHBOARD ---*/
+function updateDashboard(
+    data,
+    detailType
+) {
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        resetDashboard();
+
+        alert(
+            "No data found in the selected Google Sheet."
+        );
+
+        return;
+
+    }
+
+
+    /*--- IMPORTANT : Current KPI values use first data row. ---*/
+    const row = data[0];
+
+
+    /*--- COMMON KPI VALUES ---*/
+    studentsBelow60.textContent =
+        numberValue(
+            getColumnValue(
+                row,
+                [
+                    "Students less than 60% Attendance",
+                    "Students Less Than 60% Attendance",
+                    "Less than 60% Attendance"
+                ]
+            )
+        );
+
+
+    studentsAbove60.textContent =
+        numberValue(
+            getColumnValue(
+                row,
+                [
+                    "Students more than 60% Attendance",
+                    "Students More Than 60% Attendance",
+                    "More than 60% Attendance"
+                ]
+            )
+        );
+
+
+    studentsOnboarded.textContent =
+        numberValue(
+            getColumnValue(
+                row,
+                [
+                    "Students Onboarded on 3470 Healthcare Pvt. Ltd.",
+                    "Students Onboarded",
+                    "Onboarded"
+                ]
+            )
+        );
+
+
+    totalExpected.textContent =
+        numberValue(
+            getColumnValue(
+                row,
+                [
+                    "Total Expected Students",
+                    "Expected Students",
+                    "Total Expected"
+                ]
+            )
+        );
+
+
+    const department =
+        getColumnValue(
+            row,
+            [
+                "Department"
+            ]
+        );
+
+
+    if (department) {
+
+        totalDepartments.textContent = department;
+
+    }
+    else {
+
+        totalDepartments.textContent = "Medical Coding";
+
+    }
+
+
+    /*--- STUDENTS COUNT ---*/
+    if (
+        detailType ===
+        "Students Count"
+    ) {
+
+        hideAttendanceCards();
+
+        kpiGrid.classList.add("show");
+
+    }
+
+
+    /*--- STUDENTS ATTENDANCE ---*/
+    if (
+        detailType ===
+        "Students Attendance"
+    ) {
+
+        attendance019.textContent =
+            numberValue(
+                getColumnValue(
+                    row,
+                    [
+                        "0% - 19%",
+                        "0%-19%",
+                        "0 - 19%"
+                    ]
+                )
+            );
+
+
+        attendance2059.textContent =
+            numberValue(
+                getColumnValue(
+                    row,
+                    [
+                        "20% - 59%",
+                        "20%-59%",
+                        "20 - 59%"
+                    ]
+                )
+            );
+
+
+        attendance60100.textContent =
+            numberValue(
+                getColumnValue(
+                    row,
+                    [
+                        "60% - 100%",
+                        "60%-100%",
+                        "60 - 100%"
+                    ]
+                )
+            );
+
+
+        showAttendanceCards();
+
+        kpiGrid.classList.add(
+            "show"
+        );
+
+    }
+
+
+    /*--- UPDATE CHART ---*/
+    updateKPIChart(
+        data,
+        detailType,
+        universitySelect.value
+    );
+
+}
+
+
+/*--- UNIVERSITY CHANGE ---*/
+universitySelect.addEventListener("change", function () {
+
+        resetKPIValues();
+
+        hideAttendanceCards();
+
+        kpiGrid.classList.remove("show");
+
+        hideKPIChart();
+
+
+        /*-- University cleared --*/
+
+        if (!this.value) {
+
+            studentDetailSelect.value =
+                "";
+
+            return;
+
+        }
+
+    }
+);
+
+
+/*--- STUDENT DETAIL CHANGE ---*/
+studentDetailSelect.addEventListener("change", async function () {
+
+        const university = universitySelect.value;
+
+        const detailType = this.value;
+
+
+        /* Student detail selected
+           before university */
+
+        if (
+            detailType &&
+            !university
+        ) {
+
+            alert(
+                "Please select a University first."
+            );
+
+
+            this.value =
+                "";
+
+
+            resetDashboard();
+
+            return;
+
+        }
+
+
+        /*-- Student Detail cleared --*/
+
+        if (!detailType) {
+
+            resetKPIValues();
+
+            hideAttendanceCards();
+
+            kpiGrid.classList.remove(
+                "show"
+            );
+
+            hideKPIChart();
+
+            return;
+
+        }
+
+
+        /*-- Find correct sheet --*/
+
+        const sheetName =
+            SHEET_MAP
+                [university]
+                [detailType];
+
+
+        if (!sheetName) {
+
+            alert(
+                "Google Sheet mapping not found."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            /*-- Loading state --*/
+
+            kpiGrid.classList.remove("show");
+
+            hideKPIChart();
+
+            console.log(
+                "University:",
+                university
+            );
+
+            console.log(
+                "Student Detail:",
+                detailType
+            );
+
+            console.log(
+                "Selected Sheet:",
+                sheetName
+            );
+
+
+            /*-- Fetch Google Sheet --*/
+            const data = await getGoogleSheetData(sheetName);
+
+            console.log(
+                "Selected Sheet Data:",
+                data
+            );
+
+
+            /*-- Update KPI + Chart --*/
+            updateDashboard(
+                data,
+                detailType
+            );
+
+
+        }
+        catch (error) {
+
+            console.error(
+                "Dashboard Error:",
+                error
+            );
+
+
+            resetDashboard();
+
+            alert(
+                "Unable to load Google Sheet data.\n\n" +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+/*--- INITIAL STATE ---*/
+resetDashboard();
+
+console.log(
+    "Dynamic Google Sheet Dashboard Ready."
+);
+
+</script>
 
 
 </body>
